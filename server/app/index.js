@@ -3,11 +3,13 @@ require('dotenv/config');
 
 // importing required modules
 const express = require('express');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const cors = require('cors');
 
 // database configurations
-require('./config/database')(mongoose);
+// require('./config/database')(mongoose);
+require('./config/database');
+
 
 // importing routes form .routes
 const {

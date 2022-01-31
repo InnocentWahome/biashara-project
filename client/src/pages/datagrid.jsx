@@ -1,7 +1,7 @@
 import * as React from "react"
 import { DataGrid } from "@mui/x-data-grid"
 import { useDemoData } from "@mui/x-data-grid-generator"
-import AdminLayout from "../../layouts/AdminLayout"
+import PageLayout from "../layouts/PageLayout"
 
 export default function PageSizeControlled() {
   const { data } = useDemoData({
@@ -13,7 +13,7 @@ export default function PageSizeControlled() {
   const [pageSize, setPageSize] = React.useState(25)
 
   return (
-    <AdminLayout>
+    <PageLayout>
       <div class="container">
         <div style={{ height: 600, width: "70%" }}>
           <DataGrid
@@ -25,6 +25,6 @@ export default function PageSizeControlled() {
           />
         </div>
       </div>
-    </AdminLayout>
+    </PageLayout>
   )
 }

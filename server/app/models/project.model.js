@@ -9,33 +9,33 @@ const ProjectSchema = new Schema({
   description: {
     type: String,
   },
-  lead: {
-    // type: Schema.Types.ObjectId,
-    // ref: 'Employee',
-    required: false,
-    type: String
-  },
-  category: {
-    type: String,
-    enum: ['blockchain', 'website', 'application'],
-    default: 'application',
-  },
-  team: {
-    type: Schema.Types.ObjectId,
-    ref: 'Team',
-  },
-  status: {
-    type: String,
-    enum: ['initiated', 'in-progress', 'completed', 'terminated'],
-    default: 'initiated',
-  },
-  startDate: {
-    type: Date,
-    default: Date.now,
-  },
-  endDate: {
-    type: Date,
-  },
+  // lead: {
+  //   // type: Schema.Types.ObjectId,
+  //   // ref: 'Employee',
+  //   required: false,
+  //   type: String
+  // },
+  // category: {
+  //   type: String,
+  //   enum: ['blockchain', 'website', 'application'],
+  //   default: 'application',
+  // },
+  // team: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Team',
+  // },
+  // status: {
+  //   type: String,
+  //   enum: ['initiated', 'in-progress', 'completed', 'terminated'],
+  //   default: 'initiated',
+  // },
+  // startDate: {
+  //   type: Date,
+  //   default: Date.now,
+  // },
+  // endDate: {
+  //   type: Date,
+  // },
 }, {
   timestamps: true,
 });
