@@ -7,10 +7,15 @@ import ResetPasswordForm from "./forms/auth/ResetPasswordForm"
 
 import SubscribeForm from "./forms/SubscribeForm"
 import ContactForm from "./forms/ContactForm"
+import CreateEmployeeForm from './forms/CreateEmployeeForm'
+import DeliveriesForm from './forms/DeliveriesForm'
+import EmployeeWorkLogForm from './forms/EmployeeWorkLogForm'
+import MaintainenceScheduleForm from './forms/MaintainenceScheduleForm'
+import OrderForm from './forms/OrderForm'
+import StockForm from './forms/StockForm'
 
-import Footer from "./shared/Footer"
-// import Sidebar from "./shared/AboutSidebar"
-import Navbar from "./shared/Navbar"
+import Footer from "./dashboard/Footer"
+import Navbar from "./dashboard/Navbar"
 
 import AdminFooter from "./admin/AdminFooter"
 import AdminNavbar from "./admin/AdminNavbar"
@@ -27,12 +32,17 @@ export {
   Navbar,
   NavbarLinks,
   ContactForm,
+  SubscribeForm,
+  CreateEmployeeForm,
+  DeliveriesForm,
+  EmployeeWorkLogForm,
+  MaintainenceScheduleForm,
+  OrderForm,
+  StockForm,
   LoginForm,
   RegisterForm,
   ResetPasswordForm,
   ForgotPasswordForm,
-  // Sidebar,
-  SubscribeForm,
   Footer,
   AdminFooter,
   AdminNavbar,

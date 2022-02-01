@@ -20,11 +20,19 @@ const Navbar = () => {
 
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-end">
-          <a class="navbar-item" href="/">
+          <a class="navbar-item" href="/dashboard">
             Home
           </a>
-          <a class="navbar-item" href="/contact">
+          <a class="navbar-item" href="/dashboard/my-orders">
+            Orders
+          </a>
+          <a class="navbar-item" href="/dashboard/contact">
             Contact Us
+          </a>
+          <a class="navbar-item" href="/">
+            <button class="button is-outlined is-danger " to="/">
+              Log Out
+            </button>
           </a>
         </div>
       </div>
