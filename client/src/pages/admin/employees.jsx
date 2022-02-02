@@ -15,6 +15,9 @@ export default function PageSizeControlled() {
   return (
     <AdminLayout>
       <div class="container">
+      <p class="title is-4 has-text-centered pt-6 pb-3">
+          Employee Productivity
+        </p>
         <div style={{ height: 600, width: "70%" }}>
           <DataGrid
             pageSize={pageSize}

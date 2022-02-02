@@ -13,6 +13,7 @@ import EmployeeWorkLogForm from './forms/EmployeeWorkLogForm'
 import MaintainenceScheduleForm from './forms/MaintainenceScheduleForm'
 import OrderForm from './forms/OrderForm'
 import StockForm from './forms/StockForm'
+import DeliveredProductsReports from "./forms/DeliveredProductsReport"
 
 import Footer from "./dashboard/Footer"
 import Navbar from "./dashboard/Navbar"
@@ -37,6 +38,7 @@ export {
   DeliveriesForm,
   EmployeeWorkLogForm,
   MaintainenceScheduleForm,
+  DeliveredProductsReports,
   OrderForm,
   StockForm,
   LoginForm,

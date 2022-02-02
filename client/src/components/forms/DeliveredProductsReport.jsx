@@ -1,6 +1,6 @@
 import React from "react"
 
-const MaintainenceScheduleForm = () => {
+const DeliveredProductsReports = () => {
   return (
     <form action="" method="POST" class="container">
       <div class="container">
@@ -8,8 +8,8 @@ const MaintainenceScheduleForm = () => {
           <div class="field-body">
             <div class="field">
               <p class="control is-expanded">
-                <label class="label">Service Description</label>
-                <textarea class="textarea" placeholder=""></textarea>
+              <label class="label">Product ID</label>
+                <input class="input" type="number" placeholder="" />
               </p>
             </div>
           </div>
@@ -18,8 +18,8 @@ const MaintainenceScheduleForm = () => {
           <div class="field-body">
             <div class="field">
               <p class="control is-expanded">
-                <label class="label">Service Date</label>
-                <input class="input" type="text" placeholder="" />
+              <label class="label">Problem Description</label>
+                <textarea class="textarea" placeholder=""></textarea>
               </p>
             </div>
           </div>
@@ -27,7 +27,7 @@ const MaintainenceScheduleForm = () => {
 
         <div className="field">
           <button className="button is-black is-rounded" type="submit">
-            Submit
+            Login
           </button>
         </div>
       </div>
@@ -35,4 +35,4 @@ const MaintainenceScheduleForm = () => {
   )
 }
 
-export default MaintainenceScheduleForm
+export default DeliveredProductsReports

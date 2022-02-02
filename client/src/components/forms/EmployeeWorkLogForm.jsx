@@ -8,7 +8,8 @@ const EmployeeWorkLogForm = () => {
           <div class="field-body">
             <div class="field">
               <p class="control is-expanded">
-                <input class="input" type="email" placeholder="Email" />
+              <label class="label">Date</label>
+                <input class="input" type="text" placeholder="" />
               </p>
             </div>
           </div>
@@ -17,7 +18,18 @@ const EmployeeWorkLogForm = () => {
           <div class="field-body">
             <div class="field">
               <p class="control is-expanded">
-                <input class="input" type="password" placeholder="password" />
+              <label class="label">Check-in Time</label>
+                <input class="input" type="text" placeholder="" />
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-body">
+            <div class="field">
+              <p class="control is-expanded">
+              <label class="label">Check-out Time</label>
+                <input class="input" type="text" placeholder="" />
               </p>
             </div>
           </div>
@@ -25,7 +37,7 @@ const EmployeeWorkLogForm = () => {
 
         <div className="field">
           <button className="button is-black is-rounded" type="submit">
-            Login
+            Submit
           </button>
         </div>
       </div>

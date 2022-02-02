@@ -8,7 +8,8 @@ const StockForm = () => {
           <div class="field-body">
             <div class="field">
               <p class="control is-expanded">
-                <input class="input" type="email" placeholder="Product Name" />
+              <label class="label">Product Name</label>
+                <input class="input" type="text" placeholder="" />
               </p>
             </div>
           </div>
@@ -17,7 +18,8 @@ const StockForm = () => {
           <div class="field-body">
             <div class="field">
               <p class="control is-expanded">
-                <input class="input" type="number" placeholder="Product ID" />
+              <label class="label">Product ID</label>
+                <input class="input" type="number" placeholder="" />
               </p>
             </div>
           </div>
@@ -26,7 +28,8 @@ const StockForm = () => {
           <div class="field-body">
             <div class="field">
               <p class="control is-expanded">
-                <input class="input" type="number" placeholder="Product Quantity" />
+              <label class="label">Product Quantity</label>
+                <input class="input" type="text" placeholder="" />
               </p>
             </div>
           </div>
@@ -35,21 +38,12 @@ const StockForm = () => {
           <div class="field-body">
             <div class="field">
               <p class="control is-expanded">
-                <input class="input" type="number" placeholder="Product Price" />
+              <label class="label">Product Price</label>
+                <input class="input" type="number" placeholder="" />
               </p>
             </div>
           </div>
         </div>
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
-                <input class="input" type="number" placeholder="Product Price" />
-              </p>
-            </div>
-          </div>
-        </div>
-
         <div className="field">
           <button className="button is-black is-rounded" type="submit">
             Create / Update Stock

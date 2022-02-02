@@ -41,6 +41,9 @@ const Navbar = () => {
           <a class="navbar-item" href="/admin/maintenance/">
             Maintenance
           </a>
+          <a class="navbar-item" href="/admin/product-performance/">
+            Product Performance
+          </a>
         </div>
       </div>
     </nav>
