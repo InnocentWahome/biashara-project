@@ -28,16 +28,16 @@ const EmployeeWorkLogForm = () => {
           <div class="field-body">
             <div class="field">
               <p class="control is-expanded">
-              <label class="label">Check-out Time</label>
+              <label class="label">Check-out  on Time</label>
                 <input class="input" type="text" placeholder="" />
               </p>
-            </div>
+            </div>  
           </div>
         </div>
 
         <div className="field">
           <button className="button is-black is-rounded" type="submit">
-            Submit
+            Submit 
           </button>
         </div>
       </div>
