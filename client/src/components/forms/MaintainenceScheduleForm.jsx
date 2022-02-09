@@ -8,7 +8,7 @@ const MaintainenceScheduleForm = () => {
           <div className="field-body">
             <div className="field">
               <div className="control is-expanded">
-                <label className="label">Service Description</label>
+               <p className="label">Service Description</p>
                 <textarea className="textarea" placeholder=""></textarea>
               </div>
             </div>
@@ -18,7 +18,7 @@ const MaintainenceScheduleForm = () => {
           <div className="field-body">
             <div className="field">
               <p className="is-expanded">
-                <label className="label">Service Date</label>
+               <p className="label">Service Date</p>
                 <input className="input" type="text" placeholder="" />
               </p>
             </div>

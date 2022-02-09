@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import axios from "axios"
+import $http from "../../../plugins/axios"
 
 const RegisterForm = () => {
   const [firstName, setFirstName] = useState("")
@@ -8,22 +8,27 @@ const RegisterForm = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const register = () => {
-    axios
-      .post("http://localhost:1333/api/v1/auth/register", {
-        firstName: firstName,
-        lastName: lastName,
-        phoneNumber: phoneNumber,
-        email: email,
-        password: password,
+  const register = async (e) => {
+    try {
+      e.preventDefault();
+      await $http.Authentication({
+        method: "POST",
+        url: "/register",
+        data: {
+          firstName: firstName,
+          lastName: lastName,
+          phoneNumber: phoneNumber,
+          email: email,
+          password: password,
+        },
       })
-      .then(response => {
-        console.log(response)
-      })
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
-    <form action="" method="POST" className="container" onsubmit={register}>
+    <form action="" method="POST" className="container" onSubmit={register}>
       <div className="container">
         <div className="field is-horizontal">
           <div className="field-body">

@@ -1,39 +1,40 @@
 import React, { useState, useEffect } from "react"
 import { DataGrid } from "@mui/x-data-grid"
 import PageLayout from "../layouts/PageLayout"
-import axios from "axios"
+
+import $http from "../plugins/axios"
+
 
 const DataTable = () => {
   const columns = [
     { field: "id", headerName: "ID" },
-    { field: "title", headerName: "Title", width: 300 },
-    { field: "body", headerName: "Body", width: 600 },
+    { field: "name", headerName: "Name" ,width: 300 },
+    { field: "description", headerName: "Description", width: 600 },
+    { field: "actions", headerName: "Name" ,width: 300 },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
 
+  const fetchCourses = async e => {
+    try {
+      const response = await $http.Api({
+        method: "GET",
+        url: "/course",
+      });
+      if (response.data?.data) {
+        console.log(tableData)
+        setTableData(response.data.data);
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      // .set("Authorization", "Bearer " + this.state.id_token)
-      .then(data => data.json())
-      .then(data => setTableData(data))
+    fetchCourses();
   }, [])
 
-  console.log(tableData)
 
-  // const register = () => {
-  //   axios
-  //     .post("http://localhost:1333/api/v1/auth/register", {
-  //       firstName: firstName,
-  //       lastName: lastName,
-  //       phoneNumber: phoneNumber,
-  //       email: email,
-  //       password: password,
-  //     })
-  //     .then(response => {
-  //       console.log(response)
-  //     })
-  // }
 
   return (
     <PageLayout>

@@ -8,7 +8,7 @@ const DeliveredProductsReports = () => {
           <div className="field-body">
             <div className="field">
               <div className="control is-expanded">
-              <label className="label">Product ID</label>
+              <p className="label">Product ID</p>
                 <input className="input" type="number" placeholder="" />
               </div>
             </div>
@@ -18,7 +18,7 @@ const DeliveredProductsReports = () => {
           <div className="field-body">
             <div className="field">
               <div className="control is-expanded">
-              <label className="label">Problem Description</label>
+             <p className="label">Problem Description</p>
                 <textarea className="textarea" placeholder=""></textarea>
               </div>
             </div>

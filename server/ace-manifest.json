@@ -93,7 +93,7 @@
           "propertyName": "name",
           "name": "name",
           "required": true,
-          "description": "Name of the model className"
+          "description": "Name of the model class"
         }
       ],
       "aliases": [],
@@ -169,7 +169,7 @@
           "propertyName": "name",
           "name": "name",
           "required": true,
-          "description": "Name of the seeder className"
+          "description": "Name of the seeder class"
         }
       ],
       "aliases": [],

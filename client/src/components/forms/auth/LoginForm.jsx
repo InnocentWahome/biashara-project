@@ -1,26 +1,26 @@
 import React, { useState } from "react"
-import axios from "axios"
+import $http from "../../../plugins/axios"
 
 const LoginForm = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  console.log("Login Page")
-  const login = () => {
-    axios
-      .post("http://localhost:1333/api/v1/auth/register", {
-        email: email,
-        password: password,
-      })
-      
-      .then(response => {
-        console.log(response)
-        if(response.status === 200){
-          localStorage.setItem('token', response.data.token);
-        } else {
-          console.log("token not set")
-        }
-      })
+  const login = async e => {
+    e.preventDefault()
+    try {
+      const response = await $http.Authentication({
+        method: "POST",
+        url: "/login",
+        data: {
+          email: email,
+          password: password,
+        },
+      });
+      localStorage.setItem('access_token', response.data?.data?.token);
+    } catch (error) {
+      console.error(error)
+    }
   }
+
   return (
     <form action="" method="POST" className="container" onSubmit={login}>
       <div className="container">

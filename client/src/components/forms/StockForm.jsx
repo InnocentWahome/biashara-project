@@ -8,7 +8,7 @@ const StockForm = () => {
           <div className="field-body">
             <div className="field">
               <div className="control is-expanded">
-                <label className="label">Product Name</label>
+               <p className="label">Product Name</p>
                 <input className="input" type="text" placeholder="" />
               </div>
             </div>
@@ -18,7 +18,7 @@ const StockForm = () => {
           <div className="field-body">
             <div className="field">
               <div className="control is-expanded">
-                <label className="label">Product ID</label>
+               <p className="label">Product ID</p>
                 <input className="input" type="number" placeholder="" />
               </div>
             </div>
@@ -28,7 +28,7 @@ const StockForm = () => {
           <div className="field-body">
             <div className="field">
               <div className="control is-expanded">
-                <label className="label">Product Quantity</label>
+               <p className="label">Product Quantity</p>
                 <input className="input" type="text" placeholder="" />
               </div>
             </div>
@@ -38,7 +38,7 @@ const StockForm = () => {
           <div className="field-body">
             <div className="field">
               <div className="control is-expanded">
-                <label className="label">Product Price</label>
+               <p className="label">Product Price</p>
                 <input className="input" type="number" placeholder="" />
               </div>
             </div>

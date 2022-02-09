@@ -8,7 +8,7 @@ const EmployeeWorkLogForm = () => {
           <div className="field-body">
             <div className="field">
               <div className="control is-expanded">
-              <label className="label">Date</label>
+             <p className="label">Date</p>
                 <input className="input" type="text" placeholder="" />
               </div>
             </div>
@@ -18,7 +18,7 @@ const EmployeeWorkLogForm = () => {
           <div className="field-body">
             <div className="field">
               <div className="control is-expanded">
-              <label className="label">Check-in Time</label>
+             <p className="label">Check-in Time</p>
                 <input className="input" type="text" placeholder="" />
               </div>
             </div>
@@ -28,7 +28,7 @@ const EmployeeWorkLogForm = () => {
           <div className="field-body">
             <div className="field">
               <div className="control is-expanded">
-              <label className="label">Check-out  on Time</label>
+             <p className="label">Check-out  on Time</p>
                 <input className="input" type="text" placeholder="" />
               </div>
             </div>  

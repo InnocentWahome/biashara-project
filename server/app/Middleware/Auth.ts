@@ -8,7 +8,7 @@ import { AuthenticationException } from '@adonisjs/auth/build/standalone'
  * You must register this middleware inside `start/kernel.ts` file under the list
  * of named middleware.
  */
-export default className AuthMiddleware {
+export default class AuthMiddleware {
   /**
   * The URL to redirect to when request is Unauthorized
   */
