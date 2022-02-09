@@ -1,13 +1,14 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Task from '../../Models/Task'
-export default class TaskController {
+import Product from '../../Models/Product'
+
+export default class ProductController {
   public async index({ response }: HttpContextContract) {
     try {
-      const tasks = await Task.query().select('*').from('tasks')
+      const products = await Product.query().select('*').from('products')
       return response.json({
         success: true,
-        message: 'Tasks retrieved successfully',
-        data: tasks,
+        message: 'products retrieved successfully',
+        data: products,
       })
     } catch (error) {
       return response.json({
@@ -20,17 +21,17 @@ export default class TaskController {
 
   public async show({ params, response }: HttpContextContract) {
     try {
-      const task = await Task.find(params.id)
-      if (task) {
+      const product = await Product.find(params.id)
+      if (product) {
         return response.json({
           success: true,
-          message: 'Task found',
-          data: task,
+          message: 'Product found',
+          data: product,
         })
       } else {
         return response.json({
           success: true,
-          message: 'Task not found',
+          message: 'Product not found',
           data: null,
         })
       }
@@ -46,11 +47,11 @@ export default class TaskController {
   public async store({ request, response }: HttpContextContract) {
     try {
       const data = request.only(['name', 'description', 'students'])
-      const task = await Task.create(data)
+      const product = await Product.create(data)
       return response.json({
         success: true,
-        message: 'Task created successfully',
-        data: task,
+        message: 'Product created successfully',
+        data: product,
       })
     } catch (error) {
       return response.json({
@@ -63,23 +64,23 @@ export default class TaskController {
 
   public async update({ params, request, response }: HttpContextContract) {
     try {
-      const task = await Task.findOrFail(params.id)
-      if (!task) {
+      const product = await Product.findOrFail(params.id)
+      if (!product) {
         return response.json({
           success: true,
-          message: 'Task not found',
+          message: 'Product not found',
           data: null,
         })
       } else {
-        task.merge(request.only(['name', 'description', 'students']))
-        // task.duration = request.input('duration')
-        // task.price = request.input('price')
-        // task.taskName = request.input('task_name')
-        await task.save()
+        product.merge(request.only(['name', 'description', 'price', 'image', 'quantity']))
+        // product.duration = request.input('duration')
+        // product.price = request.input('price')
+        // product.productName = request.input('product_name')
+        await product.save()
         return response.json({
           success: true,
-          message: 'Task updated successfully',
-          data: task,
+          message: 'Product updated successfully',
+          data: product,
         })
       }
     } catch (error) {
@@ -93,19 +94,19 @@ export default class TaskController {
 
   public async delete({ params, response }: HttpContextContract) {
     try {
-      const task = await Task.find(params.id)
-      if (task) {
-        task.delete()
+      const product = await Product.find(params.id)
+      if (product) {
+        product.delete()
         return response.json({
           success: true,
-          message: 'Successfully deleted the task',
+          message: 'Successfully deleted the product',
           data: null,
         })
       } else {
         return response.json({
           success: false,
-          message: 'Task does not exist',
-          data: task,
+          message: 'Product does not exist',
+          data: product,
         })
       }
     } catch (error) {

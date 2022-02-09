@@ -4,21 +4,15 @@ import axios from "axios"
 const LoginForm = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  console.log("Login Page")
+
   const login = () => {
     axios
       .post("http://localhost:1333/api/v1/auth/register", {
         email: email,
         password: password,
       })
-      
       .then(response => {
         console.log(response)
-        if(response.status === 200){
-          localStorage.setItem('token', response.data.token);
-        } else {
-          console.log("token not set")
-        }
       })
   }
   return (

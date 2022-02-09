@@ -6,7 +6,7 @@ import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
 Route.get('api/v1', ({ response }: HttpContextContract) => {
   return response.status(200).json({
     success: true,
-    message: 'Welcome to Rentpal API',
+    message: 'Welcome to Project API',
     data: null,
   })
 })
@@ -38,12 +38,12 @@ Route.group(() => {
   }).prefix('/course')
 
   Route.group(() => {
-    Route.get('/', 'TasksController.index')
-    Route.post('/', 'TasksController.store')
-    Route.get('/:id', 'TasksController.show')
-    Route.put('/:id', 'TasksController.update')
-    Route.delete('/:id', 'TasksController.delete')
-  }).prefix('/task')
+    Route.get('/', 'ProductController.index')
+    Route.post('/', 'ProductController.store')
+    Route.get('/:id', 'ProductController.show')
+    Route.put('/:id', 'ProductController.update')
+    Route.delete('/:id', 'ProductController.delete')
+  }).prefix('/product')
 })
   .prefix('/api/v1')
   .middleware('auth')
