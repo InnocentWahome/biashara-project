@@ -7,8 +7,8 @@ import AdminLayout from "../../layouts/AdminLayout"
 //   return (
 //     <AdminLayout>
 //       <div className="container pt-6 pl-6">
-//         <div class="pb-6 pt-6">
-//           <p class="title is-4 has-text-centered">Authorize delivery requests</p>
+//         <div className="pb-6 pt-6">
+//           <p className="title is-4 has-text-centered">Authorize delivery requests</p>
 //         </div>
 //       </div>
 //     </AdminLayout>
@@ -27,8 +27,8 @@ export default function PageSizeControlled() {
 
   return (
     <AdminLayout>
-      <div class="container">
-        <p class="title is-4 has-text-centered pt-6 pb-3">
+      <div className="container">
+        <p className="title is-4 has-text-centered pt-6 pb-3">
           Authorize delivery requests
         </p>
         <div style={{ height: 600, width: "70%" }}>

@@ -3,12 +3,12 @@ import React from "react"
 const Navbar = () => {
   return (
     <nav
-      class="navbar  is-transparent"
+      className="navbar  is-transparent"
       role="navigation"
       aria-label="main navigation"
     >
-      <div class="navbar-brand">
-        <a class="navbar-item" href="/">
+      <div className="navbar-brand">
+        <a className="navbar-item" href="/">
           <img
             src="https://bulma.io/images/bulma-logo.png"
             width="112"
@@ -18,19 +18,19 @@ const Navbar = () => {
         </a>
       </div>
 
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-end">
-          <a class="navbar-item" href="/dashboard">
+      <div id="navbarBasicExample" className="navbar-menu">
+        <div className="navbar-end">
+          <a className="navbar-item" href="/dashboard">
             Home
           </a>
-          <a class="navbar-item" href="/dashboard/my-orders">
+          <a className="navbar-item" href="/dashboard/my-orders">
             Orders
           </a>
-          <a class="navbar-item" href="/dashboard/contact">
+          <a className="navbar-item" href="/dashboard/contact">
             Contact Us
           </a>
-          <a class="navbar-item" href="/">
-            <button class="button is-outlined is-danger " to="/">
+          <a className="navbar-item" href="/">
+            <button className="button is-outlined is-danger " to="/">
               Log Out
             </button>
           </a>

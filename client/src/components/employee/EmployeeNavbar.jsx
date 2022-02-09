@@ -3,12 +3,12 @@ import React from "react"
 const Navbar = () => {
   return (
     <nav
-      class="navbar  is-transparent"
+      className="navbar  is-transparent"
       role="navigation"
       aria-label="main navigation"
     >
-      <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
+      <div className="navbar-brand">
+        <a className="navbar-item" href="https://bulma.io">
           <img
             src="https://bulma.io/images/bulma-logo.png"
             width="112"
@@ -19,24 +19,24 @@ const Navbar = () => {
 
       </div>
 
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-end">
-          <a class="navbar-item" href="/employee/">
+      <div id="navbarBasicExample" className="navbar-menu">
+        <div className="navbar-end">
+          <a className="navbar-item" href="/employee/">
             Home
           </a>
-          <a class="navbar-item" href="/employee/orders/">
+          <a className="navbar-item" href="/employee/orders/">
             Orders Review
           </a>
-          <a class="navbar-item" href="/employee/maintenance/">
+          <a className="navbar-item" href="/employee/maintenance/">
             Maintenance
           </a>
-          <a class="navbar-item" href="/employee/personal-performance/">
+          <a className="navbar-item" href="/employee/personal-performance/">
             My-Performance
           </a>
-          <a class="navbar-item" href="/employee/delivered/">
+          <a className="navbar-item" href="/employee/delivered/">
             Delivered Products Performance
           </a>
-          <a class="navbar-item" href="/employee/stock/">
+          <a className="navbar-item" href="/employee/stock/">
             Stock
           </a>
         </div>

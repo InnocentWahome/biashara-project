@@ -22,35 +22,35 @@ const LoginForm = () => {
       })
   }
   return (
-    <form action="" method="POST" class="container" onSubmit={login}>
-      <div class="container">
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
+    <form action="" method="POST" className="container" onSubmit={login}>
+      <div className="container">
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
                 <input
-                  class="input"
+                  className="input"
                   type="email"
                   placeholder="Email"
                   required
                   onChange={e => setEmail(e.target.value)}
                 />
-              </p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
                 <input
-                  class="input"
+                  className="input"
                   type="password"
                   placeholder="password"
                   required
                   onChange={e => setPassword(e.target.value)}
                 />
-              </p>
+              </div>
             </div>
           </div>
         </div>

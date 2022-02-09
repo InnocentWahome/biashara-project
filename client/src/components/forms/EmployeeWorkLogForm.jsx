@@ -2,35 +2,35 @@ import React from "react"
 
 const EmployeeWorkLogForm = () => {
   return (
-    <form action="" method="POST" class="container">
-      <div class="container">
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
-              <label class="label">Date</label>
-                <input class="input" type="text" placeholder="" />
-              </p>
+    <form action="" method="POST" className="container">
+      <div className="container">
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
+              <label className="label">Date</label>
+                <input className="input" type="text" placeholder="" />
+              </div>
             </div>
           </div>
         </div>
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
-              <label class="label">Check-in Time</label>
-                <input class="input" type="text" placeholder="" />
-              </p>
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
+              <label className="label">Check-in Time</label>
+                <input className="input" type="text" placeholder="" />
+              </div>
             </div>
           </div>
         </div>
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
-              <label class="label">Check-out  on Time</label>
-                <input class="input" type="text" placeholder="" />
-              </p>
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
+              <label className="label">Check-out  on Time</label>
+                <input className="input" type="text" placeholder="" />
+              </div>
             </div>  
           </div>
         </div>

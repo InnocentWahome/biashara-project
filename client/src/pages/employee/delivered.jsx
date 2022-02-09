@@ -8,8 +8,8 @@ import DeliveredProductsReports from "../../components/forms/DeliveredProductsRe
 //   return (
 //     <EmployeeLayout>
 //       <div className="container pt-6 pl-6">
-//         <div class="pb-6 pt-6">
-//             <p class="title is-4 has-text-centered">Progress and performance of delivered products</p>
+//         <div className="pb-6 pt-6">
+//             <p className="title is-4 has-text-centered">Progress and performance of delivered products</p>
 //         </div>
 //       </div>
 //     </EmployeeLayout>
@@ -28,12 +28,12 @@ export default function PageSizeControlled() {
 
   return (
     <EmployeeLayout>
-      <div class="container">
-        <p class="title is-4 has-text-centered">
+      <div className="container">
+        <p className="title is-4 has-text-centered">
         Progress and performance of delivered products
         </p>
-        <div class="columns">
-          <div class="column">
+        <div className="columns">
+          <div className="column">
             <div style={{ height: 750, width: "90%" }}>
               <DataGrid
                 pageSize={pageSize}
@@ -43,9 +43,9 @@ export default function PageSizeControlled() {
               />
             </div>
           </div>
-          <div class="column is-one-third">
-            <div class="pt-6 mt-6 container">
-              <p class="is-size-5 pb-3">Report Product Anomaly</p>
+          <div className="column is-one-third">
+            <div className="pt-6 mt-6 container">
+              <p className="is-size-5 pb-3">Report Product Anomaly</p>
               <DeliveredProductsReports />
             </div>
           </div>

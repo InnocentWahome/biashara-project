@@ -7,8 +7,8 @@ import AdminLayout from "../../layouts/AdminLayout"
 //   return (
 //     <AdminLayout>
 //       <div className="container pt-6 pl-6">
-//         <div class="pb-6 pt-6">
-//           <p class="title is-4 has-text-centered">
+//         <div className="pb-6 pt-6">
+//           <p className="title is-4 has-text-centered">
 //             Track the performance, progress and due date for the service of
 //             products
 //           </p>
@@ -30,8 +30,8 @@ export default function PageSizeControlled() {
 
   return (
     <AdminLayout>
-      <div class="container">
-        <p class="title is-4 has-text-centered pt-6 pb-3">
+      <div className="container">
+        <p className="title is-4 has-text-centered pt-6 pb-3">
           Track the performance, progress and due date for the service of
           products
         </p>

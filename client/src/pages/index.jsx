@@ -23,19 +23,19 @@ const IndexPage = () => {
                     easy. Just click the button below to sign up or sign in to
                     track your orders
                   </p>
-                  <div class="columns pt-6">
-                    <div class="column">
+                  <div className="columns pt-6">
+                    <div className="column">
                       <button
-                        class="button is-danger "
+                        className="button is-danger "
                         to="/auth/register"
                       >
                         Sign Up
                         {/* <a href="/auth/register">Sign Up</a> */}
                       </button>
                     </div>
-                    <div class="column">
+                    <div className="column">
                       <button
-                        class="button is-outlined is-danger "
+                        className="button is-outlined is-danger "
                         to="/auth/login"
                       >
                         Sign in

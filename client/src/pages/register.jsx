@@ -23,80 +23,80 @@ const RegisterForm = () => {
   }
 
   return (
-    <form action="" method="POST" class="container" onsubmit={register}>
-      <div class="container">
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
+    <form action="" method="POST" className="container" onsubmit={register}>
+      <div className="container">
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
                 <input
-                  class="input"
+                  className="input"
                   type="text"
                   placeholder="First Name"
                   required
                   onChange={e => setFirstName(e.target.value)}
                 />
-              </p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
                 <input
-                  class="input"
+                  className="input"
                   type="text"
                   placeholder="Last Name"
                   required
                   onChange={e => setLastName(e.target.value)}
                 />
-              </p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
                 <input
-                  class="input"
+                  className="input"
                   type="email"
                   placeholder="Email"
                   required
                   onChange={e => setEmail(e.target.value)}
                 />
-              </p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
                 <input
-                  class="input"
+                  className="input"
                   type="number"
                   placeholder="Phone Number"
                   required
                   onChange={e => setPhoneNumber(e.target.value)}
                 />
-              </p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
                 <input
-                  class="input"
+                  className="input"
                   type="password"
                   placeholder="password"
                   required
                   onChange={e => setPassword(e.target.value)}
                 />
-              </p>
+              </div>
             </div>
           </div>
         </div>

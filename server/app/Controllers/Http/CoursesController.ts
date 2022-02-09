@@ -1,7 +1,7 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Course from '../../Models/Course'
 
-export default class CoursesController {
+export default className CoursesController {
   public async index({ response }: HttpContextContract) {
     try {
       const courses = await Course.query().select('*').from('courses')

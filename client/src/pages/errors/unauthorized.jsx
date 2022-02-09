@@ -6,7 +6,7 @@ const UnauthorizedPage = () => {
   return (
     <PageLayout>
       <div className="container pt-6 pl-6">
-        <p class="has-text-centered is-title-2">
+        <p className="has-text-centered is-title-2">
           You are not authorized to view this page
         </p>
       </div>

@@ -7,8 +7,8 @@ import PageLayout from "../../layouts/PageLayout"
 //   return (
 //     <PageLayout>
 //       <div className="container pt-6 pl-6">
-//         <div class="pb-6 pt-6">
-//           <p class="title is-4 has-text-centered">Here are all your orders</p>
+//         <div className="pb-6 pt-6">
+//           <p className="title is-4 has-text-centered">Here are all your orders</p>
 //         </div>
 //       </div>
 //     </PageLayout>
@@ -27,8 +27,8 @@ export default function PageSizeControlled() {
 
   return (
     <PageLayout>
-      <div class="container">
-        <p class="title is-4 has-text-centered">Here are all your orders</p>
+      <div className="container">
+        <p className="title is-4 has-text-centered">Here are all your orders</p>
         <div style={{ height: 750, width: "100%" }}>
           <DataGrid
             pageSize={pageSize}

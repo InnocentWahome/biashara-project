@@ -2,24 +2,24 @@ import React from "react"
 
 const MaintainenceScheduleForm = () => {
   return (
-    <form action="" method="POST" class="container">
-      <div class="container">
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
-                <label class="label">Service Description</label>
-                <textarea class="textarea" placeholder=""></textarea>
-              </p>
+    <form action="" method="POST" className="container">
+      <div className="container">
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
+                <label className="label">Service Description</label>
+                <textarea className="textarea" placeholder=""></textarea>
+              </div>
             </div>
           </div>
         </div>
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
-                <label class="label">Service Date</label>
-                <input class="input" type="text" placeholder="" />
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <p className="is-expanded">
+                <label className="label">Service Date</label>
+                <input className="input" type="text" placeholder="" />
               </p>
             </div>
           </div>

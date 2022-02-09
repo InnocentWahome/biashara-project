@@ -7,11 +7,11 @@ const ResetPassword = () => {
   return (
     <PageLayout>
       <div className="container pt-6 pl-6">
-        <p class="pt-6 pb-6 is-size-3 has-text-centered">
+        <p className="pt-6 pb-6 is-size-3 has-text-centered">
           Please enter your new password
         </p>
-        <div class="columns">
-            <div class="column is-two-thirds">
+        <div className="columns">
+            <div className="column is-two-thirds">
             <ResetPasswordForm />
             </div>
         </div>

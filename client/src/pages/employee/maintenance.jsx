@@ -8,8 +8,8 @@ import MaintainenceScheduleForm from "../../components/forms/MaintainenceSchedul
 //   return (
 //     <EmployeeLayout>
 //       <div className="container pt-6 pl-6">
-//         <div class="pb-6 pt-6">
-//           <p class="title is-4 has-text-centered">Scheduling maintenance and service routines</p>
+//         <div className="pb-6 pt-6">
+//           <p className="title is-4 has-text-centered">Scheduling maintenance and service routines</p>
 //         </div>
 //       </div>
 //     </EmployeeLayout>
@@ -28,12 +28,12 @@ export default function PageSizeControlled() {
 
   return (
     <EmployeeLayout>
-      <div class="container">
-        <p class="title is-4 has-text-centered">
+      <div className="container">
+        <p className="title is-4 has-text-centered">
           Scheduling maintenance and service routines
         </p>
-        <div class="columns">
-          <div class="column">
+        <div className="columns">
+          <div className="column">
             <div style={{ height: 750, width: "90%" }}>
               <DataGrid
                 pageSize={pageSize}
@@ -43,8 +43,8 @@ export default function PageSizeControlled() {
               />
             </div>
           </div>
-          <div class="column is-one-third">
-            <div class="pt-6 mt-6 container">
+          <div className="column is-one-third">
+            <div className="pt-6 mt-6 container">
               <MaintainenceScheduleForm />
             </div>
           </div>

@@ -1,6 +1,6 @@
 import { ApplicationContract } from '@ioc:Adonis/Core/Application'
 
-export default class AppProvider {
+export default className AppProvider {
   constructor (protected app: ApplicationContract) {
   }
 

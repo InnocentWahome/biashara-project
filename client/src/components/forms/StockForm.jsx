@@ -2,45 +2,45 @@ import React from "react"
 
 const StockForm = () => {
   return (
-    <form action="" method="POST" class="container">
-      <div class="container">
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
-              <label class="label">Product Name</label>
-                <input class="input" type="text" placeholder="" />
-              </p>
+    <form action="" method="POST" className="container">
+      <div className="container">
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
+                <label className="label">Product Name</label>
+                <input className="input" type="text" placeholder="" />
+              </div>
             </div>
           </div>
         </div>
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
-              <label class="label">Product ID</label>
-                <input class="input" type="number" placeholder="" />
-              </p>
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
+                <label className="label">Product ID</label>
+                <input className="input" type="number" placeholder="" />
+              </div>
             </div>
           </div>
         </div>
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
-              <label class="label">Product Quantity</label>
-                <input class="input" type="text" placeholder="" />
-              </p>
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
+                <label className="label">Product Quantity</label>
+                <input className="input" type="text" placeholder="" />
+              </div>
             </div>
           </div>
         </div>
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
-              <label class="label">Product Price</label>
-                <input class="input" type="number" placeholder="" />
-              </p>
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
+                <label className="label">Product Price</label>
+                <input className="input" type="number" placeholder="" />
+              </div>
             </div>
           </div>
         </div>

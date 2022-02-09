@@ -37,7 +37,7 @@ const DataTable = () => {
 
   return (
     <PageLayout>
-      <div class="container">
+      <div className="container">
         <div style={{ height: 700, width: "200" }}>
           <DataGrid
             rows={tableData}

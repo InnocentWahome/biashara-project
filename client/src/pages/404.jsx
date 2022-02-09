@@ -6,7 +6,7 @@ const NotFoundPage = () => {
   return (
     <PageLayout>
       <div className="container pt-6 pl-6">
-        <p class="has-text-centered is-title-2">
+        <p className="has-text-centered is-title-2">
           The page you are looking for does not exist
         </p>
       </div>

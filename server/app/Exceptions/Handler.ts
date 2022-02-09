@@ -4,7 +4,7 @@
 |--------------------------------------------------------------------------
 |
 | AdonisJs will forward all exceptions occurred during an HTTP request to
-| the following class. You can learn more about exception handling by
+| the following className. You can learn more about exception handling by
 | reading docs.
 |
 | The exception handler extends a base `HttpExceptionHandler` which is not
@@ -16,7 +16,7 @@
 import Logger from '@ioc:Adonis/Core/Logger'
 import HttpExceptionHandler from '@ioc:Adonis/Core/HttpExceptionHandler'
 
-export default class ExceptionHandler extends HttpExceptionHandler {
+export default className ExceptionHandler extends HttpExceptionHandler {
   constructor () {
     super(Logger)
   }

@@ -3,12 +3,12 @@ import React from "react"
 const Navbar = () => {
   return (
     <nav
-      class="navbar  is-transparent"
+      className="navbar  is-transparent"
       role="navigation"
       aria-label="main navigation"
     >
-      <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
+      <div className="navbar-brand">
+        <a className="navbar-item" href="https://bulma.io">
           <img
             src="https://bulma.io/images/bulma-logo.png"
             width="112"
@@ -18,30 +18,30 @@ const Navbar = () => {
         </a>
       </div>
 
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-end">
-          <a class="navbar-item" href="/admin/">
+      <div id="navbarBasicExample" className="navbar-menu">
+        <div className="navbar-end">
+          <a className="navbar-item" href="/admin/">
             Home
           </a>
-          <a class="navbar-item" href="/admin/employees/">
+          <a className="navbar-item" href="/admin/employees/">
             Employee Performance
           </a>
-          <a class="navbar-item" href="/admin/orders/">
+          <a className="navbar-item" href="/admin/orders/">
             Review Orders
           </a>
-          <a class="navbar-item" href="/admin/inventory/">
+          <a className="navbar-item" href="/admin/inventory/">
             Manage Inventory
           </a>
-          <a class="navbar-item" href="/admin/users/">
+          <a className="navbar-item" href="/admin/users/">
             System Users
           </a>
-          <a class="navbar-item" href="/admin/delivery/">
+          <a className="navbar-item" href="/admin/delivery/">
             Delivery Requests
           </a>
-          <a class="navbar-item" href="/admin/maintenance/">
+          <a className="navbar-item" href="/admin/maintenance/">
             Maintenance
           </a>
-          <a class="navbar-item" href="/admin/product-performance/">
+          <a className="navbar-item" href="/admin/product-performance/">
             Product Performance
           </a>
         </div>

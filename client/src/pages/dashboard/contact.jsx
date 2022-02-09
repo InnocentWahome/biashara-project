@@ -7,8 +7,8 @@ const ContactPage = () => {
   return (
     <PageLayout>
       <div className="container pt-6 pl-6">
-        <div class="columns">
-          <div class="column is-two-thirds">
+        <div className="columns">
+          <div className="column is-two-thirds">
           <ContactForm />
           </div>
         </div>

@@ -2,25 +2,25 @@ import React from "react"
 
 const DeliveredProductsReports = () => {
   return (
-    <form action="" method="POST" class="container">
-      <div class="container">
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
-              <label class="label">Product ID</label>
-                <input class="input" type="number" placeholder="" />
-              </p>
+    <form action="" method="POST" className="container">
+      <div className="container">
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
+              <label className="label">Product ID</label>
+                <input className="input" type="number" placeholder="" />
+              </div>
             </div>
           </div>
         </div>
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
-              <label class="label">Problem Description</label>
-                <textarea class="textarea" placeholder=""></textarea>
-              </p>
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
+              <label className="label">Problem Description</label>
+                <textarea className="textarea" placeholder=""></textarea>
+              </div>
             </div>
           </div>
         </div>

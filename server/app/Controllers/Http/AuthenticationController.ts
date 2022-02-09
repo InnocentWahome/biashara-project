@@ -7,9 +7,9 @@ import User from 'App/Models/User'
  * Resourceful controller for interacting with authentication
  *
  * @export
- * @class AuthenticationController
+ * @className AuthenticationController
  */
-export default class AuthenticationController {
+export default className AuthenticationController {
   /**
    * Query and retrieve a user's profile
    *

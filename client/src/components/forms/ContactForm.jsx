@@ -5,34 +5,34 @@ const ContactForm = () => {
     <form
       action=""
       method="POST"
-      class="container"
+      className="container"
     >
-      <div class="container">
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
-                <input class="input" type="text" placeholder="Name" />
-              </p>
+      <div className="container">
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
+                <input className="input" type="text" placeholder="Name" />
+              </div>
             </div>
           </div>
         </div>
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
-                <input class="input" type="email" placeholder="Email" />
-              </p>
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
+                <input className="input" type="email" placeholder="Email" />
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="field is-horizontal">
-          <div class="field-body">
-            <div class="field">
-              <p class="control is-expanded">
-                <input class="input" type="text" placeholder="Phone number" />
-              </p>
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
+                <input className="input" type="text" placeholder="Phone number" />
+              </div>
             </div>
           </div>
         </div>
