@@ -34,6 +34,16 @@ const EmployeeWorkLogForm = () => {
             </div>  
           </div>
         </div>
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
+             <p className="label">Overtime Hours</p>
+                <input className="input" type="text" placeholder="" />
+              </div>
+            </div>  
+          </div>
+        </div>
 
         <div className="field">
           <button className="button is-black is-rounded" type="submit">

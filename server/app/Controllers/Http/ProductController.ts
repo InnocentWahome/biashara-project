@@ -46,7 +46,7 @@ export default class ProductController {
 
   public async store({ request, response }: HttpContextContract) {
     try {
-      const data = request.only(['name', 'description', 'students'])
+      const data = request.only(['name', 'description', 'price', 'image', 'quantity'])
       const product = await Product.create(data)
       return response.json({
         success: true,

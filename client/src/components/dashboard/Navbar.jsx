@@ -23,8 +23,14 @@ const Navbar = () => {
           <a className="navbar-item" href="/dashboard">
             Home
           </a>
+          <a className="navbar-item" href="/dashboard/products">
+          All Products
+          </a>
           <a className="navbar-item" href="/dashboard/my-orders">
-            Orders
+          My Orders
+          </a>
+          <a className="navbar-item" href="/dashboard/feedback">
+          Feedback
           </a>
           <a className="navbar-item" href="/dashboard/contact">
             Contact Us

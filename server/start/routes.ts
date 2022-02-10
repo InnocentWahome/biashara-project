@@ -20,6 +20,7 @@ Route.get('api/v1/health', async ({ response }) => {
 //auth routes
 Route.group(() => {
   Route.get('/user', 'AuthenticationController.user')
+  Route.get('/users', 'AuthenticationController.index')
   Route.post('/login', 'AuthenticationController.login')
   Route.post('/register', 'AuthenticationController.register')
   Route.post('/forgot-password', 'AuthenticationController.forgotPassword')
@@ -44,6 +45,14 @@ Route.group(() => {
     Route.put('/:id', 'ProductController.update')
     Route.delete('/:id', 'ProductController.delete')
   }).prefix('/product')
+
+  // Route.group(() => {
+  //   Route.get('/', 'EmployeePerformanceController.index')
+  //   Route.post('/', 'EmployeePerformanceController.store')
+  //   Route.get('/:id', 'EmployeePerformanceController.show')
+  //   Route.put('/:id', 'EmployeePerformanceController.update')
+  //   Route.delete('/:id', 'EmployeePerformanceController.delete')
+  // }).prefix('/employeeperformance')
 })
   .prefix('/api/v1')
   .middleware('auth')

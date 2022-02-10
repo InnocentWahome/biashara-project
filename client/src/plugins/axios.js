@@ -9,7 +9,7 @@ const $http = {
   }),
 
   Api: axios.create({
-    baseURL: 'http://localhost:3333/api/v1',
+    baseURL: "http://localhost:3333/api/v1",
     headers: {
       'Access-Control-Allow-Origin': '*',
     },
@@ -26,5 +26,6 @@ const authenticationInterceptor = (config) => {
 };
 
 $http.Api.interceptors.request.use(authenticationInterceptor);
+
 
 export default $http;

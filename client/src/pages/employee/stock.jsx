@@ -1,57 +1,66 @@
-import * as React from "react"
+import React, { useState, useEffect } from "react"
 import { DataGrid } from "@mui/x-data-grid"
-import { useDemoData } from "@mui/x-data-grid-generator"
 import EmployeeLayout from "../../layouts/EmployeeLayout"
+import $http from "../../plugins/axios"
 import StockForm from "../../components/forms/StockForm"
 
-// const EmployeeStock = () => {
-//   return (
-//     <EmployeeLayout>
-//       <div className="container pt-6 pl-6">
-//         <div className="pb-6 pt-6">
-//           <p className="title is-4 has-text-centered">
-//             Here is where we create/ record stock
-//           </p>
-//         </div>
-//       </div>
-//     </EmployeeLayout>
-//   )
-// }
-// export default EmployeeStock
-
-export default function PageSizeControlled() {
-  const { data } = useDemoData({
-    dataSet: "Commodity",
-    rowLength: 500,
-    maxColumns: 6,
-  })
-
+const EmployeeStock = () => {
+  const columns = [
+    { field: "id", headerName: "ID" },
+    { field: "name", headerName: "Product Name", width: 200 },
+    { field: "description", headerName: "Product Description", width: 200 },
+    { field: "price", headerName: "Product Price(KSH)", width: 200 },
+    { field: "quantity", headerName: "Product Quantity", width: 200 },
+    { field: "image", headerName: "Product Url", width: 200 },
+  ]
+  const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
+
+  const fetchUsers = async e => {
+    try {
+      const response = await $http.Api({
+        method: "GET",
+        url: "/product",
+      })
+      if (response.data?.data) {
+        console.log(tableData)
+        setTableData(response.data.data)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchUsers()
+  }, [])
 
   return (
     <EmployeeLayout>
-      <div className="container">
-        <p className="title is-4 has-text-centered">
-          Here is where we create/ record stock
-        </p>
-        <div className="columns">
-          <div className="column">
-            <div style={{ height: 750, width: "90%" }}>
+      <div className="container pt-6">
+        <div class="columns">
+          <div class="column is-two-thirds">
+            <p class="is-size-4 has-text-centered pb-3">
+              All Products Are Listed Here
+            </p>
+            <div style={{ height: 700, width: "200" }}>
               <DataGrid
+                rows={tableData}
                 pageSize={pageSize}
                 onPageSizeChange={newPage => setPageSize(newPage)}
                 pagination
-                {...data}
+                columns={columns}
+                // checkboxSelection
               />
             </div>
           </div>
-          <div className="column is-one-third">
-            <div className="pt-6 mt-6 container">
-              <StockForm />
-            </div>
+          <div class="column pt-6 mt-6">
+            <StockForm />
           </div>
         </div>
       </div>
     </EmployeeLayout>
   )
 }
+
+export default EmployeeStock

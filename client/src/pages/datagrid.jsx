@@ -1,21 +1,18 @@
 import React, { useState, useEffect } from "react"
 import { DataGrid } from "@mui/x-data-grid"
 import PageLayout from "../layouts/PageLayout"
-
 import $http from "../plugins/axios"
-
 
 const DataTable = () => {
   const columns = [
     { field: "id", headerName: "ID" },
     { field: "name", headerName: "Name" ,width: 300 },
     { field: "description", headerName: "Description", width: 600 },
-    { field: "actions", headerName: "Name" ,width: 300 },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
 
-  const fetchCourses = async e => {
+  const datagrid = async e => {
     try {
       const response = await $http.Api({
         method: "GET",
@@ -31,7 +28,7 @@ const DataTable = () => {
   }
 
   useEffect(() => {
-    fetchCourses();
+    datagrid();
   }, [])
 
 
@@ -46,7 +43,7 @@ const DataTable = () => {
             onPageSizeChange={newPage => setPageSize(newPage)}
             pagination
             columns={columns}
-            checkboxSelection
+            // checkboxSelection
           />
         </div>
       </div>

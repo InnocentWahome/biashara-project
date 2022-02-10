@@ -27,7 +27,7 @@ const DeliveredProductsReports = () => {
 
         <div className="field">
           <button className="button is-black is-rounded" type="submit">
-            Login
+            Submit Report
           </button>
         </div>
       </div>

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react"
 import { DataGrid } from "@mui/x-data-grid"
-import EmployeeLayout from "../../layouts/EmployeeLayout"
+import PageLayout from "../../layouts/PageLayout"
 import $http from "../../plugins/axios"
-import DeliveredProductsReport from "../../components/forms/DeliveredProductsReport"
+import OrderForm from "../../components/forms/OrderForm"
 
-const DashboardFeedback = () => {
+const DashboardProducts = () => {
   const columns = [
     { field: "id", headerName: "ID" },
     { field: "name", headerName: "Name", width: 200 },
@@ -36,11 +36,10 @@ const DashboardFeedback = () => {
   }, [])
 
   return (
-    <EmployeeLayout>
+    <PageLayout>
       <div className="container pt-6">
         <div class="columns">
           <div class="column is-two-thirds">
-            <p class="is-size-4 has-text-centered pb-3 title">Performance of Delivered Products</p>
             <div style={{ height: 700, width: "200" }}>
               <DataGrid
                 rows={tableData}
@@ -52,13 +51,13 @@ const DashboardFeedback = () => {
               />
             </div>
           </div>
-          <div class="column pt-6 mt-6">
-            <DeliveredProductsReport />
+          <div class="column">
+            <OrderForm />
           </div>
         </div>
       </div>
-    </EmployeeLayout>
+    </PageLayout>
   )
 }
 
-export default DashboardFeedback
+export default DashboardProducts
