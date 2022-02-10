@@ -15,14 +15,14 @@ export default class User extends BaseModel {
   @column({ serializeAs: 'phoneNumber' })
   public phoneNumber: string
 
-  @column({ serializeAs: 'nationalId' })
-  public nationalId: string
-
   @column()
   public email: string
 
   @column({ serializeAs: null })
   public password: string
+
+  @column({ serializeAs: 'role' })
+  public role: string
 
   @column()
   public rememberMeToken?: string

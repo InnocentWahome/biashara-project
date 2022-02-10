@@ -7,7 +7,7 @@ export default class CoursesController {
       const courses = await Course.query().select('*').from('courses')
       return response.json({
         success: true,
-        message: 'Courses retrived successfully',
+        message: 'Courses retrieved successfully',
         data: courses,
       })
     } catch (error) {

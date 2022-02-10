@@ -46,13 +46,13 @@ Route.group(() => {
     Route.delete('/:id', 'ProductController.delete')
   }).prefix('/product')
 
-  // Route.group(() => {
-  //   Route.get('/', 'EmployeePerformanceController.index')
-  //   Route.post('/', 'EmployeePerformanceController.store')
-  //   Route.get('/:id', 'EmployeePerformanceController.show')
-  //   Route.put('/:id', 'EmployeePerformanceController.update')
-  //   Route.delete('/:id', 'EmployeePerformanceController.delete')
-  // }).prefix('/employeeperformance')
+  Route.group(() => {
+    Route.get('/', 'OrderController.index')
+    Route.post('/', 'OrderController.store')
+    Route.get('/:id', 'OrderController.show')
+    Route.put('/:id', 'OrderController.update')
+    Route.delete('/:id', 'OrderController.delete')
+  }).prefix('/order')
 })
   .prefix('/api/v1')
   .middleware('auth')

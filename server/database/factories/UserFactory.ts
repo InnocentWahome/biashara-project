@@ -7,7 +7,6 @@ export const UserFactory = Factory.define(User, ({ faker }) => {
     lastName: faker.name.lastName(),
     email: faker.unique(faker.internet.email),
     phoneNumber: faker.unique(faker.phone.phoneNumber),
-    nationalId: faker.datatype.uuid(),
     password: faker.internet.password(),
   }
 }).build()

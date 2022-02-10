@@ -1,14 +1,14 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Product from '../../Models/Product'
+import Order from '../../Models/Order'
 
-export default class ProductController {
+export default class OrderController {
   public async index({ response }: HttpContextContract) {
     try {
-      const products = await Product.query().select('*').from('products')
+      const orders = await Order.query().select('*').from('orders')
       return response.json({
         success: true,
-        message: 'Products retrieved successfully',
-        data: products,
+        message: 'Orders retrieved successfully',
+        data: orders,
       })
     } catch (error) {
       return response.json({
@@ -21,17 +21,17 @@ export default class ProductController {
 
   public async show({ params, response }: HttpContextContract) {
     try {
-      const product = await Product.find(params.id)
-      if (product) {
+      const order = await Order.find(params.id)
+      if (order) {
         return response.json({
           success: true,
-          message: 'Product found',
-          data: product,
+          message: 'Order found',
+          data: order,
         })
       } else {
         return response.json({
           success: true,
-          message: 'Product not found',
+          message: 'Order not found',
           data: null,
         })
       }
@@ -46,12 +46,12 @@ export default class ProductController {
 
   public async store({ request, response }: HttpContextContract) {
     try {
-      const data = request.only(['name', 'description', 'price', 'image', 'quantity'])
-      const product = await Product.create(data)
+      const data = request.only(['productId', 'productName', 'userId', 'cost', 'quantity', 'adminApproval', 'dispatchStatus', 'deliveryStatus'])
+      const order = await Order.create(data)
       return response.json({
         success: true,
-        message: 'Product created successfully',
-        data: product,
+        message: 'Order created successfully',
+        data: order,
       })
     } catch (error) {
       return response.json({
@@ -64,20 +64,21 @@ export default class ProductController {
 
   public async update({ params, request, response }: HttpContextContract) {
     try {
-      const product = await Product.findOrFail(params.id)
-      if (!product) {
+      const order = await Order.findOrFail(params.id)
+      if (!order) {
         return response.json({
           success: true,
-          message: 'Product not found',
+          message: 'Order not found',
           data: null,
         })
       } else {
-        product.merge(request.only(['name', 'description', 'price', 'image', 'quantity']))
-        await product.save()
+        order.merge(request.only(['productId', 'productName', 'userId', 'cost', 'quantity', 'adminApproval', 'dispatchStatus', 'deliveryStatus']))
+
+        await order.save()
         return response.json({
           success: true,
-          message: 'Product updated successfully',
-          data: product,
+          message: 'Order updated successfully',
+          data: order,
         })
       }
     } catch (error) {
@@ -91,19 +92,19 @@ export default class ProductController {
 
   public async delete({ params, response }: HttpContextContract) {
     try {
-      const product = await Product.find(params.id)
-      if (product) {
-        product.delete()
+      const order = await Order.find(params.id)
+      if (order) {
+        order.delete()
         return response.json({
           success: true,
-          message: 'Successfully deleted the product',
+          message: 'Successfully deleted the order',
           data: null,
         })
       } else {
         return response.json({
           success: false,
-          message: 'Product does not exist',
-          data: product,
+          message: 'Order does not exist',
+          data: order,
         })
       }
     } catch (error) {
