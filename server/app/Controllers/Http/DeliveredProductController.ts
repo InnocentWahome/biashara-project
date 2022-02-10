@@ -1,14 +1,14 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Order from '../../Models/Order'
+import Feedback from '../../Models/Feedback'
 
-export default class OrderController {
+export default class FeedbackController {
   public async index({ response }: HttpContextContract) {
     try {
-      const orders = await Order.query().select('*').from('orders')
+      const feedbacks = await Feedback.query().select('*').from('feedback')
       return response.json({
         success: true,
-        message: 'Orders retrieved successfully',
-        data: orders,
+        message: 'Feedbacks retrieved successfully',
+        data: feedbacks,
       })
     } catch (error) {
       return response.json({
@@ -21,17 +21,17 @@ export default class OrderController {
 
   public async show({ params, response }: HttpContextContract) {
     try {
-      const order = await Order.find(params.id)
-      if (order) {
+      const feedback = await Feedback.find(params.id)
+      if (feedback) {
         return response.json({
           success: true,
-          message: 'Order found',
-          data: order,
+          message: 'Feedback found',
+          data: feedback,
         })
       } else {
         return response.json({
           success: true,
-          message: 'Order not found',
+          message: 'Feedback not found',
           data: null,
         })
       }
@@ -46,12 +46,12 @@ export default class OrderController {
 
   public async store({ request, response }: HttpContextContract) {
     try {
-      const data = request.only(['product_id', 'product_name', 'user_id', 'cost', 'quantity', 'admin_approval', 'dispatch_status', 'delivery_status'])
-      const order = await Order.create(data)
+      const data = request.only(['product_id', 'product_name', 'user_id', 'rate', 'description'])
+      const feedback = await Feedback.create(data)
       return response.json({
         success: true,
-        message: 'Order created successfully',
-        data: order,
+        message: 'Feedback created successfully',
+        data: feedback,
       })
     } catch (error) {
       return response.json({
@@ -64,21 +64,20 @@ export default class OrderController {
 
   public async update({ params, request, response }: HttpContextContract) {
     try {
-      const order = await Order.findOrFail(params.id)
-      if (!order) {
+      const feedback = await Feedback.findOrFail(params.id)
+      if (!feedback) {
         return response.json({
           success: true,
-          message: 'Order not found',
+          message: 'Feedback not found',
           data: null,
         })
       } else {
-        order.merge(request.only(['product_id', 'product_name', 'user_id', 'cost', 'quantity', 'admin_approval', 'dispatch_status', 'delivery_status']))
-
-        await order.save()
+        feedback.merge(request.only(['product_id', 'product_name', 'user_id', 'rate', 'description']))
+        await feedback.save()
         return response.json({
           success: true,
-          message: 'Order updated successfully',
-          data: order,
+          message: 'Feedback updated successfully',
+          data: feedback,
         })
       }
     } catch (error) {
@@ -92,19 +91,19 @@ export default class OrderController {
 
   public async delete({ params, response }: HttpContextContract) {
     try {
-      const order = await Order.find(params.id)
-      if (order) {
-        order.delete()
+      const feedback = await Feedback.find(params.id)
+      if (feedback) {
+        feedback.delete()
         return response.json({
           success: true,
-          message: 'Successfully deleted the order',
+          message: 'Successfully deleted the feedback',
           data: null,
         })
       } else {
         return response.json({
           success: false,
-          message: 'Order does not exist',
-          data: order,
+          message: 'Feedback does not exist',
+          data: feedback,
         })
       }
     } catch (error) {

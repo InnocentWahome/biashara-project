@@ -6,9 +6,9 @@ export default class Orders extends BaseSchema {
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.string('product_id')
+      table.string('product_id').references('id').inTable('products').onDelete('CASCADE').notNullable().unsigned()
       table.string('product_name')
-      table.string('user_id')
+      table.string('user_id').references('id').inTable('users').onDelete('CASCADE').notNullable().unsigned()
       table.integer('cost')
       table.integer('quantity')
       table.boolean('admin_approval')
