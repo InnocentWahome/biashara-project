@@ -11,6 +11,7 @@ const AdminSystemUsers = () => {
     { field: "lastName", headerName: "Last Name", width: 200 },
     { field: "phoneNumber", headerName: "Phone Number", width: 200 },
     { field: "email", headerName: "Email Address", width: 200 },
+    { field: "role", headerName: "Roles", width: 200 },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)

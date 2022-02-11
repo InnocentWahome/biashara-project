@@ -1,55 +1,64 @@
-import * as React from "react"
+import React, { useState, useEffect } from "react"
 import { DataGrid } from "@mui/x-data-grid"
-import { useDemoData } from "@mui/x-data-grid-generator"
 import EmployeeLayout from "../../layouts/EmployeeLayout"
-import MaintainenceScheduleForm from "../../components/forms/MaintainenceScheduleForm"
+import $http from "../../plugins/axios"
+import MaintenanceScheduleForm from "../../components/forms/MaintainenceScheduleForm"
 
-// const EmployeeMaintenance = () => {
-//   return (
-//     <EmployeeLayout>
-//       <div className="container pt-6 pl-6">
-//         <div className="pb-6 pt-6">
-//           <p className="title is-4 has-text-centered">Scheduling maintenance and service routines</p>
-//         </div>
-//       </div>
-//     </EmployeeLayout>
-//   )
-// }
-// export default EmployeeMaintenance
-
-export default function PageSizeControlled() {
-  const { data } = useDemoData({
-    dataSet: "Commodity",
-    rowLength: 500,
-    maxColumns: 6,
-  })
-
+const EmployeePerformance = () => {
+  const columns = [
+    // { field: "id", headerName: "ID" },
+    { field: "category", headerName: "Service Category", width: 200 },
+    { field: "description", headerName: "Description", width: 200 },
+    { field: "date", headerName: "Service Date", width: 200 },
+  ]
+  const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
+
+  const fetchUsers = async e => {
+    try {
+      const response = await $http.Api({
+        method: "GET",
+        url: "/service-request",
+      })
+      if (response.data?.data) {
+        console.log(tableData)
+        setTableData(response.data.data)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchUsers()
+  }, [])
 
   return (
     <EmployeeLayout>
-      <div className="container">
-        <p className="title is-4 has-text-centered">
-          Scheduling maintenance and service routines
-        </p>
-        <div className="columns">
-          <div className="column">
-            <div style={{ height: 750, width: "90%" }}>
+      <div className="container pt-6">
+        <div class="columns">
+          <div class="column is-two-thirds">
+            <p class="is-size-4 has-text-centered pb-3 title">
+              Scheduling Maintenance and Service Requests
+            </p>
+            <div style={{ height: 700, width: "200" }}>
               <DataGrid
+                rows={tableData}
                 pageSize={pageSize}
                 onPageSizeChange={newPage => setPageSize(newPage)}
                 pagination
-                {...data}
+                columns={columns}
+                // checkboxSelection
               />
             </div>
           </div>
-          <div className="column is-one-third">
-            <div className="pt-6 mt-6 container">
-              <MaintainenceScheduleForm />
-            </div>
-          </div>
+          <div class="column pt-6 mt-6">
+            <MaintenanceScheduleForm />
+          </div> 
         </div>
       </div>
     </EmployeeLayout>
   )
 }
+
+export default EmployeePerformance

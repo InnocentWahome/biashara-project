@@ -2,16 +2,17 @@ import React, { useState, useEffect } from "react"
 import { DataGrid } from "@mui/x-data-grid"
 import EmployeeLayout from "../../layouts/EmployeeLayout"
 import $http from "../../plugins/axios"
-import DeliveredProductsReport from "../../components/forms/DeliveredProductsReport"
+import DeliveredProductsReport from "../../components/forms/MaintainenceScheduleForm"
 
-const DashboardFeedback = () => {
+const EmployeePerformance = () => {
   const columns = [
-    { field: "id", headerName: "ID" },
-    { field: "name", headerName: "Name", width: 200 },
-    { field: "description", headerName: "Description", width: 200 },
-    { field: "quantity", headerName: "Stock Available", width: 200 },
-    { field: "price", headerName: "Price", width: 200 },
-    { field: "image", headerName: "Image URL", width: 200 },
+    // { field: "id", headerName: "ID" },
+    { field: "product_id", headerName: "Product ID", width: 200 },
+    { field: "product_name", headerName: "Product Name", width: 200 },
+    { field: "user_id", headerName: "User ID", width: 200 },
+    { field: "rate", headerName: "Rate", width: 200 },
+    { field: "description", headerName: "Review Description", width: 200 },
+    { field: "created_at", headerName: "Date Posted", width: 200 },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
@@ -20,7 +21,7 @@ const DashboardFeedback = () => {
     try {
       const response = await $http.Api({
         method: "GET",
-        url: "/product",
+        url: "/feedback",
       })
       if (response.data?.data) {
         console.log(tableData)
@@ -40,7 +41,9 @@ const DashboardFeedback = () => {
       <div className="container pt-6">
         <div class="columns">
           <div class="column is-two-thirds">
-            <p class="is-size-4 has-text-centered pb-3 title">Performance of Delivered Products</p>
+            <p class="is-size-4 has-text-centered pb-3 title">
+              Scheduling Maintenance and Service Requests
+            </p>
             <div style={{ height: 700, width: "200" }}>
               <DataGrid
                 rows={tableData}
@@ -54,11 +57,11 @@ const DashboardFeedback = () => {
           </div>
           <div class="column pt-6 mt-6">
             <DeliveredProductsReport />
-          </div>
+          </div> 
         </div>
       </div>
     </EmployeeLayout>
   )
 }
 
-export default DashboardFeedback
+export default EmployeePerformance

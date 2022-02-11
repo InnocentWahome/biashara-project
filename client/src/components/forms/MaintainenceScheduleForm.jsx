@@ -4,6 +4,16 @@ const MaintainenceScheduleForm = () => {
   return (
     <form action="" method="POST" className="container">
       <div className="container">
+      <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
+               <p className="label">Service Category</p>
+               <input className="input" type="text" placeholder="" />
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="field is-horizontal">
           <div className="field-body">
             <div className="field">
