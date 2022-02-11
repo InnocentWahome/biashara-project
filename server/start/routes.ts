@@ -53,6 +53,38 @@ Route.group(() => {
     Route.put('/:id', 'OrderController.update')
     Route.delete('/:id', 'OrderController.delete')
   }).prefix('/order')
+
+  Route.group(() => {
+    Route.get('/', 'FeedbackController.index')
+    Route.post('/', 'FeedbackController.store')
+    Route.get('/:id', 'FeedbackController.show')
+    Route.put('/:id', 'FeedbackController.update')
+    Route.delete('/:id', 'FeedbackController.delete')
+  }).prefix('/feedback')
+
+  Route.group(() => {
+    Route.get('/', 'DeliveredProductController.index')
+    Route.post('/', 'DeliveredProductController.store')
+    Route.get('/:id', 'DeliveredProductController.show')
+    Route.put('/:id', 'DeliveredProductController.update')
+    Route.delete('/:id', 'DeliveredProductController.delete')
+  }).prefix('/delivered-products')
+
+  Route.group(() => {
+    Route.get('/', 'ServiceRequestController.index')
+    Route.post('/', 'ServiceRequestController.store')
+    Route.get('/:id', 'ServiceRequestController.show')
+    Route.put('/:id', 'ServiceRequestController.update')
+    Route.delete('/:id', 'ServiceRequestController.delete')
+  }).prefix('/service-request')
+
+  Route.group(() => {
+    Route.get('/', 'WorkLogController.index')
+    Route.post('/', 'WorkLogController.store')
+    Route.get('/:id', 'WorkLogController.show')
+    Route.put('/:id', 'WorkLogController.update')
+    Route.delete('/:id', 'WorkLogController.delete')
+  }).prefix('/worklog')
 })
   .prefix('/api/v1')
   .middleware('auth')

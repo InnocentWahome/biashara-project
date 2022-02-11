@@ -1,9 +1,9 @@
 import Factory from '@ioc:Adonis/Lucid/Factory'
-import Feedback from 'App/Models/Feedback'
+import DeliveredProduct from 'App/Models/DeliveredProduct'
 // import { UserFactory } from './UserFactory'
 // import  Product from 'App/Models/Product'
 
-export const FeedbackFactory = Factory.define(Feedback, ({ faker }) => {
+export const DeliveredProductFactory = Factory.define(DeliveredProduct, ({ faker }) => {
   return {
     productId: faker.datatype.number(),
     productName: faker.lorem.word(),

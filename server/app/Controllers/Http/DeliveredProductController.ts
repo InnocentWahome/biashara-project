@@ -1,14 +1,14 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Feedback from '../../Models/Feedback'
+import DeliveredProduct from '../../Models/DeliveredProduct'
 
-export default class FeedbackController {
+export default class DeliveredProductController {
   public async index({ response }: HttpContextContract) {
     try {
-      const feedbacks = await Feedback.query().select('*').from('feedback')
+      const deliveredProducts = await DeliveredProduct.query().select('*').from('deliveredProductsPerformance')
       return response.json({
         success: true,
-        message: 'Feedbacks retrieved successfully',
-        data: feedbacks,
+        message: 'DeliveredProducts retrieved successfully',
+        data: deliveredProducts,
       })
     } catch (error) {
       return response.json({
@@ -21,17 +21,17 @@ export default class FeedbackController {
 
   public async show({ params, response }: HttpContextContract) {
     try {
-      const feedback = await Feedback.find(params.id)
-      if (feedback) {
+      const deliveredProduct = await DeliveredProduct.find(params.id)
+      if (deliveredProduct) {
         return response.json({
           success: true,
-          message: 'Feedback found',
-          data: feedback,
+          message: 'DeliveredProduct found',
+          data: deliveredProduct,
         })
       } else {
         return response.json({
           success: true,
-          message: 'Feedback not found',
+          message: 'DeliveredProduct not found',
           data: null,
         })
       }
@@ -47,11 +47,11 @@ export default class FeedbackController {
   public async store({ request, response }: HttpContextContract) {
     try {
       const data = request.only(['product_id', 'product_name', 'user_id', 'rate', 'description'])
-      const feedback = await Feedback.create(data)
+      const deliveredProduct = await DeliveredProduct.create(data)
       return response.json({
         success: true,
-        message: 'Feedback created successfully',
-        data: feedback,
+        message: 'DeliveredProduct created successfully',
+        data: deliveredProduct,
       })
     } catch (error) {
       return response.json({
@@ -64,20 +64,20 @@ export default class FeedbackController {
 
   public async update({ params, request, response }: HttpContextContract) {
     try {
-      const feedback = await Feedback.findOrFail(params.id)
-      if (!feedback) {
+      const deliveredProduct = await DeliveredProduct.findOrFail(params.id)
+      if (!deliveredProduct) {
         return response.json({
           success: true,
-          message: 'Feedback not found',
+          message: 'DeliveredProduct not found',
           data: null,
         })
       } else {
-        feedback.merge(request.only(['product_id', 'product_name', 'user_id', 'rate', 'description']))
-        await feedback.save()
+        deliveredProduct.merge(request.only(['product_id', 'product_name', 'user_id', 'rate', 'description']))
+        await deliveredProduct.save()
         return response.json({
           success: true,
-          message: 'Feedback updated successfully',
-          data: feedback,
+          message: 'DeliveredProduct updated successfully',
+          data: deliveredProduct,
         })
       }
     } catch (error) {
@@ -91,19 +91,19 @@ export default class FeedbackController {
 
   public async delete({ params, response }: HttpContextContract) {
     try {
-      const feedback = await Feedback.find(params.id)
-      if (feedback) {
-        feedback.delete()
+      const deliveredProduct = await DeliveredProduct.find(params.id)
+      if (deliveredProduct) {
+        deliveredProduct.delete()
         return response.json({
           success: true,
-          message: 'Successfully deleted the feedback',
+          message: 'Successfully deleted the deliveredProduct',
           data: null,
         })
       } else {
         return response.json({
           success: false,
-          message: 'Feedback does not exist',
-          data: feedback,
+          message: 'DeliveredProduct does not exist',
+          data: deliveredProduct,
         })
       }
     } catch (error) {

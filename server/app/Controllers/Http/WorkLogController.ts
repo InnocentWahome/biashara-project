@@ -1,14 +1,14 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Feedback from '../../Models/Feedback'
+import WorkLog from '../../Models/WorkLog'
 
-export default class FeedbackController {
+export default class WorkLogController {
   public async index({ response }: HttpContextContract) {
     try {
-      const feedbacks = await Feedback.query().select('*').from('feedbacks')
+      const worklog = await WorkLog.query().select('*').from('work_logs')
       return response.json({
         success: true,
-        message: 'Feedbacks retrieved successfully',
-        data: feedbacks,
+        message: 'WorkLogs retrieved successfully',
+        data: worklog,
       })
     } catch (error) {
       return response.json({
@@ -21,17 +21,17 @@ export default class FeedbackController {
 
   public async show({ params, response }: HttpContextContract) {
     try {
-      const feedback = await Feedback.find(params.id)
-      if (feedback) {
+      const worklog = await WorkLog.find(params.id)
+      if (worklog) {
         return response.json({
           success: true,
-          message: 'Feedback found',
-          data: feedback,
+          message: 'WorkLog found',
+          data: worklog,
         })
       } else {
         return response.json({
           success: true,
-          message: 'Feedback not found',
+          message: 'WorkLog not found',
           data: null,
         })
       }
@@ -46,12 +46,12 @@ export default class FeedbackController {
 
   public async store({ request, response }: HttpContextContract) {
     try {
-      const data = request.only(['product_id', 'product_name', 'user_id', 'rate', 'description'])
-      const feedback = await Feedback.create(data)
+      const data = request.only(['user_id', 'description', 'hours', 'start', 'stop', 'date'])
+      const worklog = await WorkLog.create(data)
       return response.json({
         success: true,
-        message: 'Feedback created successfully',
-        data: feedback,
+        message: 'WorkLog created successfully',
+        data: worklog,
       })
     } catch (error) {
       return response.json({
@@ -64,20 +64,20 @@ export default class FeedbackController {
 
   public async update({ params, request, response }: HttpContextContract) {
     try {
-      const feedback = await Feedback.findOrFail(params.id)
-      if (!feedback) {
+      const worklog = await WorkLog.findOrFail(params.id)
+      if (!worklog) {
         return response.json({
           success: true,
-          message: 'Feedback not found',
+          message: 'WorkLog not found',
           data: null,
         })
       } else {
-        feedback.merge(request.only(['product_id', 'product_name', 'user_id', 'rate', 'description']))
-        await feedback.save()
+        worklog.merge(request.only(['user_id', 'description', 'hours', 'start', 'stop', 'date']))
+        await worklog.save()
         return response.json({
           success: true,
-          message: 'Feedback updated successfully',
-          data: feedback,
+          message: 'WorkLog updated successfully',
+          data: worklog,
         })
       }
     } catch (error) {
@@ -91,19 +91,19 @@ export default class FeedbackController {
 
   public async delete({ params, response }: HttpContextContract) {
     try {
-      const feedback = await Feedback.find(params.id)
-      if (feedback) {
-        feedback.delete()
+      const worklog = await WorkLog.find(params.id)
+      if (worklog) {
+        worklog.delete()
         return response.json({
           success: true,
-          message: 'Successfully deleted the feedback',
+          message: 'Successfully deleted the worklog',
           data: null,
         })
       } else {
         return response.json({
           success: false,
-          message: 'Feedback does not exist',
-          data: feedback,
+          message: 'WorkLog does not exist',
+          data: worklog,
         })
       }
     } catch (error) {

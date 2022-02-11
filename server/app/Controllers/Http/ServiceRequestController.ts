@@ -1,14 +1,14 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Feedback from '../../Models/Feedback'
+import Service from '../../Models/Service'
 
-export default class FeedbackController {
+export default class ServiceController {
   public async index({ response }: HttpContextContract) {
     try {
-      const feedbacks = await Feedback.query().select('*').from('feedbacks')
+      const serviceRequests = await Service.query().select('*').from('service_requests')
       return response.json({
         success: true,
-        message: 'Feedbacks retrieved successfully',
-        data: feedbacks,
+        message: 'ServiceRequests retrieved successfully',
+        data: serviceRequests,
       })
     } catch (error) {
       return response.json({
@@ -21,17 +21,17 @@ export default class FeedbackController {
 
   public async show({ params, response }: HttpContextContract) {
     try {
-      const feedback = await Feedback.find(params.id)
-      if (feedback) {
+      const serviceRequest = await Service.find(params.id)
+      if (serviceRequest) {
         return response.json({
           success: true,
-          message: 'Feedback found',
-          data: feedback,
+          message: 'ServiceRequest found',
+          data: serviceRequest,
         })
       } else {
         return response.json({
           success: true,
-          message: 'Feedback not found',
+          message: 'ServiceRequest not found',
           data: null,
         })
       }
@@ -46,12 +46,12 @@ export default class FeedbackController {
 
   public async store({ request, response }: HttpContextContract) {
     try {
-      const data = request.only(['product_id', 'product_name', 'user_id', 'rate', 'description'])
-      const feedback = await Feedback.create(data)
+      const data = request.only(['user_id', 'description', 'category', 'date'])
+      const serviceRequest = await Service.create(data)
       return response.json({
         success: true,
-        message: 'Feedback created successfully',
-        data: feedback,
+        message: 'ServiceRequest created successfully',
+        data: serviceRequest,
       })
     } catch (error) {
       return response.json({
@@ -64,20 +64,20 @@ export default class FeedbackController {
 
   public async update({ params, request, response }: HttpContextContract) {
     try {
-      const feedback = await Feedback.findOrFail(params.id)
-      if (!feedback) {
+      const serviceRequest = await Service.findOrFail(params.id)
+      if (!serviceRequest) {
         return response.json({
           success: true,
-          message: 'Feedback not found',
+          message: 'ServiceRequest not found',
           data: null,
         })
       } else {
-        feedback.merge(request.only(['product_id', 'product_name', 'user_id', 'rate', 'description']))
-        await feedback.save()
+        serviceRequest.merge(request.only(['user_id', 'description', 'category', 'date']))
+        await serviceRequest.save()
         return response.json({
           success: true,
-          message: 'Feedback updated successfully',
-          data: feedback,
+          message: 'ServiceRequest updated successfully',
+          data: serviceRequest,
         })
       }
     } catch (error) {
@@ -91,19 +91,19 @@ export default class FeedbackController {
 
   public async delete({ params, response }: HttpContextContract) {
     try {
-      const feedback = await Feedback.find(params.id)
-      if (feedback) {
-        feedback.delete()
+      const serviceRequest = await Service.find(params.id)
+      if (serviceRequest) {
+        serviceRequest.delete()
         return response.json({
           success: true,
-          message: 'Successfully deleted the feedback',
+          message: 'Successfully deleted the serviceRequest',
           data: null,
         })
       } else {
         return response.json({
           success: false,
-          message: 'Feedback does not exist',
-          data: feedback,
+          message: 'ServiceRequest does not exist',
+          data: serviceRequest,
         })
       }
     } catch (error) {
