@@ -1,5 +1,5 @@
 import React from "react"
-
+import biasharaLogo from "../../assets/images/biashara_logos.png"
 const Navbar = () => {
   return (
     <nav
@@ -9,22 +9,22 @@ const Navbar = () => {
     >
       <div className="navbar-brand">
         <a className="navbar-item" href="/">
+          <figure className="image is-32x32">
           <img
-            src="https://bulma.io/images/bulma-logo.png"
-            width="112"
-            height="112"
+            src={biasharaLogo}
+            // width="112"
+            // height="112"
+            // className="image is-32x32"
             alt="default alt"
           />
+          </figure>
         </a>
       </div>
 
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-end">
-          <a className="navbar-item" href="/dashboard">
-            Home
-          </a>
           <a className="navbar-item" href="/dashboard/products">
-          All Products
+            Home
           </a>
           <a className="navbar-item" href="/dashboard/my-orders">
           My Orders

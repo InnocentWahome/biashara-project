@@ -20,11 +20,9 @@ import Navbar from "./dashboard/Navbar"
 
 import AdminFooter from "./admin/AdminFooter"
 import AdminNavbar from "./admin/AdminNavbar"
-import AdminSidebar from "./admin/AdminSidebar"
 
 import EmployeeFooter from "./employee/EmployeeFooter"
 import EmployeeNavbar from "./employee/EmployeeNavbar"
-import EmployeeSidebar from "./employee/EmployeeSidebar"
 
 import AuthFooter from "./authentication/AuthFooter"
 import AuthNavbar from "./authentication/AuthNavbar"
@@ -48,10 +46,8 @@ export {
   Footer,
   AdminFooter,
   AdminNavbar,
-  AdminSidebar,
   EmployeeFooter,
   EmployeeNavbar,
-  EmployeeSidebar,
   AuthFooter,
   AuthNavbar,
 }

@@ -10,7 +10,7 @@ const Footer = () => {
         aria-label="main navigation"
       >
         <div>
-          <h3>Copyright © {year} CompanyName. All rights reserved.</h3>
+          <h3>Copyright © {year} Biashara. All rights reserved.</h3>
         </div>
       </footer>
     </div>

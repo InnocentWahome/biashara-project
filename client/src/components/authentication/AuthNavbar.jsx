@@ -1,5 +1,5 @@
 import React from "react"
-
+// import Logo from "../../assets/images/biashara_logos"
 const Navbar = () => {
   return (
     <nav
@@ -21,12 +21,15 @@ const Navbar = () => {
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-end">
           <div className="pr-6 pt-4">
-            <a className="navbar-item button" href="/auth/register">
+            <a
+              className="navbar-item button is-danger is-outlined"
+              href="/auth/register"
+            >
               Sign Up
             </a>
           </div>
           <div className="pr-6 pt-4">
-            <a className="navbar-item button " href="/auth/login">
+            <a className="navbar-item button is-danger " href="/auth/login">
               Sign in
             </a>
           </div>

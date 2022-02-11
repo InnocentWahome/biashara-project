@@ -15,36 +15,15 @@ const IndexPage = () => {
                   <h1 className="subtitle">
                     Meet The Simplest Way To Track Your Products Online
                   </h1>
-
                   <p>
-                    Here at CompanyName, we offer unlimited solutions to your
+                    Here at Biashara, we offer unlimited solutions to your
                     orders online .We are built within a vast network of
                     resources to meet your needs. Want to get started? It's
                     easy. Just click the button below to sign up or sign in to
                     track your orders
                   </p>
-                  <div className="columns pt-6">
-                    <div className="column">
-                      <button
-                        className="button is-danger "
-                        to="/auth/register"
-                      >
-                        Sign Up
-                        {/* <a href="/auth/register">Sign Up</a> */}
-                      </button>
-                    </div>
-                    <div className="column">
-                      <button
-                        className="button is-outlined is-danger "
-                        to="/auth/login"
-                      >
-                        Sign in
-                      </button>
-                    </div>
-                  </div>
                 </div>
               </div>
-
               <div className="column is-two-fifths">
                 <figure className="image is-2by2">
                   <img src={Image} alt="launch" />

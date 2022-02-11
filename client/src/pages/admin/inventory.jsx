@@ -37,11 +37,11 @@ const AdminInventory = () => {
 
   return (
     <AdminLayout>
-      <div className="container pt-6">
+      <div className="pl-6 pr-6 pt-6">
         <div class="columns">
           <div class="column is-two-thirds">
             <p class="is-size-4 has-text-centered pb-3">
-              All Products Are Listed Here
+              Manage Company Inventory
             </p>
             <div style={{ height: 700, width: "200" }}>
               <DataGrid

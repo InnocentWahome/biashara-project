@@ -1,6 +1,6 @@
 # Project - (client & server)
 
-> CompanyName System
+> Biashara System
 
 ## Installation 
 
