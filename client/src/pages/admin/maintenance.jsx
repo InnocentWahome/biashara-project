@@ -35,24 +35,17 @@ const AdminMaintenance = () => {
 
   return (
     <AdminLayout>
-     <div className="container pt-6">
-        <div class="columns">
-          <div class="column is-two-thirds">
-            <p class="is-size-4 has-text-centered pb-3">Maintenance </p>
-            <div style={{ height: 700, width: "200" }}>
-              <DataGrid
-                rows={tableData}
-                pageSize={pageSize}
-                onPageSizeChange={newPage => setPageSize(newPage)}
-                pagination
-                columns={columns}
-                // checkboxSelection
-              />
-            </div>
-          </div>
-          <div class="column pt-6 mt-6">
-            <CreateEmployeeForm />
-          </div>
+      <div className="container pt-6">
+        <p class="is-size-4 has-text-centered pb-3">Maintenance </p>
+        <div style={{ height: 700, width: "200" }}>
+          <DataGrid
+            rows={tableData}
+            pageSize={pageSize}
+            onPageSizeChange={newPage => setPageSize(newPage)}
+            pagination
+            columns={columns}
+            // checkboxSelection
+          />
         </div>
       </div>
     </AdminLayout>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { DataGrid } from "@mui/x-data-grid"
 import AdminLayout from "../../layouts/AdminLayout"
 import $http from "../../plugins/axios"
+import OrderForm from "../../components/forms/OrderForm"
 
 const AdminOrders = () => {
   const columns = [
@@ -39,20 +40,29 @@ const AdminOrders = () => {
 
   return (
     <AdminLayout>
-      <div className="pr-6 pl-6 mr-6 pt-6">
-        <p class="is-size-4 has-text-centered pb-3 title">Review Orders</p>
-        <div style={{ height: 700, width: "200" }}>
-          <DataGrid
-            rows={tableData}
-            pageSize={pageSize}
-            onPageSizeChange={newPage => setPageSize(newPage)}
-            pagination
-            columns={columns}
-            // checkboxSelection
-          />
+    <div className="pl-6 pr-6 pt-6">
+      <div class="columns">
+        <div class="column is-two-thirds">
+          <p class="is-size-4 has-text-centered pb-3">
+            Review orders
+          </p>
+          <div style={{ height: 700, width: "200" }}>
+            <DataGrid
+              rows={tableData}
+              pageSize={pageSize}
+              onPageSizeChange={newPage => setPageSize(newPage)}
+              pagination
+              columns={columns}
+              // checkboxSelection
+            />
+          </div>
+        </div>
+        <div class="column pt-6 mt-6">
+          <OrderForm />
         </div>
       </div>
-    </AdminLayout>
+    </div>
+  </AdminLayout>
   )
 }
 
