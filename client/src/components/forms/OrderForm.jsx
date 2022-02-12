@@ -4,7 +4,7 @@ const OrderForm = () => {
   return (
     <form action="" method="POST" className="container">
       <div className="container">
-        <p class="pt-6 is-size-4 pb-3">Order Something!</p>
+        <p className="pt-6 is-size-4 pb-3">Order Something!</p>
         <div className="field is-horizontal">
           <div className="field-body">
             <div className="field">

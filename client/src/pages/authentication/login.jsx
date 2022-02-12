@@ -9,13 +9,13 @@ const Login = () => {
       <div className="container pt-6 pl-6">
         <div className="columns">
           <div className="column is-half">
-            <div class="container">
+            <div className="container">
               <img alt="login image" src={loginImage} />
             </div>
           </div>
           <div className="column is-half">
-            <div class="hero">
-              <div class="hero-body pt-6 mt-6 is-centered is-vcentered">
+            <div className="hero">
+              <div className="hero-body pt-6 mt-6 is-centered is-vcentered">
                 <LoginForm />
               </div>
               <p className="is-size-6">

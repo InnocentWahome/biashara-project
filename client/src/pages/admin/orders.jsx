@@ -41,9 +41,9 @@ const AdminOrders = () => {
   return (
     <AdminLayout>
     <div className="pl-6 pr-6 pt-6">
-      <div class="columns">
-        <div class="column is-two-thirds">
-          <p class="is-size-4 has-text-centered pb-3">
+      <div className="columns">
+        <div className="column is-two-thirds">
+          <p className="is-size-4 has-text-centered pb-3">
             Review orders
           </p>
           <div style={{ height: 700, width: "200" }}>
@@ -57,7 +57,7 @@ const AdminOrders = () => {
             />
           </div>
         </div>
-        <div class="column pt-6 mt-6">
+        <div className="column pt-6 mt-6">
           <OrderForm />
         </div>
       </div>

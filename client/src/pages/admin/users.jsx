@@ -38,9 +38,9 @@ const AdminSystemUsers = () => {
   return (
     <AdminLayout>
      <div className="pl-6 pr-6 pt-6">
-        <div class="columns">
-          <div class="column is-two-thirds">
-            <p class="is-size-4 has-text-centered pb-3">All System Users</p>
+        <div className="columns">
+          <div className="column is-two-thirds">
+            <p className="is-size-4 has-text-centered pb-3">All System Users</p>
             <div style={{ height: 700, width: "200" }}>
               <DataGrid
                 rows={tableData}
@@ -52,7 +52,7 @@ const AdminSystemUsers = () => {
               />
             </div>
           </div>
-          <div class="column pt-6 mt-6">
+          <div className="column pt-6 mt-6">
             <p className="is-size-6 has-text-centered pb-2">Create Employee Account</p>
             <CreateEmployeeForm />
           </div>

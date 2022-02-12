@@ -37,7 +37,7 @@ const AdminEmployeePerformance = () => {
   return (
     <AdminLayout>
       <div className="container pt-6">
-        <p class="is-size-4 has-text-centered pb-3">Employee Work Logs</p>
+        <p className="is-size-4 has-text-centered pb-3">Employee Work Logs</p>
         <div style={{ height: 700, width: "200" }}>
           <DataGrid
             rows={tableData}

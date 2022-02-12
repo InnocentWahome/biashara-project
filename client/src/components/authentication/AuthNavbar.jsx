@@ -23,13 +23,16 @@ const Navbar = () => {
           <div className="pr-6 pt-4">
             <a
               className="navbar-item button is-danger is-outlined"
-              href="/auth/register"
+              href="/authentication/register"
             >
               Sign Up
             </a>
           </div>
           <div className="pr-6 pt-4">
-            <a className="navbar-item button is-danger " href="/auth/login">
+            <a
+              className="navbar-item button is-danger "
+              href="/authentication/login"
+            >
               Sign in
             </a>
           </div>

@@ -38,7 +38,7 @@ const AdminProductPerformance = () => {
   return (
     <AdminLayout>
       <div className="container pt-6">
-        <p class="is-size-4 has-text-centered pb-3">
+        <p className="is-size-4 has-text-centered pb-3">
           Delivered Products' Performance{" "}
         </p>
         <div style={{ height: 700, width: "200" }}>

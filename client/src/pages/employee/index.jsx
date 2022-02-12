@@ -8,8 +8,8 @@ const EmployeeHomePage = () => {
       <div className="container pt-6 pl-6">
         <div className="pb-6 pt-6">
           <p className="title is-4 has-text-centered">Employee First Page</p>
-          <div class="table-container">
-            <table class="table table-striped ">
+          <div className="table-container">
+            <table className="table table-striped ">
               <thead>
                 <tr>
                   <th scope="col"></th>

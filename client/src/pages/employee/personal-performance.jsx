@@ -6,7 +6,7 @@ import EmployeeWorkLogForm from "../../components/forms/EmployeeWorkLogForm"
 
 const EmployeePerformance = () => {
   const columns = [
-    // { field: "id", headerName: "ID" },
+    { field: "id", headerName: "ID" },
     { field: "date", headerName: "Date", width: 200 },
     { field: "day", headerName: "Day", width: 200 },
     { field: "start", headerName: "Start Time", width: 200 },
@@ -38,9 +38,9 @@ const EmployeePerformance = () => {
   return (
     <EmployeeLayout>
       <div className="pl-6 pr-6 ml-6 pt-6">
-        <div class="columns">
-          <div class="column is-two-thirds">
-            <p class="is-size-4 has-text-centered pb-3 title">
+        <div className="columns">
+          <div className="column is-two-thirds">
+            <p className="is-size-4 has-text-centered pb-3 title">
               My Personal Work Log
             </p>
             <div style={{ height: 700, width: "200" }}>
@@ -54,7 +54,7 @@ const EmployeePerformance = () => {
               />
             </div>
           </div>
-          <div class="column pt-6 mt-6">
+          <div className="column pt-6 mt-6">
             <EmployeeWorkLogForm />
           </div> 
         </div>

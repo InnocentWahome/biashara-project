@@ -36,7 +36,7 @@ const AdminMaintenance = () => {
   return (
     <AdminLayout>
       <div className="container pt-6">
-        <p class="is-size-4 has-text-centered pb-3">Maintenance </p>
+        <p className="is-size-4 has-text-centered pb-3">Maintenance </p>
         <div style={{ height: 700, width: "200" }}>
           <DataGrid
             rows={tableData}

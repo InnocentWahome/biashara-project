@@ -39,8 +39,8 @@ const DashboardProducts = () => {
     <PageLayout>
       <div className="pl-6 pr-6 pt-4">
       <p className="is-size-6 pb-3">Welcome back username! Here's what we have for you today</p>
-        <div class="columns">
-          <div class="column is-two-thirds">
+        <div className="columns">
+          <div className="column is-two-thirds">
             <div style={{ height: 700, width: "200" }}>
               <DataGrid
                 rows={tableData}
@@ -52,7 +52,7 @@ const DashboardProducts = () => {
               />
             </div>
           </div>
-          <div class="column">
+          <div className="column">
             <OrderForm />
           </div>
         </div>
