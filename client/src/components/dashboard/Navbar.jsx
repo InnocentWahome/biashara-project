@@ -1,5 +1,5 @@
 import React from "react"
-import biasharaLogo from "../../assets/images/biashara_logos.png"
+import biasharaLogo from "../../assets/images/biashara_logo.png"
 const Navbar = () => {
   return (
     <nav

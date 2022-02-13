@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Portfolio`,
-    description: `InnocentWahome Portfolio Project`,
-    author: `@InnocentWahome`,
-    siteUrl: `https://wahome.com`,
+    title: `biashara`,
+    description: `biashara Project`,
+    author: `@Author`,
+    siteUrl: `https://biashara.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -26,28 +26,8 @@ module.exports = {
         start_url: `/`,
         background_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/assets/images/logo.png`, // This path is relative to the root of the site.
+        icon: `src/assets/images/biashara_logo4.png`, // This path is relative to the root of the site.
       },
     },
-    // {
-    //   resolve: `gatsby-source-strapi`,
-    //   options: {
-    //     apiURL: process.env.API_URL || `http://localhost:1337`,
-    //     queryLimit: 10000, // Defaults to 100
-    //     collectionTypes: [
-    //       // `about`,
-    //       // `article`,
-    //       // `blog`,
-    //       // `client`,
-    //       // `project`,
-    //       // `testimonial`,
-    //       // `work`,
-    //       `brand`,
-    //       `color`,
-    //       `product`,
-    //       `vendor`
-    //     ],
-    //   },
-    // },
   ],
 }

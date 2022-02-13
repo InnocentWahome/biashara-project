@@ -19,7 +19,7 @@ const Login = () => {
                 <LoginForm />
               </div>
               <p className="is-size-6">
-                Forgot your Password? <a href="/auth/register">Reset it here</a>
+                Forgot your Password? <a href="/authentication/forgot-password">Reset it here</a>
               </p>
             </div>
           </div>

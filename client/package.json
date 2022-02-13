@@ -1,9 +1,9 @@
 {
   "name": "project-client",
   "private": true,
-  "description": "InnocentWahome project",
+  "description": "Biashara project",
   "version": "0.1.0",
-  "author": "Innocent Maina <innocentwahome@gmail.com>",
+  "author": "<author@gmail.com>",
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",

@@ -1,5 +1,5 @@
 import React from "react"
-// import Logo from "../../assets/images/biashara_logos"
+// import Logo from "../../assets/images/biashara_logo"
 const Navbar = () => {
   return (
     <nav

@@ -8,7 +8,7 @@ const ResetPasswordForm = () => {
           <div className="field-body">
             <div className="field">
               <div className="control is-expanded">
-                <input className="input" type="password" placeholder="password" />
+                <input className="input" type="password" placeholder="New Password" />
               </div>
             </div>
           </div>
@@ -17,7 +17,7 @@ const ResetPasswordForm = () => {
           <div className="field-body">
             <div className="field">
               <div className="control is-expanded">
-                <input className="input" type="password" placeholder=" confirm password" />
+                <input className="input" type="password" placeholder=" Confirm New Password" />
               </div>
             </div>
           </div>

@@ -14,7 +14,7 @@ const Register = () => {
               <div className="hero-body pt-6 mt-6 is-centered is-vcentered">
                 <RegisterForm />
               </div>
-              <p className="is-size-6">Already have an account? <a href="/auth/login">Login</a></p>
+              <p className="is-size-6">Already have an account? <a href="/authentication/login">Login</a></p>
             </div>
           </div>
           <div className="column is-half">
