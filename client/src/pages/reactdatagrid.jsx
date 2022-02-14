@@ -3,9 +3,9 @@ import ReactDataGrid from '@inovua/reactdatagrid-community'
 import '@inovua/reactdatagrid-community/index.css'
 import '@inovua/reactdatagrid-community/base.css'
 import '@inovua/reactdatagrid-enterprise/index.css'
-import NumberFilter from '@inovua/reactdatagrid-community/NumberFilter'
-import SelectFilter from '@inovua/reactdatagrid-community/SelectFilter'
-import DateFilter from '@inovua/reactdatagrid-community/DateFilter'
+// import NumberFilter from '@inovua/reactdatagrid-community/NumberFilter'
+// import SelectFilter from '@inovua/reactdatagrid-community/SelectFilter'
+// import DateFilter from '@inovua/reactdatagrid-community/DateFilter'
 import PageLayout from "../layouts/PageLayout"
 import $http from "../plugins/axios"
 

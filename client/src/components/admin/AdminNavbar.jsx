@@ -1,17 +1,18 @@
 import React from "react"
-import "./responsiveNav"
+import ResponsiveFunction from "../shared/ResponsiveNavbar"
 
-const Navbar = props => {
-
+const Navbar = () => {
   const handleLogout = () => {
-    localStorage.clear();
-  };
-
-  function toggleBurgerMenu() {
-    document.querySelector(".navbar-menu").classList.toggle("is-active")
+    localStorage.clear()
   }
+  ResponsiveFunction()
+
   return (
-    <nav className="navbar is-spaced is-fixed-top" role="navigation" aria-label="main navigation">
+    <nav
+      className="navbar navbar-menu is-active is-fixed-top has-text-centered"
+      role="navigation"
+      aria-label="main navigation"
+    >
       <div className="navbar-brand">
         <a className="navbar-item" href="https://bulma.io">
           <img
@@ -21,47 +22,51 @@ const Navbar = props => {
             alt="default alt"
           />
         </a>
-        <button
-          className="navbar-burger burger "
+        <a
+          role="button"
+          className="navbar-burger burger"
           aria-label="menu"
           aria-expanded="false"
-          data-target="navbarBasic"
-          onClick={toggleBurgerMenu}
+          data-target="navbarBasicExample"
         >
-          <span aria-hidden="true" className=""></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
-        </button>
+          <span aria-hidden="true"></span>
+        </a>
       </div>
 
-      <div id="navbarBasic" className="navbar-menu">
-        <div className="navbar-end">
-          <a className="navbar-item" href="/admin/" onClick={toggleBurgerMenu}>
+      <div id="navbarBasicExample" className="navbar-menu">
+      <div className="navbar-end">
+          <a className="navbar-item" href="/admin/home">
             Home
           </a>
-          <a className="navbar-item" href="/admin/employees/" onClick={toggleBurgerMenu}>
+          <a className="navbar-item" href="/admin/employees/">
             Employee Performance
           </a>
-          <a className="navbar-item" href="/admin/orders/" onClick={toggleBurgerMenu}>
+          <a className="navbar-item" href="/admin/orders/">
             Review Orders
           </a>
-          <a className="navbar-item" href="/admin/inventory/" onClick={toggleBurgerMenu}>
+          <a className="navbar-item" href="/admin/inventory/">
             Manage Inventory
           </a>
-          <a className="navbar-item" href="/admin/users/" onClick={toggleBurgerMenu}>
+          <a className="navbar-item" href="/admin/users/">
             System Users
           </a>
-          <a className="navbar-item" href="/admin/delivery/" onClick={toggleBurgerMenu}>
+          <a className="navbar-item" href="/admin/delivery/">
             Delivery Requests
           </a>
-          <a className="navbar-item" href="/admin/maintenance/" onClick={toggleBurgerMenu}>
+          <a className="navbar-item" href="/admin/maintenance/">
             Maintenance
           </a>
-          <a className="navbar-item" href="/admin/product-performance/" onClick={toggleBurgerMenu}>
+          <a className="navbar-item" href="/admin/product-performance/">
             Product Performance
           </a>
           <a className="navbar-item" href="/">
-            <button className="button is-outlined is-danger " to="/" onClick={handleLogout}>
+            <button
+              className="button is-outlined is-danger "
+              to="/"
+              onClick={handleLogout}
+            >
               Log Out
             </button>
           </a>

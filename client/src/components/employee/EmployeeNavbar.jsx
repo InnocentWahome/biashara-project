@@ -1,14 +1,15 @@
 import React from "react"
-import "./responsiveNav"
-
+import ResponsiveFunction from "../shared/ResponsiveNavbar"
 
 const Navbar = () => {
   const handleLogout = () => {
-    localStorage.clear();
-  };
+    localStorage.clear()
+  }
+  ResponsiveFunction()
+
   return (
     <nav
-    className="navbar navbar-menu is-active is-fixed-top"
+      className="navbar navbar-menu is-active is-fixed-top has-text-centered"
       role="navigation"
       aria-label="main navigation"
     >
@@ -23,7 +24,7 @@ const Navbar = () => {
         </a>
         <a
           role="button"
-          class="navbar-burger"
+          className="navbar-burger burger"
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarBasicExample"
@@ -36,7 +37,7 @@ const Navbar = () => {
 
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-end">
-          <a className="navbar-item" href="/employee/">
+          <a className="navbar-item" href="/employee/home">
             Home
           </a>
           <a className="navbar-item" href="/employee/orders/">
@@ -55,7 +56,11 @@ const Navbar = () => {
             Stock
           </a>
           <a className="navbar-item" href="/">
-            <button className="button is-outlined is-danger " to="/" onClick={handleLogout}>
+            <button
+              className="button is-outlined is-danger "
+              to="/"
+              onClick={handleLogout}
+            >
               Log Out
             </button>
           </a>

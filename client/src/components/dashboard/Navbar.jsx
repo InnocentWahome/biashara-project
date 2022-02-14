@@ -1,14 +1,15 @@
 import React from "react"
-import "./responsiveNav"
-import biasharaLogo from "../../assets/images/biashara_logo.png"
+import ResponsiveFunction from "../shared/ResponsiveNavbar"
+
 const Navbar = () => {
   const handleLogout = () => {
     localStorage.clear()
   }
+  ResponsiveFunction()
 
   return (
     <nav
-      className="navbar navbar-menu is-fixed-top"
+      className="navbar navbar-menu is-active is-fixed-top has-text-centered"
       role="navigation"
       aria-label="main navigation"
     >
@@ -23,7 +24,7 @@ const Navbar = () => {
         </a>
         <a
           role="button"
-          class="navbar-burger"
+          className="navbar-burger"
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarBasicExample"
