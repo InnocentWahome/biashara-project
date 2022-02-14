@@ -38,10 +38,10 @@ const AdminProductPerformance = () => {
   return (
     <AdminLayout>
       <div className="container pt-6">
-        <p className="is-size-4 has-text-centered pb-3">
+        <p className="is-size-4 has-text-centered pb-3 pt-6">
           Delivered Products' Performance{" "}
         </p>
-        <div style={{ height: 700, width: "200" }}>
+        <div style={{ height: 600, width: "200" }}>
           <DataGrid
             rows={tableData}
             pageSize={pageSize}

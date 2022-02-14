@@ -5,7 +5,7 @@ import contactImage from "../../assets/icons/contact.svg"
 const ContactPage = () => {
   return (
     <PageLayout>
-      <div className="container pt-6 pl-6">
+      <div className="container pt-6 mt-6 pl-6">
         <div className="columns">
           <div className="column is-one-half">
             <p className="is-size-4 pb-6 mb-6">

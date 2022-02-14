@@ -4,6 +4,7 @@ import $http from "../../../plugins/axios"
 const LoginForm = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [user, setUser] = useState("")
   const login = async e => {
     e.preventDefault()
     try {
@@ -15,6 +16,10 @@ const LoginForm = () => {
           password: password,
         },
       });
+      const user = {email, password}
+      setUser(response.data.data)
+      localStorage.setItem('user', response.data.data)
+      console.log(response.data.data)
       localStorage.setItem('access_token', response.data?.data?.token);
     } catch (error) {
       console.error(error)

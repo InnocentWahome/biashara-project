@@ -37,11 +37,11 @@ const DashboardProducts = () => {
 
   return (
     <PageLayout>
-      <div className="pl-6 pr-6 pt-4">
-      <p className="is-size-6 pb-3">Welcome back username! Here's what we have for you today</p>
+      <div className="pl-6 mt-6 pr-6 pt-4">
+      <p className="is-size-6 pb-3 pt-3">Welcome back username! Here's what we have for you today</p>
         <div className="columns">
           <div className="column is-two-thirds">
-            <div style={{ height: 700, width: "200" }}>
+            <div style={{ height: 600, width: "200" }}>
               <DataGrid
                 rows={tableData}
                 pageSize={pageSize}
@@ -52,7 +52,7 @@ const DashboardProducts = () => {
               />
             </div>
           </div>
-          <div className="column">
+          <div className="column pt-6">
             <OrderForm />
           </div>
         </div>

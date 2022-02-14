@@ -38,9 +38,9 @@ const DashboardUserOrders = () => {
 
   return (
     <PageLayout>
-      <div className="pr-6 pl-6 mr-6 pt-4">
-        <p className="is-size-6 pb-3">Here are all your orders</p>
-        <div style={{ height: 700, width: "200" }}>
+      <div className="pr-6 pl-6 mt-6 mr-6 pt-4">
+        <p className="is-size-6 pt-3 pb-3">Here are all your orders</p>
+        <div style={{ height: 600, width: "200" }}>
           <DataGrid
             rows={tableData}
             pageSize={pageSize}

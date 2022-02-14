@@ -36,8 +36,8 @@ const AdminMaintenance = () => {
   return (
     <AdminLayout>
       <div className="container pt-6">
-        <p className="is-size-4 has-text-centered pb-3">Maintenance </p>
-        <div style={{ height: 700, width: "200" }}>
+        <p className="is-size-4 has-text-centered pb-3 pt-6">Maintenance </p>
+        <div style={{ height: 600, width: "200" }}>
           <DataGrid
             rows={tableData}
             pageSize={pageSize}

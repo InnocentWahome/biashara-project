@@ -35,6 +35,23 @@ export default class AuthenticationController {
     }
   }
 
+  public async index({ response }: HttpContextContract) {
+    try {
+      const users = await User.query().select('*').from('users')
+      return response.json({
+        success: true,
+        message: 'Users retrieved successfully',
+        data: users,
+      })
+    } catch (error) {
+      return response.json({
+        success: false,
+        message: error.message,
+        data: error,
+      })
+    }
+  }
+
 /**
    * Display a single user
    * GET /users/:id
@@ -65,24 +82,7 @@ export default class AuthenticationController {
     })
   }
 }
-
-  public async index({ response }: HttpContextContract) {
-    try {
-      const users = await User.query().select('*').from('users')
-      return response.json({
-        success: true,
-        message: 'Users retrieved successfully',
-        data: users,
-      })
-    } catch (error) {
-      return response.json({
-        success: false,
-        message: error.message,
-        data: error,
-      })
-    }
-  }
-
+  
   /**
    * Authenticate an existing user
    *
@@ -101,7 +101,7 @@ export default class AuthenticationController {
       response.status(200).json({
         success: true,
         message: 'Successfully authenticated',
-        data: token,
+        data: token
       })
     } catch (error) {
       response.status(500).json({

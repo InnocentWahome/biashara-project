@@ -43,10 +43,10 @@ const AdminOrders = () => {
     <div className="pl-6 pr-6 pt-6">
       <div className="columns">
         <div className="column is-two-thirds">
-          <p className="is-size-4 has-text-centered pb-3">
+          <p className="is-size-4 has-text-centered pb-3 pt-6">
             Review orders
           </p>
-          <div style={{ height: 700, width: "200" }}>
+          <div style={{ height: 600, width: "200" }}>
             <DataGrid
               rows={tableData}
               pageSize={pageSize}

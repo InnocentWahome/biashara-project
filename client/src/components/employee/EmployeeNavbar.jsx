@@ -1,9 +1,14 @@
 import React from "react"
+import "./responsiveNav"
+
 
 const Navbar = () => {
+  const handleLogout = () => {
+    localStorage.clear();
+  };
   return (
     <nav
-      className="navbar  is-transparent"
+    className="navbar navbar-menu is-active is-fixed-top"
       role="navigation"
       aria-label="main navigation"
     >
@@ -16,7 +21,17 @@ const Navbar = () => {
             alt="default alt"
           />
         </a>
-
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
       </div>
 
       <div id="navbarBasicExample" className="navbar-menu">
@@ -38,6 +53,11 @@ const Navbar = () => {
           </a>
           <a className="navbar-item" href="/employee/stock/">
             Stock
+          </a>
+          <a className="navbar-item" href="/">
+            <button className="button is-outlined is-danger " to="/" onClick={handleLogout}>
+              Log Out
+            </button>
           </a>
         </div>
       </div>

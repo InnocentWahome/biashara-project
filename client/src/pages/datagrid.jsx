@@ -29,12 +29,13 @@ const DataTable = () => {
   }
   const userRoles = async e => {
     try {
+      const userId = this.user.ID.bind(this)
       const response = await $http.Authentication({
         method: "GET",
-        url: `/user/10`,
+        url: `/user/${userId}`,
       });
-      if (response.data) {
-        const userData = response.data
+      if (response.status === 200) {
+        const userData = response.data.data.firstName
         console.log(userData)
       }
     } catch (error) {

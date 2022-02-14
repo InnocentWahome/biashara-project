@@ -40,10 +40,10 @@ const EmployeePerformance = () => {
       <div className="pl-6 pr-6 ml-6 pt-6">
         <div className="columns">
           <div className="column is-two-thirds">
-            <p className="is-size-4 has-text-centered pb-3 title">
+            <p className="is-size-4 has-text-centered pb-3 pt-6 title">
               My Personal Work Log
             </p>
-            <div style={{ height: 700, width: "200" }}>
+            <div style={{ height: 600, width: "200" }}>
               <DataGrid
                 rows={tableData}
                 pageSize={pageSize}

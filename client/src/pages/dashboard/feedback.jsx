@@ -6,7 +6,7 @@ import feedbackImage from "../../assets/icons/feedback.svg"
 const DashboardFeedback = () => {
   return (
     <PageLayout>
-      <div className="container pt-6 pl-6">
+      <div className="container pt-6 mt-6 pl-6">
         <div className="columns">
           <div className="column is-one-half">
             <img alt="feedback form support image" src={feedbackImage} />

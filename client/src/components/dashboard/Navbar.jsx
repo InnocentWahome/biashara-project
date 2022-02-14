@@ -1,23 +1,36 @@
 import React from "react"
+import "./responsiveNav"
 import biasharaLogo from "../../assets/images/biashara_logo.png"
 const Navbar = () => {
+  const handleLogout = () => {
+    localStorage.clear()
+  }
+
   return (
     <nav
-      className="navbar  is-transparent"
+      className="navbar navbar-menu is-fixed-top"
       role="navigation"
       aria-label="main navigation"
     >
       <div className="navbar-brand">
-        <a className="navbar-item" href="/">
-          <figure className="image is-32x32">
+        <a className="navbar-item" href="https://bulma.io">
           <img
-            src={biasharaLogo}
-            // width="112"
-            // height="112"
-            // className="image is-32x32"
+            src="https://bulma.io/images/bulma-logo.png"
+            width="112"
+            height="112"
             alt="default alt"
           />
-          </figure>
+        </a>
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
         </a>
       </div>
 
@@ -27,16 +40,20 @@ const Navbar = () => {
             Home
           </a>
           <a className="navbar-item" href="/dashboard/my-orders">
-          My Orders
+            My Orders
           </a>
           <a className="navbar-item" href="/dashboard/feedback">
-          Feedback
+            Feedback
           </a>
           <a className="navbar-item" href="/dashboard/contact">
             Contact Us
           </a>
           <a className="navbar-item" href="/">
-            <button className="button is-outlined is-danger " to="/">
+            <button
+              className="button is-outlined is-danger "
+              to="/"
+              onClick={handleLogout}
+            >
               Log Out
             </button>
           </a>
