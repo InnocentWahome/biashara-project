@@ -7,10 +7,11 @@ const CreateEmployeeForm = () => {
   const [phoneNumber, setPhoneNumber] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [role, setRole] = useState("")
 
-  const register = async (e) => {
+  const register = async e => {
     try {
-      e.preventDefault();
+      e.preventDefault()
       await $http.Authentication({
         method: "POST",
         url: "/register",
@@ -20,6 +21,7 @@ const CreateEmployeeForm = () => {
           phoneNumber: phoneNumber,
           email: email,
           password: password,
+          role: role,
         },
       })
     } catch (error) {
@@ -101,6 +103,27 @@ const CreateEmployeeForm = () => {
                   required
                   onChange={e => setPassword(e.target.value)}
                 />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
+                <input
+                  className="input"
+                  type="test"
+                  placeholder="role"
+                  required
+                  onChange={e => setRole(e.target.value)}
+                />
+                {/* <div className="select">
+                  <select required onChange={e => setRole(e.target.value)}>
+                    <option>Employee</option>
+                    <option>User</option>
+                  </select>
+                </div> */}
               </div>
             </div>
           </div>

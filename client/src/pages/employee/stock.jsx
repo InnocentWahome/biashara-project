@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { DataGrid } from "@mui/x-data-grid"
 import EmployeeLayout from "../../layouts/EmployeeLayout"
 import $http from "../../plugins/axios"
-import StockForm from "../../components/forms/StockForm"
+import ProductForm from "../../components/forms/ProductForm"
 
 const EmployeeStock = () => {
   const columns = [
@@ -55,7 +55,7 @@ const EmployeeStock = () => {
             </div>
           </div>
           <div className="column pt-6 mt-6">
-            <StockForm />
+            <ProductForm />
           </div>
         </div>
       </div>

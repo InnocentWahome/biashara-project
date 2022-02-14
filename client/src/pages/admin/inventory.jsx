@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { DataGrid } from "@mui/x-data-grid"
 import AdminLayout from "../../layouts/AdminLayout"
 import $http from "../../plugins/axios"
-import StockForm from "../../components/forms/StockForm"
+import ProductForm from "../../components/forms/ProductForm"
 
 const AdminInventory = () => {
   const columns = [
@@ -16,7 +16,7 @@ const AdminInventory = () => {
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
 
-  const fetchUsers = async e => {
+  const fetchInventory = async e => {
     try {
       const response = await $http.Api({
         method: "GET",
@@ -32,7 +32,7 @@ const AdminInventory = () => {
   }
 
   useEffect(() => {
-    fetchUsers()
+    fetchInventory()
   }, [])
 
   return (
@@ -55,7 +55,7 @@ const AdminInventory = () => {
             </div>
           </div>
           <div className="column pt-6 mt-6">
-            <StockForm />
+            <ProductForm />
           </div>
         </div>
       </div>

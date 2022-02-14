@@ -16,7 +16,7 @@ const EmployeePerformance = () => {
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
 
-  const fetchUsers = async e => {
+  const fetchWorklog = async e => {
     try {
       const response = await $http.Api({
         method: "GET",
@@ -32,7 +32,7 @@ const EmployeePerformance = () => {
   }
 
   useEffect(() => {
-    fetchUsers()
+    fetchWorklog()
   }, [])
 
   return (

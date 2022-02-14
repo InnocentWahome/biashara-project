@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { DataGrid } from "@mui/x-data-grid"
 import PageLayout from "../layouts/PageLayout"
 import $http from "../plugins/axios"
+import axios from "axios"
 
 const DataTable = () => {
   const columns = [
@@ -19,8 +20,22 @@ const DataTable = () => {
         url: "/course",
       });
       if (response.data?.data) {
-        console.log(tableData)
+        // console.log(tableData)
         setTableData(response.data.data);
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  const userRoles = async e => {
+    try {
+      const response = await $http.Authentication({
+        method: "GET",
+        url: `/user/10`,
+      });
+      if (response.data) {
+        const userData = response.data
+        console.log(userData)
       }
     } catch (error) {
       console.error(error)
@@ -29,6 +44,7 @@ const DataTable = () => {
 
   useEffect(() => {
     datagrid();
+    userRoles();
   }, [])
 
 

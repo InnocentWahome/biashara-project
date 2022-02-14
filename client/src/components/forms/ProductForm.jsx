@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import $http from "../../plugins/axios"
 
-const StockForm = () => {
+const ProductForm = () => {
   const [productName, setProductName] = useState("")
   const [productDescription, setProductDescription] = useState("")
   const [productImage, setProductImage] = useState("")
@@ -120,4 +120,4 @@ const StockForm = () => {
   )
 }
 
-export default StockForm
+export default ProductForm

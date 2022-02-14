@@ -20,6 +20,7 @@ Route.get('api/v1/health', async ({ response }) => {
 //auth routes
 Route.group(() => {
   Route.get('/user', 'AuthenticationController.user')
+  Route.get('/user/:id', 'AuthenticationController.show')
   Route.get('/users', 'AuthenticationController.index')
   Route.post('/login', 'AuthenticationController.login')
   Route.post('/register', 'AuthenticationController.register')
