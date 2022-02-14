@@ -12,7 +12,7 @@ export default class UsersSchema extends BaseSchema {
       table.string('email', 255).notNullable()
       table.string('password', 180).notNullable()
       table.string('remember_me_token').nullable()
-      table.enum('role', ['user', 'employee', 'admin']).defaultTo('user')
+      table.enum('role', ['User', 'Employee', 'Admin']).defaultTo('User')
       table.timestamps(true)
     })
   }

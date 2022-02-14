@@ -12,9 +12,9 @@ const AdminInventory = () => {
     { field: "user_id", headerName: "User ID", width: 200 },
     { field: "cost", headerName: "Cost(KSH)", width: 200 },
     { field: "quantity", headerName: "Product Quantity", width: 200 },
-    { field: "admin_approval", headerName: "Admin Approval", width: 200 },
-    { field: "dispatch_status", headerName: "Dispatch Status", width: 200 },
-    { field: "delivery_status", headerName: "Delivery Status", width: 200 },
+    { field: "admin_approval", headerName: "Admin Approval", width: 100 },
+    { field: "dispatch_status", headerName: "Dispatch Status", width: 100 },
+    { field: "delivery_status", headerName: "Delivery Status", width: 100 },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
