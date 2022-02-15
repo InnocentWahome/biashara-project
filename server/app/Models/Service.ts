@@ -15,7 +15,7 @@ export default class ServiceRequest extends BaseModel {
   public userId: number
 
   @column()
-  public date: number
+  public date: Date
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

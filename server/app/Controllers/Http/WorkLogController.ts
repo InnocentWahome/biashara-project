@@ -46,7 +46,7 @@ export default class WorkLogController {
 
   public async store({ request, response }: HttpContextContract) {
     try {
-      const data = request.only(['user_id', 'description', 'hours', 'start', 'stop', 'date'])
+      const data = request.only(['user_id', 'description', 'hours', 'start', 'stop', 'date', 'day'])
       const worklog = await WorkLog.create(data)
       return response.json({
         success: true,

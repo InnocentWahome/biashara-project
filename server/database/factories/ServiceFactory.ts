@@ -4,12 +4,12 @@ import Service from 'App/Models/Service'
 export const ServiceFactory = Factory.define(Service, ({ faker }) => {
   return {
     category: faker.random.arrayElement([
-      'softwareUpdate',
-      'serviceRequest',
-      'maintenance'
+      'Software Update',
+      'Service Request',
+      'Maintenance'
     ]),
     description: faker.lorem.sentence(),
     userId: faker.datatype.number(),
-    date: faker.datatype.number(),
+    date: faker.datatype.datetime(),
   }
 }).build()

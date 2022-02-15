@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { DataGrid } from "@mui/x-data-grid"
 import EmployeeLayout from "../../layouts/EmployeeLayout"
 import $http from "../../plugins/axios"
-import DeliveredProductsReport from "../../components/forms/MaintainenceScheduleForm"
+// import DeliveredProductsReport from "../../components/forms/MaintainenceScheduleForm"
 
 const EmployeePerformance = () => {
   const columns = [
@@ -12,7 +12,7 @@ const EmployeePerformance = () => {
     { field: "user_id", headerName: "User ID", width: 200 },
     { field: "rate", headerName: "Rate", width: 200 },
     { field: "description", headerName: "Review Description", width: 200 },
-    { field: "created_at", headerName: "Date Posted", width: 200 },
+    { field: "created_at", headerName: "Review Date", width: 200 },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
@@ -39,9 +39,9 @@ const EmployeePerformance = () => {
   return (
     <EmployeeLayout>
       <div className="pl-5 pr-5 pt-6">
-        <div className="columns">
-          <div className="column is-two-thirds">
-            <p className="is-size-4 has-text-centered pb-3 pt-6 title">
+        {/* <div className="columns">
+          <div className="column is-two-thirds"> */}
+            <p className="is-size-4 has-text-centered pb-3 mt-6 pt-6 title">
               Performance of Delivered Products (Users' Feedback)
             </p>
             <div style={{ height: 600, width: "200" }}>
@@ -55,11 +55,11 @@ const EmployeePerformance = () => {
               />
             </div>
           </div>
-          <div className="column pt-6 mt-6">
+          {/* <div className="column pt-6 mt-6">
             <DeliveredProductsReport />
-          </div> 
-        </div>
-      </div>
+          </div>  */}
+        {/* </div>
+      </div> */}
     </EmployeeLayout>
   )
 }

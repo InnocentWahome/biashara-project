@@ -20,6 +20,7 @@ const RegisterForm = () => {
           phoneNumber: phoneNumber,
           email: email,
           password: password,
+          role: "User"
         },
       })
     } catch (error) {

@@ -111,19 +111,26 @@ const CreateEmployeeForm = () => {
           <div className="field-body">
             <div className="field">
               <div className="control is-expanded">
-                <input
-                  className="input"
-                  type="test"
-                  placeholder="role"
-                  required
-                  onChange={e => setRole(e.target.value)}
-                />
-                {/* <div className="select">
-                  <select required onChange={e => setRole(e.target.value)}>
-                    <option>Employee</option>
-                    <option>User</option>
-                  </select>
-                </div> */}
+                <div class="control">
+                  <label class="radio">
+                    <input
+                      type="radio"
+                      name="role"
+                      value="Employee"
+                      onChange={e => setRole(e.target.value)}
+                    />
+                    Employee
+                  </label>
+                  <label class="radio">
+                    <input
+                      type="radio"
+                      name="role"
+                      value="User"
+                      onChange={e => setRole(e.target.value)}
+                    />
+                    User
+                  </label>
+                </div>
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import $http from "../../plugins/axios"
 
-const MaintainenceScheduleForm = () => {
+const MaintenanceScheduleForm = () => {
   const [category, setCategory] = useState("")
   const [description, setDescription] = useState("")
   const [date, setDate] = useState("")
@@ -35,13 +35,43 @@ const MaintainenceScheduleForm = () => {
             <div className="field">
               <div className="control is-expanded">
                 <p className="label">Service Category</p>
-                <input
+                {/* <input
                   className="input"
                   type="text"
                   placeholder=""
                   required
                   onChange={e => setCategory(e.target.value)}
-                />
+                /> */}
+                <div class="control">
+                  <label class="radio">
+                    <input
+                      type="radio"
+                      name="category"
+                      value="Software Update"
+                      className="pl-2 pr-2"
+                      onChange={e => setCategory(e.target.value)}
+                    />
+                    Software Update
+                  </label>
+                  <label class="radio">
+                    <input
+                      type="radio"
+                      name="category"
+                      value="Maintenance"
+                      onChange={e => setCategory(e.target.value)}
+                    />
+                    Maintenance
+                  </label>
+                  <label class="radio">
+                    <input
+                      type="radio"
+                      name="category"
+                      value="Service Request"
+                      onChange={e => setCategory(e.target.value)}
+                    />
+                    Service Request
+                  </label>
+                </div>
               </div>
             </div>
           </div>
@@ -69,7 +99,7 @@ const MaintainenceScheduleForm = () => {
                 <input
                   className="input"
                   type="text"
-                  placeholder=""
+                  placeholder="YYYY-MM-DD"
                   required
                   onChange={e => setDate(e.target.value)}
                 />
@@ -88,4 +118,4 @@ const MaintainenceScheduleForm = () => {
   )
 }
 
-export default MaintainenceScheduleForm
+export default MaintenanceScheduleForm

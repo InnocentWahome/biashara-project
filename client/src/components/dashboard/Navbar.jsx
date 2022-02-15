@@ -46,9 +46,9 @@ const Navbar = () => {
           <a className="navbar-item" href="/dashboard/feedback">
             Feedback
           </a>
-          <a className="navbar-item" href="/dashboard/contact">
+          {/* <a className="navbar-item" href="/dashboard/contact">
             Contact Us
-          </a>
+          </a> */}
           <a className="navbar-item" href="/">
             <button
               className="button is-outlined is-danger "

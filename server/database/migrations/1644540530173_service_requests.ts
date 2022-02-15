@@ -8,8 +8,8 @@ export default class ServiceRequests extends BaseSchema {
       table.increments('id')
       table.string('description')
       table.integer('user_id')
-      table.integer('date')
-      table.enum('category', ['softwareUpdate', 'serviceRequest', 'maintenance']).defaultTo('maintenance')
+      table.date('date')
+      table.enum('category', ['Software Update', 'Service Request', 'Maintenance']).defaultTo('Maintenance')
       table.timestamps(true)
     })
   }

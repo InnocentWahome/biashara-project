@@ -49,8 +49,8 @@ const filterValue = [
 
 return (
   <PageLayout>
-    <div className="container">
-      <div style={{ height: 700, width: "200" }}>
+    <div className="container pt-6 mt-6">
+      <div style={{ height: 600, width: "200" }}>
       <ReactDataGrid
         idProperty="id"
         columns={columns}

@@ -20,7 +20,7 @@ const EmployeeWorkLogForm = () => {
           day: day,
           start: startTime,
           stop: stopTime,
-          hours: hoursWorked,
+          hours: stopTime - startTime,
           description: workDescription,
         },
       })
@@ -29,7 +29,12 @@ const EmployeeWorkLogForm = () => {
     }
   }
   return (
-    <form action="" method="POST" className="container" onSubmit={createEmployeeWorklog}>
+    <form
+      action=""
+      method="POST"
+      className="container"
+      onSubmit={createEmployeeWorklog}
+    >
       <div className="container">
         <div className="field is-horizontal">
           <div className="field-body">
@@ -39,7 +44,7 @@ const EmployeeWorkLogForm = () => {
                 <input
                   className="input"
                   type="text"
-                  placeholder=""
+                  placeholder="REMEMBER TO ADD DATE PICKER"
                   required
                   onChange={e => setDate(e.target.value)}
                 />
@@ -52,13 +57,95 @@ const EmployeeWorkLogForm = () => {
             <div className="field">
               <div className="control is-expanded">
                 <p className="label">Day</p>
-                <input
+                {/* <input
                   className="input"
                   type="text"
                   placeholder=""
                   required
                   onChange={e => setDay(e.target.value)}
-                />
+                /> */}
+                {/* <div class="control">
+                  <label class="radio">
+                    <input
+                      type="radio"
+                      name="day"
+                      value="Monday"
+                      className="pl-2 pr-2"
+                      onChange={e => setDay(e.target.value)}
+                    />
+                    Monday
+                  </label>
+                  <label class="radio">
+                    <input
+                      type="radio"
+                      name="day"
+                      value="Tuesday"
+                      onChange={e => setDay(e.target.value)}
+                    />
+                    Tuesday
+                  </label>
+                  <label class="radio">
+                    <input
+                      type="radio"
+                      name="day"
+                      value="Wednesday"
+                      onChange={e => setDay(e.target.value)}
+                    />
+                    Wednesday
+                  </label>
+                  <label class="radio">
+                    <input
+                      type="radio"
+                      name="day"
+                      value="Thursday"
+                      onChange={e => setDay(e.target.value)}
+                    />
+                    Thursday
+                  </label>
+                  <label class="radio">
+                    <input
+                      type="radio"
+                      name="day"
+                      value="Friday"
+                      onChange={e => setDay(e.target.value)}
+                    />
+                    Friday
+                  </label>
+                </div> */}
+                <div className="select" onChange={e => setDay(e.target.value)}>
+                  <select onChange={e => setDay(e.target.value)}>
+                    <option
+                      onChange={e => setDay(e.target.value)}
+                      value="Monday"
+                    >
+                      Monday
+                    </option>
+                    <option
+                      onChange={e => setDay(e.target.value)}
+                      value="Tuesday"
+                    >
+                      Tuesday
+                    </option>
+                    <option
+                      onChange={e => setDay(e.target.value)}
+                      value="Wednesday"
+                    >
+                      Wednesday
+                    </option>
+                    <option
+                      onChange={e => setDay(e.target.value)}
+                      value="Thursday"
+                    >
+                      Thursday
+                    </option>
+                    <option
+                      onChange={e => setDay(e.target.value)}
+                      value="Friday"
+                    >
+                      Friday
+                    </option>
+                  </select>
+                </div>
               </div>
             </div>
           </div>
@@ -95,7 +182,7 @@ const EmployeeWorkLogForm = () => {
             </div>
           </div>
         </div>
-        <div className="field is-horizontal">
+        {/* <div className="field is-horizontal">
           <div className="field-body">
             <div className="field">
               <div className="control is-expanded">
@@ -110,7 +197,7 @@ const EmployeeWorkLogForm = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="field is-horizontal">
           <div className="field-body">
             <div className="field">

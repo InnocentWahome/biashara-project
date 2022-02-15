@@ -127,6 +127,7 @@ export default class AuthenticationController {
         phoneNumber: schema.string(),
         email: schema.string({}, [rules.email()]),
         password: schema.string(),
+        role: schema.string(),
       })
 
       const payload = await request.validate({ schema: registerSchema })
