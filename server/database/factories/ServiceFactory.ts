@@ -8,8 +8,8 @@ export const ServiceFactory = Factory.define(Service, ({ faker }) => {
       'Service Request',
       'Maintenance'
     ]),
-    description: faker.lorem.sentence(),
+    description: faker.commerce.productDescription(),
     userId: faker.datatype.number(),
-    date: faker.datatype.datetime(),
+    date: faker.date.future(),
   }
 }).build()

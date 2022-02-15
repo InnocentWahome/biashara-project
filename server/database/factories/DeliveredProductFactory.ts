@@ -6,9 +6,9 @@ import DeliveredProduct from 'App/Models/DeliveredProduct'
 export const DeliveredProductFactory = Factory.define(DeliveredProduct, ({ faker }) => {
   return {
     productId: faker.datatype.number(),
-    productName: faker.lorem.word(),
+    productName: faker.commerce.productName(),
     userId: faker.datatype.number(),
-    description: faker.lorem.sentence(),
+    description: faker.commerce.productDescription(),
     rate: faker.datatype.number({
       'min': 1,
       'max': 5,

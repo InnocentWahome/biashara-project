@@ -6,9 +6,9 @@ import Feedback from 'App/Models/Feedback'
 export const FeedbackFactory = Factory.define(Feedback, ({ faker }) => {
   return {
     productId: faker.datatype.number(),
-    productName: faker.lorem.word(),
+    productName: faker.commerce.productName(),
     userId: faker.datatype.number(),
-    description: faker.lorem.sentence(),
+    description: faker.commerce.productDescription(),
     rate: faker.datatype.number({
       'min': 1,
       'max': 5,

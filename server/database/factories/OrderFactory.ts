@@ -6,7 +6,7 @@ import Order from 'App/Models/Order'
 export const OrderFactory = Factory.define(Order, ({ faker }) => {
   return {
     productId: faker.datatype.number(),
-    productName: faker.lorem.word(),
+    productName: faker.commerce.productName(),
     userId: faker.datatype.number(),
     cost: faker.datatype.number(),
     quantity: faker.datatype.number(),

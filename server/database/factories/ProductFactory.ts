@@ -3,10 +3,10 @@ import Product from 'App/Models/Product'
 
 export const ProductFactory = Factory.define(Product, ({ faker }) => {
   return {
-    name: faker.lorem.word(),
-    description: faker.lorem.sentence(),
+    name: faker.commerce.productName(),
+    description: faker.commerce.productDescription(),
     quantity: faker.datatype.number(),
     price: faker.datatype.number(),
-    image: faker.lorem.sentence(),
+    image: faker.image.imageUrl(),
   }
 }).build()
