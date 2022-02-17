@@ -9,6 +9,7 @@
     "@emotion/styled": "^11.6.0",
     "@inovua/reactdatagrid-community": "^4.12.1",
     "@inovua/reactdatagrid-enterprise": "^4.12.1",
+    "@material-ui/icons": "^4.11.2",
     "@mui/icons-material": "^5.2.5",
     "@mui/lab": "*",
     "@mui/material": "^5.4.2",

@@ -20,7 +20,7 @@ const columns = [
 const gridStyle = { minHeight: 550 }
 
 const [tableData, setTableData] = useState([])
-const [pageSize, setPageSize] = React.useState(25)
+// const [pageSize, setPageSize] = React.useState(25)
 
 const datagrid = async e => {
   try {
