@@ -1,97 +1,85 @@
 import React, { useState, useEffect } from "react"
-import { DataGrid, GridToolbar } from "@mui/x-data-grid"
+import { GridToolbar } from "@mui/x-data-grid"
 import PageLayout from "../layouts/PageLayout"
 import $http from "../plugins/axios"
 import Authorization from "../services/auth"
-import { styled } from '@mui/material/styles';
 import { FormControlLabel, IconButton } from "@material-ui/core"
 import EditIcon from "@material-ui/icons/Edit"
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete"
 import { blue, red } from "@material-ui/core/colors"
+import StyledDataGrid from "../assets/styles/datagrid"
 const EditRecord = ({ index }) => {
-  const handleEditClick = () => {
-    // some action
+  const price = 100
+  const handleEditClick = async e => {
+    try {
+      e.preventDefault()
+      await $http.Api({
+        method: "PUT",
+        url: "/order/",
+        data: {
+          url: "/order/{id}",
+          data: {
+            // product_name: productName,
+            // product_id: productId,
+            // user_id: 19,
+            // quantity: quantity,
+            // cost: quantity * price,
+            // adminApproval: false,
+            // dispatchStatus: false,
+            // deliveryStatus: false,
+          },
+        },
+      })
+    } catch (error) {
+      console.error(error)
+    }
   }
-  const handleDeleteClick = () => {
-    // some action
+  const handleDeleteClick = async e => {
+    try {
+      e.preventDefault()
+      await $http.Api({
+        method: "DELETE",
+        url: "/order/{id}",
+        data: {},
+      })
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
     <div>
       <FormControlLabel
-      control={
-        <IconButton
-          color="secondary"
-          aria-label="add an alarm"
-          onClick={handleEditClick}
-        >
-          <EditIcon style={{ color: blue[500] }} />
-        </IconButton>
-      }
-    />
-    <FormControlLabel
-      control={
-        <IconButton
-          color="secondary"
-          aria-label="add an alarm"
-          onClick={handleDeleteClick}
-        >
-          <DeleteIcon style={{ color: red[500] }} />
-        </IconButton>
-      }
-    />
+        control={
+          <IconButton
+            color="secondary"
+            aria-label="add an alarm"
+            onClick={handleEditClick}
+          >
+            <EditIcon style={{ color: blue[500] }} />
+          </IconButton>
+        }
+      />
+      <FormControlLabel
+        control={
+          <IconButton
+            color="secondary"
+            aria-label="add an alarm"
+            onClick={handleDeleteClick}
+          >
+            <DeleteIcon style={{ color: red[500] }} />
+          </IconButton>
+        }
+      />
     </div>
   )
 }
-
-const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
-  border: 0,
-  color:
-    theme.palette.mode === 'light' ? 'rgba(0,0,0,.85)' : 'rgba(255,255,255,0.85)',
-  fontFamily: [
-    '-apple-system',
-    'BlinkMacSystemFont',
-    '"Segoe UI"',
-    'Roboto',
-    '"Helvetica Neue"',
-    'Arial',
-    'sans-serif',
-    '"Apple Color Emoji"',
-    '"Segoe UI Emoji"',
-    '"Segoe UI Symbol"',
-  ].join(','),
-  WebkitFontSmoothing: 'auto',
-  letterSpacing: 'normal',
-  '& .MuiDataGrid-columnsContainer': {
-    backgroundColor: theme.palette.mode === 'light' ? '#fafafa' : '#1d1d1d',
-  },
-  '& .MuiDataGrid-iconSeparator': {
-    display: 'none',
-  },
-  '& .MuiDataGrid-columnHeader, .MuiDataGrid-cell': {
-    borderRight: `1px solid ${
-      theme.palette.mode === 'light' ? '#f0f0f0' : '#303030'
-    }`,
-  },
-  '& .MuiDataGrid-columnsContainer, .MuiDataGrid-cell': {
-    borderBottom: `1px solid ${
-      theme.palette.mode === 'light' ? '#f0f0f0' : '#303030'
-    }`,
-  },
-  '& .MuiDataGrid-cell': {
-    color:
-      theme.palette.mode === 'light' ? 'rgba(0,0,0,.85)' : 'rgba(255,255,255,0.65)',
-  },
-  '& .MuiPaginationItem-root': {
-    borderRadius: 0,
-  },
-}));
 
 const DataTable = () => {
   const columns = [
     { field: "id", headerName: "ID" },
     { field: "name", headerName: "Name", width: 300 },
-    { field: "description", headerName: "Description", width: 200 },
+    { field: "description", headerName: "Description", width: 200, editable: true },
     {
       field: "actions",
       headerName: "Actions",
@@ -132,7 +120,6 @@ const DataTable = () => {
         url: "/course",
       })
       if (response.data?.data) {
-        // console.log(tableData)
         setTableData(response.data.data)
       }
     } catch (error) {
@@ -144,7 +131,6 @@ const DataTable = () => {
     datagrid()
     Authorization()
   }, [])
-  // const userFirstName = response.data.data.firstName
 
   return (
     <PageLayout>
@@ -160,7 +146,8 @@ const DataTable = () => {
             onPageSizeChange={newPage => setPageSize(newPage)}
             pagination
             columns={columns}
-            // checkboxSelection
+            // checkboxSelection\
+            
             throttleRowsMs={2000}
             components={{
               Toolbar: GridToolbar,

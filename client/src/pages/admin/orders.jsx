@@ -3,30 +3,45 @@ import { DataGrid } from "@mui/x-data-grid"
 import AdminLayout from "../../layouts/AdminLayout"
 import $http from "../../plugins/axios"
 import OrderForm from "../../components/forms/OrderForm"
-import { styled } from '@mui/material/styles';
+import { styled } from "@mui/material/styles"
 import { FormControlLabel, IconButton } from "@material-ui/core"
-import EditIcon from "@material-ui/icons/Edit"
-import DeleteIcon from '@mui/icons-material/Delete';
-import { blue } from "@material-ui/core/colors"
-const ApproveOrder = ({ index }) => {
-  const handleApproveClick = () => {
-    // some action
+import DoneIcon from "@mui/icons-material/Done"
+import DangerousIcon from "@mui/icons-material/Dangerous"
+import { red, green } from "@material-ui/core/colors"
+import StyledDataGrid from "../../assets/styles/datagrid"
+
+const DefaultIcon = ({ index }) => {
+  const [adminApproval, setAdminApproval] = useState("")
+ 
+  const handleApproveClick = async e => {
+    try {
+      e.preventDefault()
+      await $http.Api({
+        method: "PUT",
+        url: "/order/",
+        data: {
+          adminApproval: true,
+        },
+      })
+    } catch (error) {
+      console.error(error)
+    }
   }
+
   return (
-      <FormControlLabel
+    <FormControlLabel
       control={
         <IconButton
           color="secondary"
-          aria-label="add an alarm"
+          aria-label="approve an order"
           onClick={handleApproveClick}
         >
-          <EditIcon style={{ color: blue[500] }} />
+          <DangerousIcon style={{ color: red[500] }} />
         </IconButton>
       }
     />
   )
 }
-
 
 const AdminOrders = () => {
   const columns = [
@@ -41,24 +56,55 @@ const AdminOrders = () => {
       headerName: "Admin Approval",
       width: 140,
       sortable: true,
+      isEditable: true, 
       renderCell: params => {
         return (
           <div
             className="d-flex  align-items-center"
             style={{ cursor: "pointer" }}
           >
-            <ApproveOrder index={params.row.id} />
+            <DefaultIcon index={params.row.id} />
           </div>
         )
       },
     },
-    { field: "dispatch_status", headerName: "Dispatch Status", width: 140 },
-    { field: "delivery_status", headerName: "Delivery Status", width: 140 },
+    {
+      field: "dispatch_status",
+      headerName: "Dispatch Status",
+      width: 140,
+      sortable: true,
+      renderCell: params => {
+        return (
+          <div
+            className="d-flex  align-items-center"
+            style={{ cursor: "pointer" }}
+          >
+            <DefaultIcon index={params.row.id} />
+          </div>
+        )
+      },
+    },
+    {
+      field: "delivery_status",
+      headerName: "Delivery Status",
+      width: 140,
+      sortable: true,
+      renderCell: params => {
+        return (
+          <div
+            className="d-flex  align-items-center"
+            style={{ cursor: "pointer" }}
+          >
+            <DefaultIcon index={params.row.id} />
+          </div>
+        )
+      },
+    },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
 
-  const fetchUsers = async e => {
+  const fetchOrders = async e => {
     try {
       const response = await $http.Api({
         method: "GET",
@@ -74,7 +120,7 @@ const AdminOrders = () => {
   }
 
   useEffect(() => {
-    fetchUsers()
+    fetchOrders()
   }, [])
 
   return (
@@ -86,7 +132,7 @@ const AdminOrders = () => {
               Approve orders
             </p>
             <div style={{ height: 600, width: "200" }}>
-              <DataGrid
+              <StyledDataGrid
                 rows={tableData}
                 pageSize={pageSize}
                 onPageSizeChange={newPage => setPageSize(newPage)}

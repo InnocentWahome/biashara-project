@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { DataGrid } from "@mui/x-data-grid"
 import AdminLayout from "../../layouts/AdminLayout"
 import $http from "../../plugins/axios"
+import StyledDataGrid from "../../assets/styles/datagrid"
 
 const AdminProductPerformance = () => {
   const columns = [
@@ -38,17 +39,16 @@ const AdminProductPerformance = () => {
   return (
     <AdminLayout>
       <div className="container pt-6">
-        <p className="is-size-4 has-text-centered pb-3 pt-6">
-          Delivered Products' Performance{" "}
+        <p className="is-size-4 has-text-centered pb-3 pt-6 title">
+          Delivered Products' Performance
         </p>
         <div style={{ height: 600, width: "200" }}>
-          <DataGrid
+          <StyledDataGrid
             rows={tableData}
             pageSize={pageSize}
             onPageSizeChange={newPage => setPageSize(newPage)}
             pagination
             columns={columns}
-            // checkboxSelection
           />
         </div>
       </div>

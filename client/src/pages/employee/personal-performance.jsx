@@ -3,15 +3,15 @@ import { DataGrid } from "@mui/x-data-grid"
 import EmployeeLayout from "../../layouts/EmployeeLayout"
 import $http from "../../plugins/axios"
 import EmployeeWorkLogForm from "../../components/forms/EmployeeWorkLogForm"
+import StyledDataGrid from "../../assets/styles/datagrid"
 
 const EmployeePerformance = () => {
   const columns = [
-    { field: "id", headerName: "ID" },
     { field: "date", headerName: "Date", width: 200 },
-    { field: "day", headerName: "Day", width: 200 },
-    { field: "start", headerName: "Start Time", width: 200 },
-    { field: "stop", headerName: "Stop Time", width: 200 },
-    { field: "hours", headerName: "Hours Worked", width: 200 },
+    { field: "day", headerName: "Day", width: 150 },
+    { field: "start", headerName: "Start Time", width: 150 },
+    { field: "stop", headerName: "Stop Time", width: 150 },
+    { field: "hours", headerName: "Hours Worked", width: 150 },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
@@ -43,14 +43,13 @@ const EmployeePerformance = () => {
             <p className="is-size-4 has-text-centered pb-3 pt-6 title">
               My Personal Work Log
             </p>
-            <div style={{ height: 600, width: "200" }}>
-              <DataGrid
+            <div style={{ height: 600, width: "100%" }}>
+              <StyledDataGrid
                 rows={tableData}
                 pageSize={pageSize}
                 onPageSizeChange={newPage => setPageSize(newPage)}
                 pagination
                 columns={columns}
-                // checkboxSelection
               />
             </div>
           </div>

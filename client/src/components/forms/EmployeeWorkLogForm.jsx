@@ -44,7 +44,7 @@ const EmployeeWorkLogForm = () => {
                 <input
                   className="input"
                   type="text"
-                  placeholder="REMEMBER TO ADD DATE PICKER"
+                  placeholder="eg: YYYY-MM-DD"
                   required
                   onChange={e => setDate(e.target.value)}
                 />
@@ -57,61 +57,6 @@ const EmployeeWorkLogForm = () => {
             <div className="field">
               <div className="control is-expanded">
                 <p className="label">Day</p>
-                {/* <input
-                  className="input"
-                  type="text"
-                  placeholder=""
-                  required
-                  onChange={e => setDay(e.target.value)}
-                /> */}
-                {/* <div class="control">
-                  <label class="radio">
-                    <input
-                      type="radio"
-                      name="day"
-                      value="Monday"
-                      className="pl-2 pr-2"
-                      onChange={e => setDay(e.target.value)}
-                    />
-                    Monday
-                  </label>
-                  <label class="radio">
-                    <input
-                      type="radio"
-                      name="day"
-                      value="Tuesday"
-                      onChange={e => setDay(e.target.value)}
-                    />
-                    Tuesday
-                  </label>
-                  <label class="radio">
-                    <input
-                      type="radio"
-                      name="day"
-                      value="Wednesday"
-                      onChange={e => setDay(e.target.value)}
-                    />
-                    Wednesday
-                  </label>
-                  <label class="radio">
-                    <input
-                      type="radio"
-                      name="day"
-                      value="Thursday"
-                      onChange={e => setDay(e.target.value)}
-                    />
-                    Thursday
-                  </label>
-                  <label class="radio">
-                    <input
-                      type="radio"
-                      name="day"
-                      value="Friday"
-                      onChange={e => setDay(e.target.value)}
-                    />
-                    Friday
-                  </label>
-                </div> */}
                 <div className="select" onChange={e => setDay(e.target.value)}>
                   <select onChange={e => setDay(e.target.value)}>
                     <option
@@ -150,66 +95,55 @@ const EmployeeWorkLogForm = () => {
             </div>
           </div>
         </div>
-        <div className="field is-horizontal">
-          <div className="field-body">
-            <div className="field">
-              <div className="control is-expanded">
-                <p className="label">Start Time</p>
-                <input
-                  className="input"
-                  type="text"
-                  placeholder=""
-                  required
-                  onChange={e => setStartTime(e.target.value)}
-                />
+        <div className="columns">
+          <div className="column">
+            <div className="field is-horizontal">
+              <div className="field-body">
+                <div className="field">
+                  <div className="control is-expanded">
+                    <p className="label">Start Time</p>
+                    <input
+                      className="input"
+                      type="number"
+                      placeholder="eg: 0800"
+                      required
+                      onChange={e => setStartTime(e.target.value)}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="column">
+            <div className="field is-horizontal">
+              <div className="field-body">
+                <div className="field">
+                  <div className="control is-expanded">
+                    <p className="label">Stop Time</p>
+                    <input
+                      className="input"
+                      type="number"
+                      placeholder="eg: 1700"
+                      required
+                      onChange={e => setStopTime(e.target.value)}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="field is-horizontal">
-          <div className="field-body">
-            <div className="field">
-              <div className="control is-expanded">
-                <p className="label">Stop Time</p>
-                <input
-                  className="input"
-                  type="text"
-                  placeholder=""
-                  required
-                  onChange={e => setStopTime(e.target.value)}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* <div className="field is-horizontal">
-          <div className="field-body">
-            <div className="field">
-              <div className="control is-expanded">
-                <p className="label">Hours Worked</p>
-                <input
-                  className="input"
-                  type="text"
-                  placeholder=""
-                  required
-                  onChange={e => setHoursWorked(e.target.value)}
-                />
-              </div>
-            </div>
-          </div>
-        </div> */}
         <div className="field is-horizontal">
           <div className="field-body">
             <div className="field">
               <div className="control is-expanded">
                 <p className="label">Work Description</p>
-                <input
-                  className="input"
-                  type="text"
+                <textarea
+                  className="textarea"
                   placeholder=""
                   required
                   onChange={e => setWorkDescription(e.target.value)}
-                />
+                ></textarea>
               </div>
             </div>
           </div>

@@ -119,7 +119,7 @@ const CreateEmployeeForm = () => {
                       value="Employee"
                       onChange={e => setRole(e.target.value)}
                     />
-                    Employee
+                       Employee
                   </label>
                   <label class="radio">
                     <input
@@ -128,7 +128,7 @@ const CreateEmployeeForm = () => {
                       value="User"
                       onChange={e => setRole(e.target.value)}
                     />
-                    User
+                       User
                   </label>
                 </div>
               </div>

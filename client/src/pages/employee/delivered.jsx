@@ -2,17 +2,17 @@ import React, { useState, useEffect } from "react"
 import { DataGrid } from "@mui/x-data-grid"
 import EmployeeLayout from "../../layouts/EmployeeLayout"
 import $http from "../../plugins/axios"
-// import DeliveredProductsReport from "../../components/forms/MaintainenceScheduleForm"
+import StyledDataGrid from "../../assets/styles/datagrid"
+
 
 const EmployeePerformance = () => {
   const columns = [
-    // { field: "id", headerName: "ID" },
-    { field: "product_id", headerName: "Product ID", width: 200 },
     { field: "product_name", headerName: "Product Name", width: 200 },
-    { field: "user_id", headerName: "User ID", width: 200 },
-    { field: "rate", headerName: "Rate", width: 200 },
+    { field: "product_id", headerName: "Product ID", width: 150 },
     { field: "description", headerName: "Review Description", width: 200 },
-    { field: "created_at", headerName: "Review Date", width: 200 },
+    { field: "user_id", headerName: "User ID", width: 150 },
+    { field: "rate", headerName: "Rate", width: 150 },
+    { field: "updated_at", headerName: "Review Date", width: 220 },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
@@ -38,28 +38,20 @@ const EmployeePerformance = () => {
 
   return (
     <EmployeeLayout>
-      <div className="pl-5 pr-5 pt-6">
-        {/* <div className="columns">
-          <div className="column is-two-thirds"> */}
+      <div className="pl-5 pr-5 pt-4">
             <p className="is-size-4 has-text-centered pb-3 mt-6 pt-6 title">
               Performance of Delivered Products (Users' Feedback)
             </p>
-            <div style={{ height: 600, width: "200" }}>
-              <DataGrid
+            <div style={{ height: 600, width: "50" }}>
+              <StyledDataGrid
                 rows={tableData}
                 pageSize={pageSize}
                 onPageSizeChange={newPage => setPageSize(newPage)}
                 pagination
                 columns={columns}
-                // checkboxSelection
               />
             </div>
           </div>
-          {/* <div className="column pt-6 mt-6">
-            <DeliveredProductsReport />
-          </div>  */}
-        {/* </div>
-      </div> */}
     </EmployeeLayout>
   )
 }

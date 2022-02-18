@@ -4,7 +4,7 @@ import EmployeeLayout from "../../layouts/EmployeeLayout"
 import $http from "../../plugins/axios"
 // import ProductForm from "../../components/forms/ProductForm"
 
-const AdminInventory = () => {
+const EmployeeOrders = () => {
   const columns = [
     // { field: "id", headerName: "ID" },
     { field: "product_id", headerName: "Product ID", width: 200 },
@@ -44,7 +44,7 @@ const AdminInventory = () => {
         {/* <div className="columns">
           <div className="column is-two-thirds"> */}
             <p className="is-size-4 has-text-centered pb-2 pt-5 title">
-              All Orders Are Listed Here
+              Dispatch Orders For Delivery
             </p>
             <div style={{ height: 600, width: "200" }}>
               <DataGrid
@@ -66,4 +66,4 @@ const AdminInventory = () => {
   )
 }
 
-export default AdminInventory
+export default EmployeeOrders

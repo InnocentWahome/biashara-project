@@ -2,16 +2,17 @@ import React, { useState, useEffect } from "react"
 import { DataGrid } from "@mui/x-data-grid"
 import EmployeeLayout from "../../layouts/EmployeeLayout"
 import $http from "../../plugins/axios"
+import StyledDataGrid from "../../assets/styles/datagrid"
 import ProductForm from "../../components/forms/ProductForm"
 
 const EmployeeStock = () => {
   const columns = [
     { field: "id", headerName: "ID" },
     { field: "name", headerName: "Product Name", width: 200 },
-    { field: "description", headerName: "Product Description", width: 200 },
-    { field: "price", headerName: "Product Price(KSH)", width: 200 },
-    { field: "quantity", headerName: "Product Quantity", width: 200 },
-    { field: "image", headerName: "Product Url", width: 200 },
+    { field: "description", headerName: "Product Description", width: 500 },
+    { field: "price", headerName: "Product Price(KSH)", width: 100 },
+    { field: "quantity", headerName: "Product Quantity", width: 100 },
+    { field: "image", headerName: "Product Url", width: 100 },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
@@ -39,12 +40,12 @@ const EmployeeStock = () => {
     <EmployeeLayout>
       <div className="pl-6 pr-6 pt-6">
         <div className="columns">
-          <div className="column is-two-thirds">
-            <p className="is-size-4 has-text-centered pt-6 pb-3">
+          <div className="column is-three-quarters">
+            <p className="is-size-4 has-text-centered pt-6 pb-3 title">
               All Products Are Listed Here
             </p>
             <div style={{ height: 600, width: "200" }}>
-              <DataGrid
+              <StyledDataGrid
                 rows={tableData}
                 pageSize={pageSize}
                 onPageSizeChange={newPage => setPageSize(newPage)}

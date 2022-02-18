@@ -3,6 +3,8 @@ import { DataGrid } from "@mui/x-data-grid"
 import AdminLayout from "../../layouts/AdminLayout"
 import $http from "../../plugins/axios"
 import CreateEmployeeForm from "../../components/forms/CreateEmployeeForm"
+import StyledDataGrid from "../../assets/styles/datagrid"
+
 
 const AdminSystemUsers = () => {
   const columns = [
@@ -39,10 +41,10 @@ const AdminSystemUsers = () => {
     <AdminLayout>
      <div className="pl-6 pr-6 pt-6">
         <div className="columns">
-          <div className="column is-two-thirds">
+          <div className="column is-three-quarters">
             <p className="is-size-4 has-text-centered pb-3 pt-6">All System Users</p>
             <div style={{ height: 600, width: "200" }}>
-              <DataGrid
+              <StyledDataGrid
                 rows={tableData}
                 pageSize={pageSize}
                 onPageSizeChange={newPage => setPageSize(newPage)}
@@ -53,7 +55,7 @@ const AdminSystemUsers = () => {
             </div>
           </div>
           <div className="column pt-6 mt-6">
-            <p className="is-size-6 has-text-centered pb-2">Create Employee Account</p>
+            <p className="is-size-6 has-text-centered pb-2">Create a New User</p>
             <CreateEmployeeForm />
           </div>
         </div>
