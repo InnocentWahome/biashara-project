@@ -20,7 +20,7 @@ const ResetPassword = () => {
           </div>
           <div className="column is-half">
             <div className="container">
-              <img alt="reset password image" src={resetPasswordImage} />
+              <img alt="reset password " src={resetPasswordImage} />
             </div>
           </div>
         </div>

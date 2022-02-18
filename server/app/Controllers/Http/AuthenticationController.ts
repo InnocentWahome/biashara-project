@@ -23,7 +23,7 @@ export default class AuthenticationController {
 
       response.status(200).json({
         success: true,
-        message: 'Successfully retrieved the user profile',
+        message: 'Successfully retrieved the logged in user profile',
         data: auth.use('api').user,
       })
     } catch (error) {

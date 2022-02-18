@@ -1,10 +1,29 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Order from '../../Models/Order'
+import User from 'App/Models/User'
 
 export default class OrderController {
   public async index({ response }: HttpContextContract) {
     try {
       const orders = await Order.query().select('*').from('orders')
+      return response.json({
+        success: true,
+        message: 'Orders retrieved successfully',
+        data: orders,
+      })
+    } catch (error) {
+      return response.json({
+        success: false,
+        message: error.message,
+        data: error,
+      })
+    }
+  }
+
+  public async userOrders({  params, response }: HttpContextContract) {
+    try {
+      const user = await User.findOrFail(params.id)
+      const orders = await Order.query().select('*').from('orders').where("user_id", 11)
       return response.json({
         success: true,
         message: 'Orders retrieved successfully',

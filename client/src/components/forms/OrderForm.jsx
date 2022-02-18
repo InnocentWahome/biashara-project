@@ -5,14 +5,11 @@ const ProductForm = () => {
   const [productId, setProductId] = useState("")
   const [productName, setProductName] = useState("")
   const [productQuantity, setProductQuantity] = useState("")
-  const [productPrice, setProductPrice] = useState("")
-  const [userId, setUserId] = useState("")
-  const [cost, setCost] = useState("")
-  const [adminApproval, setAdminApproval] = useState("")
-  const [dispatchStatus, setDispatchStatus] = useState("")
-  const [deliveryStatus, setDeliveryStatus] = useState("")
 
   const price = 100
+  const userId = localStorage.getItem("userId")
+
+
 
   const createOrder = async (e) => {
     try {
@@ -23,7 +20,7 @@ const ProductForm = () => {
         data: {
           product_name: productName,
           product_id: productId,
-          user_id: 19,
+          user_id: userId,
           quantity: productQuantity,
           cost: (productQuantity * price),
           adminApproval: false,

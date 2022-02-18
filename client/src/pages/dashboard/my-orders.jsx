@@ -21,7 +21,7 @@ const DashboardUserOrders = () => {
     try {
       const response = await $http.Api({
         method: "GET",
-        url: "/order",
+        url: "/order/user",
       })
       if (response.data?.data) {
         console.log(tableData)

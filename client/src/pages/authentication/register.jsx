@@ -19,7 +19,7 @@ const Register = () => {
           </div>
           <div className="column is-half">
             <div className="container">
-              <img alt="register image" src={registerImage} />
+              <img alt="register " src={registerImage} />
             </div>
           </div>
         </div>

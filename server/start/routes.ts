@@ -49,6 +49,7 @@ Route.group(() => {
 
   Route.group(() => {
     Route.get('/', 'OrderController.index')
+    Route.get('/user', 'OrderController.userOrders')
     Route.post('/', 'OrderController.store')
     Route.get('/:id', 'OrderController.show')
     Route.put('/:id', 'OrderController.update')

@@ -15,7 +15,7 @@ const ContactPage = () => {
             <ContactForm />
           </div>
           <div className="column is-one-half">
-            <img alt="contact form support image" src={contactImage} />
+            <img alt="contact form support " src={contactImage} />
           </div>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { useForkRef } from "@mui/material"
 import axios from "axios"
 import $http from "./axios"
 
@@ -11,17 +12,10 @@ const Authorization = async e => {
         Authorization: `Bearer ${token}`,
       },
     })
-    const userRole = response.data.data.role
-    console.log(userRole)
-    if (userRole === "Admin") {
-      console.log("You are an Admin. Only admins can access these pages")
-    } else if (userRole === "Employee") {
-      console.log(
-        "You are an Employee. Both Employees and Admins have access to these pages"
-      )
-    } else {
-      console.log("Anyone can access the user pages")
-    }
+    const userId = response.data.data.id
+    const setUserId = () => localStorage.setItem("userId")
+    const getUserId = () => localStorage.getItem("userId")
+
   } catch (error) {
     console.error(error)
   }

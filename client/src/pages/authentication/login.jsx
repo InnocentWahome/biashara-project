@@ -10,7 +10,7 @@ const Login = () => {
         <div className="columns">
           <div className="column is-half">
             <div className="container">
-              <img alt="login image" src={loginImage} />
+              <img alt="login " src={loginImage} />
             </div>
           </div>
           <div className="column is-half">

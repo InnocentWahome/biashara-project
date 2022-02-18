@@ -10,7 +10,7 @@ const ForgotPassword = () => {
         <div className="columns">
           <div className="column is-half">
             <div className="container">
-              <img alt="forgot password image" src={forgotPasswordImage} />
+              <img alt="forgot password " src={forgotPasswordImage} />
             </div>
           </div>
           <div className="column is-half">

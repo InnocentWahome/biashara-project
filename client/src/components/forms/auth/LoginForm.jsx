@@ -16,13 +16,51 @@ const LoginForm = () => {
         },
       })
       const accessToken = console.log(response.data?.data?.token)
-      //  console.log(accessToken)
       localStorage.setItem("access_token", response.data?.data?.token)
+      const Authorization = async e => {
+        // e.preventDefault()
+        try {
+          const token = localStorage.getItem("access_token")
+          const response = await $http.Authentication({
+            method: "GET",
+            url: `/user`,
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          const userId = response.data?.data?.id
+          console.log("below is the user id")
+          console.log(userId)
+          localStorage.setItem("userId", response.data?.data?.id)
+        } catch (error) {
+          console.error(error)
+        }
+      }
+      Authorization()
     } catch (error) {
       console.error(error)
     }
   }
-
+  // const Authorization = async e => {
+  //   // e.preventDefault()
+  //   try {
+  //     const token = localStorage.getItem("access_token")
+  //     const response = await $http.Authentication({
+  //       method: "GET",
+  //       url: `/user`,
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     })
+  //     const userId = response.data?.data?.id
+  //     console.log("below is the user id")
+  //     console.log(userId)
+  //     localStorage.setItem("userId", response.data?.data?.id)
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }
+  // Authorization()
   return (
     <form action="" method="POST" className="container" onSubmit={login}>
       <div className="container">
