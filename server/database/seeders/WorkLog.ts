@@ -3,6 +3,8 @@ import { WorkLogFactory } from 'Database/factories/WorkLogFactory'
 
 export default class WorkLogSeeder extends BaseSeeder {
   public async run() {
-    await WorkLogFactory.createMany(10)
+    await WorkLogFactory
+    .with('user', 10)
+    .createMany(10)
   }
 }

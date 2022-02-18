@@ -8,7 +8,7 @@ import DangerousIcon from "@mui/icons-material/Dangerous"
 import { red, green } from "@material-ui/core/colors"
 import StyledDataGrid from "../../assets/styles/datagrid"
 
-const DefaultIcon = ({ index }) => {
+const DisplayIcon = ({ index }) => {
   // const [adminApproval, setAdminApproval] = useState("")
 
   const handleApproveClick = async e => {
@@ -45,7 +45,7 @@ const AdminOrders = () => {
   const columns = [
     // { field: "id", headerName: "ID" },
     { field: "product_id", headerName: "Product ID", width: 100 },
-    { field: "product_name", headerName: "Product Name", width: 200 },
+    { field: "product_name", headerName: "Product Name", width: 200, editable: true },
     { field: "user_id", headerName: "User ID", width: 100 },
     { field: "cost", headerName: "Total Cost", width: 100 },
     { field: "quantity", headerName: "Product Quantity", width: 100 },
@@ -54,14 +54,14 @@ const AdminOrders = () => {
       headerName: "Admin Approval",
       width: 140,
       sortable: true,
-      isEditable: true,
+      editable: true,
       renderCell: params => {
         return (
           <div
             className="d-flex  align-items-center"
             style={{ cursor: "pointer" }}
           >
-            <DefaultIcon index={params.row.id} />
+            <DisplayIcon index={params.row.id} />
           </div>
         )
       },
@@ -77,7 +77,7 @@ const AdminOrders = () => {
             className="d-flex  align-items-center"
             style={{ cursor: "pointer" }}
           >
-            <DefaultIcon index={params.row.id} />
+            <DisplayIcon index={params.row.id} />
           </div>
         )
       },
@@ -93,7 +93,7 @@ const AdminOrders = () => {
             className="d-flex  align-items-center"
             style={{ cursor: "pointer" }}
           >
-            <DefaultIcon index={params.row.id} />
+            <DisplayIcon index={params.row.id} />
           </div>
         )
       },

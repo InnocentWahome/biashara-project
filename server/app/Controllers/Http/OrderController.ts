@@ -23,10 +23,11 @@ export default class OrderController {
   public async userOrders({  params, response }: HttpContextContract) {
     try {
       const user = await User.findOrFail(params.id)
-      const orders = await Order.query().select('*').from('orders').where("user_id", 11)
+      const userId = 11
+      const orders = await Order.query().select('*').from('orders').where("user_id", userId)
       return response.json({
         success: true,
-        message: 'Orders retrieved successfully',
+        message: 'Single Users Orders retrieved successfully',
         data: orders,
       })
     } catch (error) {

@@ -1,7 +1,6 @@
 import Factory from '@ioc:Adonis/Lucid/Factory'
 import Order from 'App/Models/Order'
-// import { UserFactory } from './UserFactory'
-// import  Product from 'App/Models/Product'
+import { UserFactory } from './UserFactory'
 
 export const OrderFactory = Factory.define(Order, ({ faker }) => {
   return {
@@ -10,11 +9,10 @@ export const OrderFactory = Factory.define(Order, ({ faker }) => {
     userId: faker.datatype.number(),
     cost: faker.datatype.number(),
     quantity: faker.datatype.number(),
-    adminApproval: faker.datatype.boolean(), Boolean,
+    adminApproval: faker.datatype.boolean(),
     dispatchStatus: faker.datatype.boolean(), 
     deliveryStatus: faker.datatype.boolean(), 
   }
 })
-// .relation('user', () => UserFactory)
-// .relation('product', () => Product)
+.relation('user', () => UserFactory)
 .build()

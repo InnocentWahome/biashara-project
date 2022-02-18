@@ -4,6 +4,7 @@ import $http from "../../../plugins/axios"
 const LoginForm = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+
   const login = async e => {
     e.preventDefault()
     try {
@@ -18,7 +19,6 @@ const LoginForm = () => {
       const accessToken = console.log(response.data?.data?.token)
       localStorage.setItem("access_token", response.data?.data?.token)
       const Authorization = async e => {
-        // e.preventDefault()
         try {
           const token = localStorage.getItem("access_token")
           const response = await $http.Authentication({
@@ -28,10 +28,12 @@ const LoginForm = () => {
               Authorization: `Bearer ${token}`,
             },
           })
+          const userFirstName = response.data?.data?.firstName
           const userId = response.data?.data?.id
-          console.log("below is the user id")
+          // console.log("below is the user id")
           console.log(userId)
           localStorage.setItem("userId", response.data?.data?.id)
+          localStorage.setItem("userFirstName", response.data?.data?.firstName)
         } catch (error) {
           console.error(error)
         }
@@ -41,26 +43,6 @@ const LoginForm = () => {
       console.error(error)
     }
   }
-  // const Authorization = async e => {
-  //   // e.preventDefault()
-  //   try {
-  //     const token = localStorage.getItem("access_token")
-  //     const response = await $http.Authentication({
-  //       method: "GET",
-  //       url: `/user`,
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     })
-  //     const userId = response.data?.data?.id
-  //     console.log("below is the user id")
-  //     console.log(userId)
-  //     localStorage.setItem("userId", response.data?.data?.id)
-  //   } catch (error) {
-  //     console.error(error)
-  //   }
-  // }
-  // Authorization()
   return (
     <form action="" method="POST" className="container" onSubmit={login}>
       <div className="container">

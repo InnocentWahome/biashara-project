@@ -1,5 +1,7 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import WorkLog from '../../Models/WorkLog'
+import User from 'App/Models/User'
+
 
 export default class WorkLogController {
   public async index({ response }: HttpContextContract) {
@@ -18,7 +20,23 @@ export default class WorkLogController {
       })
     }
   }
-
+  public async userWorkLog({  params, response }: HttpContextContract) {
+    try {
+      const user = await User.find(params.id)
+      const workLogs = await WorkLog.query().select('*').from('work_logs').where("user_id", 86)
+      return response.json({
+        success: true,
+        message: 'Single User WorkLogs retrieved successfully',
+        data: workLogs,
+      })
+    } catch (error) {
+      return response.json({
+        success: false,
+        message: error.message,
+        data: error,
+      })
+    }
+  }
   public async show({ params, response }: HttpContextContract) {
     try {
       const worklog = await WorkLog.find(params.id)

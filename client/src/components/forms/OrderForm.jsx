@@ -9,11 +9,9 @@ const ProductForm = () => {
   const price = 100
   const userId = localStorage.getItem("userId")
 
-
-
-  const createOrder = async (e) => {
+  const createOrder = async e => {
     try {
-      e.preventDefault();
+      e.preventDefault()
       await $http.Api({
         method: "POST",
         url: "/order",
@@ -22,10 +20,10 @@ const ProductForm = () => {
           product_id: productId,
           user_id: userId,
           quantity: productQuantity,
-          cost: (productQuantity * price),
+          cost: productQuantity * price,
           adminApproval: false,
           dispatchStatus: false,
-          deliveryStatus: false
+          deliveryStatus: false,
         },
       })
     } catch (error) {
@@ -36,7 +34,7 @@ const ProductForm = () => {
   return (
     <form action="" method="POST" className="container" onSubmit={createOrder}>
       <div className="container">
-      <div className="field is-horizontal">
+        <div className="field is-horizontal">
           <div className="field-body">
             <div className="field">
               <div className="control is-expanded">

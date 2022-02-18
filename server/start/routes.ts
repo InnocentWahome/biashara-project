@@ -49,7 +49,7 @@ Route.group(() => {
 
   Route.group(() => {
     Route.get('/', 'OrderController.index')
-    Route.get('/user', 'OrderController.userOrders')
+    Route.get('/user/:id', 'OrderController.userOrders')
     Route.post('/', 'OrderController.store')
     Route.get('/:id', 'OrderController.show')
     Route.put('/:id', 'OrderController.update')
@@ -82,6 +82,7 @@ Route.group(() => {
 
   Route.group(() => {
     Route.get('/', 'WorkLogController.index')
+    Route.get('/user', 'WorkLogController.userWorkLog')
     Route.post('/', 'WorkLogController.store')
     Route.get('/:id', 'WorkLogController.show')
     Route.put('/:id', 'WorkLogController.update')

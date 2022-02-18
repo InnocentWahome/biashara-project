@@ -16,12 +16,14 @@ const DashboardUserOrders = () => {
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
+  const userId = localStorage.getItem("userId")
+
 
   const fetchMyOrders = async e => {
     try {
       const response = await $http.Api({
         method: "GET",
-        url: "/order/user",
+        url: "/order/user/${userId}",
       })
       if (response.data?.data) {
         console.log(tableData)
