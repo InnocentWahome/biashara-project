@@ -1,43 +1,41 @@
 import React, { useState, useEffect } from "react"
-// import { DataGrid } from "@mui/x-data-grid"
 import $http from "../../plugins/axios"
-// import { styled } from "@mui/material/styles"
 import { FormControlLabel, IconButton } from "@material-ui/core"
-// import DoneIcon from "@mui/icons-material/Done"
-import DangerousIcon from "@mui/icons-material/Dangerous"
-import { red, green } from "@material-ui/core/colors"
+import { blue, red } from "@material-ui/core/colors"
 import StyledDataGrid from "../../assets/styles/datagrid"
+import EditIcon from "@material-ui/icons/Edit"
+import DeleteIcon from "@mui/icons-material/Delete"
 
-const DisplayIcon = ({ index }) => {
-  // const [adminApproval, setAdminApproval] = useState("")
-
-  const handleApproveClick = async e => {
-    try {
-      e.preventDefault()
-      await $http.Api({
-        method: "PUT",
-        url: "/order/",
-        data: {
-          // adminApproval: true,
-        },
-      })
-    } catch (error) {
-      console.error(error)
-    }
-  }
+const EditRecord = ({ index }) => {
+  const price = 100
+  const handleEditClick = async e => {}
+  const handleDeleteClick = async e => {}
 
   return (
-    <FormControlLabel
-      control={
-        <IconButton
-          color="secondary"
-          aria-label="approve an order"
-          onClick={handleApproveClick}
-        >
-          <DangerousIcon style={{ color: red[500] }} />
-        </IconButton>
-      }
-    />
+    <div>
+      <FormControlLabel
+        control={
+          <IconButton
+            color="secondary"
+            aria-label="add an alarm"
+            onClick={handleEditClick}
+          >
+            <EditIcon style={{ color: blue[500] }} />
+          </IconButton>
+        }
+      />
+      <FormControlLabel
+        control={
+          <IconButton
+            color="secondary"
+            aria-label="add an alarm"
+            onClick={handleDeleteClick}
+          >
+            <DeleteIcon style={{ color: red[500] }} />
+          </IconButton>
+        }
+      />
+    </div>
   )
 }
 
@@ -45,7 +43,12 @@ const AdminOrders = () => {
   const columns = [
     // { field: "id", headerName: "ID" },
     { field: "product_id", headerName: "Product ID", width: 100 },
-    { field: "product_name", headerName: "Product Name", width: 200, editable: true },
+    {
+      field: "product_name",
+      headerName: "Product Name",
+      width: 200,
+      editable: true,
+    },
     { field: "user_id", headerName: "User ID", width: 100 },
     { field: "cost", headerName: "Total Cost", width: 100 },
     { field: "quantity", headerName: "Product Quantity", width: 100 },
@@ -55,45 +58,49 @@ const AdminOrders = () => {
       width: 140,
       sortable: true,
       editable: true,
-      renderCell: params => {
-        return (
-          <div
-            className="d-flex  align-items-center"
-            style={{ cursor: "pointer" }}
-          >
-            <DisplayIcon index={params.row.id} />
-          </div>
-        )
-      },
+      type: "boolean",
     },
     {
       field: "dispatch_status",
       headerName: "Dispatch Status",
       width: 140,
       sortable: true,
-      renderCell: params => {
-        return (
-          <div
-            className="d-flex  align-items-center"
-            style={{ cursor: "pointer" }}
-          >
-            <DisplayIcon index={params.row.id} />
-          </div>
-        )
-      },
+      type: "boolean",
+      editable: true,
     },
     {
       field: "delivery_status",
       headerName: "Delivery Status",
       width: 140,
       sortable: true,
+      type: "boolean",
+      editable: true,
+    },
+    {
+      field: "actions",
+      headerName: "Actions",
+      sortable: false,
+      width: 140,
+      disableClickEventBubbling: true,
       renderCell: params => {
         return (
-          <div
-            className="d-flex  align-items-center"
-            style={{ cursor: "pointer" }}
-          >
-            <DisplayIcon index={params.row.id} />
+          <div className="columns">
+            <div className="column">
+              <div
+                className="d-flex  align-items-center"
+                style={{ cursor: "pointer" }}
+              >
+                <EditRecord index={params.row.id} />
+              </div>
+            </div>
+            <div className="column">
+              <div
+                className="d-flex  align-items-center"
+                style={{ cursor: "pointer" }}
+              >
+                <EditRecord index={params.row.id} />
+              </div>
+            </div>
           </div>
         )
       },
@@ -130,6 +137,14 @@ const AdminOrders = () => {
           onPageSizeChange={newPage => setPageSize(newPage)}
           pagination
           columns={columns}
+          sx={{
+            boxShadow: 2,
+            border: 2,
+            borderColor: '#9e9e9e',
+            '& .MuiDataGrid-cell:hover': {
+              color: 'primary.main',
+            },
+          }}
         />
       </div>
     </div>

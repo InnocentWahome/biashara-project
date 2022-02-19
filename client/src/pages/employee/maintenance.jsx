@@ -8,8 +8,8 @@ const EmployeePerformance = () => {
   const columns = [
     // { field: "id", headerName: "ID" },
     { field: "category", headerName: "Service Category", width: 200 },
-    { field: "description", headerName: "Description", width: 200 },
-    { field: "date", headerName: "Service Date", width: 200 },
+    { field: "description", headerName: "Description", width: 300 },
+    { field: "date", headerName: "Service Date", width: 200, type: "dateTime" },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
@@ -49,6 +49,14 @@ const EmployeePerformance = () => {
                 pagination
                 columns={columns}
                 // checkboxSelection
+                sx={{
+                  boxShadow: 2,
+                  border: 2,
+                  borderColor: '#9e9e9e',
+                  '& .MuiDataGrid-cell:hover': {
+                    color: 'primary.main',
+                  },
+                }}
               />
             </div>
           </div>

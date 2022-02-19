@@ -42,8 +42,8 @@ const MaintenanceScheduleForm = () => {
                   required
                   onChange={e => setCategory(e.target.value)}
                 /> */}
-                <div class="control">
-                  <label class="radio">
+                <div className="control">
+                  <label className="radio">
                     <input
                       type="radio"
                       name="category"
@@ -53,7 +53,7 @@ const MaintenanceScheduleForm = () => {
                     />
                     Software Update
                   </label>
-                  <label class="radio">
+                  <label className="radio">
                     <input
                       type="radio"
                       name="category"
@@ -62,7 +62,7 @@ const MaintenanceScheduleForm = () => {
                     />
                     Maintenance
                   </label>
-                  <label class="radio">
+                  <label className="radio">
                     <input
                       type="radio"
                       name="category"

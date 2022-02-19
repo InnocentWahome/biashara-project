@@ -111,8 +111,8 @@ const CreateEmployeeForm = () => {
           <div className="field-body">
             <div className="field">
               <div className="control is-expanded">
-                <div class="control">
-                  <label class="radio">
+                <div className="control">
+                  <label className="radio">
                     <input
                       type="radio"
                       name="role"
@@ -121,7 +121,7 @@ const CreateEmployeeForm = () => {
                     />
                        Employee
                   </label>
-                  <label class="radio">
+                  <label className="radio">
                     <input
                       type="radio"
                       name="role"

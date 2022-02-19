@@ -1,50 +1,18 @@
 import React, { useState, useEffect } from "react"
 import { GridToolbar } from "@mui/x-data-grid"
 import PageLayout from "../layouts/PageLayout"
-import {$http } from "../plugins/axios"
-import Authorization from "../plugins/authorization"
+import $http from "../plugins/axios"
 import { FormControlLabel, IconButton } from "@material-ui/core"
 import EditIcon from "@material-ui/icons/Edit"
 import DeleteIcon from "@mui/icons-material/Delete"
 import { blue, red } from "@material-ui/core/colors"
 import StyledDataGrid from "../assets/styles/datagrid"
 const EditRecord = ({ index }) => {
+  
   const price = 100
   const handleEditClick = async e => {
-    try {
-      e.preventDefault()
-      await $http.Api({
-        method: "PUT",
-        url: "/order/",
-        data: {
-          url: "/order/{id}",
-          data: {
-            // product_name: productName,
-            // product_id: productId,
-            // user_id: 19,
-            // quantity: quantity,
-            // cost: quantity * price,
-            // adminApproval: false,
-            // dispatchStatus: false,
-            // deliveryStatus: false,
-          },
-        },
-      })
-    } catch (error) {
-      console.error(error)
-    }
   }
   const handleDeleteClick = async e => {
-    try {
-      e.preventDefault()
-      await $http.Api({
-        method: "DELETE",
-        url: "/order/{id}",
-        data: {},
-      })
-    } catch (error) {
-      console.error(error)
-    }
   }
 
   return (
@@ -79,7 +47,7 @@ const DataTable = () => {
   const columns = [
     { field: "id", headerName: "ID" },
     { field: "name", headerName: "Name", width: 300 },
-    { field: "description", headerName: "Description", width: 200, editable: true },
+    { field: "description", headerName: "Description", width: 200 },
     {
       field: "actions",
       headerName: "Actions",
@@ -129,7 +97,6 @@ const DataTable = () => {
 
   useEffect(() => {
     datagrid()
-    Authorization()
   }, [])
 
   return (
@@ -146,11 +113,18 @@ const DataTable = () => {
             onPageSizeChange={newPage => setPageSize(newPage)}
             pagination
             columns={columns}
-            // checkboxSelection\
-            
+            // checkboxSelection
             throttleRowsMs={2000}
             components={{
               Toolbar: GridToolbar,
+            }}
+            sx={{
+              boxShadow: 2,
+              border: 2,
+              borderColor: '#9e9e9e',
+              '& .MuiDataGrid-cell:hover': {
+                color: 'primary.main',
+              },
             }}
           />
         </div>

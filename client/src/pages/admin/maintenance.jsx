@@ -45,6 +45,14 @@ const AdminMaintenance = () => {
             pagination
             columns={columns}
             // checkboxSelection
+            sx={{
+              boxShadow: 2,
+              border: 2,
+              borderColor: '#9e9e9e',
+              '& .MuiDataGrid-cell:hover': {
+                color: 'primary.main',
+              },
+            }}
           />
         </div>
       </div>

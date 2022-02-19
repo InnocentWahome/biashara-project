@@ -7,7 +7,7 @@ import StyledDataGrid from "../../assets/styles/datagrid"
 
 const EmployeePerformance = () => {
   const columns = [
-    { field: "date", headerName: "Date", width: 200 },
+    { field: "date", headerName: "Date", width: 200, type: 'dateTime' },
     { field: "day", headerName: "Day", width: 150 },
     { field: "start", headerName: "Start Time", width: 150 },
     { field: "stop", headerName: "Stop Time", width: 150 },
@@ -50,6 +50,14 @@ const EmployeePerformance = () => {
                 onPageSizeChange={newPage => setPageSize(newPage)}
                 pagination
                 columns={columns}
+                sx={{
+                  boxShadow: 2,
+                  border: 2,
+                  borderColor: '#9e9e9e',
+                  '& .MuiDataGrid-cell:hover': {
+                    color: 'primary.main',
+                  },
+                }}
               />
             </div>
           </div>
