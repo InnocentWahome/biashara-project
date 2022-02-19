@@ -3,16 +3,44 @@ import React, { useState, useEffect } from "react"
 import AdminLayout from "../../layouts/AdminLayout"
 import $http from "../../plugins/axios"
 import StyledDataGrid from "../../assets/styles/datagrid"
+import Button from "@mui/material/Button"
 
 
 const AdminEmployeePerformance = () => {
   const columns = [
     { field: "date", headerName: "Date", width: 200 },
     { field: "day", headerName: "Day", width: 200 },
-    { field: "start", headerName: "Start Time", width: 200 },
-    { field: "stop", headerName: "Stop Time", width: 200 },
-    { field: "hours", headerName: "Hours Worked", width: 200 },
-    { field: "user_id", headerName: "Employee ID", width: 200 },
+    { field: "start", headerName: "Start Time", width: 130 },
+    { field: "stop", headerName: "Stop Time", width: 130 },
+    { field: "hours", headerName: "Hours Worked", width: 130 },
+    { field: "user_id", headerName: "Employee ID", width: 130 },
+    {
+      field: "approval",
+      headerName: "Approval Status",
+      width: 200,
+      sortable: true,
+      editable: true,
+      type: "boolean",
+    },
+    {
+      field: "approval_button",
+      headerName: "Approve Worklog",
+      sortable: false,
+      width: 140,
+      disableClickEventBubbling: true,
+      renderCell: params => {
+        return (
+          <div
+            className="d-flex  align-items-center"
+            style={{ cursor: "pointer" }}
+          >
+            <Button variant="outlined" color="error">
+              APPROVE
+            </Button>
+          </div>
+        )
+      },
+    },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)

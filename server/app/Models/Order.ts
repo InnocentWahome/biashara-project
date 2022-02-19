@@ -27,6 +27,9 @@ export default class Order extends BaseModel {
   public adminApproval: boolean
 
   @column()
+  public paymentStatus: boolean
+
+  @column()
   public dispatchStatus: boolean
 
   @column()

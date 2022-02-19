@@ -11,5 +11,7 @@ export const ServiceFactory = Factory.define(Service, ({ faker }) => {
     description: faker.commerce.productDescription(),
     userId: faker.datatype.number(),
     date: faker.date.future(),
+    completed: faker.datatype.boolean(), 
+
   }
 }).build()

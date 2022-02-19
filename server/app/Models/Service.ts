@@ -17,6 +17,9 @@ export default class ServiceRequest extends BaseModel {
   @column()
   public date: Date
 
+  @column()
+  public completed: boolean
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

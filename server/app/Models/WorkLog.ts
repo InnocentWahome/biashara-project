@@ -28,6 +28,9 @@ export default class WorkLog extends BaseModel {
   @column()
   public hours: number
 
+  @column()
+  public approval: boolean
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

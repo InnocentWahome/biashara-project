@@ -1,11 +1,11 @@
 import React from "react"
-import AdminLayout from "../../layouts/AdminLayout"
+import EmployeeLayout from "../../layouts/EmployeeLayout"
 import InventoryDatagrid from "../../components/shared/InventoryDatagrid"
 import ProductForm from "../../components/forms/ProductForm"
 
 const AdminInventory = () => {
   return (
-    <AdminLayout>
+    <EmployeeLayout>
       <div className="pl-6 pr-6 pt-6">
         <div className="columns">
           <div className="column is-three-quarters">
@@ -19,7 +19,7 @@ const AdminInventory = () => {
           </div>
         </div>
       </div>
-    </AdminLayout>
+    </EmployeeLayout>
   )
 }
 

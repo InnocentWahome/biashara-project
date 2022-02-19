@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { DataGrid } from "@mui/x-data-grid"
+import StyledDataGrid from "../../assets/styles/datagrid"
 import EmployeeLayout from "../../layouts/EmployeeLayout"
 import $http from "../../plugins/axios"
 import MaintenanceScheduleForm from "../../components/forms/MaintainenceScheduleForm"
@@ -9,7 +9,17 @@ const EmployeePerformance = () => {
     // { field: "id", headerName: "ID" },
     { field: "category", headerName: "Service Category", width: 200 },
     { field: "description", headerName: "Description", width: 300 },
-    { field: "date", headerName: "Service Date", width: 200, type: "dateTime" },
+    { field: "date", headerName: "Service Date", width: 200 },
+    { field: "user_id", headerName: "Assigned To userId", width: 200 },
+
+    {
+      field: "completed",
+      headerName: "Completion Status",
+      width: 200,
+      sortable: true,
+      editable: true,
+      type: "boolean",
+    },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
@@ -42,7 +52,7 @@ const EmployeePerformance = () => {
               Scheduling Maintenance and Service Requests
             </p>
             <div style={{ height: 600, width: "200" }}>
-              <DataGrid
+              <StyledDataGrid
                 rows={tableData}
                 pageSize={pageSize}
                 onPageSizeChange={newPage => setPageSize(newPage)}

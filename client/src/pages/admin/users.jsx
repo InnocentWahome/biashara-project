@@ -4,16 +4,81 @@ import AdminLayout from "../../layouts/AdminLayout"
 import $http from "../../plugins/axios"
 import CreateEmployeeForm from "../../components/forms/CreateEmployeeForm"
 import StyledDataGrid from "../../assets/styles/datagrid"
+import EditIcon from "@material-ui/icons/Edit"
+import DeleteIcon from "@mui/icons-material/Delete"
+import { FormControlLabel, IconButton } from "@material-ui/core"
+import { blue, red } from "@material-ui/core/colors"
 
 
 const AdminSystemUsers = () => {
+  const EditRecord = ({ index }) => {
+    const price = 100
+    const handleEditClick = async e => {}
+    const handleDeleteClick = async e => {}
+
+    return (
+      <div>
+        <FormControlLabel
+          control={
+            <IconButton
+              color="secondary"
+              aria-label="add an alarm"
+              onClick={handleEditClick}
+            >
+              <EditIcon style={{ color: blue[500] }} />
+            </IconButton>
+          }
+        />
+        <FormControlLabel
+          control={
+            <IconButton
+              color="secondary"
+              aria-label="add an alarm"
+              onClick={handleDeleteClick}
+            >
+              <DeleteIcon style={{ color: red[500] }} />
+            </IconButton>
+          }
+        />
+      </div>
+    )
+  }
   const columns = [
-    { field: "id", headerName: "ID" },
-    { field: "firstName", headerName: "First Name", width: 200 },
-    { field: "lastName", headerName: "Last Name", width: 200 },
+    { field: "id", headerName: "ID", width: 100 },
+    { field: "firstName", headerName: "First Name", width: 120  },
+    { field: "lastName", headerName: "Last Name", width: 120  },
     { field: "phoneNumber", headerName: "Phone Number", width: 200 },
     { field: "email", headerName: "Email Address", width: 200 },
-    { field: "role", headerName: "Roles", width: 200 },
+    { field: "role", headerName: "Roles", width: 150 },
+    {
+      field: "actions",
+      headerName: "Actions",
+      sortable: false,
+      width: 140,
+      disableClickEventBubbling: true,
+      renderCell: params => {
+        return (
+          <div className="columns">
+            <div className="column">
+              <div
+                className="d-flex  align-items-center"
+                style={{ cursor: "pointer" }}
+              >
+                <EditRecord index={params.row.id} />
+              </div>
+            </div>
+            <div className="column">
+              <div
+                className="d-flex  align-items-center"
+                style={{ cursor: "pointer" }}
+              >
+                <EditRecord index={params.row.id} />
+              </div>
+            </div>
+          </div>
+        )
+      },
+    },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)

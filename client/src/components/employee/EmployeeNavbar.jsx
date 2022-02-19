@@ -47,13 +47,13 @@ const Navbar = () => {
             Maintenance
           </a>
           <a className="navbar-item" href="/employee/personal-performance/">
-            My-Performance
+            Personal Performance
           </a>
-          <a className="navbar-item" href="/employee/delivered/">
-            Delivered Products Performance
+          <a className="navbar-item" href="/employee/product-performance/">
+            Products Performance
           </a>
-          <a className="navbar-item" href="/employee/stock/">
-            Stock
+          <a className="navbar-item" href="/employee/inventory/">
+            Manage Inventory
           </a>
           <a className="navbar-item" href="/">
             <button

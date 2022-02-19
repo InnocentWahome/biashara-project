@@ -39,7 +39,7 @@ const EditRecord = ({ index }) => {
   )
 }
 
-const AdminOrders = () => {
+const OrdersDatagrid = () => {
   const columns = [
     // { field: "id", headerName: "ID" },
     { field: "product_id", headerName: "Product ID", width: 100 },
@@ -58,6 +58,14 @@ const AdminOrders = () => {
       width: 140,
       sortable: true,
       editable: true,
+      type: "boolean",
+    },
+    {
+      field: "payment_status",
+      headerName: "Payment Status",
+      width: 150,
+      editable: true,
+      sortable: true,
       type: "boolean",
     },
     {
@@ -151,4 +159,4 @@ const AdminOrders = () => {
   )
 }
 
-export default AdminOrders
+export default OrdersDatagrid

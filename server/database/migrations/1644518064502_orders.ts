@@ -12,6 +12,7 @@ export default class Orders extends BaseSchema {
       table.integer('cost')
       table.integer('quantity')
       table.boolean('admin_approval').defaultTo(false)
+      table.boolean('payment_status').defaultTo(false)
       table.boolean('dispatch_status').defaultTo(false)
       table.boolean('delivery_status').defaultTo(false)
       table.timestamps(true)

@@ -1,6 +1,6 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Order from '../../Models/Order'
-import User from 'App/Models/User'
+// import User from 'App/Models/User'
 
 export default class OrderController {
   public async index({ response }: HttpContextContract) {
@@ -22,13 +22,20 @@ export default class OrderController {
 
   public async userOrders({ params, response }: HttpContextContract) {
     try {
-      const user = await User.findOrFail(params.id)
-      const orders = await Order.query().select('*').from('orders').where("user_id", 11)
-      return response.json({
-        success: true,
-        message: 'Orders retrieved successfully',
-        data: orders,
-      })
+      const orders = await Order.find(params.user_id)
+      if (orders) {
+        return response.json({
+          success: true,
+          message: 'Users orders found',
+          data: orders,
+        })
+      } else {
+        return response.json({
+          success: true,
+          message: 'User does not have any orders',
+          data: null,
+        })
+      }
     } catch (error) {
       return response.json({
         success: false,
@@ -37,7 +44,6 @@ export default class OrderController {
       })
     }
   }
-
   public async show({ params, response }: HttpContextContract) {
     try {
       const order = await Order.find(params.id)
@@ -65,7 +71,7 @@ export default class OrderController {
 
   public async store({ request, response }: HttpContextContract) {
     try {
-      const data = request.only(['product_id', 'product_name', 'user_id', 'cost', 'quantity', 'admin_approval', 'dispatch_status', 'delivery_status'])
+      const data = request.only(['product_id', 'product_name', 'user_id', 'cost', 'quantity', 'admin_approval', 'dispatch_status', 'payment_status', 'delivery_status'])
       const order = await Order.create(data)
       return response.json({
         success: true,
@@ -91,7 +97,7 @@ export default class OrderController {
           data: null,
         })
       } else {
-        order.merge(request.only(['product_id', 'product_name', 'user_id', 'cost', 'quantity', 'admin_approval', 'dispatch_status', 'delivery_status']))
+        order.merge(request.only(['product_id', 'product_name', 'user_id', 'cost', 'quantity', 'admin_approval', 'dispatch_status', 'payment_status', 'delivery_status']))
 
         await order.save()
         return response.json({

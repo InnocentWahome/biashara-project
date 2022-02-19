@@ -13,6 +13,7 @@ export default class WorkLogs extends BaseSchema {
       table.integer('hours')
       table.integer('start')
       table.integer('stop')
+      table.boolean('approval').defaultTo(false)
       table.timestamps(true)
     })
   }

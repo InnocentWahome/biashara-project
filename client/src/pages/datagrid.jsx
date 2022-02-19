@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from "react"
-import { GridToolbar } from "@mui/x-data-grid"
-import PageLayout from "../layouts/PageLayout"
 import $http from "../plugins/axios"
 import { FormControlLabel, IconButton } from "@material-ui/core"
-import EditIcon from "@material-ui/icons/Edit"
-import DeleteIcon from "@mui/icons-material/Delete"
 import { blue, red } from "@material-ui/core/colors"
 import StyledDataGrid from "../assets/styles/datagrid"
+import EditIcon from "@material-ui/icons/Edit"
+import DeleteIcon from "@mui/icons-material/Delete"
+
 const EditRecord = ({ index }) => {
-  
   const price = 100
-  const handleEditClick = async e => {
-  }
-  const handleDeleteClick = async e => {
-  }
+  const handleEditClick = async e => {}
+  const handleDeleteClick = async e => {}
 
   return (
     <div>
@@ -28,6 +24,17 @@ const EditRecord = ({ index }) => {
           </IconButton>
         }
       />
+
+    </div>
+  )
+}
+const DeleteRecord = ({ index }) => {
+  const price = 100
+  const handleEditClick = async e => {}
+  const handleDeleteClick = async e => {}
+
+  return (
+    <div>
       <FormControlLabel
         control={
           <IconButton
@@ -43,11 +50,79 @@ const EditRecord = ({ index }) => {
   )
 }
 
-const DataTable = () => {
+const OrdersDatagrid = () => {
   const columns = [
-    { field: "id", headerName: "ID" },
-    { field: "name", headerName: "Name", width: 300 },
-    { field: "description", headerName: "Description", width: 200 },
+    // { field: "id", headerName: "ID" },
+    { field: "product_id", headerName: "Product ID", width: 100 },
+    {
+      field: "product_name",
+      headerName: "Product Name",
+      width: 200,
+      editable: true,
+    },
+    { field: "user_id", headerName: "User ID", width: 100 },
+    { field: "cost", headerName: "Total Cost", width: 100 },
+    { field: "quantity", headerName: "Product Quantity", width: 100 },
+    {
+      field: "admin_approval",
+      headerName: "Admin Approval",
+      width: 140,
+      sortable: true,
+      editable: true,
+      type: "boolean",
+      disableClickEventBubbling: true,
+      renderCell: params => {
+        let decidedIcon
+        if (params.row.admin_approval === 0) {
+          decidedIcon = (
+            <div
+              className="d-flex  align-items-center"
+              style={{ cursor: "pointer" }}
+            >
+              <EditRecord index={params.row.id} />
+            </div>
+          )
+        } else if(params.row.admin_approval === 1) {
+          decidedIcon = (
+            <div
+            className="d-flex  align-items-center"
+            style={{ cursor: "pointer" }}
+          >
+            <DeleteRecord index={params.row.id} />
+          </div>
+          )
+        }
+        return (
+          <div>
+            {decidedIcon}
+          </div>
+        )
+      },
+    },
+    {
+      field: "payment_status",
+      headerName: "Payment Status",
+      width: 150,
+      editable: true,
+      sortable: true,
+      type: "boolean",
+    },
+    {
+      field: "dispatch_status",
+      headerName: "Dispatch Status",
+      width: 140,
+      sortable: true,
+      type: "boolean",
+      editable: true,
+    },
+    {
+      field: "delivery_status",
+      headerName: "Delivery Status",
+      width: 140,
+      sortable: true,
+      type: "boolean",
+      editable: true,
+    },
     {
       field: "actions",
       headerName: "Actions",
@@ -81,13 +156,14 @@ const DataTable = () => {
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
 
-  const datagrid = async e => {
+  const fetchOrders = async e => {
     try {
       const response = await $http.Api({
         method: "GET",
-        url: "/course",
+        url: "/order",
       })
       if (response.data?.data) {
+        console.log(tableData)
         setTableData(response.data.data)
       }
     } catch (error) {
@@ -96,41 +172,30 @@ const DataTable = () => {
   }
 
   useEffect(() => {
-    datagrid()
+    fetchOrders()
   }, [])
 
   return (
-    <PageLayout>
-      <div className="container pt-6 mt-6">
-        <p className="is-size-6 pb-3 pt-3">
-          Welcome back Here's what we have for you today
-        </p>
-        <div style={{ height: 600, width: "55%  " }}>
-          <StyledDataGrid
-            rows={tableData}
-            rowHeight={35}
-            pageSize={pageSize}
-            onPageSizeChange={newPage => setPageSize(newPage)}
-            pagination
-            columns={columns}
-            // checkboxSelection
-            throttleRowsMs={2000}
-            components={{
-              Toolbar: GridToolbar,
-            }}
-            sx={{
-              boxShadow: 2,
-              border: 2,
-              borderColor: '#9e9e9e',
-              '& .MuiDataGrid-cell:hover': {
-                color: 'primary.main',
-              },
-            }}
-          />
-        </div>
+    <div>
+      <div style={{ height: 600, width: "200" }}>
+        <StyledDataGrid
+          rows={tableData}
+          pageSize={pageSize}
+          onPageSizeChange={newPage => setPageSize(newPage)}
+          pagination
+          columns={columns}
+          sx={{
+            boxShadow: 2,
+            border: 2,
+            borderColor: "#9e9e9e",
+            "& .MuiDataGrid-cell:hover": {
+              color: "primary.main",
+            },
+          }}
+        />
       </div>
-    </PageLayout>
+    </div>
   )
 }
 
-export default DataTable
+export default OrdersDatagrid
