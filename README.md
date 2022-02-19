@@ -4,7 +4,7 @@
 
 ## Installation 
 
-### Clone the git repository
+##### Clone the git repository
 ```
 git clone https://github.com/InnocentWahome/invoice-project.git
 ```
@@ -12,44 +12,44 @@ git clone https://github.com/InnocentWahome/invoice-project.git
 ## Installation server
 
 
-### Setup environment variables
+##### Setup environment variables
 ```
 cp .env.example .env
 ```
-### Install project dependencies
+##### Install project dependencies
 ```
 npm install
 ```
-### Create database migration
+##### Create database migration
 ```
 node ace migration:run
 ```
 
-### Initialize faker db data
+##### Initialize faker db data
 ```
 node ace db:seed
 ```
-### Initialize development server
+##### Initialize development server
 ```
 npm run dev
 ```
 
 ## Installation client
 
-### Install project dependencies
+##### Install project dependencies
 ```
 npm install
 ```
-### Initialize development server
+##### Initialize development server
 ```
 npm run develop || gatsby develop
 ```
-### Run production
+##### Run production
 ```
 npm run build || gatsby build
 ```
 
-### Author
+##### Author
 ```
 - [Innocent Wahome](mailto: innocentwahome@gmail.com)
 ```
