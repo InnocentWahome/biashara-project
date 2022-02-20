@@ -6,12 +6,12 @@ import StyledDataGrid from "../../assets/styles/datagrid"
 import EditIcon from "@material-ui/icons/Edit"
 import DeleteIcon from "@mui/icons-material/Delete"
 import PageLayout from "../../layouts/PageLayout"
+import Button from "@mui/material/Button"
 
 const DashboardUserOrders = () => {
   const EditRecord = ({ index }) => {
     const price = 100
     const handleEditClick = async e => {}
-    const handleDeleteClick = async e => {}
 
     return (
       <div>
@@ -26,6 +26,15 @@ const DashboardUserOrders = () => {
             </IconButton>
           }
         />
+      </div>
+    )
+  }
+  const DeleteRecord = ({ index }) => {
+    const price = 100
+    const handleDeleteClick = async e => {}
+
+    return (
+      <div>
         <FormControlLabel
           control={
             <IconButton
@@ -71,10 +80,30 @@ const DashboardUserOrders = () => {
       editable: true,
     },
     {
+      field: "payment",
+      headerName: "Authorize Payment",
+      width: 200,
+      sortable: true,
+      editable: true,
+      disableClickEventBubbling: true,
+      renderCell: params => {
+        return (
+          <div
+            className="d-flex  align-items-center"
+            style={{ cursor: "pointer" }}
+          >
+            <Button variant="contained" color="success">
+              PAY
+            </Button>
+          </div>
+        )
+      },
+    },
+    {
       field: "actions",
       headerName: "Actions",
       sortable: false,
-      width: 140,
+      width: 200,
       disableClickEventBubbling: true,
       renderCell: params => {
         return (
@@ -87,12 +116,13 @@ const DashboardUserOrders = () => {
                 <EditRecord index={params.row.id} />
               </div>
             </div>
+
             <div className="column">
               <div
                 className="d-flex  align-items-center"
                 style={{ cursor: "pointer" }}
               >
-                <EditRecord index={params.row.id} />
+                <DeleteRecord index={params.row.id} />
               </div>
             </div>
           </div>
@@ -138,9 +168,9 @@ const DashboardUserOrders = () => {
             sx={{
               boxShadow: 2,
               border: 2,
-              borderColor: '#9e9e9e',
-              '& .MuiDataGrid-cell:hover': {
-                color: 'primary.main',
+              borderColor: "#9e9e9e",
+              "& .MuiDataGrid-cell:hover": {
+                color: "primary.main",
               },
             }}
           />

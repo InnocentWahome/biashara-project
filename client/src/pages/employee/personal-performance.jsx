@@ -7,6 +7,7 @@ import DeleteIcon from "@mui/icons-material/Delete"
 import EmployeeLayout from "../../layouts/EmployeeLayout"
 import $http from "../../plugins/axios"
 import EmployeeWorkLogForm from "../../components/forms/EmployeeWorkLogForm"
+import Button from "@mui/material/Button"
 
 const EmployeePerformance = () => {
   const EditRecord = ({ index }) => {
@@ -27,6 +28,16 @@ const EmployeePerformance = () => {
             </IconButton>
           }
         />
+      </div>
+    )
+  }
+  const DeleteRecord = ({ index }) => {
+    const price = 100
+    const handleEditClick = async e => {}
+    const handleDeleteClick = async e => {}
+
+    return (
+      <div>
         <FormControlLabel
           control={
             <IconButton
@@ -41,6 +52,27 @@ const EmployeePerformance = () => {
       </div>
     )
   }
+  const ApprovedButton = ({ index }) => {
+    const handleApprovedClick = async e => {}
+    return (
+      <div className="d-flex  align-items-center" style={{ cursor: "pointer" }}>
+        <Button size="small" variant="outlined" color="success">
+          APPROVED
+        </Button>
+      </div>
+    )
+  }
+  const NotApprovedButton = ({ index }) => {
+    const handleNotApprovedClick = async e => {}
+    return (
+      <div className="d-flex  align-items-center" style={{ cursor: "pointer" }}>
+        <Button size="small" variant="outlined" color="error">
+          NOT APPROVED
+        </Button>
+      </div>
+    )
+  }
+
   const columns = [
     { field: "date", headerName: "Date", width: 200, type: "dateTime" },
     { field: "day", headerName: "Day", width: 150 },
@@ -48,42 +80,66 @@ const EmployeePerformance = () => {
     { field: "stop", headerName: "Stop Time", width: 150 },
     { field: "hours", headerName: "Hours Worked", width: 150 },
     {
-      field: "approval",
-      headerName: "Approval Status",
-      width: 200,
+      field: "admin_approval",
+      headerName: "Admin Approval",
+      width: 140,
       sortable: true,
       editable: true,
       type: "boolean",
-    },
-    {
-      field: "actions",
-      headerName: "Actions",
-      sortable: false,
-      width: 140,
       disableClickEventBubbling: true,
       renderCell: params => {
-        return (
-          <div className="columns">
-            <div className="column">
-              <div
-                className="d-flex  align-items-center"
-                style={{ cursor: "pointer" }}
-              >
-                <EditRecord index={params.row.id} />
-              </div>
+        let decidedIcon
+        if (params.row.approval === 1) {
+          decidedIcon = (
+            <div
+              className="d-flex  align-items-center"
+              style={{ cursor: "pointer" }}
+            >
+              <ApprovedButton index={params.row.id} />
             </div>
-            <div className="column">
-              <div
-                className="d-flex  align-items-center"
-                style={{ cursor: "pointer" }}
-              >
-                <EditRecord index={params.row.id} />
-              </div>
+          )
+        } else if (params.row.approval === 0) {
+          decidedIcon = (
+            <div
+              className="d-flex  align-items-center"
+              style={{ cursor: "pointer" }}
+            >
+              <NotApprovedButton index={params.row.id} />
             </div>
-          </div>
-        )
+          )
+        }
+        return <div>{decidedIcon}</div>
       },
     },
+    // {
+    //   field: "actions",
+    //   headerName: "Actions",
+    //   sortable: false,
+    //   width: 140,
+    //   disableClickEventBubbling: true,
+    //   renderCell: params => {
+    //     return (
+    //       <div className="columns">
+    //         <div className="column">
+    //           <div
+    //             className="d-flex  align-items-center"
+    //             style={{ cursor: "pointer" }}
+    //           >
+    //             <EditRecord index={params.row.id} />
+    //           </div>
+    //         </div>
+    //         <div className="column">
+    //           <div
+    //             className="d-flex  align-items-center"
+    //             style={{ cursor: "pointer" }}
+    //           >
+    //             <DeleteRecord index={params.row.id} />
+    //           </div>
+    //         </div>
+    //       </div>
+    //     )
+    //   },
+    // },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)

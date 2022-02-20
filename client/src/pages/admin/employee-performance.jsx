@@ -1,62 +1,65 @@
 import React, { useState, useEffect } from "react"
-import StyledDataGrid from "../../assets/styles/datagrid"
 import AdminLayout from "../../layouts/AdminLayout"
 import $http from "../../plugins/axios"
+import StyledDataGrid from "../../assets/styles/datagrid"
 import Button from "@mui/material/Button"
 
-const AdminMaintenance = () => {
-  const CompletedButton = ({ index }) => {
+const AdminEmployeePerformance = () => {
+  const ApprovedButton = ({ index }) => {
     const handleApprovedClick = async e => {}
     return (
       <div className="d-flex  align-items-center" style={{ cursor: "pointer" }}>
         <Button size="small" variant="outlined" color="success">
-          COMPLETED
+          APPROVED
         </Button>
       </div>
     )
   }
-  const NotCompletedButton = ({ index }) => {
+  const NotApprovedButton = ({ index }) => {
     const handleNotApprovedClick = async e => {}
     return (
       <div className="d-flex  align-items-center" style={{ cursor: "pointer" }}>
         <Button size="small" variant="outlined" color="error">
-          NOT COMPLETED
+          NOT APPROVED
         </Button>
       </div>
     )
   }
   const columns = [
-    // { field: "id", headerName: "ID" },
-    { field: "category", headerName: "Service Category", width: 200 },
+    { field: "id", headerName: "ID", width: 100 },
+    { field: "date", headerName: "Date", width: 100 },
+    { field: "day", headerName: "Day", width: 100 },
+    { field: "start", headerName: "Start Time", width: 130 },
+    { field: "stop", headerName: "Stop Time", width: 130 },
+    { field: "hours", headerName: "Hours Worked", width: 130 },
     { field: "description", headerName: "Description", width: 200 },
-    { field: "date", headerName: "Service Date", width: 200 }, 
-    { field: "user_id", headerName: "Assigned To userId", width: 200 },
+    { field: "user_id", headerName: "Employee ID", width: 130 },
     {
-      field: "completed",
-      headerName: "Completion Status",
-      width: 200,
+      field: "admin_approval",
+      headerName: "Admin Approval",
+      width: 140,
       sortable: true,
       editable: true,
       type: "boolean",
       disableClickEventBubbling: true,
       renderCell: params => {
         let decidedIcon
-        if (params.row.completed === 1) {
+        if (params.row.approval === 1) {
           decidedIcon = (
             <div
               className="d-flex  align-items-center"
               style={{ cursor: "pointer" }}
             >
-              <CompletedButton index={params.row.id} />
+              <ApprovedButton index={params.row.id} />
             </div>
           )
-        } else if (params.row.completed === 0) {
+        } else if (params.row.approval === 0) {
           decidedIcon = (
             <div
               className="d-flex  align-items-center"
               style={{ cursor: "pointer" }}
             >
-              <NotCompletedButton index={params.row.id} />
+              <NotApprovedButton index={params.row.id} />
             </div>
           )
         }
@@ -71,7 +74,7 @@ const AdminMaintenance = () => {
     try {
       const response = await $http.Api({
         method: "GET",
-        url: "/service-request",
+        url: "/worklog",
       })
       if (response.data?.data) {
         console.log(tableData)
@@ -89,21 +92,22 @@ const AdminMaintenance = () => {
   return (
     <AdminLayout>
       <div className="container pt-6">
-        <p className="is-size-4 has-text-centered pb-3 pt-6">Maintenance </p>
-        <div style={{ height: 600, width: "80% " }}>
+        <p className="is-size-4 has-text-centered pb-3 pt-6 title">
+          Employee Work Logs
+        </p>
+        <div style={{ height: 600, width: "200" }}>
           <StyledDataGrid
             rows={tableData}
             pageSize={pageSize}
             onPageSizeChange={newPage => setPageSize(newPage)}
             pagination
             columns={columns}
-            // checkboxSelection
             sx={{
               boxShadow: 2,
               border: 2,
-              borderColor: '#9e9e9e',
-              '& .MuiDataGrid-cell:hover': {
-                color: 'primary.main',
+              borderColor: "#9e9e9e",
+              "& .MuiDataGrid-cell:hover": {
+                color: "primary.main",
               },
             }}
           />
@@ -113,4 +117,4 @@ const AdminMaintenance = () => {
   )
 }
 
-export default AdminMaintenance
+export default AdminEmployeePerformance

@@ -24,7 +24,6 @@ const EditRecord = ({ index }) => {
           </IconButton>
         }
       />
-
     </div>
   )
 }
@@ -82,21 +81,17 @@ const OrdersDatagrid = () => {
               <EditRecord index={params.row.id} />
             </div>
           )
-        } else if(params.row.admin_approval === 1) {
+        } else if (params.row.admin_approval === 1) {
           decidedIcon = (
             <div
-            className="d-flex  align-items-center"
-            style={{ cursor: "pointer" }}
-          >
-            <DeleteRecord index={params.row.id} />
-          </div>
+              className="d-flex  align-items-center"
+              style={{ cursor: "pointer" }}
+            >
+              <DeleteRecord index={params.row.id} />
+            </div>
           )
         }
-        return (
-          <div>
-            {decidedIcon}
-          </div>
-        )
+        return <div>{decidedIcon}</div>
       },
     },
     {

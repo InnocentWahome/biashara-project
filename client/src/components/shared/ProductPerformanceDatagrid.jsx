@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react"
 import { DataGrid } from "@mui/x-data-grid"
 import $http from "../../plugins/axios"
 import StyledDataGrid from "../../assets/styles/datagrid"
+import Rating from "@mui/material/Rating"
+
+
+{/* <Rating name="read-only" value={value} readOnly /> */}
+
 
 const PerformanceDatagrid = () => {
   const columns = [
@@ -9,7 +14,54 @@ const PerformanceDatagrid = () => {
     { field: "product_id", headerName: "Product ID", width: 150 },
     { field: "description", headerName: "Review Description", width: 200 },
     { field: "user_id", headerName: "User ID", width: 150 },
-    { field: "rate", headerName: "Rate", width: 150 },
+    {
+      field: "rate",
+      headerName: "Rate",
+      width: 150,
+      sortable: true,
+      editable: true,
+      type: "boolean",
+      disableClickEventBubbling: true,
+      renderCell: params => {
+        let decidedIcon
+        if (params.row.rate === 1) {
+          decidedIcon = (
+            <div>
+              <Rating name="read-only" value={1} readOnly />
+            </div>
+          )
+        } else if (params.row.rate === 2) {
+          decidedIcon = (
+            <div>
+              <Rating name="read-only" value={2} readOnly />
+            </div>
+          )
+        }  else if (params.row.rate === 3) {
+          decidedIcon = (
+            <div>
+              <Rating name="read-only" value={3} readOnly />
+            </div>
+          )
+        }  else if (params.row.rate === 4) {
+          decidedIcon = (
+            <div>
+              <Rating name="read-only" value={4} readOnly />
+            </div>
+          )
+        }  else if (params.row.rate === 5) {
+          decidedIcon = (
+            <div>
+              <Rating name="read-only" value={5} readOnly />
+            </div>
+          )
+        } else {
+          decidedIcon = (
+            <Rating name="no-value" value={null} />
+          )
+        }
+        return <div>{decidedIcon}</div>
+      },
+    },
     { field: "updated_at", headerName: "Review Date", width: 220 },
   ]
   const [tableData, setTableData] = useState([])

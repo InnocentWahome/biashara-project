@@ -40,7 +40,7 @@ const Navbar = () => {
           <a className="navbar-item" href="/admin/home">
             Home
           </a>
-          <a className="navbar-item" href="/admin/employees/">
+          <a className="navbar-item" href="/admin/employee-performance/">
             Employee Performance
           </a>
           <a className="navbar-item" href="/admin/orders/">

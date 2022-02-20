@@ -27,20 +27,34 @@ const DashboardProducts = () => {
       },
     },
     {
-      field: "order",
-      headerName: "New Order",
+      field: "actions",
+      headerName: "Actions",
       sortable: false,
       width: 140,
       disableClickEventBubbling: true,
       renderCell: params => {
         return (
-          <div
-            className="d-flex  align-items-center"
-            style={{ cursor: "pointer" }}
-          >
-            <Button variant="outlined" color="error">
-              ORDER
-            </Button>
+          <div className="columns">
+            <div className="column">
+              <div
+                className="d-flex  align-items-center"
+                style={{ cursor: "pointer" }}
+              >
+                <Button variant="outlined" color="error">
+                  ORDER
+                </Button>
+              </div>
+            </div>
+            <div className="column">
+              <div
+                className="d-flex  align-items-center"
+                style={{ cursor: "pointer" }}
+              >
+                <Button variant="outlined" color="primary">
+                  FEEDBACK
+                </Button>
+              </div>
+            </div>
           </div>
         )
       },
@@ -81,7 +95,7 @@ const DashboardProducts = () => {
           Welcome back {userFirstName}! Here's what we have for you today
         </p>
         <div className="columns">
-          <div className="column is-two-thirds">
+          <div className="column is-three-quarters">
             <div style={{ height: 600, width: "200" }}>
               <StyledDataGrid
                 rows={tableData}
@@ -95,9 +109,9 @@ const DashboardProducts = () => {
                 sx={{
                   boxShadow: 2,
                   border: 2,
-                  borderColor: '#9e9e9e',
-                  '& .MuiDataGrid-cell:hover': {
-                    color: 'primary.main',
+                  borderColor: "#9e9e9e",
+                  "& .MuiDataGrid-cell:hover": {
+                    color: "primary.main",
                   },
                 }}
               />
