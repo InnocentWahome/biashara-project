@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import StyledDataGrid from "../../assets/styles/datagrid"
 import PageLayout from "../../layouts/PageLayout"
 import $http from "../../plugins/axios"
-import OrderForm from "../../components/forms/OrderForm"
+// import OrderForm from "../../components/forms/OrderForm"
 import Button from "@mui/material/Button"
 import Avatar from "@mui/material/Avatar"
 
@@ -30,7 +30,7 @@ const DashboardProducts = () => {
       field: "actions",
       headerName: "Actions",
       sortable: false,
-      width: 140,
+      width: 250,
       disableClickEventBubbling: true,
       renderCell: params => {
         return (
@@ -94,34 +94,34 @@ const DashboardProducts = () => {
         <p className="is-size-6 pb-3 pt-3">
           Welcome back {userFirstName}! Here's what we have for you today
         </p>
-        <div className="columns">
-          <div className="column is-three-quarters">
-            <div style={{ height: 600, width: "200" }}>
-              <StyledDataGrid
-                rows={tableData}
-                pageSize={pageSize}
-                onPageSizeChange={newPage => setPageSize(newPage)}
-                pagination
-                columns={columns}
-                editRowsModel={editRowsModel}
-                editMode="row"
-                onEditRowsModelChange={handleEditRowsModelChange}
-                sx={{
-                  boxShadow: 2,
-                  border: 2,
-                  borderColor: "#9e9e9e",
-                  "& .MuiDataGrid-cell:hover": {
-                    color: "primary.main",
-                  },
-                }}
-              />
-            </div>
-          </div>
-          <div className="column pt-6">
+        {/* <div className="columns">
+          <div className="column is-three-quarters"> */}
+        <div style={{ height: 600, width: "80%" }}>
+          <StyledDataGrid
+            rows={tableData}
+            pageSize={pageSize}
+            onPageSizeChange={newPage => setPageSize(newPage)}
+            pagination
+            columns={columns}
+            editRowsModel={editRowsModel}
+            editMode="row"
+            onEditRowsModelChange={handleEditRowsModelChange}
+            sx={{
+              boxShadow: 2,
+              border: 2,
+              borderColor: "#9e9e9e",
+              "& .MuiDataGrid-cell:hover": {
+                color: "primary.main",
+              },
+            }}
+          />
+        </div>
+      </div>
+      {/* <div className="column pt-6">
             <OrderForm />
           </div>
         </div>
-      </div>
+      </div> */}
     </PageLayout>
   )
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import StyledDataGrid from "../../assets/styles/datagrid"
 import EmployeeLayout from "../../layouts/EmployeeLayout"
 import $http from "../../plugins/axios"
-// import ProductForm from "../../components/forms/ProductForm"
+import Button from "@mui/material/Button"
 
 const EmployeeOrders = () => {
   const columns = [
@@ -12,38 +12,110 @@ const EmployeeOrders = () => {
     { field: "user_id", headerName: "User ID", width: 100 },
     { field: "cost", headerName: "Cost(KSH)", width: 100 },
     { field: "quantity", headerName: " Quantity", width: 100 },
-    
-    {
-      field: "admin_approval",
-      headerName: "Admin Approval",
-      width: 150,
-      editable: true,
-      sortable: true,
-      type: "boolean",
-    },
     {
       field: "payment_status",
       headerName: "Payment Status",
-      width: 150,
-      editable: true,
+      width: 140,
       sortable: true,
       type: "boolean",
+      disableClickEventBubbling: true,
+      renderCell: params => {
+        let decidedIcon
+        if (params.row.payment_status === 1) {
+          decidedIcon = (
+            <div
+              className="d-flex  align-items-center"
+              style={{ cursor: "pointer" }}
+            >
+              <Button size="small" variant="outlined" color="success">
+                PAID
+              </Button>
+            </div>
+          )
+        } else if (params.row.payment_status === 0) {
+          decidedIcon = (
+            <div
+              className="d-flex  align-items-center"
+              style={{ cursor: "pointer" }}
+            >
+              <Button size="small" variant="outlined" color="error">
+                NOT PAID
+              </Button>
+            </div>
+          )
+        }
+        return <div>{decidedIcon}</div>
+      },
     },
     {
       field: "dispatch_status",
       headerName: "Dispatch Status",
-      width: 150,
-      editable: true,
+      width: 140,
       sortable: true,
       type: "boolean",
+      disableClickEventBubbling: true,
+      renderCell: params => {
+        let decidedIcon
+        if (params.row.dispatch_status === 1) {
+          decidedIcon = (
+            <div
+              className="d-flex  align-items-center"
+              style={{ cursor: "pointer" }}
+            >
+              <Button size="small" variant="outlined" color="success">
+                DISPATCHED
+              </Button>
+            </div>
+          )
+        } else if (params.row.dispatch_status === 0) {
+          decidedIcon = (
+            <div
+              className="d-flex  align-items-center"
+              style={{ cursor: "pointer" }}
+            >
+              <Button size="small" variant="outlined" color="error">
+                NOT DISPATCHED
+              </Button>
+            </div>
+          )
+        }
+        return <div>{decidedIcon}</div>
+      },
     },
     {
       field: "delivery_status",
       headerName: "Delivery Status",
-      width: 150,
-      editable: true,
+      width: 140,
       sortable: true,
       type: "boolean",
+      disableClickEventBubbling: true,
+      renderCell: params => {
+        let decidedIcon
+        if (params.row.delivery_status === 1) {
+          decidedIcon = (
+            <div
+              className="d-flex  align-items-center"
+              style={{ cursor: "pointer" }}
+            >
+              <Button size="small" variant="outlined" color="success">
+                DELIVERED
+              </Button>
+            </div>
+          )
+        } else if (params.row.delivery_status === 0) {
+          decidedIcon = (
+            <div
+              className="d-flex  align-items-center"
+              style={{ cursor: "pointer" }}
+            >
+              <Button size="small" variant="outlined" color="error">
+                NOT DELIVERED
+              </Button>
+            </div>
+          )
+        }
+        return <div>{decidedIcon}</div>
+      },
     },
   ]
   const [tableData, setTableData] = useState([])
@@ -74,7 +146,7 @@ const EmployeeOrders = () => {
         <p className="is-size-4 has-text-centered pb-2 pt-5 title">
           Dispatch Orders For Delivery
         </p>
-        <div style={{ height: 600, width: "200" }}>
+        <div style={{ height: 600, width: "80%" }}>
           <StyledDataGrid
             rows={tableData}
             pageSize={pageSize}

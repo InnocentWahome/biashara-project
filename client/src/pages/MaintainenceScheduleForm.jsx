@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import $http from "../../plugins/axios"
+import $http from "../plugins/axios"
 
 const MaintenanceScheduleForm = () => {
   const [category, setCategory] = useState("")

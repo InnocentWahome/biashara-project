@@ -1,16 +1,30 @@
 import React, { useState, useEffect } from "react"
-import $http from "../plugins/axios"
-import { FormControlLabel, IconButton } from "@material-ui/core"
-import { blue, red } from "@material-ui/core/colors"
 import StyledDataGrid from "../assets/styles/datagrid"
+import EmployeeLayout from "../layouts/EmployeeLayout"
+import $http from "../plugins/axios"
+import MaintenanceScheduleForm from "./MaintainenceScheduleForm"
+import Button from "@mui/material/Button"
+import Avatar from "@mui/material/Avatar"
 import EditIcon from "@material-ui/icons/Edit"
 import DeleteIcon from "@mui/icons-material/Delete"
+import { FormControlLabel, IconButton } from "@material-ui/core"
+import { blue, red } from "@material-ui/core/colors"
 
 const EditRecord = ({ index }) => {
-  const price = 100
-  const handleEditClick = async e => {}
-  const handleDeleteClick = async e => {}
-
+  const handleEditClick = async e => {
+    console.log("this one will be edited")
+    try {
+      e.preventDefault()
+      await $http
+        .Api({
+          method: "DELETE",
+          url: "/service-request/:id" + index,
+          data: {},
+        })
+    } catch (error) {
+      console.error(error)
+    }
+  }
   return (
     <div>
       <FormControlLabel
@@ -28,10 +42,21 @@ const EditRecord = ({ index }) => {
   )
 }
 const DeleteRecord = ({ index }) => {
-  const price = 100
-  const handleEditClick = async e => {}
-  const handleDeleteClick = async e => {}
-
+  const handleDeleteClick = async e => {
+    console.log("this one will be deleted")
+    try {
+      e.preventDefault()
+      await $http
+        .Api({
+          method: "DELETE",
+          url: "/service-request/" + index,
+          data: {},
+        })
+        .then(console.log("it has been deleted"))
+    } catch (error) {
+      console.error(error)
+    }
+  }
   return (
     <div>
       <FormControlLabel
@@ -48,23 +73,36 @@ const DeleteRecord = ({ index }) => {
     </div>
   )
 }
-
-const OrdersDatagrid = () => {
+const EmployeePerformance = () => {
+  const CompletedButton = ({ index }) => {
+    const handleApprovedClick = async e => {}
+    return (
+      <div className="d-flex  align-items-center" style={{ cursor: "pointer" }}>
+        <Button size="small" variant="outlined" color="success">
+          COMPLETED
+        </Button>
+      </div>
+    )
+  }
+  const NotCompletedButton = ({ index }) => {
+    const handleNotApprovedClick = async e => {}
+    return (
+      <div className="d-flex  align-items-center" style={{ cursor: "pointer" }}>
+        <Button size="small" variant="outlined" color="error">
+          NOT COMPLETED
+        </Button>
+      </div>
+    )
+  }
   const columns = [
     // { field: "id", headerName: "ID" },
-    { field: "product_id", headerName: "Product ID", width: 100 },
+    { field: "category", headerName: "Service Category", width: 200 },
+    { field: "description", headerName: "Description", width: 300 },
+    { field: "date", headerName: "Service Date", width: 200 },
+    { field: "user_id", headerName: "Assigned To userId", width: 200 },
     {
-      field: "product_name",
-      headerName: "Product Name",
-      width: 200,
-      editable: true,
-    },
-    { field: "user_id", headerName: "User ID", width: 100 },
-    { field: "cost", headerName: "Total Cost", width: 100 },
-    { field: "quantity", headerName: "Product Quantity", width: 100 },
-    {
-      field: "admin_approval",
-      headerName: "Admin Approval",
+      field: "completed",
+      headerName: "Completion Status",
       width: 140,
       sortable: true,
       editable: true,
@@ -72,51 +110,27 @@ const OrdersDatagrid = () => {
       disableClickEventBubbling: true,
       renderCell: params => {
         let decidedIcon
-        if (params.row.admin_approval === 0) {
+        if (params.row.completed === 1) {
           decidedIcon = (
             <div
               className="d-flex  align-items-center"
               style={{ cursor: "pointer" }}
             >
-              <EditRecord index={params.row.id} />
+              <CompletedButton index={params.row.id} />
             </div>
           )
-        } else if (params.row.admin_approval === 1) {
+        } else if (params.row.completed === 0) {
           decidedIcon = (
             <div
               className="d-flex  align-items-center"
               style={{ cursor: "pointer" }}
             >
-              <DeleteRecord index={params.row.id} />
+              <NotCompletedButton index={params.row.id} />
             </div>
           )
         }
         return <div>{decidedIcon}</div>
       },
-    },
-    {
-      field: "payment_status",
-      headerName: "Payment Status",
-      width: 150,
-      editable: true,
-      sortable: true,
-      type: "boolean",
-    },
-    {
-      field: "dispatch_status",
-      headerName: "Dispatch Status",
-      width: 140,
-      sortable: true,
-      type: "boolean",
-      editable: true,
-    },
-    {
-      field: "delivery_status",
-      headerName: "Delivery Status",
-      width: 140,
-      sortable: true,
-      type: "boolean",
-      editable: true,
     },
     {
       field: "actions",
@@ -140,7 +154,7 @@ const OrdersDatagrid = () => {
                 className="d-flex  align-items-center"
                 style={{ cursor: "pointer" }}
               >
-                <EditRecord index={params.row.id} />
+                <DeleteRecord index={params.row.id} />
               </div>
             </div>
           </div>
@@ -151,11 +165,11 @@ const OrdersDatagrid = () => {
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
 
-  const fetchOrders = async e => {
+  const fetchUsers = async e => {
     try {
       const response = await $http.Api({
         method: "GET",
-        url: "/order",
+        url: "/service-request",
       })
       if (response.data?.data) {
         console.log(tableData)
@@ -167,30 +181,43 @@ const OrdersDatagrid = () => {
   }
 
   useEffect(() => {
-    fetchOrders()
+    fetchUsers()
   }, [])
 
   return (
-    <div>
-      <div style={{ height: 600, width: "200" }}>
-        <StyledDataGrid
-          rows={tableData}
-          pageSize={pageSize}
-          onPageSizeChange={newPage => setPageSize(newPage)}
-          pagination
-          columns={columns}
-          sx={{
-            boxShadow: 2,
-            border: 2,
-            borderColor: "#9e9e9e",
-            "& .MuiDataGrid-cell:hover": {
-              color: "primary.main",
-            },
-          }}
-        />
+    <EmployeeLayout>
+      <div className="container pt-6">
+        <div className="columns">
+          <div className="column is-three-quarters">
+            <p className="is-size-4 has-text-centered pb-3 pt-6 title">
+              Datagrid Wahome
+            </p>
+            <div style={{ height: 600, width: "100%" }}>
+              <StyledDataGrid
+                rows={tableData}
+                pageSize={pageSize}
+                onPageSizeChange={newPage => setPageSize(newPage)}
+                pagination
+                columns={columns}
+                // checkboxSelection
+                sx={{
+                  boxShadow: 2,
+                  border: 2,
+                  borderColor: "#9e9e9e",
+                  "& .MuiDataGrid-cell:hover": {
+                    color: "primary.main",
+                  },
+                }}
+              />
+            </div>
+          </div>
+          <div className="column pt-6 mt-6">
+            <MaintenanceScheduleForm />
+          </div>
+        </div>
       </div>
-    </div>
+    </EmployeeLayout>
   )
 }
 
-export default OrdersDatagrid
+export default EmployeePerformance

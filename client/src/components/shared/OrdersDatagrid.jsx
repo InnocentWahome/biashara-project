@@ -5,39 +5,10 @@ import { blue, red } from "@material-ui/core/colors"
 import StyledDataGrid from "../../assets/styles/datagrid"
 import EditIcon from "@material-ui/icons/Edit"
 import DeleteIcon from "@mui/icons-material/Delete"
+import Button from "@mui/material/Button"
 
-const EditRecord = ({ index }) => {
-  const price = 100
-  const handleEditClick = async e => {}
-  const handleDeleteClick = async e => {}
-
-  return (
-    <div>
-      <FormControlLabel
-        control={
-          <IconButton
-            color="secondary"
-            aria-label="add an alarm"
-            onClick={handleEditClick}
-          >
-            <EditIcon style={{ color: blue[500] }} />
-          </IconButton>
-        }
-      />
-      <FormControlLabel
-        control={
-          <IconButton
-            color="secondary"
-            aria-label="add an alarm"
-            onClick={handleDeleteClick}
-          >
-            <DeleteIcon style={{ color: red[500] }} />
-          </IconButton>
-        }
-      />
-    </div>
-  )
-}
+const EditRecord = ({ index }) => {}
+const DeleteRecord = ({ index }) => {}
 
 const OrdersDatagrid = () => {
   const columns = [
@@ -53,20 +24,40 @@ const OrdersDatagrid = () => {
     { field: "cost", headerName: "Total Cost", width: 100 },
     { field: "quantity", headerName: "Product Quantity", width: 100 },
     {
-      field: "admin_approval",
-      headerName: "Admin Approval",
+      field: "payment_status",
+      headerName: "Payment Status",
       width: 140,
       sortable: true,
       editable: true,
       type: "boolean",
-    },
-    {
-      field: "payment_status",
-      headerName: "Payment Status",
-      width: 150,
-      editable: true,
-      sortable: true,
-      type: "boolean",
+      disableClickEventBubbling: true,
+      renderCell: params => {
+        let decidedIcon
+        if (params.row.payment_status === 1) {
+          decidedIcon = (
+            <div
+              className="d-flex  align-items-center"
+              style={{ cursor: "pointer" }}
+            >
+              <Button size="small" variant="outlined" color="success">
+                PAID
+              </Button>
+            </div>
+          )
+        } else if (params.row.payment_status === 0) {
+          decidedIcon = (
+            <div
+              className="d-flex  align-items-center"
+              style={{ cursor: "pointer" }}
+            >
+              <Button size="small" variant="outlined" color="error">
+                NOT PAID
+              </Button>
+            </div>
+          )
+        }
+        return <div>{decidedIcon}</div>
+      },
     },
     {
       field: "dispatch_status",
@@ -74,7 +65,34 @@ const OrdersDatagrid = () => {
       width: 140,
       sortable: true,
       type: "boolean",
-      editable: true,
+      disableClickEventBubbling: true,
+      renderCell: params => {
+        let decidedIcon
+        if (params.row.dispatch_status === 1) {
+          decidedIcon = (
+            <div
+              className="d-flex  align-items-center"
+              style={{ cursor: "pointer" }}
+            >
+              <Button size="small" variant="outlined" color="success">
+                DISPATCHED
+              </Button>
+            </div>
+          )
+        } else if (params.row.dispatch_status === 0) {
+          decidedIcon = (
+            <div
+              className="d-flex  align-items-center"
+              style={{ cursor: "pointer" }}
+            >
+              <Button size="small" variant="outlined" color="error">
+                NOT DISPATCHED
+              </Button>
+            </div>
+          )
+        }
+        return <div>{decidedIcon}</div>
+      },
     },
     {
       field: "delivery_status",
@@ -82,7 +100,34 @@ const OrdersDatagrid = () => {
       width: 140,
       sortable: true,
       type: "boolean",
-      editable: true,
+      disableClickEventBubbling: true,
+      renderCell: params => {
+        let decidedIcon
+        if (params.row.delivery_status === 1) {
+          decidedIcon = (
+            <div
+              className="d-flex  align-items-center"
+              style={{ cursor: "pointer" }}
+            >
+              <Button size="small" variant="outlined" color="success">
+                DELIVERED
+              </Button>
+            </div>
+          )
+        } else if (params.row.delivery_status === 0) {
+          decidedIcon = (
+            <div
+              className="d-flex  align-items-center"
+              style={{ cursor: "pointer" }}
+            >
+              <Button size="small" variant="outlined" color="error">
+                NOT DELIVERED
+              </Button>
+            </div>
+          )
+        }
+        return <div>{decidedIcon}</div>
+      },
     },
     {
       field: "actions",
@@ -98,7 +143,7 @@ const OrdersDatagrid = () => {
                 className="d-flex  align-items-center"
                 style={{ cursor: "pointer" }}
               >
-                <EditRecord index={params.row.id} />
+                <EditIcon onClick={EditRecord} color="primary" />
               </div>
             </div>
             <div className="column">
@@ -106,7 +151,7 @@ const OrdersDatagrid = () => {
                 className="d-flex  align-items-center"
                 style={{ cursor: "pointer" }}
               >
-                <EditRecord index={params.row.id} />
+                <DeleteIcon onClick={DeleteRecord} color="error" />
               </div>
             </div>
           </div>
@@ -148,9 +193,9 @@ const OrdersDatagrid = () => {
           sx={{
             boxShadow: 2,
             border: 2,
-            borderColor: '#9e9e9e',
-            '& .MuiDataGrid-cell:hover': {
-              color: 'primary.main',
+            borderColor: "#9e9e9e",
+            "& .MuiDataGrid-cell:hover": {
+              color: "primary.main",
             },
           }}
         />

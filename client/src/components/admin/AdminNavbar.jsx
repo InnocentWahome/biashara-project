@@ -52,9 +52,9 @@ const Navbar = () => {
           <a className="navbar-item" href="/admin/users/">
             System Users
           </a>
-          <a className="navbar-item" href="/admin/delivery/">
+          {/* <a className="navbar-item" href="/admin/delivery/">
             Delivery Requests
-          </a>
+          </a> */}
           <a className="navbar-item" href="/admin/maintenance/">
             Maintenance
           </a>
