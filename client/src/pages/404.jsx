@@ -1,11 +1,11 @@
 import * as React from "react"
-import PageLayout from "../layouts/PageLayout"
 import pageNotFoundImage from "../assets/icons/errors/404.svg"
 import { Link } from "gatsby"
+import { navigate } from "gatsby"
+
 
 const PageNotFound = () => {
   return (
-    <PageLayout>
       <section className="hero is-fullheight">
         <div className="hero-body">
           <div className="container">
@@ -19,16 +19,15 @@ const PageNotFound = () => {
                   <p>
                   It seems the page you requested does not exist
                   </p>
-                  <Link to="/dashboard/products" className="button is-danger is-rounded">
-                    Go back home
-                  </Link>
+                  <button onClick={() => navigate(-1)} className="button is-danger is-rounded">
+                    Go back 
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-    </PageLayout>
   )
 }
 export default PageNotFound

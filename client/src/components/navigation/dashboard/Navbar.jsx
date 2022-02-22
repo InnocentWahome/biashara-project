@@ -1,5 +1,5 @@
 import React from "react"
-import ResponsiveFunction from "../shared/ResponsiveNavbar"
+import ResponsiveFunction from "../../shared/ResponsiveNavbar"
 
 const Navbar = () => {
   const handleLogout = () => {
@@ -24,7 +24,7 @@ const Navbar = () => {
         </a>
         <a
           role="button"
-          className="navbar-burger burger"
+          className="navbar-burger"
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarBasicExample"
@@ -37,24 +37,18 @@ const Navbar = () => {
 
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-end">
-          <a className="navbar-item" href="/employee/home">
+          <a className="navbar-item" href="/dashboard/products">
             Home
           </a>
-          <a className="navbar-item" href="/employee/orders/">
-            Orders Review
+          <a className="navbar-item" href="/dashboard/my-orders">
+            My Orders
           </a>
-          <a className="navbar-item" href="/employee/maintenance/">
-            Maintenance
+          <a className="navbar-item" href="/dashboard/feedback">
+            Feedback
           </a>
-          <a className="navbar-item" href="/employee/personal-performance/">
-            Personal Performance
-          </a>
-          <a className="navbar-item" href="/employee/product-performance/">
-            Products Performance
-          </a>
-          <a className="navbar-item" href="/employee/inventory/">
-            Manage Inventory
-          </a>
+          {/* <a className="navbar-item" href="/dashboard/contact">
+            Contact Us
+          </a> */}
           <a className="navbar-item" href="/">
             <button
               className="button is-outlined is-danger "

@@ -1,4 +1,4 @@
-import NavbarLinks from "./constants/SocialsLinks"
+// import NavbarLinks from "./constants/SocialsLinks"
 
 import LoginForm from "./forms/auth/LoginForm"
 import RegisterForm from "./forms/auth/RegisterForm"
@@ -15,21 +15,21 @@ import OrderForm from './forms/OrderForm'
 import ProductForm from './forms/ProductForm'
 import DeliveredProductsReports from "./forms/DeliveredProductsReport"
 
-import Footer from "./dashboard/Footer"
-import Navbar from "./dashboard/Navbar"
+import Footer from "./navigation/dashboard/Footer"
+import Navbar from "./navigation/dashboard/Navbar"
 
-import AdminFooter from "./admin/AdminFooter"
-import AdminNavbar from "./admin/AdminNavbar"
+import AdminFooter from "./navigation/admin/AdminFooter"
+import AdminNavbar from "./navigation/admin/AdminNavbar"
 
-import EmployeeFooter from "./employee/EmployeeFooter"
-import EmployeeNavbar from "./employee/EmployeeNavbar"
+import EmployeeFooter from "./navigation/employee/EmployeeFooter"
+import EmployeeNavbar from "./navigation/employee/EmployeeNavbar"
 
-import AuthFooter from "./authentication/AuthFooter"
-import AuthNavbar from "./authentication/AuthNavbar"
+import AuthFooter from "./navigation/authentication/AuthFooter"
+import AuthNavbar from "./navigation/authentication/AuthNavbar"
 
 export {
   Navbar,
-  NavbarLinks,
+  // NavbarLinks,
   ContactForm,
   SubscribeForm,
   CreateEmployeeForm,

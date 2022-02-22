@@ -1,5 +1,5 @@
 import React from "react"
-import ResponsiveFunction from "../shared/ResponsiveNavbar"
+import ResponsiveFunction from "../../shared/ResponsiveNavbar"
 
 const Navbar = () => {
   const handleLogout = () => {
@@ -24,7 +24,7 @@ const Navbar = () => {
         </a>
         <a
           role="button"
-          className="navbar-burger"
+          className="navbar-burger burger"
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarBasicExample"
@@ -36,19 +36,31 @@ const Navbar = () => {
       </div>
 
       <div id="navbarBasicExample" className="navbar-menu">
-        <div className="navbar-end">
-          <a className="navbar-item" href="/dashboard/products">
+      <div className="navbar-end">
+          <a className="navbar-item" href="/admin/home">
             Home
           </a>
-          <a className="navbar-item" href="/dashboard/my-orders">
-            My Orders
+          <a className="navbar-item" href="/admin/employee-performance/">
+            Employee Performance
           </a>
-          <a className="navbar-item" href="/dashboard/feedback">
-            Feedback
+          <a className="navbar-item" href="/admin/orders/">
+            Review Orders
           </a>
-          {/* <a className="navbar-item" href="/dashboard/contact">
-            Contact Us
+          <a className="navbar-item" href="/admin/inventory/">
+            Manage Inventory
+          </a>
+          <a className="navbar-item" href="/admin/users/">
+            System Users
+          </a>
+          {/* <a className="navbar-item" href="/admin/delivery/">
+            Delivery Requests
           </a> */}
+          <a className="navbar-item" href="/admin/maintenance/">
+            Maintenance
+          </a>
+          <a className="navbar-item" href="/admin/product-performance/">
+            Product Performance
+          </a>
           <a className="navbar-item" href="/">
             <button
               className="button is-outlined is-danger "

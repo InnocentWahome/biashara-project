@@ -1,11 +1,11 @@
 import * as React from "react"
-import PageLayout from "../../layouts/PageLayout"
 import forbiddenImage from "../../assets/icons/errors/forbidden.svg"
 import { Link } from "gatsby"
+import { navigate } from "gatsby"
+
 
 const ForbiddenPage = () => {
   return (
-    <PageLayout>
       <section className="hero is-fullheight">
         <div className="hero-body">
           <div className="container">
@@ -19,16 +19,15 @@ const ForbiddenPage = () => {
                   <p>
                   You're don't have the correct role to continue to this page
                   </p>
-                  <Link to="/dashboard/products" className="button is-danger is-rounded">
-                    Go back home
-                  </Link>
+                  <button onClick={() => navigate(-2)} className="button is-danger is-rounded">
+                    Go back 
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-    </PageLayout>
   )
 }
 export default ForbiddenPage

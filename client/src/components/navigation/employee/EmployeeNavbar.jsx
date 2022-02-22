@@ -1,5 +1,5 @@
 import React from "react"
-import ResponsiveFunction from "../shared/ResponsiveNavbar"
+import ResponsiveFunction from "../../shared/ResponsiveNavbar"
 
 const Navbar = () => {
   const handleLogout = () => {
@@ -36,30 +36,24 @@ const Navbar = () => {
       </div>
 
       <div id="navbarBasicExample" className="navbar-menu">
-      <div className="navbar-end">
-          <a className="navbar-item" href="/admin/home">
+        <div className="navbar-end">
+          <a className="navbar-item" href="/employee/home">
             Home
           </a>
-          <a className="navbar-item" href="/admin/employee-performance/">
-            Employee Performance
+          <a className="navbar-item" href="/employee/orders/">
+            Orders Review
           </a>
-          <a className="navbar-item" href="/admin/orders/">
-            Review Orders
-          </a>
-          <a className="navbar-item" href="/admin/inventory/">
-            Manage Inventory
-          </a>
-          <a className="navbar-item" href="/admin/users/">
-            System Users
-          </a>
-          {/* <a className="navbar-item" href="/admin/delivery/">
-            Delivery Requests
-          </a> */}
-          <a className="navbar-item" href="/admin/maintenance/">
+          <a className="navbar-item" href="/employee/maintenance/">
             Maintenance
           </a>
-          <a className="navbar-item" href="/admin/product-performance/">
-            Product Performance
+          <a className="navbar-item" href="/employee/personal-performance/">
+            Personal Performance
+          </a>
+          <a className="navbar-item" href="/employee/product-performance/">
+            Products Performance
+          </a>
+          <a className="navbar-item" href="/employee/inventory/">
+            Manage Inventory
           </a>
           <a className="navbar-item" href="/">
             <button

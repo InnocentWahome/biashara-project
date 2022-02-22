@@ -9,18 +9,28 @@ import EditIcon from "@material-ui/icons/Edit"
 import DeleteIcon from "@mui/icons-material/Delete"
 import { FormControlLabel, IconButton } from "@material-ui/core"
 import { blue, red } from "@material-ui/core/colors"
+import Alert from "@mui/material/Alert"
 
 const EditRecord = ({ index }) => {
+  const [category, updateCategory] = useState("")
+  const [description, updateDescription] = useState("")
+  const [date, updateDate] = useState("")
+
   const handleEditClick = async e => {
     console.log("this one will be edited")
     try {
       e.preventDefault()
       await $http
         .Api({
-          method: "DELETE",
-          url: "/service-request/:id" + index,
-          data: {},
+          method: "PUT",
+          url: "/service-request/" + index,
+          data: {
+            date: date,
+            category: category,
+            description: description,
+          },
         })
+        .then(console.log("it has been edited"))
     } catch (error) {
       console.error(error)
     }
@@ -96,10 +106,25 @@ const EmployeePerformance = () => {
   }
   const columns = [
     // { field: "id", headerName: "ID" },
-    { field: "category", headerName: "Service Category", width: 200 },
-    { field: "description", headerName: "Description", width: 300 },
-    { field: "date", headerName: "Service Date", width: 200 },
-    { field: "user_id", headerName: "Assigned To userId", width: 200 },
+    {
+      field: "category",
+      headerName: "Service Category",
+      width: 200,
+      editable: true,
+    },
+    {
+      field: "description",
+      headerName: "Description",
+      width: 300,
+      editable: true,
+    },
+    { field: "date", headerName: "Service Date", width: 200, editable: true },
+    {
+      field: "user_id",
+      headerName: "Assigned To userId",
+      width: 200,
+      editable: true,
+    },
     {
       field: "completed",
       headerName: "Completion Status",
@@ -164,8 +189,12 @@ const EmployeePerformance = () => {
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
+  const [editRowsModel, setEditRowsModel] = React.useState({})
 
-  const fetchUsers = async e => {
+  const handleEditRowsModelChange = React.useCallback(model => {
+    setEditRowsModel(model)
+  }, [])
+  const fetchDatagrid = async e => {
     try {
       const response = await $http.Api({
         method: "GET",
@@ -181,7 +210,7 @@ const EmployeePerformance = () => {
   }
 
   useEffect(() => {
-    fetchUsers()
+    fetchDatagrid()
   }, [])
 
   return (
@@ -199,7 +228,10 @@ const EmployeePerformance = () => {
                 onPageSizeChange={newPage => setPageSize(newPage)}
                 pagination
                 columns={columns}
-                // checkboxSelection
+                onRowEditCommit={EditRecord}
+                onEditRowsModelChange={handleEditRowsModelChange}
+                editMode="row"
+                editRowsModel={editRowsModel}
                 sx={{
                   boxShadow: 2,
                   border: 2,
@@ -209,6 +241,9 @@ const EmployeePerformance = () => {
                   },
                 }}
               />
+              <Alert severity="info" style={{ marginTop: 8 }}>
+                <code>editRowsModel: {JSON.stringify(editRowsModel)}</code>
+              </Alert>
             </div>
           </div>
           <div className="column pt-6 mt-6">

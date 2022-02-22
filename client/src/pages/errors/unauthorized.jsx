@@ -1,11 +1,9 @@
 import * as React from "react"
-import PageLayout from "../../layouts/PageLayout"
 import unauthorizedImage from "../../assets/icons/errors/401.svg"
 import { Link } from "gatsby"
 
 const InternalServerErrorPage = () => {
   return (
-    <PageLayout>
       <section className="hero is-fullheight">
         <div className="hero-body">
           <div className="container">
@@ -28,7 +26,6 @@ const InternalServerErrorPage = () => {
           </div>
         </div>
       </section>
-    </PageLayout>
   )
 }
 export default InternalServerErrorPage

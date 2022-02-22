@@ -1,11 +1,10 @@
 import * as React from "react"
-import PageLayout from "../../layouts/PageLayout"
-import internalServerErrorImage from "../../assets/icons/errors/internal-server-error.svg"
+import internalServerErrorImage from "../assets/icons/errors/internal-server-error.svg"
 import { Link } from "gatsby"
+import { navigate } from "gatsby"
 
 const InternalServerErrorPage = () => {
   return (
-    <PageLayout>
       <section className="hero is-fullheight">
         <div className="hero-body">
           <div className="container">
@@ -19,16 +18,15 @@ const InternalServerErrorPage = () => {
                   <p>
                   Look's like something went wrong
                   </p>
-                  <Link to="/dashboard/products" className="button is-danger is-rounded">
+                  <button onClick={() => navigate(-1)} className="button is-danger is-rounded">
                     Back to Safety
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-    </PageLayout>
   )
 }
 export default InternalServerErrorPage
