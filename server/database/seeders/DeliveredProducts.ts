@@ -3,6 +3,6 @@ import { DeliveredProductFactory } from 'Database/factories/DeliveredProductFact
 
 export default class DeliveredProductSeeder extends BaseSeeder {
   public async run() {
-    await DeliveredProductFactory.with('user', 10).createMany(10)
+    await DeliveredProductFactory.with('user').createMany(10)
   }
 }

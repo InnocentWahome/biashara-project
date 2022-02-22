@@ -7,12 +7,12 @@ export const OrderFactory = Factory.define(Order, ({ faker }) => {
     productId: faker.datatype.number(),
     productName: faker.commerce.productName(),
     userId: faker.datatype.number(),
+    userEmail: faker.internet.email(),
     cost: faker.datatype.number(),
     quantity: faker.datatype.number(),
-    paymentStatus: faker.datatype.boolean(),
-    adminApproval: faker.datatype.boolean(),
-    dispatchStatus: faker.datatype.boolean(), 
-    deliveryStatus: faker.datatype.boolean(), 
+    paymentStatus: false,
+    dispatchStatus: false, 
+    deliveryStatus: false
   }
 })
 .relation('user', () => UserFactory)

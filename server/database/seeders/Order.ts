@@ -4,7 +4,7 @@ import { OrderFactory } from 'Database/factories/OrderFactory'
 export default class OrderSeeder extends BaseSeeder {
   public async run() {
     await OrderFactory 
-    .with('user', 10)
+    .with('user')
     .createMany(10)
   }
 }
