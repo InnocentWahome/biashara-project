@@ -32,7 +32,7 @@ const AdminEmployeePerformance = () => {
     { field: "start", headerName: "Start Time", width: 130 },
     { field: "stop", headerName: "Stop Time", width: 130 },
     { field: "hours", headerName: "Hours Worked", width: 130 },
-    { field: "description", headerName: "Description", width: 200 },
+    { field: "description", headerName: "Description", width: 300 },
     { field: "user_id", headerName: "Employee ID", width: 130 },
     {
       field: "admin_approval",

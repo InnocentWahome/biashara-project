@@ -1,69 +1,43 @@
-import React, { useState, useEffect } from "react"
-import ReactDataGrid from '@inovua/reactdatagrid-community'
-import '@inovua/reactdatagrid-community/index.css'
-import '@inovua/reactdatagrid-community/base.css'
-import '@inovua/reactdatagrid-enterprise/index.css'
-// import NumberFilter from '@inovua/reactdatagrid-community/NumberFilter'
-// import SelectFilter from '@inovua/reactdatagrid-community/SelectFilter'
-// import DateFilter from '@inovua/reactdatagrid-community/DateFilter'
-import PageLayout from "../layouts/PageLayout"
-import $http from "../plugins/axios"
+import * as React from 'react';
+import TextField from '@mui/material/TextField';
+import Stack from '@mui/material/Stack';
 
-const DataTable = () => {
-
-const columns = [
-  { name: 'id', header: 'ID', minWidth: 50, defaultFlex: 0.5 },
-  { name: 'name', header: 'Name', minWidth: 50, defaultFlex: 1 },
-  { name: 'description', header: 'Description', maxWidth: 1000, defaultFlex: 1 }
-]
-
-const gridStyle = { minHeight: 550 }
-
-const [tableData, setTableData] = useState([])
-// const [pageSize, setPageSize] = React.useState(25)
-
-const datagrid = async e => {
-  try {
-    const response = await $http.Api({
-      method: "GET",
-      url: "/course",
-    });
-    if (response.data?.data) {
-      console.log(tableData)
-      setTableData(response.data.data);
-    }
-  } catch (error) {
-    console.error(error)
-  }
+export default function NativePickers() {
+  return (
+    <Stack component="form" noValidate spacing={3}>
+      <TextField
+        id="date"
+        label="Birthday"
+        type="date"
+        defaultValue="2017-05-24"
+        sx={{ width: 220 }}
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
+      <TextField
+        id="time"
+        label="Alarm clock"
+        type="time"
+        defaultValue="07:30"
+        InputLabelProps={{
+          shrink: true,
+        }}
+        inputProps={{
+          step: 300, // 5 min
+        }}
+        sx={{ width: 150 }}
+      />
+      <TextField
+        id="datetime-local"
+        label="Next appointment"
+        type="datetime-local"
+        defaultValue="2017-05-24T10:30"
+        sx={{ width: 250 }}
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
+    </Stack>
+  );
 }
-
-useEffect(() => {
-  datagrid();
-}, [])
-
-const filterValue = [
-  { name: 'id', operator: 'startsWith', type: 'number', value: '' },
-  { name: 'name', operator: 'startsWith', type: 'string', value: '' },
-  { name: 'description', operator: 'startsWith', type: 'string', value: '' },
-];
-
-return (
-  <PageLayout>
-    <div className="container pt-6 mt-6">
-      <div style={{ height: 600, width: "200" }}>
-      <ReactDataGrid
-        idProperty="id"
-        columns={columns}
-        dataSource={tableData}
-        style={gridStyle}
-        pagination
-        defaultFilterValue={filterValue}
-        editable={true}
-/>
-      </div>
-    </div>
-  </PageLayout>
-)
-}
-
-export default DataTable

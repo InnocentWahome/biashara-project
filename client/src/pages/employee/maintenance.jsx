@@ -28,10 +28,10 @@ const EmployeePerformance = () => {
   }
   const columns = [
     // { field: "id", headerName: "ID" },
-    { field: "category", headerName: "Service Category", width: 200 },
+    { field: "category", headerName: "Service Category", width: 150 },
     { field: "description", headerName: "Description", width: 300 },
     { field: "date", headerName: "Service Date", width: 200 },
-    { field: "user_id", headerName: "Assigned To userId", width: 200 },
+    { field: "user_id", headerName: "Assigned To userId", width: 150 },
     {
       field: "completed",
       headerName: "Completion Status",
@@ -106,9 +106,9 @@ const EmployeePerformance = () => {
                 sx={{
                   boxShadow: 2,
                   border: 2,
-                  borderColor: '#9e9e9e',
-                  '& .MuiDataGrid-cell:hover': {
-                    color: 'primary.main',
+                  borderColor: "#9e9e9e",
+                  "& .MuiDataGrid-cell:hover": {
+                    color: "primary.main",
                   },
                 }}
               />
@@ -116,7 +116,7 @@ const EmployeePerformance = () => {
           </div>
           <div className="column pt-6 mt-6">
             <MaintenanceScheduleForm />
-          </div> 
+          </div>
         </div>
       </div>
     </EmployeeLayout>

@@ -4,12 +4,13 @@ import $http from "../../plugins/axios"
 import StyledDataGrid from "../../assets/styles/datagrid"
 import Rating from "@mui/material/Rating"
 
-
-{/* <Rating name="read-only" value={value} readOnly /> */}
-
+{
+  /* <Rating name="read-only" value={value} readOnly /> */
+}
 
 const PerformanceDatagrid = () => {
   const columns = [
+    { field: "id", headerName: "ID" },
     { field: "product_name", headerName: "Product Name", width: 200 },
     { field: "product_id", headerName: "Product ID", width: 150 },
     { field: "description", headerName: "Review Description", width: 200 },
@@ -36,28 +37,26 @@ const PerformanceDatagrid = () => {
               <Rating name="read-only" value={2} readOnly />
             </div>
           )
-        }  else if (params.row.rate === 3) {
+        } else if (params.row.rate === 3) {
           decidedIcon = (
             <div>
               <Rating name="read-only" value={3} readOnly />
             </div>
           )
-        }  else if (params.row.rate === 4) {
+        } else if (params.row.rate === 4) {
           decidedIcon = (
             <div>
               <Rating name="read-only" value={4} readOnly />
             </div>
           )
-        }  else if (params.row.rate === 5) {
+        } else if (params.row.rate === 5) {
           decidedIcon = (
             <div>
               <Rating name="read-only" value={5} readOnly />
             </div>
           )
         } else {
-          decidedIcon = (
-            <Rating name="no-value" value={null} />
-          )
+          decidedIcon = <Rating name="no-value" value={null} />
         }
         return <div>{decidedIcon}</div>
       },
@@ -87,11 +86,11 @@ const PerformanceDatagrid = () => {
   }, [])
 
   return (
-    <div className="pl-5 pr-5 pt-4">
+    <div className="pl-5 pr-5 pt-4 container">
       <p className="is-size-4 has-text-centered pb-3 mt-6 pt-6 title">
         Performance of Delivered Products (Users' Feedback)
       </p>
-      <div style={{ height: 600, width: "80%" }}>
+      <div style={{ height: 600, width: "90%" }}>
         <StyledDataGrid
           rows={tableData}
           pageSize={pageSize}

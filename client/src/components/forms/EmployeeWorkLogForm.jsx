@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import $http from "../../plugins/axios"
+import TextField from "@mui/material/TextField"
+import Stack from "@mui/material/Stack"
 
 const EmployeeWorkLogForm = () => {
   const [date, setDate] = useState("")
@@ -40,14 +42,26 @@ const EmployeeWorkLogForm = () => {
           <div className="field-body">
             <div className="field">
               <div className="control is-expanded">
-                <p className="label">Date</p>
+                {/* <p className="label">Date</p>
                 <input
                   className="input"
                   type="text"
                   placeholder="eg: YYYY-MM-DD"
                   required
                   onChange={e => setDate(e.target.value)}
-                />
+                /> */}
+                {/* <Stack component="form" noValidate spacing={3}>
+                  <TextField
+                    id="date"
+                    label="Date"
+                    type="date"
+                    defaultValue="2022-01-01"
+                    sx={{ width: 220 }}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  /> */}
+                {/* </Stack> */}
               </div>
             </div>
           </div>
@@ -101,14 +115,29 @@ const EmployeeWorkLogForm = () => {
               <div className="field-body">
                 <div className="field">
                   <div className="control is-expanded">
-                    <p className="label">Start Time</p>
-                    <input
+                    {/* <p className="label">Start Time</p> */}
+                    {/* <input
                       className="input"
                       type="number"
                       placeholder="eg: 0800"
                       required
                       onChange={e => setStartTime(e.target.value)}
-                    />
+                    /> */}
+                    <Stack component="form" noValidate spacing={3}>
+                      <TextField
+                        id="time"
+                        label="Start Time"
+                        type="time"
+                        defaultValue="07:30"
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        inputProps={{
+                          step: 300, // 5 min
+                        }}
+                        sx={{ width: 150 }}
+                      />
+                    </Stack>
                   </div>
                 </div>
               </div>
@@ -119,14 +148,29 @@ const EmployeeWorkLogForm = () => {
               <div className="field-body">
                 <div className="field">
                   <div className="control is-expanded">
-                    <p className="label">Stop Time</p>
+                    {/* <p className="label">Stop Time</p>
                     <input
                       className="input"
                       type="number"
                       placeholder="eg: 1700"
                       required
                       onChange={e => setStopTime(e.target.value)}
-                    />
+                    /> */}
+                    <Stack component="form" noValidate spacing={3}>
+                      <TextField
+                        id="time"
+                        label="Stop Time"
+                        type="time"
+                        defaultValue="07:30"
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        inputProps={{
+                          step: 300, // 5 min
+                        }}
+                        sx={{ width: 150 }}
+                      />
+                    </Stack>
                   </div>
                 </div>
               </div>

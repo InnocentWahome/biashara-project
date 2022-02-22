@@ -48,7 +48,7 @@ const AdminSystemUsers = () => {
     { field: "firstName", headerName: "First Name", width: 120  },
     { field: "lastName", headerName: "Last Name", width: 120  },
     { field: "phoneNumber", headerName: "Phone Number", width: 200 },
-    { field: "email", headerName: "Email Address", width: 200 },
+    { field: "email", headerName: "Email Address", width: 250 },
     { field: "role", headerName: "Roles", width: 150 },
     {
       field: "actions",

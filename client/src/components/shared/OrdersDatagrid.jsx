@@ -22,7 +22,7 @@ const OrdersDatagrid = () => {
     },
     { field: "user_id", headerName: "User ID", width: 100 },
     { field: "cost", headerName: "Total Cost", width: 100 },
-    { field: "quantity", headerName: "Product Quantity", width: 100 },
+    { field: "quantity", headerName: " Quantity", width: 100 },
     {
       field: "payment_status",
       headerName: "Payment Status",
@@ -64,6 +64,7 @@ const OrdersDatagrid = () => {
       headerName: "Dispatch Status",
       width: 140,
       sortable: true,
+      editable: true,
       type: "boolean",
       disableClickEventBubbling: true,
       renderCell: params => {

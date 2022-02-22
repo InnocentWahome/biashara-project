@@ -6,7 +6,7 @@ const EmployeeHomePage = () => {
   return (
     <EmployeeLayout>
       <div className="container">
-        <h1 className="has-text-centered pt-4 pb-4 title is-size-4">
+        <h1 className="has-text-centered pt-6 mt-6 pb-4 title is-size-4">
           Employee Home Page
         </h1>
         <br />
@@ -23,7 +23,7 @@ const EmployeeHomePage = () => {
                 Schedule maintenance and service requests
               </td>
               <td className="has-text-centered is-vcentered  pb-5">
-                You can schedule maintenance and service requests on thee{" "}
+                You can schedule maintenance and service requests on the
                 <a href="/employee/maintenance/"> Maintenance </a>
                 page.
               </td>
@@ -42,7 +42,7 @@ const EmployeeHomePage = () => {
               <td className="has-text-centered is-vcentered  pb-5">
                 Monitor performance of delivered products
                 <a href="/employee/product-performance/"> 
-                  Delivered Product Performance 
+                   Delivered Product Performance  
                 </a>
                 page
               </td>
@@ -52,7 +52,7 @@ const EmployeeHomePage = () => {
               <td className="has-text-centered "> Create Word Log </td>
               <td className="has-text-centered is-vcentered  pb-5">
                 Create daily work performance logs on the
-                <a href="/employee/my-performance/">My Performance</a>
+                <a href="/employee/my-performance/"> My Performance </a>
                 page
               </td>
             </tr>
@@ -61,7 +61,7 @@ const EmployeeHomePage = () => {
               <td className="has-text-centered "> Record stock </td>
               <td className="has-text-centered is-vcentered  pb-5">
                 Record stock and account for deliveries made on the
-                <a href="/employee/stock/">Stock</a>
+                <a href="/employee/stock/"> Stock </a>
                 page
               </td>
             </tr>
