@@ -7,9 +7,9 @@ import DeleteIcon from "@mui/icons-material/Delete"
 import { FormControlLabel, IconButton } from "@material-ui/core"
 import { blue, red } from "@material-ui/core/colors"
 import Button from "@mui/material/Button"
+import MaintenanceScheduleFormForm from "../../components/forms/MaintainenceScheduleForm"
 
 const AdminMaintenance = () => {
-
   const EditRecord = ({ index }) => {
     const price = 100
     const handleEditClick = async e => {}
@@ -67,8 +67,9 @@ const AdminMaintenance = () => {
     // { field: "id", headerName: "ID" },
     { field: "category", headerName: "Service Category", width: 150 },
     { field: "description", headerName: "Description", width: 200 },
-    { field: "date", headerName: "Service Date", width: 200 }, 
-    { field: "user_id", headerName: "Assigned To userId", width: 150 },
+    { field: "date", headerName: "Service Date", width: 200 },
+    { field: "user_id", headerName: "Assigned To (ID)", width: 150 },
+    { field: "user_email", headerName: "Assigned To (Email)", width: 220 },
     {
       field: "completed",
       headerName: "Completion Status",
@@ -115,7 +116,7 @@ const AdminMaintenance = () => {
                 className="d-flex  align-items-center"
                 style={{ cursor: "pointer" }}
               >
-                <EditRecord index={params.row.id} />
+                <EditIcon onClick={EditRecord} color="primary" />
               </div>
             </div>
             <div className="column">
@@ -123,7 +124,7 @@ const AdminMaintenance = () => {
                 className="d-flex  align-items-center"
                 style={{ cursor: "pointer" }}
               >
-                <EditRecord index={params.row.id} />
+                <DeleteIcon onClick={EditRecord} color="error" />
               </div>
             </div>
           </div>
@@ -157,23 +158,30 @@ const AdminMaintenance = () => {
     <AdminLayout>
       <div className="container pt-6">
         <p className="is-size-4 has-text-centered pb-3 pt-6">Maintenance </p>
-        <div style={{ height: 600, width: "80% " }}>
-          <StyledDataGrid
-            rows={tableData}
-            pageSize={pageSize}
-            onPageSizeChange={newPage => setPageSize(newPage)}
-            pagination
-            columns={columns}
-            // checkboxSelection
-            sx={{
-              boxShadow: 2,
-              border: 2,
-              borderColor: '#9e9e9e',
-              '& .MuiDataGrid-cell:hover': {
-                color: 'primary.main',
-              },
-            }}
-          />
+        <div className="columns">
+          <div className="column is-three-quarters">
+            <div style={{ height: 600, width: "100% " }}>
+              <StyledDataGrid
+                rows={tableData}
+                pageSize={pageSize}
+                onPageSizeChange={newPage => setPageSize(newPage)}
+                pagination
+                columns={columns}
+                // checkboxSelection
+                sx={{
+                  boxShadow: 2,
+                  border: 2,
+                  borderColor: "#9e9e9e",
+                  "& .MuiDataGrid-cell:hover": {
+                    color: "primary.main",
+                  },
+                }}
+              />
+            </div>
+          </div>
+          <div className="column">
+            <MaintenanceScheduleFormForm />
+          </div>
         </div>
       </div>
     </AdminLayout>

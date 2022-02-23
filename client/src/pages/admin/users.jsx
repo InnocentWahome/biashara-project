@@ -8,7 +8,7 @@ import EditIcon from "@material-ui/icons/Edit"
 import DeleteIcon from "@mui/icons-material/Delete"
 import { FormControlLabel, IconButton } from "@material-ui/core"
 import { blue, red } from "@material-ui/core/colors"
-
+import Button from "@mui/material/Button"
 
 const AdminSystemUsers = () => {
   const EditRecord = ({ index }) => {
@@ -49,7 +49,53 @@ const AdminSystemUsers = () => {
     { field: "lastName", headerName: "Last Name", width: 120  },
     { field: "phoneNumber", headerName: "Phone Number", width: 200 },
     { field: "email", headerName: "Email Address", width: 250 },
-    { field: "role", headerName: "Roles", width: 150 },
+    {
+      field: "role",
+      headerName: "Roles",
+      width: 140,
+      sortable: true,
+      editable: true,
+      type: "boolean",
+      disableClickEventBubbling: true,
+      renderCell: params => {
+        let decidedIcon
+        if (params.row.role === 'Admin') {
+          decidedIcon = (
+            <div
+              className="d-flex  align-items-center"
+              style={{ cursor: "pointer" }}
+            >
+              <Button size="small" variant="outlined" color="success">
+                ADMIN
+              </Button>
+            </div>
+          )
+        } else if (params.row.role === 'Employee') {
+          decidedIcon = (
+            <div
+              className="d-flex  align-items-center"
+              style={{ cursor: "pointer" }}
+            >
+              <Button size="small" variant="outlined" color="primary">
+                EMPLOYEE
+              </Button>
+            </div>
+          )
+        } else if (params.row.role === 'User') {
+          decidedIcon = (
+            <div
+              className="d-flex  align-items-center"
+              style={{ cursor: "pointer" }}
+            >
+              <Button size="small" variant="outlined" color="secondary">
+                USER
+              </Button>
+            </div>
+          )
+        }
+        return <div>{decidedIcon}</div>
+      },
+    },
     {
       field: "actions",
       headerName: "Actions",
@@ -64,7 +110,7 @@ const AdminSystemUsers = () => {
                 className="d-flex  align-items-center"
                 style={{ cursor: "pointer" }}
               >
-                <EditRecord index={params.row.id} />
+                <EditIcon onClick={EditRecord} color="primary" />
               </div>
             </div>
             <div className="column">
@@ -72,7 +118,7 @@ const AdminSystemUsers = () => {
                 className="d-flex  align-items-center"
                 style={{ cursor: "pointer" }}
               >
-                <EditRecord index={params.row.id} />
+                <DeleteIcon onClick={EditRecord} color="error" />
               </div>
             </div>
           </div>

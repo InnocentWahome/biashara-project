@@ -142,9 +142,9 @@ const EmployeeOrders = () => {
 
   return (
     <EmployeeLayout>
-      <div className="pr-6 pl-6 mr-6 pt-6 container">
+      <div className="pr-6 mr-6 pt-6 container">
         <p className="is-size-4 has-text-centered pb-2 pt-5 title">
-          Dispatch Orders For Delivery
+          Orders 
         </p>
         <div style={{ height: 600, width: "100%" }}>
           <StyledDataGrid

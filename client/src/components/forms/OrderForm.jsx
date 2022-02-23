@@ -8,7 +8,7 @@ const ProductForm = () => {
 
   const price = 100
   const userId = localStorage.getItem("userId")
-
+  const userEmail = localStorage.getItem("userEmail")
   const createOrder = async e => {
     try {
       e.preventDefault()
@@ -19,6 +19,7 @@ const ProductForm = () => {
           product_name: productName,
           product_id: productId,
           user_id: userId,
+          user_email: userEmail,
           quantity: productQuantity,
           cost: productQuantity * price,
           adminApproval: false,

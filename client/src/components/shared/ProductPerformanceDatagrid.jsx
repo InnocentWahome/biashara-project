@@ -10,17 +10,17 @@ import Rating from "@mui/material/Rating"
 
 const PerformanceDatagrid = () => {
   const columns = [
-    { field: "id", headerName: "ID" },
+    { field: "id", headerName: "#", width: 50 },
     { field: "product_name", headerName: "Product Name", width: 200 },
-    { field: "product_id", headerName: "Product ID", width: 150 },
+    { field: "product_id", headerName: "Product ID", width: 120 },
     { field: "description", headerName: "Review Description", width: 200 },
-    { field: "user_id", headerName: "User ID", width: 150 },
+    { field: "user_id", headerName: "User ID", width: 100 },
+    { field: "user_email", headerName: "User Email", width: 220 },
     {
       field: "rate",
       headerName: "Rate",
       width: 150,
       sortable: true,
-      editable: true,
       type: "boolean",
       disableClickEventBubbling: true,
       renderCell: params => {
@@ -61,7 +61,7 @@ const PerformanceDatagrid = () => {
         return <div>{decidedIcon}</div>
       },
     },
-    { field: "updated_at", headerName: "Review Date", width: 220 },
+    // { field: "date", headerName: "Review Date", width: 150 },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)

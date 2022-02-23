@@ -76,12 +76,13 @@ const EmployeePerformance = () => {
   const columns = [
     { field: "date", headerName: "Date", width: 200, type: "dateTime" },
     { field: "day", headerName: "Day", width: 150 },
-    { field: "start", headerName: "Start Time", width: 150 },
-    { field: "stop", headerName: "Stop Time", width: 150 },
+    { field: "description", headerName: "Description", width: 300 },
+    // { field: "start", headerName: "Start Time", width: 150 },
+    // { field: "stop", headerName: "Stop Time", width: 150 },
     { field: "hours", headerName: "Hours Worked", width: 150 },
     {
       field: "admin_approval",
-      headerName: "Admin Approval",
+      headerName: "Approval Status",
       width: 140,
       sortable: true,
       editable: true,
@@ -149,7 +150,7 @@ const EmployeePerformance = () => {
       const userId = localStorage.getItem("userId")
       const response = await $http.Api({
         method: "GET",
-        url: `/worklog/1`,
+        url: `/worklog`,
       })
       if (response.data?.data) {
         console.log(tableData)

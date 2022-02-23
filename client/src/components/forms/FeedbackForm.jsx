@@ -8,9 +8,11 @@ const OrderForm = () => {
   const [rate, setRate] = useState("")
 
   const userId = localStorage.getItem("userId")
+  const userEmail = localStorage.getItem("userEmail")
 
   const sendFeedbackForm = async e => {
     const userId = localStorage.getItem("userId")
+    const userEmail = localStorage.getItem("userEmail")
 
     try {
       e.preventDefault()
@@ -22,6 +24,7 @@ const OrderForm = () => {
           product_name: productName,
           description: description,
           user_id: userId,
+          user_email: userEmail,
           rate: rate,
         },
       })

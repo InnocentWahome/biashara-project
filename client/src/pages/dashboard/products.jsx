@@ -34,27 +34,13 @@ const DashboardProducts = () => {
       disableClickEventBubbling: true,
       renderCell: params => {
         return (
-          <div className="columns">
-            <div className="column">
-              <div
-                className="d-flex  align-items-center"
-                style={{ cursor: "pointer" }}
-              >
-                <Button variant="outlined" color="error">
-                  ORDER
-                </Button>
-              </div>
-            </div>
-            <div className="column">
-              <div
-                className="d-flex  align-items-center"
-                style={{ cursor: "pointer" }}
-              >
-                <Button variant="outlined" color="primary">
-                  FEEDBACK
-                </Button>
-              </div>
-            </div>
+          <div
+            className="d-flex  align-items-center"
+            style={{ cursor: "pointer" }}
+          >
+            <Button variant="outlined" color="error">
+              ORDER
+            </Button>
           </div>
         )
       },
