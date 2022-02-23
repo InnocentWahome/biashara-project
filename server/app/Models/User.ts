@@ -24,8 +24,8 @@ export default class User extends BaseModel {
   @column({ serializeAs: 'role' })
   public role: string
 
-  @column()
-  public rememberMeToken?: string
+  // @column()
+  // public rememberMeToken?: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

@@ -9,6 +9,8 @@ export default class Feedback extends BaseSchema {
       table.string('product_id')
       table.string('product_name')
       table.string('user_id')
+      table.string('user_email')
+      table.string('date')
       table.string('description')
       table.integer('rate')
       table.timestamps(true)

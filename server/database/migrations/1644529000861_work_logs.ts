@@ -6,9 +6,10 @@ export default class WorkLogs extends BaseSchema {
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.integer('user_id')
+      table.string('user_id')
+      table.string('user_email')
       table.string('description')
-      table.date('date')
+      table.string('date')
       table.string('day')
       table.integer('hours')
       table.integer('start')

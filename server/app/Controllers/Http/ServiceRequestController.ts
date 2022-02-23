@@ -46,7 +46,7 @@ export default class ServiceController {
 
   public async store({ request, response }: HttpContextContract) {
     try {
-      const data = request.only(['user_id', 'description', 'category', 'date', 'completed'])
+      const data = request.only(['user_email', 'user_id', 'description', 'category', 'date', 'completed'])
       const serviceRequest = await Service.create(data)
       return response.json({
         success: true,
@@ -72,7 +72,7 @@ export default class ServiceController {
           data: null,
         })
       } else {
-        serviceRequest.merge(request.only(['user_id', 'description', 'category', 'date', 'completed']))
+        serviceRequest.merge(request.only(['user_email', 'user_id', 'description', 'category', 'date', 'completed']))
         await serviceRequest.save()
         return response.json({
           success: true,

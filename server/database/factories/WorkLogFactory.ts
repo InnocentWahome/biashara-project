@@ -5,7 +5,7 @@ import { UserFactory } from './UserFactory'
 
 export const WorkLogFactory = Factory.define(WorkLog, ({ faker }) => {
   return {
-    date: faker.date.future(),
+    date:  faker.commerce.productDescription(),
     day: faker.date.weekday(),
     start: faker.datatype.number({
       'min': 0,
@@ -16,6 +16,7 @@ export const WorkLogFactory = Factory.define(WorkLog, ({ faker }) => {
       'max': 2400,
     }),
     userId: faker.datatype.number(),
+    userEmail: faker.internet.email(),
     description: faker.commerce.productDescription(),
     hours: faker.datatype.number(),
     approval: false, 

@@ -8,6 +8,8 @@ export const FeedbackFactory = Factory.define(Feedback, ({ faker }) => {
     productId: faker.datatype.number(),
     productName: faker.commerce.productName(),
     userId: faker.datatype.number(),
+    userEmail: faker.internet.email(),
+    date: faker.commerce.productDescription(),
     description: faker.commerce.productDescription(),
     rate: faker.datatype.number({
       'min': 1,

@@ -27,9 +27,6 @@ export default class Order extends BaseModel {
   public quantity: number
 
   @column()
-  public adminApproval: boolean
-
-  @column()
   public paymentStatus: boolean
 
   @column()

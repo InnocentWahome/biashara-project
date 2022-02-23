@@ -15,7 +15,10 @@ export default class ServiceRequest extends BaseModel {
   public userId: number
 
   @column()
-  public date: Date
+  public userEmail: string
+
+  @column()
+  public date: string
 
   @column()
   public completed: boolean

@@ -146,9 +146,10 @@ const EmployeePerformance = () => {
 
   const fetchWorklog = async e => {
     try {
+      const userId = localStorage.getItem("userId")
       const response = await $http.Api({
         method: "GET",
-        url: "/worklog",
+        url: `/worklog/1`,
       })
       if (response.data?.data) {
         console.log(tableData)

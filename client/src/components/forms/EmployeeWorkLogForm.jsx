@@ -11,7 +11,13 @@ const EmployeeWorkLogForm = () => {
   const [hoursWorked, setHoursWorked] = useState("")
   const [workDescription, setWorkDescription] = useState("")
 
+  const userId = localStorage.getItem("userId")
+  const userEmail = localStorage.getItem("userEmail")
+
+
   const createEmployeeWorklog = async e => {
+    const userId = localStorage.getItem("userId")
+
     try {
       e.preventDefault()
       await $http.Api({
@@ -24,6 +30,8 @@ const EmployeeWorkLogForm = () => {
           stop: stopTime,
           hours: stopTime - startTime,
           description: workDescription,
+          user_id: userId,
+          userEmail: userEmail
         },
       })
     } catch (error) {
@@ -123,7 +131,7 @@ const EmployeeWorkLogForm = () => {
                       required
                       onChange={e => setStartTime(e.target.value)}
                     /> */}
-                    <Stack component="form" noValidate spacing={3}>
+                    {/* <Stack component="form" noValidate spacing={3}>
                       <TextField
                         id="time"
                         label="Start Time"
@@ -137,7 +145,7 @@ const EmployeeWorkLogForm = () => {
                         }}
                         sx={{ width: 150 }}
                       />
-                    </Stack>
+                    </Stack> */}
                   </div>
                 </div>
               </div>
@@ -156,7 +164,7 @@ const EmployeeWorkLogForm = () => {
                       required
                       onChange={e => setStopTime(e.target.value)}
                     /> */}
-                    <Stack component="form" noValidate spacing={3}>
+                    {/* <Stack component="form" noValidate spacing={3}>
                       <TextField
                         id="time"
                         label="Stop Time"
@@ -170,7 +178,7 @@ const EmployeeWorkLogForm = () => {
                         }}
                         sx={{ width: 150 }}
                       />
-                    </Stack>
+                    </Stack> */}
                   </div>
                 </div>
               </div>

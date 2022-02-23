@@ -1,5 +1,5 @@
 import Route from '@ioc:Adonis/Core/Route'
-import {HttpContextContract} from '@ioc:Adonis/Core/HttpContext'
+import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
 
 
