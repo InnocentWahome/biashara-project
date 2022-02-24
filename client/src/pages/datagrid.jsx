@@ -11,6 +11,7 @@ import { FormControlLabel, IconButton } from "@material-ui/core"
 import { blue, red } from "@material-ui/core/colors"
 import Alert from "@mui/material/Alert"
 
+
 const EditRecord = ({ index }) => {
   const [category, updateCategory] = useState("")
   const [description, updateDescription] = useState("")
@@ -25,9 +26,10 @@ const EditRecord = ({ index }) => {
           method: "PUT",
           url: "/service-request/" + index,
           data: {
-            date: date,
-            category: category,
-            description: description,
+            date: '20-02-22',
+            category: 'Software Update',
+            description: 'wahomewahome',
+            completed: true
           },
         })
         .then(console.log("it has been edited"))

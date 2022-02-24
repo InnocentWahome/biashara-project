@@ -70,7 +70,7 @@ const ProductForm = () => {
                 <input
                   className="input"
                   type="text"
-                  placeholder=""
+                  placeholder="http://placeimg.com/640/480"
                   required
                   onChange={e => setProductImage(e.target.value)}
                 />

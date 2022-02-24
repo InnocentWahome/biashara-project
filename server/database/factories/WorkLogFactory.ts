@@ -18,8 +18,11 @@ export const WorkLogFactory = Factory.define(WorkLog, ({ faker }) => {
     userId: faker.datatype.number(),
     userEmail: faker.internet.email(),
     description: faker.commerce.productDescription(),
-    hours: faker.datatype.number(),
-    approval: false, 
+    hours: faker.datatype.number({
+        'min': 0,
+        'max': 12,
+      }),
+    approval: faker.datatype.boolean(), 
   }
 }).relation('user', () => UserFactory)
 .build()

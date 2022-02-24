@@ -12,9 +12,9 @@ export default class Orders extends BaseSchema {
       table.string('user_email')
       table.integer('cost')
       table.integer('quantity')
-      table.boolean('payment_status').defaultTo(false)
-      table.boolean('dispatch_status').defaultTo(false)
-      table.boolean('delivery_status').defaultTo(false)
+      table.boolean('payment_status')
+      table.boolean('dispatch_status')
+      table.boolean('delivery_status')
       table.timestamps(true)
     })
   }

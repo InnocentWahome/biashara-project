@@ -36,12 +36,12 @@ const AdminEmployeePerformance = () => {
     { field: "user_id", headerName: "Employee ID", width: 130 },
     { field: "user_email", headerName: "Employee Email", width: 220 },
     {
-      field: "admin_approval",
+      field: "approval",
       headerName: "Approval Status",
       width: 140,
       sortable: true,
       editable: true,
-      type: "boolean",
+      type: "number",
       disableClickEventBubbling: true,
       renderCell: params => {
         let decidedIcon

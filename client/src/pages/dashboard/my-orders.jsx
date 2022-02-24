@@ -62,6 +62,7 @@ const DashboardUserOrders = () => {
       width: 100,
       sortable: true,
       editable: true,
+      type: "number",
       disableClickEventBubbling: true,
       renderCell: params => {
         return (

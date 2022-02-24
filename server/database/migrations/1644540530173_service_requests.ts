@@ -10,7 +10,7 @@ export default class ServiceRequests extends BaseSchema {
       table.string('user_id')
       table.string('user_email')
       table.string('date')
-      table.boolean('completed').defaultTo(false)
+      table.boolean('completed')
       table.enum('category', ['Software Update', 'Service Request', 'Maintenance']).defaultTo('Maintenance')
       table.timestamps(true)
     })

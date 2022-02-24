@@ -12,7 +12,7 @@ export const ServiceFactory = Factory.define(Service, ({ faker }) => {
     userId: faker.datatype.number(),
     userEmail: faker.internet.email(),
     date:  faker.commerce.productDescription(),
-    completed: false
+    completed: faker.datatype.boolean()
 
   }
 }).build()

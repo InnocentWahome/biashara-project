@@ -21,7 +21,8 @@ const PerformanceDatagrid = () => {
       headerName: "Rate",
       width: 150,
       sortable: true,
-      type: "boolean",
+      type: "number",
+      // editable: true,
       disableClickEventBubbling: true,
       renderCell: params => {
         let decidedIcon

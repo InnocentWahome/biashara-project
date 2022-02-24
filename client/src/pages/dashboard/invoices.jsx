@@ -1,17 +1,81 @@
 import React, { useState, useEffect } from "react"
-import StyledDataGrid from "../../assets/styles/datagrid"
-import EmployeeLayout from "../../layouts/EmployeeLayout"
 import $http from "../../plugins/axios"
+import { FormControlLabel, IconButton } from "@material-ui/core"
+import { blue, red } from "@material-ui/core/colors"
+import StyledDataGrid from "../../assets/styles/datagrid"
+import EditIcon from "@material-ui/icons/Edit"
+import DeleteIcon from "@mui/icons-material/Delete"
+import PageLayout from "../../layouts/PageLayout"
 import Button from "@mui/material/Button"
 
-const EmployeeOrders = () => {
+const DashboardUserOrders = () => {
+  const EditRecord = ({ index }) => {
+    const price = 100
+    const handleEditClick = async e => {}
+
+    return (
+      <div>
+        <FormControlLabel
+          control={
+            <IconButton
+              color="secondary"
+              aria-label="add an alarm"
+              onClick={handleEditClick}
+            >
+              <EditIcon style={{ color: blue[500] }} />
+            </IconButton>
+          }
+        />
+      </div>
+    )
+  }
+  const DeleteRecord = ({ index }) => {
+    const price = 100
+    const handleDeleteClick = async e => {}
+
+    return (
+      <div>
+        <FormControlLabel
+          control={
+            <IconButton
+              color="secondary"
+              aria-label="add an alarm"
+              onClick={handleDeleteClick}
+            >
+              <DeleteIcon style={{ color: red[500] }} />
+            </IconButton>
+          }
+        />
+      </div>
+    )
+  }
   const columns = [
-    { field: "id", headerName: "ID", width: 100 },
-    { field: "product_id", headerName: "Product ID", width: 100 },
+    { field: "id", headerName: "#", width: 50 },
+    { field: "product_id", headerName: "Product Id", width: 100 },
     { field: "product_name", headerName: "Product Name", width: 200 },
-    { field: "user_id", headerName: "User ID", width: 100 },
-    { field: "cost", headerName: "Cost(KSH)", width: 100 },
-    { field: "quantity", headerName: " Quantity", width: 100 },
+    { field: "cost", headerName: "Total Cost", width: 120 },
+    { field: "quantity", headerName: "Quantity", width: 120 },
+
+    {
+      field: "payment",
+      headerName: "Pay",
+      width: 100,
+      sortable: true,
+      editable: true,
+      disableClickEventBubbling: true,
+      renderCell: params => {
+        return (
+          <div
+            className="d-flex  align-items-center"
+            style={{ cursor: "pointer" }}
+          >
+            <Button variant="contained" color="secondary">
+              PAY
+            </Button>
+          </div>
+        )
+      },
+    },
     {
       field: "payment_status",
       headerName: "Payment Status",
@@ -87,13 +151,12 @@ const EmployeeOrders = () => {
       headerName: "Delivery Status",
       width: 140,
       sortable: true,
-      editable: true,
-      // type: "boolean",
+      type: "boolean",
       disableClickEventBubbling: true,
       renderCell: params => {
-        let deliveryIcon
+        let decidedIcon
         if (params.row.delivery_status === 1) {
-          deliveryIcon = (
+          decidedIcon = (
             <div
               className="d-flex  align-items-center"
               style={{ cursor: "pointer" }}
@@ -104,7 +167,7 @@ const EmployeeOrders = () => {
             </div>
           )
         } else if (params.row.delivery_status === 0) {
-          deliveryIcon = (
+          decidedIcon = (
             <div
               className="d-flex  align-items-center"
               style={{ cursor: "pointer" }}
@@ -115,14 +178,54 @@ const EmployeeOrders = () => {
             </div>
           )
         }
-        return <div>{deliveryIcon}</div>
+        return <div>{decidedIcon}</div>
+      },
+    },
+    {
+      field: "actions",
+      headerName: "Actions",
+      sortable: false,
+      width: 200,
+      disableClickEventBubbling: true,
+      renderCell: params => {
+        return (
+          <div className="columns">
+            <div className="column">
+              <div
+                className="d-flex  align-items-center"
+                style={{ cursor: "pointer" }}
+              >
+                <EditIcon onClick={EditRecord} color="primary" />
+              </div>
+            </div>
+            <div className="column">
+              <div
+                className="d-flex  align-items-center"
+                style={{ cursor: "pointer" }}
+              >
+                <DeleteIcon onClick={DeleteRecord} color="error" />
+              </div>
+            </div>
+            <div className="column">
+              <div
+                className="d-flex  align-items-center"
+                style={{ cursor: "pointer" }}
+              >
+                <Button variant="outlined" color="success">
+                  FEEDBACK
+                </Button>
+              </div>
+            </div>
+          </div>
+        )
       },
     },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
+  const userId = localStorage.getItem("userId")
 
-  const fetchUsers = async e => {
+  const fetchMyOrders = async e => {
     try {
       const response = await $http.Api({
         method: "GET",
@@ -138,17 +241,13 @@ const EmployeeOrders = () => {
   }
 
   useEffect(() => {
-    fetchUsers()
+    fetchMyOrders()
   }, [])
 
   return (
-    <EmployeeLayout>
-      <div className="pr-6 mr-6 pt-6 container">
-        <p className="is-size-4 has-text-centered pt-5 title">Orders</p>
-        <p className="is-size-5 has-text-centered pb-2 has-text-link">
-          Once the admin approves dispatch for an order, and it has been
-          delivered, check the order's delivery status as delivered
-        </p>
+    <PageLayout>
+      <div className="pr-6 pl-6 mt-6 mr-6 pt-4">
+        <p className="is-size-6 pt-3 pb-3">Here are all your orders</p>
         <div style={{ height: 600, width: "100%" }}>
           <StyledDataGrid
             rows={tableData}
@@ -156,6 +255,7 @@ const EmployeeOrders = () => {
             onPageSizeChange={newPage => setPageSize(newPage)}
             pagination
             columns={columns}
+            // checkboxSelection
             sx={{
               boxShadow: 2,
               border: 2,
@@ -164,12 +264,11 @@ const EmployeeOrders = () => {
                 color: "primary.main",
               },
             }}
-            // checkboxSelection
           />
         </div>
       </div>
-    </EmployeeLayout>
+    </PageLayout>
   )
 }
 
-export default EmployeeOrders
+export default DashboardUserOrders

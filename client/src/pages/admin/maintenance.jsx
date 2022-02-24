@@ -76,7 +76,7 @@ const AdminMaintenance = () => {
       width: 200,
       sortable: true,
       editable: true,
-      type: "boolean",
+      type: "number",
       disableClickEventBubbling: true,
       renderCell: params => {
         let decidedIcon

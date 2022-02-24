@@ -5,7 +5,6 @@ const MaintenanceScheduleForm = () => {
   const [category, setCategory] = useState("")
   const [description, setDescription] = useState("")
   const [date, setDate] = useState("")
-
   const createEmployeeWorklog = async e => {
     try {
       e.preventDefault()
@@ -49,6 +48,7 @@ const MaintenanceScheduleForm = () => {
                       name="category"
                       value="Software Update"
                       className="pl-2 pr-2"
+                      // value={this.state.category}
                       onChange={e => setCategory(e.target.value)}
                     />
                     Software Update
@@ -58,6 +58,7 @@ const MaintenanceScheduleForm = () => {
                       type="radio"
                       name="category"
                       value="Maintenance"
+                      // value={this.state.category}
                       onChange={e => setCategory(e.target.value)}
                     />
                     Maintenance
@@ -67,6 +68,7 @@ const MaintenanceScheduleForm = () => {
                       type="radio"
                       name="category"
                       value="Service Request"
+                      // value={this.state.category}
                       onChange={e => setCategory(e.target.value)}
                     />
                     Service Request
@@ -85,6 +87,7 @@ const MaintenanceScheduleForm = () => {
                   className="textarea"
                   placeholder=""
                   required
+                  // value={this.state.description}
                   onChange={e => setDescription(e.target.value)}
                 ></textarea>
               </div>
@@ -101,6 +104,7 @@ const MaintenanceScheduleForm = () => {
                   type="text"
                   placeholder="YYYY-MM-DD"
                   required
+                  // value={this.state.date}
                   onChange={e => setDate(e.target.value)}
                 />
               </div>

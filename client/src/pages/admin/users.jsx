@@ -55,7 +55,7 @@ const AdminSystemUsers = () => {
       width: 140,
       sortable: true,
       editable: true,
-      type: "boolean",
+      // type: "boolean",
       disableClickEventBubbling: true,
       renderCell: params => {
         let decidedIcon

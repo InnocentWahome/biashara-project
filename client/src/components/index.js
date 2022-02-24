@@ -5,7 +5,6 @@ import RegisterForm from "./forms/auth/RegisterForm"
 import ForgotPasswordForm from "./forms/auth/ForgotPasswordForm"
 import ResetPasswordForm from "./forms/auth/ResetPasswordForm"
 
-import SubscribeForm from "./forms/SubscribeForm"
 import ContactForm from "./forms/ContactForm"
 import CreateEmployeeForm from './forms/CreateEmployeeForm'
 import DeliveriesForm from './forms/DeliveriesForm'
@@ -31,7 +30,6 @@ export {
   Navbar,
   // NavbarLinks,
   ContactForm,
-  SubscribeForm,
   CreateEmployeeForm,
   DeliveriesForm,
   EmployeeWorkLogForm,

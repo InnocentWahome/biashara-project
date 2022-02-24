@@ -1,124 +1,146 @@
 import * as React from 'react';
-import { DataGridPro } from '@mui/x-data-grid-pro';
-import {
-  randomCreatedDate,
-  randomTraderName,
-  randomUpdatedDate,
-} from '@mui/x-data-grid-generator';
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
+import { DataGrid, GridActionsCellItem } from '@mui/x-data-grid';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SecurityIcon from '@mui/icons-material/Security';
+import FileCopyIcon from '@mui/icons-material/FileCopy';
+import { randomCreatedDate, randomUpdatedDate } from '@mui/x-data-grid-generator';
 
-const useFakeMutation = () => {
-  return React.useCallback(
-    (user) =>
-      new Promise((resolve) =>
-        setTimeout(() => {
-          resolve(user);
-        }, 200),
-      ),
-    [],
-  );
-};
-
-export default function CellEditServerSidePersistence() {
-  const mutateRow = useFakeMutation();
-  const [rows, setRows] = React.useState(INITIAL_ROWS);
-
-  const [snackbar, setSnackbar] = React.useState(null);
-
-  const handleCloseSnackbar = () => setSnackbar(null);
-
-  const handleCellEditCommit = React.useCallback(
-    async (params) => {
-      try {
-        // Make the HTTP request to save in the backend
-        const response = await mutateRow({
-          id: params.id,
-          [params.field]: params.value,
-        });
-
-        setSnackbar({ children: 'User successfully saved', severity: 'success' });
-        setRows((prev) =>
-          prev.map((row) => (row.id === params.id ? { ...row, ...response } : row)),
-        );
-      } catch (error) {
-        setSnackbar({ children: 'Error while saving user', severity: 'error' });
-        // Restore the row in case of error
-        setRows((prev) => [...prev]);
-      }
-    },
-    [mutateRow],
-  );
-
-  return (
-    <div style={{ height: 400, width: '100%' }}>
-      <DataGridPro
-        rows={rows}
-        columns={columns}
-        onCellEditCommit={handleCellEditCommit}
-      />
-      {!!snackbar && (
-        <Snackbar open onClose={handleCloseSnackbar} autoHideDuration={6000}>
-          <Alert {...snackbar} onClose={handleCloseSnackbar} />
-        </Snackbar>
-      )}
-    </div>
-  );
-}
-
-const columns = [
-  { field: 'name', headerName: 'Name', width: 180, editable: true },
-  { field: 'age', headerName: 'Age', type: 'number', editable: true },
-  {
-    field: 'dateCreated',
-    headerName: 'Date Created',
-    type: 'date',
-    width: 180,
-    editable: true,
-  },
-  {
-    field: 'lastLogin',
-    headerName: 'Last Login',
-    type: 'dateTime',
-    width: 220,
-    editable: true,
-  },
-];
-
-const INITIAL_ROWS = [
+const initialRows = [
   {
     id: 1,
-    name: randomTraderName(),
+    name: 'Damien',
     age: 25,
     dateCreated: randomCreatedDate(),
     lastLogin: randomUpdatedDate(),
+    isAdmin: true,
+    country: 'Spain',
+    discount: '',
   },
   {
     id: 2,
-    name: randomTraderName(),
+    name: 'Nicolas',
     age: 36,
     dateCreated: randomCreatedDate(),
     lastLogin: randomUpdatedDate(),
+    isAdmin: false,
+    country: 'France',
+    discount: '',
   },
   {
     id: 3,
-    name: randomTraderName(),
+    name: 'Kate',
     age: 19,
     dateCreated: randomCreatedDate(),
     lastLogin: randomUpdatedDate(),
-  },
-  {
-    id: 4,
-    name: randomTraderName(),
-    age: 28,
-    dateCreated: randomCreatedDate(),
-    lastLogin: randomUpdatedDate(),
-  },
-  {
-    id: 5,
-    name: randomTraderName(),
-    age: 23,
-    dateCreated: randomCreatedDate(),
-    lastLogin: randomUpdatedDate(),
+    isAdmin: false,
+    country: 'Brazil',
+    discount: 'junior',
   },
 ];
+
+export default function ColumnTypesGrid() {
+  const [rows, setRows] = React.useState(initialRows);
+
+  const deleteUser = React.useCallback(
+    (id) => () => {
+      setTimeout(() => {
+        setRows((prevRows) => prevRows.filter((row) => row.id !== id));
+      });
+    },
+    [],
+  );
+
+  const toggleAdmin = React.useCallback(
+    (id) => () => {
+      setRows((prevRows) =>
+        prevRows.map((row) =>
+          row.id === id ? { ...row, isAdmin: !row.isAdmin } : row,
+        ),
+      );
+    },
+    [],
+  );
+
+  const duplicateUser = React.useCallback(
+    (id) => () => {
+      setRows((prevRows) => {
+        const rowToDuplicate = prevRows.find((row) => row.id === id);
+        return [...prevRows, { ...rowToDuplicate, id: Date.now() }];
+      });
+    },
+    [],
+  );
+
+  const columns = React.useMemo(
+    () => [
+      { field: 'name', type: 'string' },
+      { field: 'age', type: 'number' },
+      { field: 'dateCreated', type: 'date', width: 130 },
+      { field: 'lastLogin', type: 'dateTime', width: 180 },
+      { field: 'isAdmin', type: 'boolean', width: 120, editable: true },
+      {
+        field: 'country',
+        type: 'singleSelect',
+        width: 120,
+        valueOptions: [
+          'Bulgaria',
+          'Netherlands',
+          'France',
+          'United Kingdom',
+          'Spain',
+          'Brazil',
+        ],
+      },
+      {
+        field: 'discount',
+        type: 'singleSelect',
+        width: 120,
+        editable: true,
+        valueOptions: ({ row }) => {
+          if (row === undefined) {
+            return ['EU-resident', 'junior'];
+          }
+          const options = [];
+          if (!['United Kingdom', 'Brazil'].includes(row.country)) {
+            options.push('EU-resident');
+          }
+          if (row.age < 27) {
+            options.push('junior');
+          }
+          return options;
+        },
+      },
+      {
+        field: 'actions',
+        type: 'actions',
+        width: 80,
+        getActions: (params) => [
+          <GridActionsCellItem
+            icon={<DeleteIcon />}
+            label="Delete"
+            onClick={deleteUser(params.id)}
+          />,
+          <GridActionsCellItem
+            icon={<SecurityIcon />}
+            label="Toggle Admin"
+            onClick={toggleAdmin(params.id)}
+            showInMenu
+          />,
+          <GridActionsCellItem
+            icon={<FileCopyIcon />}
+            label="Duplicate User"
+            onClick={duplicateUser(params.id)}
+            showInMenu
+          />,
+        ],
+      },
+    ],
+    [deleteUser, toggleAdmin, duplicateUser],
+  );
+
+  return (
+    <div style={{ height: 300, width: '100%' }}>
+      <DataGrid columns={columns} rows={rows} />
+    </div>
+  );
+}

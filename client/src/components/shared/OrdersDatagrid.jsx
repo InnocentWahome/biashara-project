@@ -30,8 +30,7 @@ const OrdersDatagrid = () => {
       headerName: "Payment Status",
       width: 140,
       sortable: true,
-      editable: true,
-      type: "boolean",
+      type: "number",
       disableClickEventBubbling: true,
       renderCell: params => {
         let decidedIcon
@@ -67,7 +66,7 @@ const OrdersDatagrid = () => {
       width: 140,
       sortable: true,
       editable: true,
-      type: "boolean",
+      type: "number",
       disableClickEventBubbling: true,
       renderCell: params => {
         let decidedIcon
@@ -102,7 +101,7 @@ const OrdersDatagrid = () => {
       headerName: "Delivery Status",
       width: 140,
       sortable: true,
-      type: "boolean",
+      // type: "boolean",
       disableClickEventBubbling: true,
       renderCell: params => {
         let decidedIcon

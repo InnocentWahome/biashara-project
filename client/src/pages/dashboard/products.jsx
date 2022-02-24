@@ -9,7 +9,7 @@ import Avatar from "@mui/material/Avatar"
 const DashboardProducts = () => {
   const columns = [
     { field: "id", headerName: "ID" },
-    { field: "name", headerName: "Name", width: 200, editable: true },
+    { field: "name", headerName: "Name", width: 200,  },
     { field: "description", headerName: "Description", width: 200 },
     { field: "quantity", headerName: "Stock", width: 100 },
     { field: "price", headerName: "Price", width: 100 },

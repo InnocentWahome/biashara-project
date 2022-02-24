@@ -1,20 +1,26 @@
 import axios from "axios"
 // import { history } from "react-router-dom"
+// require('dotenv');
+// require("dotenv").config({
+//   path: `.env.${process.env.NODE_ENV}`,
+// })
+
 const $http = {
   Authentication: axios.create({
-    baseURL: "http://localhost:3333/api/v1/auth",
+    baseURL: process.env.GATSBY_AUTHENTICATION_BASE_URL,
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      'Access-Control-Allow-Origin': '*',
     },
   }),
 
   Api: axios.create({
-    baseURL: "http://localhost:3333/api/v1",
+    baseURL: process.env.GATSBY_API_BASE_URL,
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      'Access-Control-Allow-Origin': '*',
     },
   }),
-}
+};
+
 
 const accessToken = () => localStorage.getItem("access_token")
 

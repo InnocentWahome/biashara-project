@@ -85,8 +85,8 @@ const EmployeePerformance = () => {
       headerName: "Approval Status",
       width: 140,
       sortable: true,
-      editable: true,
-      type: "boolean",
+      // editable: true,
+      // type: "number",
       disableClickEventBubbling: true,
       renderCell: params => {
         let decidedIcon
