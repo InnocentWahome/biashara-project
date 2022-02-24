@@ -1,11 +1,12 @@
 import React from "react"
-import ResponsiveFunction from "../../shared/ResponsiveNavbar"
+// import ResponsiveFunction from "../../shared/ResponsiveNavbar"
 
 const Navbar = () => {
   const handleLogout = () => {
     localStorage.clear()
   }
-  ResponsiveFunction()
+  // ResponsiveFunction()
+  const [isActive, setisActive] = React.useState(false)
 
   return (
     <nav
@@ -23,8 +24,11 @@ const Navbar = () => {
           />
         </a>
         <a
+          onClick={() => {
+            setisActive(!isActive)
+          }}
           role="button"
-          className="navbar-burger"
+          className={`navbar-burger burger ${isActive ? "is-active" : ""}`}
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarBasicExample"
@@ -35,7 +39,10 @@ const Navbar = () => {
         </a>
       </div>
 
-      <div id="navbarBasicExample" className="navbar-menu">
+      <div
+        id="navbarBasicExample"
+        className={`navbar-menu ${isActive ? "is-active" : ""}`}
+      >
         <div className="navbar-end">
           <a className="navbar-item" href="/dashboard/products">
             Home
