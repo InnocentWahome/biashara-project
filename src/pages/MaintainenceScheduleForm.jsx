@@ -1,26 +1,42 @@
 import React, { useState } from "react"
 import $http from "../plugins/axios"
 
-const MaintenanceScheduleForm = () => {
-  const [category, setCategory] = useState("")
-  const [description, setDescription] = useState("")
-  const [date, setDate] = useState("")
+const MaintenanceScheduleForm = ({ service, setService }) => {
+  service = service || {}
+  const [category, setCategory] = useState(service.category)
+  const [description, setDescription] = useState(service.description)
+  const [date, setDate] = useState(service.date)
   const createEmployeeWorklog = async e => {
     try {
       e.preventDefault()
-      await $http.Api({
-        method: "POST",
-        url: "/service-request",
-        data: {
-          date: date,
-          category: category,
-          description: description,
-        },
-      })
+      if (service.id) {
+        // if service id exists, update record
+        await $http.Api({
+          method: "PUT",
+          url: "/service-request/" + service.id,
+          data: {
+            date: date,
+            category: category,
+            description: description,
+          },
+        })
+      } else {
+        // create
+        await $http.Api({
+          method: "POST",
+          url: "/service-request",
+          data: {
+            date: date,
+            category: category,
+            description: description,
+          },
+        })
+      }
     } catch (error) {
       console.error(error)
     }
   }
+  console.log(service)
   return (
     <form
       action=""
@@ -46,9 +62,8 @@ const MaintenanceScheduleForm = () => {
                     <input
                       type="radio"
                       name="category"
-                      value="Software Update"
                       className="pl-2 pr-2"
-                      // value={this.state.category}
+                      defaultValue={service.category}
                       onChange={e => setCategory(e.target.value)}
                     />
                     Software Update
@@ -57,8 +72,7 @@ const MaintenanceScheduleForm = () => {
                     <input
                       type="radio"
                       name="category"
-                      value="Maintenance"
-                      // value={this.state.category}
+                      defaultValue={service.category}
                       onChange={e => setCategory(e.target.value)}
                     />
                     Maintenance
@@ -67,8 +81,6 @@ const MaintenanceScheduleForm = () => {
                     <input
                       type="radio"
                       name="category"
-                      value="Service Request"
-                      // value={this.state.category}
                       onChange={e => setCategory(e.target.value)}
                     />
                     Service Request
@@ -87,7 +99,7 @@ const MaintenanceScheduleForm = () => {
                   className="textarea"
                   placeholder=""
                   required
-                  // value={this.state.description}
+                  defaultValue={service.description}
                   onChange={e => setDescription(e.target.value)}
                 ></textarea>
               </div>
@@ -104,7 +116,7 @@ const MaintenanceScheduleForm = () => {
                   type="text"
                   placeholder="YYYY-MM-DD"
                   required
-                  // value={this.state.date}
+                  defaultValue={service.date}
                   onChange={e => setDate(e.target.value)}
                 />
               </div>
@@ -113,7 +125,11 @@ const MaintenanceScheduleForm = () => {
         </div>
 
         <div className="field">
-          <button className="button is-black is-rounded" type="submit">
+          <button
+            className="button is-black is-rounded"
+            type="submit"
+            onClick={console.log(service.id)}
+          >
             Submit
           </button>
         </div>

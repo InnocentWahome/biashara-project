@@ -11,9 +11,9 @@ import { FormControlLabel, IconButton } from "@material-ui/core"
 import { blue, red } from "@material-ui/core/colors"
 import Alert from "@mui/material/Alert"
 
-
-const EditRecord = ({ index }) => {
+const EditRecord = ({ index, onClick }) => {
   const [category, updateCategory] = useState("")
+  const [completed, updateCompleted] = useState("")
   const [description, updateDescription] = useState("")
   const [date, updateDate] = useState("")
 
@@ -26,10 +26,10 @@ const EditRecord = ({ index }) => {
           method: "PUT",
           url: "/service-request/" + index,
           data: {
-            date: '20-02-22',
-            category: 'Software Update',
-            description: 'wahomewahome',
-            completed: true
+            date: date,
+            category: category,
+            description: description,
+            completed: completed,
           },
         })
         .then(console.log("it has been edited"))
@@ -44,7 +44,7 @@ const EditRecord = ({ index }) => {
           <IconButton
             color="secondary"
             aria-label="add an alarm"
-            onClick={handleEditClick}
+            onClick={onClick}
           >
             <EditIcon style={{ color: blue[500] }} />
           </IconButton>
@@ -106,6 +106,7 @@ const EmployeePerformance = () => {
       </div>
     )
   }
+  const [service, setService] = React.useState()
   const columns = [
     // { field: "id", headerName: "ID" },
     {
@@ -173,7 +174,10 @@ const EmployeePerformance = () => {
                 className="d-flex  align-items-center"
                 style={{ cursor: "pointer" }}
               >
-                <EditRecord index={params.row.id} />
+                <EditRecord
+                  onClick={() => setService(params.row)}
+                  index={params.row.id}
+                />
               </div>
             </div>
             <div className="column">
@@ -191,11 +195,7 @@ const EmployeePerformance = () => {
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
-  const [editRowsModel, setEditRowsModel] = React.useState({})
 
-  const handleEditRowsModelChange = React.useCallback(model => {
-    setEditRowsModel(model)
-  }, [])
   const fetchDatagrid = async e => {
     try {
       const response = await $http.Api({
@@ -226,14 +226,11 @@ const EmployeePerformance = () => {
             <div style={{ height: 600, width: "100%" }}>
               <StyledDataGrid
                 rows={tableData}
+                setService={setService}
                 pageSize={pageSize}
                 onPageSizeChange={newPage => setPageSize(newPage)}
                 pagination
                 columns={columns}
-                onRowEditCommit={EditRecord}
-                onEditRowsModelChange={handleEditRowsModelChange}
-                editMode="row"
-                editRowsModel={editRowsModel}
                 sx={{
                   boxShadow: 2,
                   border: 2,
@@ -243,13 +240,20 @@ const EmployeePerformance = () => {
                   },
                 }}
               />
-              <Alert severity="info" style={{ marginTop: 8 }}>
-                <code>editRowsModel: {JSON.stringify(editRowsModel)}</code>
-              </Alert>
             </div>
           </div>
           <div className="column pt-6 mt-6">
-            <MaintenanceScheduleForm />
+            {service ? (
+              <MaintenanceScheduleForm
+                setService={setService}
+                service={service}
+              />
+            ) : (
+              <MaintenanceScheduleForm
+                setService={setService}
+                service={service}
+              />
+            )}
           </div>
         </div>
       </div>
