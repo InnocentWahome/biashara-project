@@ -1,19 +1,19 @@
 import React, { useState } from "react"
 import $http from "../plugins/axios"
 
-const MaintenanceScheduleForm = ({ service, setService }) => {
-  service = service || {}
-  const [category, setCategory] = useState(service.category)
-  const [description, setDescription] = useState(service.description)
-  const [date, setDate] = useState(service.date)
+const MaintenanceScheduleForm = ({ entity, setEntity }) => {
+  entity = entity || {}
+  const [category, setCategory] = useState(entity.category)
+  const [description, setDescription] = useState(entity.description)
+  const [date, setDate] = useState(entity.date)
   const createEmployeeWorklog = async e => {
     try {
       e.preventDefault()
-      if (service.id) {
-        // if service id exists, update record
+      if (entity.id) {
+        // if entity id exists, update record
         await $http.Api({
           method: "PUT",
-          url: "/service-request/" + service.id,
+          url: "/service-request/" + entity.id,
           data: {
             date: date,
             category: category,
@@ -36,7 +36,7 @@ const MaintenanceScheduleForm = ({ service, setService }) => {
       console.error(error)
     }
   }
-  console.log(service)
+  console.log(entity)
   return (
     <form
       action=""
@@ -50,20 +50,13 @@ const MaintenanceScheduleForm = ({ service, setService }) => {
             <div className="field">
               <div className="control is-expanded">
                 <p className="label">Service Category</p>
-                {/* <input
-                  className="input"
-                  type="text"
-                  placeholder=""
-                  required
-                  onChange={e => setCategory(e.target.value)}
-                /> */}
                 <div className="control">
                   <label className="radio">
                     <input
                       type="radio"
                       name="category"
                       className="pl-2 pr-2"
-                      defaultValue={service.category}
+                      defaultValue={entity.category}
                       onChange={e => setCategory(e.target.value)}
                     />
                     Software Update
@@ -72,7 +65,7 @@ const MaintenanceScheduleForm = ({ service, setService }) => {
                     <input
                       type="radio"
                       name="category"
-                      defaultValue={service.category}
+                      defaultValue={entity.category}
                       onChange={e => setCategory(e.target.value)}
                     />
                     Maintenance
@@ -99,7 +92,7 @@ const MaintenanceScheduleForm = ({ service, setService }) => {
                   className="textarea"
                   placeholder=""
                   required
-                  defaultValue={service.description}
+                  defaultValue={entity.description}
                   onChange={e => setDescription(e.target.value)}
                 ></textarea>
               </div>
@@ -116,7 +109,7 @@ const MaintenanceScheduleForm = ({ service, setService }) => {
                   type="text"
                   placeholder="YYYY-MM-DD"
                   required
-                  defaultValue={service.date}
+                  defaultValue={entity.date}
                   onChange={e => setDate(e.target.value)}
                 />
               </div>
@@ -128,7 +121,7 @@ const MaintenanceScheduleForm = ({ service, setService }) => {
           <button
             className="button is-black is-rounded"
             type="submit"
-            onClick={console.log(service.id)}
+            onClick={console.log(entity.id)}
           >
             Submit
           </button>

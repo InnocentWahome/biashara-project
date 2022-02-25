@@ -1,9 +1,7 @@
 import * as React from "react"
-import ResponsiveFunction from "../../components/shared/ResponsiveNavbar"
 import AdminLayout from "../../layouts/AdminLayout"
 
 const AdminHome = () => {
-  ResponsiveFunction()
   return (
     <AdminLayout>
       <div className="container">

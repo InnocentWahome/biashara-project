@@ -9,7 +9,6 @@ import EditIcon from "@material-ui/icons/Edit"
 import DeleteIcon from "@mui/icons-material/Delete"
 import { FormControlLabel, IconButton } from "@material-ui/core"
 import { blue, red } from "@material-ui/core/colors"
-import Alert from "@mui/material/Alert"
 
 const EditRecord = ({ index, onClick }) => {
   const [category, updateCategory] = useState("")
@@ -17,26 +16,6 @@ const EditRecord = ({ index, onClick }) => {
   const [description, updateDescription] = useState("")
   const [date, updateDate] = useState("")
 
-  const handleEditClick = async e => {
-    console.log("this one will be edited")
-    try {
-      e.preventDefault()
-      await $http
-        .Api({
-          method: "PUT",
-          url: "/service-request/" + index,
-          data: {
-            date: date,
-            category: category,
-            description: description,
-            completed: completed,
-          },
-        })
-        .then(console.log("it has been edited"))
-    } catch (error) {
-      console.error(error)
-    }
-  }
   return (
     <div>
       <FormControlLabel
@@ -106,9 +85,8 @@ const EmployeePerformance = () => {
       </div>
     )
   }
-  const [service, setService] = React.useState()
+  const [entity, setEntity] = React.useState()
   const columns = [
-    // { field: "id", headerName: "ID" },
     {
       field: "category",
       headerName: "Service Category",
@@ -175,7 +153,7 @@ const EmployeePerformance = () => {
                 style={{ cursor: "pointer" }}
               >
                 <EditRecord
-                  onClick={() => setService(params.row)}
+                  onClick={() => setEntity(params.row)}
                   index={params.row.id}
                 />
               </div>
@@ -226,7 +204,7 @@ const EmployeePerformance = () => {
             <div style={{ height: 600, width: "100%" }}>
               <StyledDataGrid
                 rows={tableData}
-                setService={setService}
+                setEntity={setEntity}
                 pageSize={pageSize}
                 onPageSizeChange={newPage => setPageSize(newPage)}
                 pagination
@@ -243,16 +221,10 @@ const EmployeePerformance = () => {
             </div>
           </div>
           <div className="column pt-6 mt-6">
-            {service ? (
-              <MaintenanceScheduleForm
-                setService={setService}
-                service={service}
-              />
+            {entity ? (
+              <MaintenanceScheduleForm setEntity={setEntity} entity={entity} />
             ) : (
-              <MaintenanceScheduleForm
-                setService={setService}
-                service={service}
-              />
+              <MaintenanceScheduleForm setEntity={setEntity} entity={entity} />
             )}
           </div>
         </div>

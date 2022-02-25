@@ -1,27 +1,48 @@
 import React, { useState } from "react"
 import $http from "../../plugins/axios"
 
-const ProductForm = () => {
-  const [productName, setProductName] = useState("")
-  const [productDescription, setProductDescription] = useState("")
-  const [productImage, setProductImage] = useState("")
-  const [productQuantity, setProductQuantity] = useState("")
-  const [productPrice, setProductPrice] = useState("")
+const ProductForm = ({ entity, setEntity }) => {
+  entity = entity || {}
+  const [productName, setProductName] = useState(entity.name)
+  const [productDescription, setProductDescription] = useState(
+    entity.description
+  )
+  const [productImage, setProductImage] = useState(entity.image)
+  const [productQuantity, setProductQuantity] = useState(entity.quantity)
+  const [productPrice, setProductPrice] = useState(entity.price)
 
-  const createStock = async (e) => {
+  const createStock = async e => {
+    console.log("below is entity")
+    console.log(entity)
     try {
-      e.preventDefault();
-      await $http.Api({
-        method: "POST",
-        url: "/product",
-        data: {
-          name: productName,
-          description: productDescription,
-          image: productImage,
-          quantity: productQuantity,
-          price: productPrice,
-        },
-      })
+      e.preventDefault()
+      if (entity.id) {
+        // if entity id exists, update record
+        await $http.Api({
+          method: "PUT",
+          url: "/product/" + entity.id,
+          data: {
+            name: productName,
+            description: productDescription,
+            image: productImage,
+            quantity: productQuantity,
+            price: productPrice,
+          },
+        })
+      } else {
+        // create
+        await $http.Api({
+          method: "POST",
+          url: "/product",
+          data: {
+            name: productName,
+            description: productDescription,
+            image: productImage,
+            quantity: productQuantity,
+            price: productPrice,
+          },
+        })
+      }
     } catch (error) {
       console.error(error)
     }
@@ -40,6 +61,7 @@ const ProductForm = () => {
                   type="text"
                   placeholder=""
                   required
+                  defaultValue={entity.name}
                   onChange={e => setProductName(e.target.value)}
                 />
               </div>
@@ -56,6 +78,7 @@ const ProductForm = () => {
                   type="text"
                   placeholder=""
                   required
+                  defaultValue={entity.description}
                   onChange={e => setProductDescription(e.target.value)}
                 />
               </div>
@@ -72,6 +95,7 @@ const ProductForm = () => {
                   type="text"
                   placeholder="http://placeimg.com/640/480"
                   required
+                  defaultValue={entity.image}
                   onChange={e => setProductImage(e.target.value)}
                 />
               </div>
@@ -88,6 +112,7 @@ const ProductForm = () => {
                   type="number"
                   placeholder=""
                   required
+                  defaultValue={entity.quantity}
                   onChange={e => setProductQuantity(e.target.value)}
                 />
               </div>
@@ -104,6 +129,7 @@ const ProductForm = () => {
                   type="number"
                   placeholder=""
                   required
+                  defaultValue={entity.price}
                   onChange={e => setProductPrice(e.target.value)}
                 />
               </div>
@@ -112,7 +138,7 @@ const ProductForm = () => {
         </div>
         <div className="field">
           <button className="button is-black is-rounded" type="submit">
-            Create / Update Stock
+            Create Stock
           </button>
         </div>
       </div>
