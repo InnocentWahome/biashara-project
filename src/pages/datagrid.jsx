@@ -161,7 +161,7 @@ const EmployeePerformance = () => {
             <div className="column">
               <div
                 className="d-flex  align-items-center"
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer" }}   
               >
                 <DeleteRecord index={params.row.id} />
               </div>

@@ -3,11 +3,10 @@ import $http from "../../plugins/axios"
 import TextField from "@mui/material/TextField"
 import Stack from "@mui/material/Stack"
 
-const EmployeeWorkLogForm = () => {
+const EmployeeWorkLogForm = ({ entity, setEntity }) => {
+  entity = entity || {}
   const [date, setDate] = useState("")
   const [day, setDay] = useState("")
-  // const [startTime, setStartTime] = useState("")
-  // const [stopTime, setStopTime] = useState("")
   const [hoursWorked, setHoursWorked] = useState("")
   const [workDescription, setWorkDescription] = useState("")
 
@@ -16,23 +15,37 @@ const EmployeeWorkLogForm = () => {
 
   const createEmployeeWorklog = async e => {
     const userId = localStorage.getItem("userId")
-
     try {
       e.preventDefault()
-      await $http.Api({
-        method: "POST",
-        url: "/worklog",
-        data: {
-          date: "2022-2-2",
-          day: day,
-          // start: startTime,
-          // stop: stopTime,
-          hours: hoursWorked,
-          description: workDescription,
-          user_id: userId,
-          user_email: userEmail,
-        },
-      })
+      if (entity.id) {
+        // if entity id exists, update record
+        await $http.Api({
+          method: "PUT",
+          url: "/worklog/" + entity.id,
+          data: {
+            date: date,
+            day: day,
+            hours: hoursWorked,
+            description: workDescription,
+            user_id: userId,
+            user_email: userEmail,
+          },
+        })
+      } else {
+        // create
+        await $http.Api({
+          method: "POST",
+          url: "/worklog",
+          data: {
+            date: date,
+            day: day,
+            hours: hoursWorked,
+            description: workDescription,
+            user_id: userId,
+            user_email: userEmail,
+          },
+        })
+      }
     } catch (error) {
       console.error(error)
     }
@@ -55,6 +68,7 @@ const EmployeeWorkLogForm = () => {
                   type="text"
                   placeholder="eg: YYYY-MM-DD"
                   required
+                  defaultValue={entity.date}
                   onChange={e => setDate(e.target.value)}
                 />
                 {/* <Stack component="form" noValidate spacing={3}>
@@ -84,7 +98,10 @@ const EmployeeWorkLogForm = () => {
                       className="select"
                       onChange={e => setDay(e.target.value)}
                     >
-                      <select onChange={e => setDay(e.target.value)}>
+                      <select
+                        defaultValue={entity.day}
+                        onChange={e => setDay(e.target.value)}
+                      >
                         <option
                           onChange={e => setDay(e.target.value)}
                           value="Monday"
@@ -132,6 +149,7 @@ const EmployeeWorkLogForm = () => {
                       className="input"
                       type="number"
                       placeholder=""
+                      defaultValue={entity.hours}
                       required
                       onChange={e => setHoursWorked(e.target.value)}
                     />
@@ -229,6 +247,7 @@ const EmployeeWorkLogForm = () => {
                 <textarea
                   className="textarea"
                   placeholder=""
+                  defaultValue={entity.description}
                   required
                   onChange={e => setWorkDescription(e.target.value)}
                 ></textarea>

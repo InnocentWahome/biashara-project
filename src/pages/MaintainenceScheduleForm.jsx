@@ -127,7 +127,7 @@ const MaintenanceScheduleForm = ({ entity, setEntity }) => {
           </button>
         </div>
       </div>
-    </form>
+    </form>   
   )
 }
 

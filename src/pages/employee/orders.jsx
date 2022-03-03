@@ -3,8 +3,44 @@ import StyledDataGrid from "../../assets/styles/datagrid"
 import EmployeeLayout from "../../layouts/EmployeeLayout"
 import $http from "../../plugins/axios"
 import Button from "@mui/material/Button"
+import { FormControlLabel, IconButton } from "@material-ui/core"
 
-const EmployeeOrders = () => {
+const EmployeeOrders = ({ index, onClick }) => {
+  const [entity, setEntity] = React.useState("")
+  const [delivery_status, setDeliveryStatus] = React.useState("")
+
+  const updateDelivery = ()  => {
+    try {
+      if (entity.id) {
+        // if entity id exists, update record
+         $http.Api({
+          method: "PUT",
+          url: "/order/" + entity.id,
+          data: {
+            delivery_status: delivery_status,
+          },
+        })
+      } else {
+        console.log("error")
+      }
+    } catch (error) {    
+      console.error(error)
+    }
+
+    return (
+      <div>
+        <FormControlLabel
+          control={
+            <IconButton
+              color="secondary"
+              aria-label="add an alarm"
+              onClick={setEntity}
+            ></IconButton>
+          }
+        />
+      </div>
+    )
+  }
   const columns = [
     { field: "id", headerName: "ID", width: 100 },
     { field: "product_id", headerName: "Product ID", width: 100 },
@@ -88,17 +124,25 @@ const EmployeeOrders = () => {
       width: 140,
       sortable: true,
       editable: true,
-      // type: "boolean",
+      type: "number",
       disableClickEventBubbling: true,
       renderCell: params => {
         let deliveryIcon
         if (params.row.delivery_status === 1) {
+          // console.log("below is entity");
+          // console.log(params.row.id)
           deliveryIcon = (
             <div
               className="d-flex  align-items-center"
               style={{ cursor: "pointer" }}
             >
-              <Button size="small" variant="outlined" color="success">
+              <Button
+                onClick={() => setEntity((params.row.delivery_status = 0))}
+                index={params.row.id}
+                size="small"
+                variant="outlined"
+                color="success"
+              >
                 DELIVERED
               </Button>
             </div>
@@ -109,7 +153,13 @@ const EmployeeOrders = () => {
               className="d-flex  align-items-center"
               style={{ cursor: "pointer" }}
             >
-              <Button size="small" variant="outlined" color="error">
+              <Button
+                onClick={() => setEntity((params.row.delivery_status = 1))}
+                index={params.row.id}
+                size="small"
+                variant="outlined"
+                color="error"
+              >
                 NOT DELIVERED
               </Button>
             </div>
@@ -139,6 +189,7 @@ const EmployeeOrders = () => {
 
   useEffect(() => {
     fetchUsers()
+    updateDelivery(setEntity)
   }, [])
 
   return (
@@ -155,6 +206,7 @@ const EmployeeOrders = () => {
             pageSize={pageSize}
             onPageSizeChange={newPage => setPageSize(newPage)}
             pagination
+            setEntity={setEntity}
             columns={columns}
             sx={{
               boxShadow: 2,

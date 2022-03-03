@@ -9,69 +9,83 @@ import $http from "../../plugins/axios"
 import EmployeeWorkLogForm from "../../components/forms/EmployeeWorkLogForm"
 import Button from "@mui/material/Button"
 
+const EditRecord = ({ index, onClick }) => {
+  const [category, updateCategory] = useState("")
+  const [completed, updateCompleted] = useState("")
+  const [description, updateDescription] = useState("")
+  const [date, updateDate] = useState("")
+
+  return (
+    <div>
+      <FormControlLabel
+        control={
+          <IconButton
+            color="secondary"
+            aria-label="add an alarm"
+            onClick={onClick}
+          >
+            <EditIcon style={{ color: blue[500] }} />
+          </IconButton>
+        }
+      />
+    </div>
+  )
+}
+const DeleteRecord = ({ index }) => {
+  const handleDeleteClick = async e => {
+    console.log("this one will be deleted")
+    try {
+      e.preventDefault()
+      await $http
+        .Api({
+          method: "DELETE",
+          url: "/worklog/" + index,
+          data: {},
+        })
+        .then(console.log("it has been deleted"))
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  return (
+    <div>
+      <FormControlLabel
+        control={
+          <IconButton
+            color="secondary"
+            aria-label="add an alarm"
+            onClick={handleDeleteClick}
+          >
+            <DeleteIcon style={{ color: red[500] }} />
+          </IconButton>
+        }
+      />
+    </div>
+  )
+}
+const ApprovedButton = ({ index }) => {
+  const handleApprovedClick = async e => {}
+  return (
+    <div className="d-flex  align-items-center" style={{ cursor: "pointer" }}>
+      <Button size="small" variant="outlined" color="success">
+        APPROVED
+      </Button>
+    </div>
+  )
+}
+const NotApprovedButton = ({ index }) => {
+  const handleNotApprovedClick = async e => {}
+  return (
+    <div className="d-flex  align-items-center" style={{ cursor: "pointer" }}>
+      <Button size="small" variant="outlined" color="error">
+        NOT APPROVED
+      </Button>
+    </div>
+  )
+}
+
 const EmployeePerformance = () => {
-  const EditRecord = ({ index }) => {
-    const price = 100
-    const handleEditClick = async e => {}
-    const handleDeleteClick = async e => {}
-
-    return (
-      <div>
-        <FormControlLabel
-          control={
-            <IconButton
-              color="secondary"
-              aria-label="add an alarm"
-              onClick={handleEditClick}
-            >
-              <EditIcon style={{ color: blue[500] }} />
-            </IconButton>
-          }
-        />
-      </div>
-    )
-  }
-  const DeleteRecord = ({ index }) => {
-    const price = 100
-    const handleEditClick = async e => {}
-    const handleDeleteClick = async e => {}
-
-    return (
-      <div>
-        <FormControlLabel
-          control={
-            <IconButton
-              color="secondary"
-              aria-label="add an alarm"
-              onClick={handleDeleteClick}
-            >
-              <DeleteIcon style={{ color: red[500] }} />
-            </IconButton>
-          }
-        />
-      </div>
-    )
-  }
-  const ApprovedButton = ({ index }) => {
-    const handleApprovedClick = async e => {}
-    return (
-      <div className="d-flex  align-items-center" style={{ cursor: "pointer" }}>
-        <Button size="small" variant="outlined" color="success">
-          APPROVED
-        </Button>
-      </div>
-    )
-  }
-  const NotApprovedButton = ({ index }) => {
-    const handleNotApprovedClick = async e => {}
-    return (
-      <div className="d-flex  align-items-center" style={{ cursor: "pointer" }}>
-        <Button size="small" variant="outlined" color="error">
-          NOT APPROVED
-        </Button>
-      </div>
-    )
-  }
+  const [entity, setEntity] = React.useState()
 
   const columns = [
     { field: "date", headerName: "Date", width: 200, type: "dateTime" },
@@ -112,35 +126,38 @@ const EmployeePerformance = () => {
         return <div>{decidedIcon}</div>
       },
     },
-    // {
-    //   field: "actions",
-    //   headerName: "Actions",
-    //   sortable: false,
-    //   width: 140,
-    //   disableClickEventBubbling: true,
-    //   renderCell: params => {
-    //     return (
-    //       <div className="columns">
-    //         <div className="column">
-    //           <div
-    //             className="d-flex  align-items-center"
-    //             style={{ cursor: "pointer" }}
-    //           >
-    //             <EditRecord index={params.row.id} />
-    //           </div>
-    //         </div>
-    //         <div className="column">
-    //           <div
-    //             className="d-flex  align-items-center"
-    //             style={{ cursor: "pointer" }}
-    //           >
-    //             <DeleteRecord index={params.row.id} />
-    //           </div>
-    //         </div>
-    //       </div>
-    //     )
-    //   },
-    // },
+    {
+      field: "actions",
+      headerName: "Actions",
+      sortable: false,
+      width: 140,
+      disableClickEventBubbling: true,
+      renderCell: params => {
+        return (
+          <div className="columns">
+            <div className="column">
+              <div
+                className="d-flex  align-items-center"
+                style={{ cursor: "pointer" }}
+              >
+                <EditRecord
+                  onClick={() => setEntity(params.row)}
+                  index={params.row.id}
+                />
+              </div>
+            </div>
+            <div className="column">
+              <div
+                className="d-flex  align-items-center"
+                style={{ cursor: "pointer" }}
+              >
+                <DeleteRecord index={params.row.id} />
+              </div>
+            </div>
+          </div>
+        )
+      },
+    },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
@@ -175,6 +192,7 @@ const EmployeePerformance = () => {
             </p>
             <div style={{ height: 600, width: "100%" }}>
               <StyledDataGrid
+                setEntity={setEntity}
                 rows={tableData}
                 pageSize={pageSize}
                 onPageSizeChange={newPage => setPageSize(newPage)}
@@ -192,7 +210,11 @@ const EmployeePerformance = () => {
             </div>
           </div>
           <div className="column pt-6 mt-6">
-            <EmployeeWorkLogForm />
+            {entity ? (
+              <EmployeeWorkLogForm setEntity={setEntity} entity={entity} />
+            ) : (
+              <EmployeeWorkLogForm setEntity={setEntity} entity={entity} />
+            )}
           </div>
         </div>
       </div>
