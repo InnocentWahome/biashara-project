@@ -1,15 +1,15 @@
 // import NavbarLinks from "./constants/SocialsLinks"
 
-import LoginForm from "./forms/auth/LoginForm"
-import RegisterForm from "./forms/auth/RegisterForm"
-import ForgotPasswordForm from "./forms/auth/ForgotPasswordForm"
-import ResetPasswordForm from "./forms/auth/ResetPasswordForm"
+import LoginForm from "./forms/authentication/LoginForm"
+import RegisterForm from "./forms/authentication/RegisterForm"
+import ForgotPasswordForm from "./forms/authentication/ForgotPasswordForm"
+import ResetPasswordForm from "./forms/authentication/ResetPasswordForm"
 
 import ContactForm from "./forms/ContactForm"
 import CreateEmployeeForm from './forms/CreateEmployeeForm'
 import DeliveriesForm from './forms/DeliveriesForm'
 import EmployeeWorkLogForm from './forms/EmployeeWorkLogForm'
-import MaintainenceScheduleForm from './forms/MaintainenceScheduleForm'
+import MaintenanceScheduleForm from './forms/MaintainanceScheduleForm'
 import OrderForm from './forms/OrderForm'
 import ProductForm from './forms/ProductForm'
 import DeliveredProductsReports from "./forms/DeliveredProductsReport"
@@ -33,7 +33,7 @@ export {
   CreateEmployeeForm,
   DeliveriesForm,
   EmployeeWorkLogForm,
-  MaintainenceScheduleForm,
+  MaintenanceScheduleForm,
   DeliveredProductsReports,
   OrderForm,
   ProductForm,

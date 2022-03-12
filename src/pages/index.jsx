@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import AuthenticationLayout from "../layouts/AuthenticationLayout"
-import Image from "../assets/images/home2.jpg"
+import Image from "../assets/images/home.jpg"
 
 const IndexPage = () => {
   return (

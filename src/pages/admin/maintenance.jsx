@@ -7,7 +7,7 @@ import DeleteIcon from "@mui/icons-material/Delete"
 import { FormControlLabel, IconButton } from "@material-ui/core"
 import { blue, red } from "@material-ui/core/colors"
 import Button from "@mui/material/Button"
-import MaintenanceScheduleFormForm from "../../components/forms/MaintainenceScheduleForm"
+import MaintenanceScheduleForm from "../../components/forms/MaintenanceScheduleForm"
 
 const AdminMaintenance = () => {
   const EditRecord = ({ index }) => {
@@ -180,7 +180,7 @@ const AdminMaintenance = () => {
             </div>
           </div>
           <div className="column">
-            <MaintenanceScheduleFormForm />
+            <MaintenanceScheduleForm />
           </div>
         </div>
       </div>

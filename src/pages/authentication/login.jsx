@@ -1,6 +1,6 @@
 import * as React from "react"
 import AuthenticationLayout from "../../layouts/AuthenticationLayout"
-import LoginForm from "../../components/forms/auth/LoginForm"
+import LoginForm from "../../components/forms/authentication/LoginForm"
 import loginImage from "../../assets/icons/authentication/login.svg"
 
 const Login = () => {

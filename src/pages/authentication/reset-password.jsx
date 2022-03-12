@@ -1,6 +1,6 @@
 import * as React from "react"
 import PageLayout from "../../layouts/PageLayout"
-import ResetPasswordForm from "../../components/forms/auth/ResetPasswordForm"
+import ResetPasswordForm from "../../components/forms/authentication/ResetPasswordForm"
 import resetPasswordImage from "../../assets/icons/authentication/reset-password.svg"
 
 const ResetPassword = () => {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import StyledDataGrid from "../../assets/styles/datagrid"
 import EmployeeLayout from "../../layouts/EmployeeLayout"
 import $http from "../../plugins/axios"
-import MaintenanceScheduleForm from "../../components/forms/MaintainenceScheduleForm"
+import MaintenanceScheduleForm from "../../components/forms/MaintenanceScheduleForm"
 import Button from "@mui/material/Button"
 
 const EmployeePerformance = () => {

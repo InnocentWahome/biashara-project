@@ -19,10 +19,10 @@ const EmployeeHomePage = () => {
           </thead>
           <tbody className="border border-primary">
             <tr>
-              <td className="has-text-centered ">
+              <td className=" ">
                 Schedule maintenance and service requests
               </td>
-              <td className="has-text-centered is-vcentered  pb-5">
+              <td className=" is-vcentered  pb-5">
                 You can schedule maintenance and service requests on the
                 <a href="/employee/maintenance/"> Maintenance </a>
                 page.
@@ -30,16 +30,16 @@ const EmployeeHomePage = () => {
             </tr>
 
             <tr>
-              <td className="has-text-centered "> View/ Edit/ Review Orders </td>
-              <td className="has-text-centered is-vcentered  pb-5">
+              <td className=" "> View/ Edit/ Review Orders </td>
+              <td className=" is-vcentered  pb-5">
                 You can review, edit and approve orders on the
                 <a href="/employee/orders/"> Orders Review </a> page
               </td>
             </tr>
 
             <tr>
-              <td className="has-text-centered "> Product Performance </td>
-              <td className="has-text-centered is-vcentered  pb-5">
+              <td className=" "> Product Performance </td>
+              <td className=" is-vcentered  pb-5">
                 Monitor performance of delivered products
                 <a href="/employee/product-performance/"> 
                    Delivered Product Performance  
@@ -49,8 +49,8 @@ const EmployeeHomePage = () => {
             </tr>
 
             <tr>
-              <td className="has-text-centered "> Create Word Log </td>
-              <td className="has-text-centered is-vcentered  pb-5">
+              <td className=" "> Create Word Log </td>
+              <td className=" is-vcentered  pb-5">
                 Create daily work performance logs on the
                 <a href="/employee/my-performance/"> My Performance </a>
                 page
@@ -58,8 +58,8 @@ const EmployeeHomePage = () => {
             </tr>
 
             <tr>
-              <td className="has-text-centered "> Record stock </td>
-              <td className="has-text-centered is-vcentered  pb-5">
+              <td className=" "> Record stock </td>
+              <td className=" is-vcentered  pb-5">
                 Record stock and account for deliveries made on the
                 <a href="/employee/stock/"> Stock </a>
                 page

@@ -30,7 +30,7 @@ module.exports = {
         start_url: `/`,
         background_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/assets/images/biashara_logo4.png`, // This path is relative to the root of the site.
+        icon: `src/assets/images/logo.jpg`, // This path is relative to the root of the site.
       },
     },
   ],

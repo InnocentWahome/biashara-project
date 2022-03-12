@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import AuthenticationLayout from "../../layouts/AuthenticationLayout"
-import RegisterForm from "../../components/forms/auth/RegisterForm"
+import RegisterForm from "../../components/forms/authentication/RegisterForm"
 import registerImage from "../../assets/icons/authentication/register.svg"
 
 const Register = () => {

@@ -1,6 +1,6 @@
 import * as React from "react"
 import PageLayout from "../../layouts/PageLayout"
-import ForgotPasswordForm from "../../components/forms/auth/ForgotPasswordForm"
+import ForgotPasswordForm from "../../components/forms/authentication/ForgotPasswordForm"
 import forgotPasswordImage from "../../assets/icons/authentication/forgot-password.svg"
 
 const ForgotPassword = () => {
