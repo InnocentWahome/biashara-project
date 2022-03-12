@@ -1,12 +1,12 @@
 # Project - (client & server)
 
-> Biashara System
+> Biashara System Client
 
 ## Installation 
 
 ##### Clone the git repository
 ```
-git clone https://github.com/InnocentWahome/invoice-project.git
+git clone https://github.com/InnocentWahome/biashara-project-client.git
 ```
 
 ## Installation server

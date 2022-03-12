@@ -9,11 +9,11 @@ const EmployeeOrders = ({ index, onClick }) => {
   const [entity, setEntity] = React.useState("")
   const [delivery_status, setDeliveryStatus] = React.useState("")
 
-  const updateDelivery = ()  => {
+  const updateDelivery = () => {
     try {
       if (entity.id) {
         // if entity id exists, update record
-         $http.Api({
+        $http.Api({
           method: "PUT",
           url: "/order/" + entity.id,
           data: {
@@ -23,7 +23,7 @@ const EmployeeOrders = ({ index, onClick }) => {
       } else {
         console.log("error")
       }
-    } catch (error) {    
+    } catch (error) {
       console.error(error)
     }
 

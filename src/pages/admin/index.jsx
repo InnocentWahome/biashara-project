@@ -18,9 +18,7 @@ const AdminHome = () => {
           </thead>
           <tbody className="border border-primary">
             <tr className="border border-primary">
-              <td className=" ">
-                Access and Modify User's Data
-              </td>
+              <td className=" ">Access and Modify User's Data</td>
               <td className=" is-vcentered  pb-5">
                 Go to the <a href="/admin/users/">System User's</a> page to view
                 all users, both users and employees
@@ -34,9 +32,7 @@ const AdminHome = () => {
               </td>
             </tr>
             <tr>
-              <td className=" ">
-                Authorize delivery requests
-              </td>
+              <td className=" ">Authorize delivery requests</td>
               <td className=" is-vcentered  pb-5">
                 Authorize delivery requests on the
                 <a href="/admin/orders/"> Delivery Requests </a>
@@ -63,14 +59,15 @@ const AdminHome = () => {
               <td className=" ">Check Employee Performance</td>
               <td className=" is-vcentered  pb-5">
                 Review and approve every employees' performance on the
-                <a href="/admin/employee-performance/"> Employee Performance </a>
+                <a href="/admin/employee-performance/">
+                  {" "}
+                  Employee Performance{" "}
+                </a>
                 page
               </td>
             </tr>
             <tr>
-              <td className=" ">
-                Maintenance and Service Requests
-              </td>
+              <td className=" ">Maintenance and Service Requests</td>
               <td className=" is-vcentered  pb-5">
                 You can schedule maintenance and service requests on thee
                 <a href="/admin/maintenance/"> Maintenance </a>

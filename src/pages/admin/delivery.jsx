@@ -41,7 +41,7 @@ const AdminDelivery = () => {
     <AdminLayout>
       <div className="pr-6 pl-6 mr-6 pt-6">
         <p className="is-size-4 has-text-centered pb-3 pt-6 title">
-         Approve Orders for Dispatch
+          Approve Orders for Dispatch
         </p>
         <div style={{ height: 600, width: "100%" }}>
           <StyledDataGrid
@@ -54,9 +54,9 @@ const AdminDelivery = () => {
             sx={{
               boxShadow: 2,
               border: 2,
-              borderColor: '#9e9e9e',
-              '& .MuiDataGrid-cell:hover': {
-                color: 'primary.main',
+              borderColor: "#9e9e9e",
+              "& .MuiDataGrid-cell:hover": {
+                color: "primary.main",
               },
             }}
           />

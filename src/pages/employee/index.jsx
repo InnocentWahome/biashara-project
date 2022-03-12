@@ -19,9 +19,7 @@ const EmployeeHomePage = () => {
           </thead>
           <tbody className="border border-primary">
             <tr>
-              <td className=" ">
-                Schedule maintenance and service requests
-              </td>
+              <td className=" ">Schedule maintenance and service requests</td>
               <td className=" is-vcentered  pb-5">
                 You can schedule maintenance and service requests on the
                 <a href="/employee/maintenance/"> Maintenance </a>
@@ -41,8 +39,8 @@ const EmployeeHomePage = () => {
               <td className=" "> Product Performance </td>
               <td className=" is-vcentered  pb-5">
                 Monitor performance of delivered products
-                <a href="/employee/product-performance/"> 
-                   Delivered Product Performance  
+                <a href="/employee/product-performance/">
+                  Delivered Product Performance
                 </a>
                 page
               </td>

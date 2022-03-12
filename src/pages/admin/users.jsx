@@ -45,8 +45,8 @@ const AdminSystemUsers = () => {
   }
   const columns = [
     { field: "id", headerName: "ID", width: 100 },
-    { field: "firstName", headerName: "First Name", width: 120  },
-    { field: "lastName", headerName: "Last Name", width: 120  },
+    { field: "firstName", headerName: "First Name", width: 120 },
+    { field: "lastName", headerName: "Last Name", width: 120 },
     { field: "phoneNumber", headerName: "Phone Number", width: 200 },
     { field: "email", headerName: "Email Address", width: 250 },
     {
@@ -59,7 +59,7 @@ const AdminSystemUsers = () => {
       disableClickEventBubbling: true,
       renderCell: params => {
         let decidedIcon
-        if (params.row.role === 'Admin') {
+        if (params.row.role === "Admin") {
           decidedIcon = (
             <div
               className="d-flex  align-items-center"
@@ -70,7 +70,7 @@ const AdminSystemUsers = () => {
               </Button>
             </div>
           )
-        } else if (params.row.role === 'Employee') {
+        } else if (params.row.role === "Employee") {
           decidedIcon = (
             <div
               className="d-flex  align-items-center"
@@ -81,7 +81,7 @@ const AdminSystemUsers = () => {
               </Button>
             </div>
           )
-        } else if (params.row.role === 'User') {
+        } else if (params.row.role === "User") {
           decidedIcon = (
             <div
               className="d-flex  align-items-center"
@@ -115,7 +115,7 @@ const AdminSystemUsers = () => {
             </div>
             <div className="column">
               <div
-                className="d-flex  align-items-center"
+                className="d-flex  align-items-center"S
                 style={{ cursor: "pointer" }}
               >
                 <DeleteIcon onClick={EditRecord} color="error" />
@@ -150,10 +150,12 @@ const AdminSystemUsers = () => {
 
   return (
     <AdminLayout>
-     <div className="pl-6 pr-6 pt-6">
+      <div className="pl-6 pr-6 pt-6">
         <div className="columns">
           <div className="column is-three-quarters">
-            <p className="is-size-4 has-text-centered pb-3 pt-6">All System Users</p>
+            <p className="is-size-4 has-text-centered pb-3 pt-6">
+              All System Users
+            </p>
             <div style={{ height: 600, width: "200" }}>
               <StyledDataGrid
                 rows={tableData}
@@ -165,16 +167,18 @@ const AdminSystemUsers = () => {
                 sx={{
                   boxShadow: 2,
                   border: 2,
-                  borderColor: '#9e9e9e',
-                  '& .MuiDataGrid-cell:hover': {
-                    color: 'primary.main',
+                  borderColor: "#9e9e9e",
+                  "& .MuiDataGrid-cell:hover": {
+                    color: "primary.main",
                   },
                 }}
               />
             </div>
           </div>
           <div className="column pt-6 mt-6">
-            <p className="is-size-6 has-text-centered pb-2">Create a New User</p>
+            <p className="is-size-6 has-text-centered pb-2">
+              Create a New User
+            </p>
             <CreateEmployeeForm />
           </div>
         </div>

@@ -20,8 +20,8 @@ const ForgotPassword = () => {
               </div>
               <p className="is-size-6">
                 We will email you a
-                <a href="/authentication/reset-password">reset password</a>{" "}
-                link shortly
+                <a href="/authentication/reset-password">reset password</a> link
+                shortly
               </p>
             </div>
           </div>

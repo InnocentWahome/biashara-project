@@ -1,120 +1,123 @@
-import * as React from 'react';
-import { DataGrid, GridActionsCellItem } from '@mui/x-data-grid';
-import DeleteIcon from '@mui/icons-material/Delete';
-import SecurityIcon from '@mui/icons-material/Security';
-import FileCopyIcon from '@mui/icons-material/FileCopy';
-import { randomCreatedDate, randomUpdatedDate } from '@mui/x-data-grid-generator';
+import * as React from "react"
+import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid"
+import DeleteIcon from "@mui/icons-material/Delete"
+import SecurityIcon from "@mui/icons-material/Security"
+import FileCopyIcon from "@mui/icons-material/FileCopy"
+import {
+  randomCreatedDate,
+  randomUpdatedDate,
+} from "@mui/x-data-grid-generator"
 
 const initialRows = [
   {
     id: 1,
-    name: 'Damien',
+    name: "Damien",
     age: 25,
     dateCreated: randomCreatedDate(),
     lastLogin: randomUpdatedDate(),
     isAdmin: true,
-    country: 'Spain',
-    discount: '',
+    country: "Spain",
+    discount: "",
   },
   {
     id: 2,
-    name: 'Nicolas',
+    name: "Nicolas",
     age: 36,
     dateCreated: randomCreatedDate(),
     lastLogin: randomUpdatedDate(),
     isAdmin: false,
-    country: 'France',
-    discount: '',
+    country: "France",
+    discount: "",
   },
   {
     id: 3,
-    name: 'Kate',
+    name: "Kate",
     age: 19,
     dateCreated: randomCreatedDate(),
     lastLogin: randomUpdatedDate(),
     isAdmin: false,
-    country: 'Brazil',
-    discount: 'junior',
+    country: "Brazil",
+    discount: "junior",
   },
-];
+]
 
 export default function ColumnTypesGrid() {
-  const [rows, setRows] = React.useState(initialRows);
+  const [rows, setRows] = React.useState(initialRows)
 
   const deleteUser = React.useCallback(
-    (id) => () => {
+    id => () => {
       setTimeout(() => {
-        setRows((prevRows) => prevRows.filter((row) => row.id !== id));
-      });
+        setRows(prevRows => prevRows.filter(row => row.id !== id))
+      })
     },
-    [],
-  );
+    []
+  )
 
   const toggleAdmin = React.useCallback(
-    (id) => () => {
-      setRows((prevRows) =>
-        prevRows.map((row) =>
-          row.id === id ? { ...row, isAdmin: !row.isAdmin } : row,
-        ),
-      );
+    id => () => {
+      setRows(prevRows =>
+        prevRows.map(row =>
+          row.id === id ? { ...row, isAdmin: !row.isAdmin } : row
+        )
+      )
     },
-    [],
-  );
+    []
+  )
 
   const duplicateUser = React.useCallback(
-    (id) => () => {
-      setRows((prevRows) => {
-        const rowToDuplicate = prevRows.find((row) => row.id === id);
-        return [...prevRows, { ...rowToDuplicate, id: Date.now() }];
-      });
+    id => () => {
+      setRows(prevRows => {
+        const rowToDuplicate = prevRows.find(row => row.id === id)
+        return [...prevRows, { ...rowToDuplicate, id: Date.now() }]
+      })
     },
-    [],
-  );
+    []
+  )
 
   const columns = React.useMemo(
     () => [
-      { field: 'name', type: 'string' },
-      { field: 'age', type: 'number' },
-      { field: 'dateCreated', type: 'date', width: 130 },
-      { field: 'lastLogin', type: 'dateTime', width: 180 },
-      { field: 'isAdmin', type: 'boolean', width: 120, editable: true },
+      { field: "name", type: "string" },
+      { field: "age", type: "number" },
+      { field: "dateCreated", type: "date", width: 130 },
+      { field: "lastLogin", type: "dateTime", width: 180 },
+      { field: "isAdmin", type: "boolean", width: 120, editable: true },
       {
-        field: 'country',
-        type: 'singleSelect',
+        field: "country",
+        type: "singleSelect",
         width: 120,
         valueOptions: [
-          'Bulgaria',
-          'Netherlands',
-          'France',
-          'United Kingdom',
-          'Spain',
-          'Brazil',
+          "Bulgaria",
+          "Netherlands",
+          "France",
+          "United Kingdom",
+          "Spain",
+          "Brazil",
         ],
       },
       {
-        field: 'discount',
-        type: 'singleSelect',
+        field: "discount",
+        type: "singleSelect",
         width: 120,
         editable: true,
         valueOptions: ({ row }) => {
           if (row === undefined) {
-            return ['EU-resident', 'junior'];
+            return ["EU-resident", "junior"]
           }
-          const options = [];
-          if (!['United Kingdom', 'Brazil'].includes(row.country)) {
-            options.push('EU-resident');
+          const options = []
+          if (!["United Kingdom", "Brazil"].includes(row.country)) {
+            options.push("EU-resident")
           }
           if (row.age < 27) {
-            options.push('junior');
+            options.push("junior")
           }
-          return options;
+          return options
         },
       },
       {
-        field: 'actions',
-        type: 'actions',
+        field: "actions",
+        type: "actions",
         width: 80,
-        getActions: (params) => [
+        getActions: params => [
           <GridActionsCellItem
             icon={<DeleteIcon />}
             label="Delete"
@@ -135,12 +138,12 @@ export default function ColumnTypesGrid() {
         ],
       },
     ],
-    [deleteUser, toggleAdmin, duplicateUser],
-  );
+    [deleteUser, toggleAdmin, duplicateUser]
+  )
 
   return (
-    <div style={{ height: 300, width: '100%' }}>
+    <div style={{ height: 300, width: "100%" }}>
       <DataGrid columns={columns} rows={rows} />
     </div>
-  );
+  )
 }

@@ -9,7 +9,7 @@ import ContactForm from "./forms/ContactForm"
 import CreateEmployeeForm from './forms/CreateEmployeeForm'
 import DeliveriesForm from './forms/DeliveriesForm'
 import EmployeeWorkLogForm from './forms/EmployeeWorkLogForm'
-import MaintenanceScheduleForm from './forms/MaintainanceScheduleForm'
+import MaintenanceScheduleForm from './forms/MaintenanceScheduleForm'
 import OrderForm from './forms/OrderForm'
 import ProductForm from './forms/ProductForm'
 import DeliveredProductsReports from "./forms/DeliveredProductsReport"
