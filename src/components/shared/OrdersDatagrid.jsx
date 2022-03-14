@@ -11,6 +11,7 @@ const EditRecord = ({ index }) => {}
 const DeleteRecord = ({ index }) => {}
 
 const OrdersDatagrid = () => {
+  const [entity, setEntity] = React.useState("")
   const columns = [
     { field: "id", headerName: "#", width: 50 },
     { field: "product_id", headerName: "Product ID", width: 100 },
@@ -69,31 +70,45 @@ const OrdersDatagrid = () => {
       type: "number",
       disableClickEventBubbling: true,
       renderCell: params => {
-        let decidedIcon
+        let deliveryIcon
         if (params.row.dispatch_status === 1) {
-          decidedIcon = (
+          // console.log("below is entity");
+          // console.log(params.row.id)
+          deliveryIcon = (
             <div
               className="d-flex  align-items-center"
               style={{ cursor: "pointer" }}
             >
-              <Button size="small" variant="outlined" color="success">
+              <Button
+                onClick={() => setEntity((params.row.dispatch_status = 0))}
+                index={params.row.id}
+                size="small"
+                variant="outlined"
+                color="success"
+              >
                 DISPATCHED
               </Button>
             </div>
           )
         } else if (params.row.dispatch_status === 0) {
-          decidedIcon = (
+          deliveryIcon = (
             <div
               className="d-flex  align-items-center"
               style={{ cursor: "pointer" }}
             >
-              <Button size="small" variant="outlined" color="error">
+              <Button
+                onClick={() => setEntity((params.row.dispatch_status = 1))}
+                index={params.row.id}
+                size="small"
+                variant="outlined"
+                color="error"
+              >
                 NOT DISPATCHED
               </Button>
             </div>
           )
         }
-        return <div>{decidedIcon}</div>
+        return <div>{deliveryIcon}</div>
       },
     },
     {

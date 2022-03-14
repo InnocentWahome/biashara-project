@@ -85,7 +85,7 @@ const ProductForm = () => {
         </div>
         <div className="field">
           <button className="button is-black is-rounded" type="submit">
-            Create / Update Order
+            Create Order
           </button>
         </div>
       </div>

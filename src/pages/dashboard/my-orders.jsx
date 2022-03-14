@@ -7,10 +7,11 @@ import EditIcon from "@material-ui/icons/Edit"
 import DeleteIcon from "@mui/icons-material/Delete"
 import PageLayout from "../../layouts/PageLayout"
 import Button from "@mui/material/Button"
+import OrderForm from "../../components/forms/OrderForm"
 
 const DashboardUserOrders = () => {
+  const [entity, setEntity] = React.useState("")
   const EditRecord = ({ index }) => {
-    const price = 100
     const handleEditClick = async e => {}
 
     return (
@@ -53,30 +54,35 @@ const DashboardUserOrders = () => {
     { field: "id", headerName: "#", width: 50 },
     { field: "product_id", headerName: "Product Id", width: 100 },
     { field: "product_name", headerName: "Product Name", width: 200 },
-    { field: "cost", headerName: "Total Cost", width: 120 },
+    {
+      field: "cost",
+      headerName: "Total Cost",
+      width: 120,
+      valueGetter: params => params.row.quantity * 50,
+    },
     { field: "quantity", headerName: "Quantity", width: 120 },
 
-    {
-      field: "payment",
-      headerName: "Pay",
-      width: 100,
-      sortable: true,
-      editable: true,
-      type: "number",
-      disableClickEventBubbling: true,
-      renderCell: params => {
-        return (
-          <div
-            className="d-flex  align-items-center"
-            style={{ cursor: "pointer" }}
-          >
-            <Button variant="contained" color="secondary">
-              PAY
-            </Button>
-          </div>
-        )
-      },
-    },
+    // {
+    //   field: "payment",
+    //   headerName: "Pay",
+    //   width: 100,
+    //   sortable: true,
+    //   editable: true,
+    //   type: "number",
+    //   disableClickEventBubbling: true,
+    //   renderCell: params => {
+    //     return (
+    //       <div
+    //         className="d-flex  align-items-center"
+    //         style={{ cursor: "pointer" }}
+    //       >
+    //         <Button variant="contained" color="secondary">
+    //           PAY
+    //         </Button>
+    //       </div>
+    //     )
+    //   },
+    // },
     {
       field: "payment_status",
       headerName: "Payment Status",
@@ -92,7 +98,7 @@ const DashboardUserOrders = () => {
               className="d-flex  align-items-center"
               style={{ cursor: "pointer" }}
             >
-              <Button size="small" variant="outlined" color="success">
+              <Button size="small" variant="outlined" color="primary">
                 PAID
               </Button>
             </div>
@@ -103,8 +109,8 @@ const DashboardUserOrders = () => {
               className="d-flex  align-items-center"
               style={{ cursor: "pointer" }}
             >
-              <Button size="small" variant="outlined" color="error">
-                NOT PAID
+              <Button size="small" variant="contained" color="secondary">
+                PAY
               </Button>
             </div>
           )
@@ -186,7 +192,7 @@ const DashboardUserOrders = () => {
       field: "actions",
       headerName: "Actions",
       sortable: false,
-      width: 200,
+      width: 250,
       disableClickEventBubbling: true,
       renderCell: params => {
         return (
@@ -249,23 +255,30 @@ const DashboardUserOrders = () => {
     <PageLayout>
       <div className="pr-6 pl-6 mt-6 mr-6 pt-4">
         <p className="is-size-6 pt-3 pb-3">Here are all your orders</p>
-        <div style={{ height: 600, width: "100%" }}>
-          <StyledDataGrid
-            rows={tableData}
-            pageSize={pageSize}
-            onPageSizeChange={newPage => setPageSize(newPage)}
-            pagination
-            columns={columns}
-            // checkboxSelection
-            sx={{
-              boxShadow: 2,
-              border: 2,
-              borderColor: "#9e9e9e",
-              "& .MuiDataGrid-cell:hover": {
-                color: "primary.main",
-              },
-            }}
-          />
+        <div className="columns">
+          <div className="column ">
+            <div style={{ height: 600, width: "100%" }}>
+              <StyledDataGrid
+                rows={tableData}
+                pageSize={pageSize}
+                onPageSizeChange={newPage => setPageSize(newPage)}
+                pagination
+                columns={columns}
+                // checkboxSelection
+                sx={{
+                  boxShadow: 2,
+                  border: 2,
+                  borderColor: "#9e9e9e",
+                  "& .MuiDataGrid-cell:hover": {
+                    color: "primary.main",
+                  },
+                }}
+              />
+            </div>
+          </div>
+          <div className="column is-one-quarter pt-6">
+            <OrderForm />
+          </div>
         </div>
       </div>
     </PageLayout>

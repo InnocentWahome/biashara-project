@@ -4,25 +4,39 @@ import EmployeeLayout from "../../layouts/EmployeeLayout"
 import $http from "../../plugins/axios"
 import MaintenanceScheduleForm from "../../components/forms/MaintenanceScheduleForm"
 import Button from "@mui/material/Button"
+import { FormControlLabel, IconButton } from "@material-ui/core"
 
 const EmployeePerformance = () => {
+  const [entity, setEntity] = React.useState("")
   const CompletedButton = ({ index }) => {
     const handleApprovedClick = async e => {}
     return (
-      <div className="d-flex  align-items-center" style={{ cursor: "pointer" }}>
-        <Button size="small" variant="outlined" color="success">
-          COMPLETED
-        </Button>
+      <div>
+        <FormControlLabel
+          control={
+            <IconButton
+              color="secondary"
+              aria-label="add an alarm"
+              onClick={setEntity}
+            ></IconButton>
+          }
+        />
       </div>
     )
   }
   const NotCompletedButton = ({ index }) => {
     const handleNotApprovedClick = async e => {}
     return (
-      <div className="d-flex  align-items-center" style={{ cursor: "pointer" }}>
-        <Button size="small" variant="outlined" color="error">
-          NOT COMPLETED
-        </Button>
+      <div>
+        <FormControlLabel
+          control={
+            <IconButton
+              color="secondary"
+              aria-label="add an alarm"
+              onClick={setEntity}
+            ></IconButton>
+          }
+        />
       </div>
     )
   }
@@ -41,27 +55,45 @@ const EmployeePerformance = () => {
       type: "boolean",
       disableClickEventBubbling: true,
       renderCell: params => {
-        let decidedIcon
+        let deliveryIcon
         if (params.row.completed === 1) {
-          decidedIcon = (
+          // console.log("below is entity");
+          // console.log(params.row.id)
+          deliveryIcon = (
             <div
               className="d-flex  align-items-center"
               style={{ cursor: "pointer" }}
             >
-              <CompletedButton index={params.row.id} />
+              <Button
+                onClick={() => setEntity((params.row.completed = 0))}
+                index={params.row.id}
+                size="small"
+                variant="outlined"
+                color="success"
+              >
+                COMPLETED
+              </Button>
             </div>
           )
         } else if (params.row.completed === 0) {
-          decidedIcon = (
+          deliveryIcon = (
             <div
               className="d-flex  align-items-center"
               style={{ cursor: "pointer" }}
             >
-              <NotCompletedButton index={params.row.id} />
+              <Button
+                onClick={() => setEntity((params.row.completed = 1))}
+                index={params.row.id}
+                size="small"
+                variant="outlined"
+                color="error"
+              >
+                NOT COMPLETED
+              </Button>
             </div>
           )
         }
-        return <div>{decidedIcon}</div>
+        return <div>{deliveryIcon}</div>
       },
     },
   ]

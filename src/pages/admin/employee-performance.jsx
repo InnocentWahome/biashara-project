@@ -3,34 +3,46 @@ import AdminLayout from "../../layouts/AdminLayout"
 import $http from "../../plugins/axios"
 import StyledDataGrid from "../../assets/styles/datagrid"
 import Button from "@mui/material/Button"
+import { FormControlLabel, IconButton } from "@material-ui/core"
 
 const AdminEmployeePerformance = () => {
+  const [entity, setEntity] = React.useState("")
   const ApprovedButton = ({ index }) => {
     const handleApprovedClick = async e => {}
     return (
-      <div className="d-flex  align-items-center" style={{ cursor: "pointer" }}>
-        <Button size="small" variant="outlined" color="success">
-          APPROVED
-        </Button>
+      <div>
+        <FormControlLabel
+          control={
+            <IconButton
+              color="secondary"
+              aria-label="add an alarm"
+              onClick={setEntity}
+            ></IconButton>
+          }
+        />
       </div>
     )
   }
   const NotApprovedButton = ({ index }) => {
     const handleNotApprovedClick = async e => {}
     return (
-      <div className="d-flex  align-items-center" style={{ cursor: "pointer" }}>
-        <Button size="small" variant="outlined" color="error">
-          NOT APPROVED
-        </Button>
+      <div>
+        <FormControlLabel
+          control={
+            <IconButton
+              color="secondary"
+              aria-label="add an alarm"
+              onClick={setEntity}
+            ></IconButton>
+          }
+        />
       </div>
     )
   }
   const columns = [
     { field: "id", headerName: "ID", width: 100 },
-    { field: "date", headerName: "Date", width: 100 },
+    { field: "date", headerName: "Date", width: 150 },
     { field: "day", headerName: "Day", width: 100 },
-    // { field: "start", headerName: "Start Time", width: 130 },
-    // { field: "stop", headerName: "Stop Time", width: 130 },
     { field: "hours", headerName: "Hours Worked", width: 130 },
     { field: "description", headerName: "Description", width: 300 },
     { field: "user_id", headerName: "Employee ID", width: 130 },
@@ -44,27 +56,45 @@ const AdminEmployeePerformance = () => {
       type: "number",
       disableClickEventBubbling: true,
       renderCell: params => {
-        let decidedIcon
+        let deliveryIcon
         if (params.row.approval === 1) {
-          decidedIcon = (
+          // console.log("below is entity");
+          // console.log(params.row.id)
+          deliveryIcon = (
             <div
               className="d-flex  align-items-center"
               style={{ cursor: "pointer" }}
             >
-              <ApprovedButton index={params.row.id} />
+              <Button
+                onClick={() => setEntity((params.row.approval = 0))}
+                index={params.row.id}
+                size="small"
+                variant="outlined"
+                color="success"
+              >
+                APPROVED
+              </Button>
             </div>
           )
         } else if (params.row.approval === 0) {
-          decidedIcon = (
+          deliveryIcon = (
             <div
               className="d-flex  align-items-center"
               style={{ cursor: "pointer" }}
             >
-              <NotApprovedButton index={params.row.id} />
+              <Button
+                onClick={() => setEntity((params.row.approval = 1))}
+                index={params.row.id}
+                size="small"
+                variant="outlined"
+                color="error"
+              >
+                NOT APPROVED
+              </Button>
             </div>
           )
         }
-        return <div>{decidedIcon}</div>
+        return <div>{deliveryIcon}</div>
       },
     },
   ]

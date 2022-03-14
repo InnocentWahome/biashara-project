@@ -10,6 +10,7 @@ import EmployeeWorkLogForm from "../../components/forms/EmployeeWorkLogForm"
 import Button from "@mui/material/Button"
 
 const EditRecord = ({ index, onClick }) => {
+  const [entity, setEntity] = React.useState("")
   const [category, updateCategory] = useState("")
   const [completed, updateCompleted] = useState("")
   const [description, updateDescription] = useState("")
@@ -22,10 +23,8 @@ const EditRecord = ({ index, onClick }) => {
           <IconButton
             color="secondary"
             aria-label="add an alarm"
-            onClick={onClick}
-          >
-            <EditIcon style={{ color: blue[500] }} />
-          </IconButton>
+            onClick={setEntity}
+          ></IconButton>
         }
       />
     </div>
@@ -103,27 +102,45 @@ const EmployeePerformance = () => {
       // type: "number",
       disableClickEventBubbling: true,
       renderCell: params => {
-        let decidedIcon
+        let deliveryIcon
         if (params.row.approval === 1) {
-          decidedIcon = (
+          // console.log("below is entity");
+          // console.log(params.row.id)
+          deliveryIcon = (
             <div
               className="d-flex  align-items-center"
               style={{ cursor: "pointer" }}
             >
-              <ApprovedButton index={params.row.id} />
+              <Button
+                // onClick={() => setEntity((params.row.approval = 0))}
+                index={params.row.id}
+                size="small"
+                variant="outlined"
+                color="success"
+              >
+                APPROVED
+              </Button>
             </div>
           )
         } else if (params.row.approval === 0) {
-          decidedIcon = (
+          deliveryIcon = (
             <div
               className="d-flex  align-items-center"
               style={{ cursor: "pointer" }}
             >
-              <NotApprovedButton index={params.row.id} />
+              <Button
+                // onClick={() => setEntity((params.row.approval = 1))}
+                index={params.row.id}
+                size="small"
+                variant="outlined"
+                color="error"
+              >
+                NOT APPROVED
+              </Button>
             </div>
           )
         }
-        return <div>{decidedIcon}</div>
+        return <div>{deliveryIcon}</div>
       },
     },
     {
@@ -140,10 +157,7 @@ const EmployeePerformance = () => {
                 className="d-flex  align-items-center"
                 style={{ cursor: "pointer" }}
               >
-                <EditRecord
-                  onClick={() => setEntity(params.row)}
-                  index={params.row.id}
-                />
+                <EditIcon onClick={EditRecord} color="primary" />
               </div>
             </div>
             <div className="column">
@@ -151,7 +165,7 @@ const EmployeePerformance = () => {
                 className="d-flex  align-items-center"
                 style={{ cursor: "pointer" }}
               >
-                <DeleteRecord index={params.row.id} />
+                <DeleteIcon onClick={DeleteRecord} color="error" />
               </div>
             </div>
           </div>
