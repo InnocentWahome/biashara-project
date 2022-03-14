@@ -1,10 +1,4 @@
 import axios from "axios"
-// import { history } from "react-router-dom"
-// require('dotenv');
-// require("dotenv").config({
-//   path: `.env.${process.env.NODE_ENV}`,
-// })
-
 const $http = {
   Authentication: axios.create({
     baseURL: process.env.GATSBY_AUTHENTICATION_BASE_URL,
@@ -21,9 +15,7 @@ const $http = {
   }),
 };
 
-
 const accessToken = () => localStorage.getItem("access_token")
-
 const authenticationInterceptor = config => {
   config.headers = {
     Authorization: `Bearer ${accessToken()}`,

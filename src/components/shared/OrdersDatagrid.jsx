@@ -15,14 +15,14 @@ const OrdersDatagrid = () => {
   const columns = [
     { field: "id", headerName: "#", width: 50 },
     { field: "product_id", headerName: "Product ID", width: 100 },
-    {
-      field: "product_name",
-      headerName: "Product Name",
-      width: 200,
-      editable: true,
-    },
+    // {
+    //   field: "product_name",
+    //   headerName: "Product Name",
+    //   width: 200,
+    //   editable: true,
+    // },
     { field: "user_id", headerName: "User ID", width: 100 },
-    { field: "user_email", headerName: "User Email", width: 220 },
+    // { field: "user_email", headerName: "User Email", width: 220 },
     // { field: "date", headerName: "Purchase Date", width: 150 },
     { field: "cost", headerName: "Total Cost", width: 100 },
     { field: "quantity", headerName: " Quantity", width: 100 },

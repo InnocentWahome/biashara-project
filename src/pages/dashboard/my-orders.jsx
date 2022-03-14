@@ -53,7 +53,7 @@ const DashboardUserOrders = () => {
   const columns = [
     { field: "id", headerName: "#", width: 50 },
     { field: "product_id", headerName: "Product Id", width: 100 },
-    { field: "product_name", headerName: "Product Name", width: 200 },
+    // { field: "product_name", headerName: "Product Name", width: 200 },
     {
       field: "cost",
       headerName: "Total Cost",

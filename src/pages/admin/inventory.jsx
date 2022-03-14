@@ -80,7 +80,6 @@ const AdminInventory = () => {
         return (
           <div>
             <Avatar src={params.row.image} alt="product picture" />
-            {/* {params.row.id} */}
           </div>
         )
       },

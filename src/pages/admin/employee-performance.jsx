@@ -23,6 +23,24 @@ const AdminEmployeePerformance = () => {
       </div>
     )
   }
+  // const GetEmail = ({ index, params }) => {
+  //   console.log("GetEmail has been called")
+  //   const response = () => {
+  //     try {
+  //       $http
+  //         .Authentication({
+  //           method: "GET",
+  //           url: "/user/" + `${params.row.user_id}`,
+  //           data: {},
+  //         })
+  //         .then(console.log(response.data?.data))
+  //     } catch (error) {
+  //       console.error(error)
+  //     }
+  //   }
+  //   // get_user_details()
+  //   response()
+  // }
   const NotApprovedButton = ({ index }) => {
     const handleNotApprovedClick = async e => {}
     return (
@@ -39,14 +57,41 @@ const AdminEmployeePerformance = () => {
       </div>
     )
   }
+
+  function getEmail(params) {
+    // return `${params.row.firstName || ''} ${params.row.lastName || ''}`;
+    const response = () => {
+      try {
+        $http
+          .Authentication({
+            method: "SHOW",
+            url: "/user/" + `${params.row.user_id}`,
+          })
+            console.log(response.data.email)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    return response();
+  }
+
   const columns = [
     { field: "id", headerName: "ID", width: 100 },
     { field: "date", headerName: "Date", width: 150 },
     { field: "day", headerName: "Day", width: 100 },
     { field: "hours", headerName: "Hours Worked", width: 130 },
     { field: "description", headerName: "Description", width: 300 },
-    { field: "user_id", headerName: "Employee ID", width: 130 },
-    { field: "user_email", headerName: "Employee Email", width: 220 },
+    {
+      field: "user_id",
+      headerName: "Employee ID",
+      width: 130,
+    },
+    // {
+    //   field: "user_email",
+    //   headerName: "Employee Email",
+    //   width: 220,
+    //   valueGetter: getEmail,
+    // },
     {
       field: "approval",
       headerName: "Approval Status",
@@ -108,7 +153,7 @@ const AdminEmployeePerformance = () => {
         url: "/worklog",
       })
       if (response.data?.data) {
-        console.log(tableData)
+        // console.log(tableData)
         setTableData(response.data.data)
       }
     } catch (error) {

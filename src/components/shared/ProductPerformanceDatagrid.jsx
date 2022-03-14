@@ -11,11 +11,11 @@ import Rating from "@mui/material/Rating"
 const PerformanceDatagrid = () => {
   const columns = [
     { field: "id", headerName: "#", width: 50 },
-    { field: "product_name", headerName: "Product Name", width: 200 },
+    // { field: "product_name", headerName: "Product Name", width: 200 },
     { field: "product_id", headerName: "Product ID", width: 120 },
     { field: "description", headerName: "Review Description", width: 200 },
-    { field: "user_id", headerName: "User ID", width: 100 },
-    { field: "user_email", headerName: "User Email", width: 220 },
+    { field: "user_id", headerName: "Reviewer ID", width: 120 },
+    // { field: "user_email", headerName: "User Email", width: 220 },
     {
       field: "rate",
       headerName: "Rate",

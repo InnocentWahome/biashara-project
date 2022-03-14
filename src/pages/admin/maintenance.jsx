@@ -82,7 +82,7 @@ const AdminMaintenance = () => {
     { field: "description", headerName: "Description", width: 200 },
     { field: "date", headerName: "Service Date", width: 200 },
     { field: "user_id", headerName: "Assigned To (ID)", width: 150 },
-    { field: "user_email", headerName: "Assigned To (Email)", width: 220 },
+    // { field: "user_email", headerName: "Assigned To (Email)", width: 220 },
     {
       field: "completed",
       headerName: "Completion Status",
