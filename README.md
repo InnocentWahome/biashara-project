@@ -1,12 +1,12 @@
 # Project - (client & server)
 
-> Biashara System Client
+> OFAMIS System Client
 
 ## Installation 
 
 ##### Clone the git repository
 ```
-git clone https://github.com/InnocentWahome/biashara-project-client.git
+git clone https://github.com/InnocentWahome/ofamis-project-client.git
 ```
 
 ## Installation server

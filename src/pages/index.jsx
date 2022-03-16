@@ -16,7 +16,7 @@ const IndexPage = () => {
                     Meet The Simplest Way To Track Your Products Online
                   </h1>
                   <p>
-                    Here at Biashara, we offer unlimited solutions to your
+                    Here at OFAMIS, we offer unlimited solutions to your
                     orders online .We are built within a vast network of
                     resources to meet your needs. Want to get started? It's
                     easy. Just click the button below to sign up or sign in to

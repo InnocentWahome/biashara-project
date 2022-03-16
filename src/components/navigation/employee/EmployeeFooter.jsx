@@ -10,7 +10,7 @@ const Footer = () => {
         aria-label="main navigation"
       >
         <div>
-          <h3>Employee Panel © {year} Biashara. All rights reserved.</h3>
+          <h3>Employee Panel © {year} OFAMIS. All rights reserved.</h3>
         </div>
       </footer>
     </div>
