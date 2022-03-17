@@ -11,10 +11,10 @@ import MaintenanceScheduleForm from "../../components/forms/MaintenanceScheduleF
 
 const AdminMaintenance = () => {
   const [entity, setEntity] = React.useState("")
-  const EditRecord = ({ index }) => {
-    const price = 100
-    const handleEditClick = async e => {}
-    const handleDeleteClick = async e => {}
+  const EditRecord = ({ index, onClick }) => {
+    const [category, updateCategory] = useState("")
+    const [description, updateDescription] = useState("")
+    const [date, updateDate] = useState("")
 
     return (
       <div>
@@ -23,12 +23,33 @@ const AdminMaintenance = () => {
             <IconButton
               color="secondary"
               aria-label="add an alarm"
-              onClick={handleEditClick}
+              onClick={onClick}
             >
               <EditIcon style={{ color: blue[500] }} />
             </IconButton>
           }
         />
+      </div>
+    )
+  }
+  const DeleteRecord = ({ index }) => {
+    const handleDeleteClick = async e => {
+      console.log("this one will be deleted")
+      try {
+        e.preventDefault()
+        await $http
+          .Api({
+            method: "DELETE",
+            url: "/service-request/" + index,
+            data: {},
+          })
+          .then(console.log("it has been deleted"))
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    return (
+      <div>
         <FormControlLabel
           control={
             <IconButton
@@ -147,7 +168,10 @@ const AdminMaintenance = () => {
                 className="d-flex  align-items-center"
                 style={{ cursor: "pointer" }}
               >
-                <EditIcon onClick={EditRecord} color="primary" />
+                <EditRecord
+                  onClick={() => setEntity(params.row)}
+                  index={params.row.id}
+                />
               </div>
             </div>
             <div className="column">
@@ -155,7 +179,7 @@ const AdminMaintenance = () => {
                 className="d-flex  align-items-center"
                 style={{ cursor: "pointer" }}
               >
-                <DeleteIcon onClick={EditRecord} color="error" />
+                <DeleteRecord index={params.row.id} />
               </div>
             </div>
           </div>
@@ -194,6 +218,7 @@ const AdminMaintenance = () => {
             <div style={{ height: 600, width: "100% " }}>
               <StyledDataGrid
                 rows={tableData}
+                setEntity={setEntity}
                 pageSize={pageSize}
                 onPageSizeChange={newPage => setPageSize(newPage)}
                 pagination
@@ -210,8 +235,12 @@ const AdminMaintenance = () => {
               />
             </div>
           </div>
-          <div className="column">
-            <MaintenanceScheduleForm />
+          <div className="column pt-6 mt-6">
+            {entity ? (
+              <MaintenanceScheduleForm setEntity={setEntity} entity={entity} />
+            ) : (
+              <MaintenanceScheduleForm setEntity={setEntity} entity={entity} />
+            )}
           </div>
         </div>
       </div>

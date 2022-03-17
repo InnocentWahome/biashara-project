@@ -25,18 +25,10 @@ const AdminHome = () => {
               </td>
             </tr>
             <tr>
-              <td className=" "> View/Edit/Review Orders </td>
+              <td className=" "> View/Edit/Review Orders and Authorize Products' Dispatch </td>
               <td className=" is-vcentered  pb-5">
-                You can review, edit and approve orders on the
+                You can review, edit and approve orders and authorize products' dispatch on the
                 <a href="/admin/orders/"> Review Orders</a> page
-              </td>
-            </tr>
-            <tr>
-              <td className=" ">Authorize delivery requests</td>
-              <td className=" is-vcentered  pb-5">
-                Authorize delivery requests on the
-                <a href="/admin/orders/"> Delivery Requests </a>
-                page
               </td>
             </tr>
             <tr>

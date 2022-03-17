@@ -1,23 +1,37 @@
 import React, { useState } from "react"
 import $http from "../../plugins/axios"
 
-const MaintenanceScheduleForm = () => {
-  const [category, setCategory] = useState("")
-  const [description, setDescription] = useState("")
-  const [date, setDate] = useState("")
+const MaintenanceScheduleForm = ({ entity, setEntity }) => {
+  entity = entity || {}
+  const [category, setCategory] = useState(entity.category)
+  const [description, setDescription] = useState(entity.description)
+  const [date, setDate] = useState(entity.date)
 
   const createEmployeeWorklog = async e => {
     try {
       e.preventDefault()
-      await $http.Api({
-        method: "POST",
-        url: "/service-request",
-        data: {
-          date: date,
-          category: category,
-          description: description,
-        },
-      })
+      // if entity id exists, update record
+      if (entity.id) {
+        await $http.Api({
+          method: "PUT",
+          url: "/service-request/" + entity.id,
+          data: {
+            date: date,
+            category: category,
+            description: description,
+          },
+        })
+      } else {
+        await $http.Api({
+          method: "POST",
+          url: "/service-request",
+          data: {
+            date: date,
+            category: category,
+            description: description,
+          },
+        })
+      }
     } catch (error) {
       console.error(error)
     }
@@ -35,13 +49,6 @@ const MaintenanceScheduleForm = () => {
             <div className="field">
               <div className="control is-expanded">
                 <p className="label">Service Category</p>
-                {/* <input
-                  className="input"
-                  type="text"
-                  placeholder=""
-                  required
-                  onChange={e => setCategory(e.target.value)}
-                /> */}
                 <div className="control">
                   <label className="radio">
                     <input
@@ -49,6 +56,8 @@ const MaintenanceScheduleForm = () => {
                       name="category"
                       value="Software Update"
                       className="pl-2 pr-2"
+                      // onChange={e => setCategory(e.target.value)}
+                      defaultValue={entity.category}
                       onChange={e => setCategory(e.target.value)}
                     />
                     Software Update
@@ -58,6 +67,8 @@ const MaintenanceScheduleForm = () => {
                       type="radio"
                       name="category"
                       value="Maintenance"
+                      // onChange={e => setCategory(e.target.value)}
+                      defaultValue={entity.category}
                       onChange={e => setCategory(e.target.value)}
                     />
                     Maintenance
@@ -67,6 +78,8 @@ const MaintenanceScheduleForm = () => {
                       type="radio"
                       name="category"
                       value="Service Request"
+                      // onChange={e => setCategory(e.target.value)}
+                      defaultValue={entity.category}
                       onChange={e => setCategory(e.target.value)}
                     />
                     Service Request
@@ -85,6 +98,8 @@ const MaintenanceScheduleForm = () => {
                   className="textarea"
                   placeholder=""
                   required
+                  // onChange={e => setDescription(e.target.value)}
+                  defaultValue={entity.description}
                   onChange={e => setDescription(e.target.value)}
                 ></textarea>
               </div>
@@ -101,6 +116,8 @@ const MaintenanceScheduleForm = () => {
                   type="text"
                   placeholder="YYYY-MM-DD"
                   required
+                  // onChange={e => setDate(e.target.value)}
+                  defaultValue={entity.date}
                   onChange={e => setDate(e.target.value)}
                 />
               </div>

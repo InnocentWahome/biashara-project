@@ -38,11 +38,11 @@ const EmployeeHomePage = () => {
             <tr>
               <td className=" "> Product Performance </td>
               <td className=" is-vcentered  pb-5">
-                Monitor performance of delivered products
+                Monitor performance of delivered products  
                 <a href="/employee/product-performance/">
-                  Delivered Product Performance
+                   Product Performance
                 </a>
-                page
+                  page
               </td>
             </tr>
 
@@ -50,7 +50,7 @@ const EmployeeHomePage = () => {
               <td className=" "> Create Word Log </td>
               <td className=" is-vcentered  pb-5">
                 Create daily work performance logs on the
-                <a href="/employee/my-performance/"> My Performance </a>
+                <a href="/employee/my-performance/"> Personal Performance </a>
                 page
               </td>
             </tr>
@@ -59,7 +59,7 @@ const EmployeeHomePage = () => {
               <td className=" "> Record stock </td>
               <td className=" is-vcentered  pb-5">
                 Record stock and account for deliveries made on the
-                <a href="/employee/stock/"> Stock </a>
+                <a href="/employee/inventory/"> Manage Inventory </a>
                 page
               </td>
             </tr>

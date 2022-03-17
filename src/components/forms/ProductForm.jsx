@@ -11,7 +11,7 @@ const ProductForm = ({ entity, setEntity }) => {
   const [productQuantity, setProductQuantity] = useState(entity.quantity)
   const [productPrice, setProductPrice] = useState(entity.price)
 
-  const createStock = async e => {
+  const createProduct = async e => {
     console.log("below is entity")
     console.log(entity)
     try {
@@ -49,7 +49,7 @@ const ProductForm = ({ entity, setEntity }) => {
   }
 
   return (
-    <form action="" method="POST" className="container" onSubmit={createStock}>
+    <form action="" method="POST" className="container" onSubmit={createProduct}>
       <div className="container">
         <div className="field is-horizontal">
           <div className="field-body">
@@ -138,7 +138,7 @@ const ProductForm = ({ entity, setEntity }) => {
         </div>
         <div className="field">
           <button className="button is-black is-rounded" type="submit">
-            Create Stock
+            Create Product
           </button>
         </div>
       </div>
