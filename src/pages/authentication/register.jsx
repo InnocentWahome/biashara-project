@@ -16,7 +16,7 @@ const Register = () => {
               </div>
               <p className="is-size-6">
                 Already have an account?
-                <a href="/authentication/login">Login</a>
+                <a href="/authentication/login"> Login </a>
               </p>
             </div>
           </div>

@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import $http from "../../../plugins/axios"
-import { navigate } from "gatsby"
 import Authorization from "../../../plugins/authorization"
 
 const LoginForm = () => {

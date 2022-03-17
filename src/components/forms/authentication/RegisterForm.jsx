@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import $http from "../../../plugins/axios"
+import { navigate } from "gatsby"
+import Authorization from "../../../plugins/authorization"
 
 const RegisterForm = () => {
   const [firstName, setFirstName] = useState("")
@@ -11,7 +13,7 @@ const RegisterForm = () => {
   const register = async (e) => {
     try {
       e.preventDefault();
-      await $http.Authentication({
+      const response = await $http.Authentication({
         method: "POST",
         url: "/register",
         data: {
@@ -23,6 +25,8 @@ const RegisterForm = () => {
           role: "User"
         },
       })
+      Authorization()
+      navigate("/authentication/login")
     } catch (error) {
       console.error(error)
     }
