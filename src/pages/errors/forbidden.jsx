@@ -1,6 +1,6 @@
 import * as React from "react"
 import forbiddenImage from "../../assets/icons/errors/403.svg"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 import { navigate } from "gatsby"
 
 const ForbiddenPage = () => {

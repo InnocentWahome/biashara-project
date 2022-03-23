@@ -10,7 +10,7 @@ const DashboardProducts = () => {
   const columns = [
     { field: "id", headerName: "ID" },
     { field: "name", headerName: "Name", width: 200 },
-    { field: "description", headerName: "Description", width: 200 },
+    { field: "description", headerName: "Description", width: 500 },
     { field: "quantity", headerName: "Stock", width: 100 },
     { field: "price", headerName: "Price", width: 100 },
     {
@@ -49,11 +49,6 @@ const DashboardProducts = () => {
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
   const userFirstName = localStorage.getItem("userFirstName")
-  const [editRowsModel, setEditRowsModel] = React.useState({})
-
-  const handleEditRowsModelChange = React.useCallback(model => {
-    setEditRowsModel(model)
-  }, [])
 
   const fetchUsers = async e => {
     try {

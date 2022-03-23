@@ -9,11 +9,11 @@ import DeleteIcon from "@mui/icons-material/Delete"
 import { FormControlLabel, IconButton } from "@material-ui/core"
 import { blue, red } from "@material-ui/core/colors"
 const EditRecord = ({ index, onClick }) => {
-  const [name, updateName] = useState("")
-  const [description, updateDescription] = useState("")
-  const [price, updatePrice] = useState("")
-  const [quantity, updateQuantity] = useState("")
-  const [image, updateImage] = useState("")
+  // const [name, updateName] = useState("")
+  // const [description, updateDescription] = useState("")
+  // const [price, updatePrice] = useState("")
+  // const [quantity, updateQuantity] = useState("")
+  // const [image, updateImage] = useState("")
 
   return (
     <div>

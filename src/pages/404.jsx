@@ -1,6 +1,6 @@
 import * as React from "react"
 import pageNotFoundImage from "../assets/icons/errors/404.svg"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 import { navigate } from "gatsby"
 
 const PageNotFound = () => {

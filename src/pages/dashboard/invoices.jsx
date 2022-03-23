@@ -10,7 +10,6 @@ import Button from "@mui/material/Button"
 
 const DashboardUserOrders = () => {
   const EditRecord = ({ index }) => {
-    const price = 100
     const handleEditClick = async e => {}
 
     return (
@@ -30,7 +29,6 @@ const DashboardUserOrders = () => {
     )
   }
   const DeleteRecord = ({ index }) => {
-    const price = 100
     const handleDeleteClick = async e => {}
 
     return (
@@ -223,7 +221,7 @@ const DashboardUserOrders = () => {
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
-  const userId = localStorage.getItem("userId")
+  // const userId = localStorage.getItem("userId")
 
   const fetchMyOrders = async e => {
     try {

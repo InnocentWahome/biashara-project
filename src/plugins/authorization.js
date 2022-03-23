@@ -26,8 +26,8 @@ const Authorization = async e => {
       },
     })
     await properRedirect()
-    const userFirstName = userResponse.data?.data?.firstName
-    const userId = userResponse.data?.data?.id
+    // const userFirstName = userResponse.data?.data?.firstName
+    // const userId = userResponse.data?.data?.id
     localStorage.setItem("userId", userResponse.data?.data?.id)
     localStorage.setItem("userEmail", userResponse.data?.data?.email)
     localStorage.setItem("userFirstName", userResponse.data?.data?.firstName)

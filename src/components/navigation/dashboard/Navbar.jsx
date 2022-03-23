@@ -24,7 +24,7 @@ const Navbar = () => {
             alt="default alt"
           />
         </a>
-        <a
+        <a href="#"
           onClick={() => {
             setisActive(!isActive)
           }}

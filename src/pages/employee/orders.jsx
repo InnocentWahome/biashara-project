@@ -129,8 +129,6 @@ const EmployeeOrders = ({ index, onClick }) => {
       renderCell: params => {
         let deliveryIcon
         if (params.row.delivery_status === 1) {
-          // console.log("below is entity");
-          // console.log(params.row.id)
           deliveryIcon = (
             <div
               className="d-flex  align-items-center"
@@ -194,7 +192,7 @@ const EmployeeOrders = ({ index, onClick }) => {
 
   return (
     <EmployeeLayout>
-      <div className="pr-6 mr-6 pt-6 container">
+      <div className="pl-6 pr-6 pt-6 container">
         <p className="is-size-4 has-text-centered pt-5 title">Orders</p>
         <p className="is-size-5 has-text-centered pb-2 has-text-link">
           Once the admin approves dispatch for an order, and it has been

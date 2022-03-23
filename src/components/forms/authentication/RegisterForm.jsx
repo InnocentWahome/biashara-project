@@ -27,6 +27,7 @@ const RegisterForm = () => {
       })
       Authorization()
       navigate("/authentication/login")
+      console.log(response.data)
     } catch (error) {
       console.error(error)
     }

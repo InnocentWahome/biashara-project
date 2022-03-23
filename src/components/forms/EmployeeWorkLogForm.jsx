@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import $http from "../../plugins/axios"
-import TextField from "@mui/material/TextField"
-import Stack from "@mui/material/Stack"
+// import TextField from "@mui/material/TextField"
+// import Stack from "@mui/material/Stack"
 
 const EmployeeWorkLogForm = ({ entity, setEntity }) => {
   entity = entity || {}
@@ -10,7 +10,7 @@ const EmployeeWorkLogForm = ({ entity, setEntity }) => {
   const [hoursWorked, setHoursWorked] = useState("")
   const [workDescription, setWorkDescription] = useState("")
 
-  const userId = localStorage.getItem("userId")
+  // const userId = localStorage.getItem("userId")
   const userEmail = localStorage.getItem("userEmail")
 
   const createEmployeeWorklog = async e => {

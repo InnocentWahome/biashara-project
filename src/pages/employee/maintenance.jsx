@@ -121,7 +121,7 @@ const EmployeePerformance = () => {
 
   return (
     <EmployeeLayout>
-      <div className="container pt-6">
+      <div className="pl-6 pr-6 pt-6">
         <div className="columns">
           <div className="column is-three-quarters">
             <p className="is-size-4 has-text-centered pb-3 pt-6 title">

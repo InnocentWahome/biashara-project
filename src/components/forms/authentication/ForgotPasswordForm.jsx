@@ -16,6 +16,7 @@ const ForgotPasswordForm = () => {
           email: email,
         },
       })
+      console.log(response.data)
       navigate("/authentication/reset-password")
     } catch (error) {
       console.error(error)

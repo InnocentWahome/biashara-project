@@ -50,7 +50,7 @@ const EmployeeHomePage = () => {
               <td className=" "> Create Word Log </td>
               <td className=" is-vcentered  pb-5">
                 Create daily work performance logs on the
-                <a href="/employee/my-performance/"> Personal Performance </a>
+                <a href="/employee/personal-performance/"> Personal Performance </a>
                 page
               </td>
             </tr>

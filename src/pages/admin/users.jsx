@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { DataGrid } from "@mui/x-data-grid"
+// import { DataGrid } from "@mui/x-data-grid"
 import AdminLayout from "../../layouts/AdminLayout"
 import $http from "../../plugins/axios"
 import CreateEmployeeForm from "../../components/forms/CreateEmployeeForm"
@@ -12,7 +12,7 @@ import Button from "@mui/material/Button"
 
 const AdminSystemUsers = () => {
   const EditRecord = ({ index }) => {
-    const price = 100
+    // const price = 100
     const handleEditClick = async e => {}
     const handleDeleteClick = async e => {}
 

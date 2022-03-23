@@ -7,8 +7,8 @@ const OrderForm = () => {
   const [description, setDescription] = useState("")
   const [rate, setRate] = useState("")
 
-  const userId = localStorage.getItem("userId")
-  const userEmail = localStorage.getItem("userEmail")
+  // const userId = localStorage.getItem("userId")
+  // const userEmail = localStorage.getItem("userEmail")
 
   const sendFeedbackForm = async e => {
     const userId = localStorage.getItem("userId")

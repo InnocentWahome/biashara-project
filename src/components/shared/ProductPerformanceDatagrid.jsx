@@ -1,28 +1,23 @@
 import React, { useState, useEffect } from "react"
-import { DataGrid } from "@mui/x-data-grid"
+// import { DataGrid } from "@mui/x-data-grid"
 import $http from "../../plugins/axios"
 import StyledDataGrid from "../../assets/styles/datagrid"
 import Rating from "@mui/material/Rating"
 
-{
-  /* <Rating name="read-only" value={value} readOnly /> */
-}
-
 const PerformanceDatagrid = () => {
   const columns = [
     { field: "id", headerName: "#", width: 50 },
-    // { field: "product_name", headerName: "Product Name", width: 200 },
+    { field: "product_name", headerName: "Product Name", width: 200 },
     { field: "product_id", headerName: "Product ID", width: 120 },
     { field: "description", headerName: "Review Description", width: 200 },
     { field: "user_id", headerName: "Reviewer ID", width: 120 },
-    // { field: "user_email", headerName: "User Email", width: 220 },
+    { field: "user_email", headerName: "User Email", width: 220 },
     {
       field: "rate",
       headerName: "Rate",
       width: 150,
       sortable: true,
       type: "number",
-      // editable: true,
       disableClickEventBubbling: true,
       renderCell: params => {
         let decidedIcon
@@ -62,7 +57,7 @@ const PerformanceDatagrid = () => {
         return <div>{decidedIcon}</div>
       },
     },
-    // { field: "date", headerName: "Review Date", width: 150 },
+    { field: "date", headerName: "Review Date", width: 150 },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)

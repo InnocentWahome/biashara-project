@@ -151,7 +151,7 @@ const AdminInventory = () => {
               <div style={{ height: 600, width: "200" }}>
                 <StyledDataGrid
                   rows={tableData}
-                  setEntity={setEntity} 
+                  setEntity={setEntity}
                   pageSize={pageSize}
                   onPageSizeChange={newPage => setPageSize(newPage)}
                   pagination
