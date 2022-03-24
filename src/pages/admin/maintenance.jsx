@@ -234,6 +234,7 @@ const AdminMaintenance = () => {
             </div>
           </div>
           <div className="column pt-6 mt-6">
+            <p className="subtitle pb-3 has-text-weight-bold">Create New Maintenance Record</p>
             {entity ? (
               <MaintenanceScheduleForm setEntity={setEntity} entity={entity} />
             ) : (

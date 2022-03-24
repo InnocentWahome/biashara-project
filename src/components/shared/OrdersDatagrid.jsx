@@ -7,22 +7,43 @@ import EditIcon from "@material-ui/icons/Edit"
 import DeleteIcon from "@mui/icons-material/Delete"
 import Button from "@mui/material/Button"
 
-const EditRecord = ({ index }) => {}
-const DeleteRecord = ({ index }) => {}
+// const EditRecord = ({ index, onClick }) => {
+//   const [name, updateName] = useState("")
+//   const [description, updateDescription] = useState("")
+//   const [price, updatePrice] = useState("")
+//   const [quantity, updateQuantity] = useState("")
+//   const [image, updateImage] = useState("")
+
+//   return (
+//     <div>
+//       <FormControlLabel
+//         control={
+//           <IconButton
+//             color="secondary"
+//             aria-label="add an alarm"
+//             onClick={onClick}
+//           >
+//             <EditIcon style={{ color: blue[500] }} />
+//           </IconButton>
+//         }
+//       />
+//     </div>
+//   )
+// }
 
 const OrdersDatagrid = () => {
   const [entity, setEntity] = React.useState("")
   const columns = [
-    { field: "id", headerName: "#", width: 50 },
+    { field: "id", headerName: "ID", width: 80 },
     { field: "product_id", headerName: "Product ID", width: 100 },
     {
       field: "product_name",
       headerName: "Product Name",
-      width: 200,
+      width: 180,
       editable: true,
     },
     { field: "user_id", headerName: "User ID", width: 100 },
-    { field: "user_email", headerName: "User Email", width: 220 },
+    { field: "user_email", headerName: "User Email", width: 230 },
     { field: "cost", headerName: "Total Cost", width: 100 },
     { field: "quantity", headerName: " Quantity", width: 100 },
     {
@@ -63,7 +84,7 @@ const OrdersDatagrid = () => {
     {
       field: "dispatch_status",
       headerName: "Dispatch Status",
-      width: 140,
+      width: 170,
       sortable: true,
       editable: true,
       type: "number",
@@ -111,7 +132,7 @@ const OrdersDatagrid = () => {
     {
       field: "delivery_status",
       headerName: "Delivery Status",
-      width: 140,
+      width: 170,
       sortable: true,
       // type: "boolean",
       disableClickEventBubbling: true,
@@ -151,23 +172,16 @@ const OrdersDatagrid = () => {
     //   disableClickEventBubbling: true,
     //   renderCell: params => {
     //     return (
-    //       <div className="columns">
-    //         <div className="column">
-    //           <div
-    //             className="d-flex  align-items-center"
-    //             style={{ cursor: "pointer" }}
-    //           >
-    //             <EditIcon onClick={EditRecord} color="primary" />
-    //           </div>
-    //         </div>
-    //         <div className="column">
-    //           <div
-    //             className="d-flex  align-items-center"
-    //             style={{ cursor: "pointer" }}
-    //           >
-    //             <DeleteIcon onClick={DeleteRecord} color="error" />
-    //           </div>
-    //         </div>
+    //       <div
+    //         className="d-flex  align-items-center"
+    //         style={{ cursor: "pointer" }}
+    //       >
+    //         <Button
+    //           onClick={() => setEntity(params.row)}
+    //           index={params.row.id}
+    //         >
+    //           EDIT
+    //         </Button>
     //       </div>
     //     )
     //   },
@@ -197,7 +211,7 @@ const OrdersDatagrid = () => {
 
   return (
     <div>
-      <div style={{ height: 600, width: "200" }}>
+        <div style={{ height: 600, width: "90%" }}>
         <StyledDataGrid
           rows={tableData}
           pageSize={pageSize}

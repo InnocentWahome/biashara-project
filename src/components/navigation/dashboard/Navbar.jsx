@@ -51,11 +51,8 @@ const Navbar = () => {
           <a className="navbar-item" href="/dashboard/invoices">
             Invoices
           </a>
-          <a className="navbar-item" href="/dashboard/feedback">
+          {/* <a className="navbar-item" href="/dashboard/feedback">
             Feedback
-          </a>
-          {/* <a className="navbar-item" href="/dashboard/contact">
-            Contact Us
           </a> */}
           <a className="navbar-item" href="/">
             <button

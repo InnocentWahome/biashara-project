@@ -9,13 +9,13 @@ const PerformanceDatagrid = () => {
     { field: "id", headerName: "#", width: 50 },
     { field: "product_name", headerName: "Product Name", width: 200 },
     { field: "product_id", headerName: "Product ID", width: 120 },
-    { field: "description", headerName: "Review Description", width: 200 },
+    { field: "description", headerName: "Review Description", width: 650 },
     { field: "user_id", headerName: "Reviewer ID", width: 120 },
-    { field: "user_email", headerName: "User Email", width: 220 },
+    { field: "user_email", headerName: "Reviewer Email", width: 250 },
     {
       field: "rate",
       headerName: "Rate",
-      width: 150,
+      width: 200,
       sortable: true,
       type: "number",
       disableClickEventBubbling: true,
@@ -57,7 +57,7 @@ const PerformanceDatagrid = () => {
         return <div>{decidedIcon}</div>
       },
     },
-    { field: "created_at", headerName: "Review Date", width: 200 },
+    { field: "created_at", headerName: "Review Date", width: 220 },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
@@ -82,7 +82,7 @@ const PerformanceDatagrid = () => {
   }, [])
 
   return (
-    <div className="pl-5 pr-5 pt-4 container">
+    <div className="pl-5 pr-5 pt-4 ">
       <p className="is-size-4 has-text-centered pb-3 mt-6 pt-6 title">
         Performance of Delivered Products (Users' Feedback)
       </p>

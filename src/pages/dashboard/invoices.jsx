@@ -7,7 +7,7 @@ import EditIcon from "@material-ui/icons/Edit"
 import DeleteIcon from "@mui/icons-material/Delete"
 import PageLayout from "../../layouts/PageLayout"
 import Button from "@mui/material/Button"
-import OrderForm from "../../components/forms/OrderForm"
+import FeedbackForm from "../../components/forms/FeedbackForm"
 
 const DashboardUserOrders = () => {
   const [entity, setEntity] = React.useState("")
@@ -53,7 +53,7 @@ const DashboardUserOrders = () => {
   const columns = [
     { field: "id", headerName: "#", width: 50 },
     { field: "product_id", headerName: "Product Id", width: 100 },
-    // { field: "product_name", headerName: "Product Name", width: 200 },
+    { field: "product_name", headerName: "Product Name", width: 200 },
     {
       field: "cost",
       headerName: "Total Cost",
@@ -61,67 +61,57 @@ const DashboardUserOrders = () => {
       valueGetter: params => params.row.quantity * 50,
     },
     { field: "quantity", headerName: "Quantity", width: 120 },
-
-    // {
-    //   field: "payment",
-    //   headerName: "Pay",
-    //   width: 100,
-    //   sortable: true,
-    //   editable: true,
-    //   type: "number",
-    //   disableClickEventBubbling: true,
-    //   renderCell: params => {
-    //     return (
-    //       <div
-    //         className="d-flex  align-items-center"
-    //         style={{ cursor: "pointer" }}
-    //       >
-    //         <Button variant="contained" color="secondary">
-    //           PAY
-    //         </Button>
-    //       </div>
-    //     )
-    //   },
-    // },
     {
       field: "payment_status",
       headerName: "Payment Status",
-      width: 140,
+      width: 160,
       sortable: true,
-      type: "boolean",
+      editable: true,
       disableClickEventBubbling: true,
       renderCell: params => {
-        let decidedIcon
+        let deliveryIcon
         if (params.row.payment_status === 1) {
-          decidedIcon = (
+          deliveryIcon = (
             <div
               className="d-flex  align-items-center"
               style={{ cursor: "pointer" }}
             >
-              <Button size="small" variant="outlined" color="primary">
+              <Button
+                onClick={() => setEntity((params.row.payment_status = 0))}
+                index={params.row.id}
+                size="small"
+                variant="contained"
+                color="success"
+              >
                 PAID
               </Button>
             </div>
           )
         } else if (params.row.payment_status === 0) {
-          decidedIcon = (
+          deliveryIcon = (
             <div
               className="d-flex  align-items-center"
               style={{ cursor: "pointer" }}
             >
-              <Button size="small" variant="contained" color="secondary">
-                PAY
+              <Button
+                onClick={() => setEntity((params.row.payment_status = 1))}
+                index={params.row.id}
+                size="small"
+                variant="outlined"
+                color="error"
+              >
+                NOT PAID
               </Button>
             </div>
           )
         }
-        return <div>{decidedIcon}</div>
+        return <div>{deliveryIcon}</div>
       },
     },
     {
       field: "dispatch_status",
       headerName: "Dispatch Status",
-      width: 140,
+      width: 170,
       sortable: true,
       type: "boolean",
       disableClickEventBubbling: true,
@@ -156,7 +146,7 @@ const DashboardUserOrders = () => {
     {
       field: "delivery_status",
       headerName: "Delivery Status",
-      width: 140,
+      width: 170,
       sortable: true,
       type: "boolean",
       disableClickEventBubbling: true,
@@ -192,38 +182,18 @@ const DashboardUserOrders = () => {
       field: "actions",
       headerName: "Actions",
       sortable: false,
-      width: 250,
+      width: 200,
       disableClickEventBubbling: true,
       renderCell: params => {
         return (
-          <div className="columns">
-            <div className="column">
               <div
                 className="d-flex  align-items-center"
                 style={{ cursor: "pointer" }}
               >
-                <EditIcon onClick={EditRecord} color="primary" />
-              </div>
-            </div>
-            <div className="column">
-              <div
-                className="d-flex  align-items-center"
-                style={{ cursor: "pointer" }}
-              >
-                <DeleteIcon onClick={DeleteRecord} color="error" />
-              </div>
-            </div>
-            <div className="column">
-              <div
-                className="d-flex  align-items-center"
-                style={{ cursor: "pointer" }}
-              >
-                <Button variant="outlined" color="success">
+                <Button variant="contained" color="secondary">
                   FEEDBACK
                 </Button>
               </div>
-            </div>
-          </div>
         )
       },
     },
@@ -277,7 +247,7 @@ const DashboardUserOrders = () => {
             </div>
           </div>
           <div className="column is-one-quarter pt-6">
-            <OrderForm />
+            <FeedbackForm />
           </div>
         </div>
       </div>
