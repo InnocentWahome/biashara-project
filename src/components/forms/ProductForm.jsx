@@ -12,9 +12,7 @@ const ProductForm = ({ entity, setEntity }) => {
   const [productPrice, setProductPrice] = useState(entity.price)
 
   const createProduct = async e => {
-    console.log("below is entity")
-    console.log(entity) 
-    try {
+    try { 
       e.preventDefault()
       if (entity.id) {
         // if entity id exists, update record

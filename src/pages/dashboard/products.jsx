@@ -5,8 +5,21 @@ import $http from "../../plugins/axios"
 import OrderForm from "../../components/forms/OrderForm"
 import Button from "@mui/material/Button"
 import Avatar from "@mui/material/Avatar"
+import { FormControlLabel } from "@material-ui/core"
 
 const DashboardProducts = () => {
+  const CreateOrder = ({ index, onClick }) => {
+    const [id, updateProductId] = useState("")
+    const [name, updateProductName] = useState("")
+    const [quantity, updateQuantity] = useState("")
+
+    return (
+      <div>
+        <FormControlLabel control={<Button onClick={onClick}>ORDER</Button>} />
+      </div>
+    )
+  }
+  const [entity, setEntity] = React.useState()
   const columns = [
     { field: "id", headerName: "ID" },
     { field: "name", headerName: "Name", width: 200 },
@@ -21,7 +34,6 @@ const DashboardProducts = () => {
         return (
           <div>
             <Avatar src={params.row.image} alt="product picture" />
-            {/* {params.row.id} */}
           </div>
         )
       },
@@ -38,9 +50,10 @@ const DashboardProducts = () => {
             className="d-flex  align-items-center"
             style={{ cursor: "pointer" }}
           >
-            <Button variant="outlined" color="error">
-              ORDER
-            </Button>
+            <CreateOrder
+              onClick={() => setEntity(params.row)}
+              index={params.row.id}
+            />
           </div>
         )
       },
@@ -80,6 +93,7 @@ const DashboardProducts = () => {
             <div style={{ height: 600, width: "100%" }}>
               <StyledDataGrid
                 rows={tableData}
+                setEntity={setEntity}
                 pageSize={pageSize}
                 onPageSizeChange={newPage => setPageSize(newPage)}
                 pagination
@@ -96,7 +110,11 @@ const DashboardProducts = () => {
             </div>
           </div>
           <div className="column is-one-quarter pt-6">
-            <OrderForm />
+            {entity ? (
+              <OrderForm setEntity={setEntity} entity={entity} />
+            ) : (
+              <OrderForm setEntity={setEntity} entity={entity} />
+            )}
           </div>
         </div>
       </div>

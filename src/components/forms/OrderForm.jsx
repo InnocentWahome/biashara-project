@@ -1,12 +1,13 @@
 import React, { useState } from "react"
 import $http from "../../plugins/axios"
 
-const ProductForm = () => {
-  const [productId, setProductId] = useState("")
-  const [productName, setProductName] = useState("")
-  const [productQuantity, setProductQuantity] = useState("")
+const OrderForm = ({ entity, setEntity }) => {
+  entity = entity || {}
+  const [productId, setProductId] = useState(entity.id)
+  const [productName, setProductName] = useState(entity.name)
+  const [productQuantity, setProductQuantity] = useState(entity.quantity)
 
-  const price = 100
+  const price = 20
   const userId = localStorage.getItem("userId")
   const userEmail = localStorage.getItem("userEmail")
   const createOrder = async e => {
@@ -22,9 +23,9 @@ const ProductForm = () => {
           user_email: userEmail,
           quantity: productQuantity,
           cost: productQuantity * price,
-          adminApproval: false,
-          dispatchStatus: false,
-          deliveryStatus: false,
+          payment_status: 0,
+          dispatch_status: 0,
+          delivery_status: 0,
         },
       })
     } catch (error) {
@@ -42,10 +43,12 @@ const ProductForm = () => {
                 <p className="label">Product ID</p>
                 <input
                   className="input"
-                  type="text"
+                  type="number"
                   placeholder=""
                   required
+                  defaultValue={entity.id}
                   onChange={e => setProductId(e.target.value)}
+                  
                 />
               </div>
             </div>
@@ -61,6 +64,7 @@ const ProductForm = () => {
                   type="text"
                   placeholder=""
                   required
+                  defaultValue={entity.name}
                   onChange={e => setProductName(e.target.value)}
                 />
               </div>
@@ -77,6 +81,7 @@ const ProductForm = () => {
                   type="number"
                   placeholder=""
                   required
+                  defaultValue={entity.quantity}
                   onChange={e => setProductQuantity(e.target.value)}
                 />
               </div>
@@ -93,4 +98,4 @@ const ProductForm = () => {
   )
 }
 
-export default ProductForm
+export default OrderForm

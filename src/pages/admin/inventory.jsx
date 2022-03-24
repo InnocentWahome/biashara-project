@@ -161,7 +161,7 @@ const AdminInventory = () => {
                     boxShadow: 2,
                     border: 2,
                     borderColor: "#9e9e9e",
-                    "& .MuiDataGrid-cell:hover": {
+                    "& .MuiDataGrid-cell:hover": { 
                       color: "primary.main",
                     },
                   }}

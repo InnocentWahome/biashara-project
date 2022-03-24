@@ -134,7 +134,7 @@ const OrdersDatagrid = () => {
       headerName: "Delivery Status",
       width: 170,
       sortable: true,
-      // type: "boolean",
+      type: "number",
       disableClickEventBubbling: true,
       renderCell: params => {
         let decidedIcon

@@ -11,41 +11,11 @@ import FeedbackForm from "../../components/forms/FeedbackForm"
 
 const DashboardUserOrders = () => {
   const [entity, setEntity] = React.useState("")
-  const EditRecord = ({ index }) => {
-    const handleEditClick = async e => {}
-
+  const CreateFeedback = ({ index, onClick }) => {
     return (
       <div>
         <FormControlLabel
-          control={
-            <IconButton
-              color="secondary"
-              aria-label="add an alarm"
-              onClick={handleEditClick}
-            >
-              <EditIcon style={{ color: blue[500] }} />
-            </IconButton>
-          }
-        />
-      </div>
-    )
-  }
-  const DeleteRecord = ({ index }) => {
-    const price = 100
-    const handleDeleteClick = async e => {}
-
-    return (
-      <div>
-        <FormControlLabel
-          control={
-            <IconButton
-              color="secondary"
-              aria-label="add an alarm"
-              onClick={handleDeleteClick}
-            >
-              <DeleteIcon style={{ color: red[500] }} />
-            </IconButton>
-          }
+          control={<Button onClick={onClick}>FEEDBACK</Button>}
         />
       </div>
     )
@@ -186,14 +156,15 @@ const DashboardUserOrders = () => {
       disableClickEventBubbling: true,
       renderCell: params => {
         return (
-              <div
-                className="d-flex  align-items-center"
-                style={{ cursor: "pointer" }}
-              >
-                <Button variant="contained" color="secondary">
-                  FEEDBACK
-                </Button>
-              </div>
+          <div
+            className="d-flex  align-items-center"
+            style={{ cursor: "pointer" }}
+          >
+            <CreateFeedback
+              onClick={() => setEntity(params.row)}
+              index={params.row.id}
+            />
+          </div>
         )
       },
     },
@@ -230,6 +201,7 @@ const DashboardUserOrders = () => {
             <div style={{ height: 600, width: "100%" }}>
               <StyledDataGrid
                 rows={tableData}
+                setEntity={setEntity}
                 pageSize={pageSize}
                 onPageSizeChange={newPage => setPageSize(newPage)}
                 pagination
@@ -247,7 +219,11 @@ const DashboardUserOrders = () => {
             </div>
           </div>
           <div className="column is-one-quarter pt-6">
-            <FeedbackForm />
+            {entity ? (
+              <FeedbackForm setEntity={setEntity} entity={entity} />
+            ) : (
+              <FeedbackForm setEntity={setEntity} entity={entity} />
+            )}
           </div>
         </div>
       </div>
