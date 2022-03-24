@@ -44,14 +44,15 @@ const EmployeeOrders = ({ index, onClick }) => {
   const columns = [
     { field: "id", headerName: "ID", width: 100 },
     { field: "product_id", headerName: "Product ID", width: 100 },
-    // { field: "product_name", headerName: "Product Name", width: 200 },
+    { field: "product_name", headerName: "Product Name", width: 200 },
     { field: "user_id", headerName: "User ID", width: 100 },
+    { field: "user_email", headerName: "User Email", width: 220 },
     { field: "cost", headerName: "Cost(KSH)", width: 100 },
     { field: "quantity", headerName: " Quantity", width: 100 },
     {
       field: "payment_status",
       headerName: "Payment Status",
-      width: 140,
+      width: 170,
       sortable: true,
       type: "boolean",
       disableClickEventBubbling: true,
@@ -86,7 +87,7 @@ const EmployeeOrders = ({ index, onClick }) => {
     {
       field: "dispatch_status",
       headerName: "Dispatch Status",
-      width: 140,
+      width: 170,
       sortable: true,
       type: "boolean",
       disableClickEventBubbling: true,
@@ -121,7 +122,7 @@ const EmployeeOrders = ({ index, onClick }) => {
     {
       field: "delivery_status",
       headerName: "Delivery Status",
-      width: 140,
+      width: 170,
       sortable: true,
       editable: true,
       type: "number",
@@ -192,13 +193,13 @@ const EmployeeOrders = ({ index, onClick }) => {
 
   return (
     <EmployeeLayout>
-      <div className="pl-6 pr-6 pt-6 container">
+      <div className="pl-6 pr-6 pt-6">
         <p className="is-size-4 has-text-centered pt-5 title">Orders</p>
         <p className="is-size-5 has-text-centered pb-2 has-text-link">
           Once the admin approves dispatch for an order, and it has been
           delivered, check the order's delivery status as delivered
         </p>
-        <div style={{ height: 600, width: "100%" }}>
+        <div style={{ height: 600, width: "90%" }}>
           <StyledDataGrid
             rows={tableData}
             pageSize={pageSize}

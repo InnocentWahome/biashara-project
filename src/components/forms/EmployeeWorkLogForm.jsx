@@ -43,6 +43,8 @@ const EmployeeWorkLogForm = ({ entity, setEntity }) => {
             description: workDescription,
             user_id: userId,
             user_email: userEmail,
+            approval: 0
+
           },
         })
       }

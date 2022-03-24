@@ -13,7 +13,7 @@ const ProductForm = ({ entity, setEntity }) => {
 
   const createProduct = async e => {
     console.log("below is entity")
-    console.log(entity)
+    console.log(entity) 
     try {
       e.preventDefault()
       if (entity.id) {

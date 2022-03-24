@@ -15,15 +15,14 @@ const OrdersDatagrid = () => {
   const columns = [
     { field: "id", headerName: "#", width: 50 },
     { field: "product_id", headerName: "Product ID", width: 100 },
-    // {
-    //   field: "product_name",
-    //   headerName: "Product Name",
-    //   width: 200,
-    //   editable: true,
-    // },
+    {
+      field: "product_name",
+      headerName: "Product Name",
+      width: 200,
+      editable: true,
+    },
     { field: "user_id", headerName: "User ID", width: 100 },
-    // { field: "user_email", headerName: "User Email", width: 220 },
-    // { field: "date", headerName: "Purchase Date", width: 150 },
+    { field: "user_email", headerName: "User Email", width: 220 },
     { field: "cost", headerName: "Total Cost", width: 100 },
     { field: "quantity", headerName: " Quantity", width: 100 },
     {
@@ -72,8 +71,6 @@ const OrdersDatagrid = () => {
       renderCell: params => {
         let deliveryIcon
         if (params.row.dispatch_status === 1) {
-          // console.log("below is entity");
-          // console.log(params.row.id)
           deliveryIcon = (
             <div
               className="d-flex  align-items-center"
@@ -146,35 +143,35 @@ const OrdersDatagrid = () => {
         return <div>{decidedIcon}</div>
       },
     },
-    {
-      field: "actions",
-      headerName: "Actions",
-      sortable: false,
-      width: 140,
-      disableClickEventBubbling: true,
-      renderCell: params => {
-        return (
-          <div className="columns">
-            <div className="column">
-              <div
-                className="d-flex  align-items-center"
-                style={{ cursor: "pointer" }}
-              >
-                <EditIcon onClick={EditRecord} color="primary" />
-              </div>
-            </div>
-            <div className="column">
-              <div
-                className="d-flex  align-items-center"
-                style={{ cursor: "pointer" }}
-              >
-                <DeleteIcon onClick={DeleteRecord} color="error" />
-              </div>
-            </div>
-          </div>
-        )
-      },
-    },
+    // {
+    //   field: "actions",
+    //   headerName: "Actions",
+    //   sortable: false,
+    //   width: 140,
+    //   disableClickEventBubbling: true,
+    //   renderCell: params => {
+    //     return (
+    //       <div className="columns">
+    //         <div className="column">
+    //           <div
+    //             className="d-flex  align-items-center"
+    //             style={{ cursor: "pointer" }}
+    //           >
+    //             <EditIcon onClick={EditRecord} color="primary" />
+    //           </div>
+    //         </div>
+    //         <div className="column">
+    //           <div
+    //             className="d-flex  align-items-center"
+    //             style={{ cursor: "pointer" }}
+    //           >
+    //             <DeleteIcon onClick={DeleteRecord} color="error" />
+    //           </div>
+    //         </div>
+    //       </div>
+    //     )
+    //   },
+    // },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)

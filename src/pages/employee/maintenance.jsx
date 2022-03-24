@@ -43,7 +43,7 @@ const EmployeePerformance = () => {
   const columns = [
     // { field: "id", headerName: "ID" },
     { field: "category", headerName: "Service Category", width: 150 },
-    { field: "description", headerName: "Description", width: 300 },
+    { field: "description", headerName: "Description", width: 500 },
     { field: "date", headerName: "Service Date", width: 200 },
     { field: "user_id", headerName: "Assigned To userId", width: 150 },
     {
@@ -57,8 +57,6 @@ const EmployeePerformance = () => {
       renderCell: params => {
         let deliveryIcon
         if (params.row.completed === 1) {
-          // console.log("below is entity");
-          // console.log(params.row.id)
           deliveryIcon = (
             <div
               className="d-flex  align-items-center"

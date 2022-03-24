@@ -23,24 +23,6 @@ const AdminEmployeePerformance = () => {
       </div>
     )
   }
-  // const GetEmail = ({ index, params }) => {
-  //   console.log("GetEmail has been called")
-  //   const response = () => {
-  //     try {
-  //       $http
-  //         .Authentication({
-  //           method: "GET",
-  //           url: "/user/" + `${params.row.user_id}`,
-  //           data: {},
-  //         })
-  //         .then(console.log(response.data?.data))
-  //     } catch (error) {
-  //       console.error(error)
-  //     }
-  //   }
-  //   // get_user_details()
-  //   response()
-  // }
   const NotApprovedButton = ({ index }) => {
     const handleNotApprovedClick = async e => {}
     return (
@@ -59,20 +41,18 @@ const AdminEmployeePerformance = () => {
   }
 
   function getEmail(params) {
-    // return `${params.row.firstName || ''} ${params.row.lastName || ''}`;
     const response = () => {
       try {
-        $http
-          .Authentication({
-            method: "SHOW",
-            url: "/user/" + `${params.row.user_id}`,
-          })
-            console.log(response.data.email)
+        $http.Authentication({
+          method: "SHOW",
+          url: "/user/" + `${params.row.user_id}`,
+        })
+        console.log(response.data.email)
       } catch (error) {
         console.error(error)
       }
     }
-    return response();
+    return response()
   }
 
   const columns = [
@@ -86,12 +66,11 @@ const AdminEmployeePerformance = () => {
       headerName: "Employee ID",
       width: 130,
     },
-    // {
-    //   field: "user_email",
-    //   headerName: "Employee Email",
-    //   width: 220,
-    //   valueGetter: getEmail,
-    // },
+    {
+      field: "user_email",
+      headerName: "Employee Email",
+      width: 220,
+    },
     {
       field: "approval",
       headerName: "Approval Status",
@@ -103,8 +82,6 @@ const AdminEmployeePerformance = () => {
       renderCell: params => {
         let deliveryIcon
         if (params.row.approval === 1) {
-          // console.log("below is entity");
-          // console.log(params.row.id)
           deliveryIcon = (
             <div
               className="d-flex  align-items-center"
@@ -153,7 +130,6 @@ const AdminEmployeePerformance = () => {
         url: "/worklog",
       })
       if (response.data?.data) {
-        // console.log(tableData)
         setTableData(response.data.data)
       }
     } catch (error) {

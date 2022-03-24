@@ -11,10 +11,14 @@ import { blue, red } from "@material-ui/core/colors"
 import Button from "@mui/material/Button"
 
 const AdminSystemUsers = () => {
-  const EditRecord = ({ index }) => {
-    // const price = 100
-    const handleEditClick = async e => {}
-    const handleDeleteClick = async e => {}
+  const [entity, setEntity] = React.useState()
+
+  const EditRecord = ({ index, onClick }) => {
+    const [name, updateName] = useState("")
+    const [description, updateDescription] = useState("")
+    const [price, updatePrice] = useState("")
+    const [quantity, updateQuantity] = useState("")
+    const [image, updateImage] = useState("")
 
     return (
       <div>
@@ -23,12 +27,33 @@ const AdminSystemUsers = () => {
             <IconButton
               color="secondary"
               aria-label="add an alarm"
-              onClick={handleEditClick}
+              onClick={onClick}
             >
               <EditIcon style={{ color: blue[500] }} />
             </IconButton>
           }
         />
+      </div>
+    )
+  }
+  const DeleteRecord = ({ index }) => {
+    const handleDeleteClick = async e => {
+      console.log("this one will be deleted")
+      try {
+        e.preventDefault()
+        await $http
+          .Api({
+            method: "DELETE",
+            url: "/user-change/" + index,
+            data: {},
+          })
+          .then(console.log("it has been deleted"))
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    return (
+      <div>
         <FormControlLabel
           control={
             <IconButton
@@ -51,45 +76,39 @@ const AdminSystemUsers = () => {
     { field: "email", headerName: "Email Address", width: 250 },
     {
       field: "role",
-      headerName: "Roles",
+      headerName: "Role",
       width: 140,
       sortable: true,
       editable: true,
-      // type: "boolean",
+      type: "string",
       disableClickEventBubbling: true,
       renderCell: params => {
         let decidedIcon
         if (params.row.role === "Admin") {
           decidedIcon = (
             <div
-              className="d-flex  align-items-center"
-              style={{ cursor: "pointer" }}
+              className="d-flex  align-items-center "
+              style={{ cursor: "pointer", color: 'blue' }}
             >
-              <Button size="small" variant="outlined" color="success">
                 ADMIN
-              </Button>
             </div>
           )
         } else if (params.row.role === "Employee") {
           decidedIcon = (
             <div
-              className="d-flex  align-items-center"
-              style={{ cursor: "pointer" }}
+              className="d-flex  align-items-center "
+              style={{ cursor: "pointer", color: 'purple' }}
             >
-              <Button size="small" variant="outlined" color="primary">
                 EMPLOYEE
-              </Button>
             </div>
           )
         } else if (params.row.role === "User") {
           decidedIcon = (
             <div
-              className="d-flex  align-items-center"
-              style={{ cursor: "pointer" }}
+              className="d-flex  align-items-center "
+              style={{ cursor: "pointer", color: 'green' }}
             >
-              <Button size="small" variant="outlined" color="secondary">
                 USER
-              </Button>
             </div>
           )
         }
@@ -110,15 +129,18 @@ const AdminSystemUsers = () => {
                 className="d-flex  align-items-center"
                 style={{ cursor: "pointer" }}
               >
-                <EditIcon onClick={EditRecord} color="primary" />
+                <EditRecord
+                  onClick={() => setEntity(params.row)}
+                  index={params.row.id}
+                />
               </div>
             </div>
             <div className="column">
               <div
-                className="d-flex  align-items-center"S
+                className="d-flex  align-items-center"
                 style={{ cursor: "pointer" }}
               >
-                <DeleteIcon onClick={EditRecord} color="error" />
+                <DeleteRecord index={params.row.id} />
               </div>
             </div>
           </div>
@@ -158,6 +180,7 @@ const AdminSystemUsers = () => {
             </p>
             <div style={{ height: 600, width: "200" }}>
               <StyledDataGrid
+                setEntity={setEntity}
                 rows={tableData}
                 pageSize={pageSize}
                 onPageSizeChange={newPage => setPageSize(newPage)}
@@ -176,10 +199,11 @@ const AdminSystemUsers = () => {
             </div>
           </div>
           <div className="column pt-6 mt-6">
-            <p className="is-size-6 has-text-centered pb-2">
-              Create a New User
-            </p>
-            <CreateEmployeeForm />
+            {entity ? (
+              <CreateEmployeeForm setEntity={setEntity} entity={entity} />
+            ) : (
+              <CreateEmployeeForm setEntity={setEntity} entity={entity} />
+            )}
           </div>
         </div>
       </div>

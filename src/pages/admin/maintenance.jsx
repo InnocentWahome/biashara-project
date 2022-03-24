@@ -100,7 +100,7 @@ const AdminMaintenance = () => {
   const columns = [
     // { field: "id", headerName: "ID" },
     { field: "category", headerName: "Service Category", width: 150 },
-    { field: "description", headerName: "Description", width: 200 },
+    { field: "description", headerName: "Description", width: 500 },
     { field: "date", headerName: "Service Date", width: 200 },
     { field: "user_id", headerName: "Assigned To (ID)", width: 150 },
     // { field: "user_email", headerName: "Assigned To (Email)", width: 220 },
@@ -115,8 +115,6 @@ const AdminMaintenance = () => {
       renderCell: params => {
         let deliveryIcon
         if (params.row.completed === 1) {
-          // console.log("below is entity");
-          // console.log(params.row.id)
           deliveryIcon = (
             <div
               className="d-flex  align-items-center"
@@ -154,38 +152,38 @@ const AdminMaintenance = () => {
         return <div>{deliveryIcon}</div>
       },
     },
-    {
-      field: "actions",
-      headerName: "Actions",
-      sortable: false,
-      width: 140,
-      disableClickEventBubbling: true,
-      renderCell: params => {
-        return (
-          <div className="columns">
-            <div className="column">
-              <div
-                className="d-flex  align-items-center"
-                style={{ cursor: "pointer" }}
-              >
-                <EditRecord
-                  onClick={() => setEntity(params.row)}
-                  index={params.row.id}
-                />
-              </div>
-            </div>
-            <div className="column">
-              <div
-                className="d-flex  align-items-center"
-                style={{ cursor: "pointer" }}
-              >
-                <DeleteRecord index={params.row.id} />
-              </div>
-            </div>
-          </div>
-        )
-      },
-    },
+    // {
+    //   field: "actions",
+    //   headerName: "Actions",
+    //   sortable: false,
+    //   width: 140,
+    //   disableClickEventBubbling: true,
+    //   renderCell: params => {
+    //     return (
+    //       <div className="columns">
+    //         <div className="column">
+    //           <div
+    //             className="d-flex  align-items-center"
+    //             style={{ cursor: "pointer" }}
+    //           >
+    //             <EditRecord
+    //               onClick={() => setEntity(params.row)}
+    //               index={params.row.id}
+    //             />
+    //           </div>
+    //         </div>
+    //         <div className="column">
+    //           <div
+    //             className="d-flex  align-items-center"
+    //             style={{ cursor: "pointer" }}
+    //           >
+    //             <DeleteRecord index={params.row.id} />
+    //           </div>
+    //         </div>
+    //       </div>
+    //     )
+    //   },
+    // },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
@@ -211,7 +209,7 @@ const AdminMaintenance = () => {
 
   return (
     <AdminLayout>
-      <div className="container pt-6">
+      <div className="pl-6 pr-6 pt-6">
         <p className="is-size-4 has-text-centered pb-3 pt-6">Maintenance </p>
         <div className="columns">
           <div className="column is-three-quarters">

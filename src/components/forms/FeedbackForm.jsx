@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import $http from "../../plugins/axios"
+import moment from "moment"
 
 const OrderForm = () => {
   const [productId, setProductId] = useState("")
@@ -7,8 +8,13 @@ const OrderForm = () => {
   const [description, setDescription] = useState("")
   const [rate, setRate] = useState("")
 
-  // const userId = localStorage.getItem("userId")
-  // const userEmail = localStorage.getItem("userEmail")
+  const userId = localStorage.getItem("userId")
+  const userEmail = localStorage.getItem("userEmail")
+
+  const getDate = () => {
+    // date_create: moment().format("DD-MM-YYYY hh:mm:ss")
+    date_create: moment()
+  }
 
   const sendFeedbackForm = async e => {
     const userId = localStorage.getItem("userId")
@@ -26,6 +32,7 @@ const OrderForm = () => {
           user_id: userId,
           user_email: userEmail,
           rate: rate,
+          created_at: getDate,
         },
       })
     } catch (error) {

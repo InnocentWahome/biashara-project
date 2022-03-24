@@ -6,6 +6,7 @@ const MaintenanceScheduleForm = ({ entity, setEntity }) => {
   const [category, setCategory] = useState(entity.category)
   const [description, setDescription] = useState(entity.description)
   const [date, setDate] = useState(entity.date)
+  const [userId, setUserId] = useState(entity.userId)
 
   const createEmployeeWorklog = async e => {
     try {
@@ -19,6 +20,7 @@ const MaintenanceScheduleForm = ({ entity, setEntity }) => {
             date: date,
             category: category,
             description: description,
+            user_id: userId,
           },
         })
       } else {
@@ -29,6 +31,8 @@ const MaintenanceScheduleForm = ({ entity, setEntity }) => {
             date: date,
             category: category,
             description: description,
+            user_id: userId,
+            completed: 0
           },
         })
       }
@@ -119,6 +123,24 @@ const MaintenanceScheduleForm = ({ entity, setEntity }) => {
                   // onChange={e => setDate(e.target.value)}
                   defaultValue={entity.date}
                   onChange={e => setDate(e.target.value)}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field">
+              <div className="control is-expanded">
+                <p className="label">Assigned To (User ID)</p>
+                <input
+                  className="input"
+                  type="number"
+                  placeholder=""
+                  required
+                  defaultValue={entity.userId}
+                  onChange={e => setUserId(e.target.value)}
                 />
               </div>
             </div>

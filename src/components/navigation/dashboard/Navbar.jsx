@@ -48,8 +48,8 @@ const Navbar = () => {
           <a className="navbar-item" href="/dashboard/products">
             Home
           </a>
-          <a className="navbar-item" href="/dashboard/my-orders">
-            My Orders
+          <a className="navbar-item" href="/dashboard/invoices">
+            Invoices
           </a>
           <a className="navbar-item" href="/dashboard/feedback">
             Feedback

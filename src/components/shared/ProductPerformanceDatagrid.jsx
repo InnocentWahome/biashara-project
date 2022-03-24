@@ -57,7 +57,7 @@ const PerformanceDatagrid = () => {
         return <div>{decidedIcon}</div>
       },
     },
-    { field: "date", headerName: "Review Date", width: 150 },
+    { field: "created_at", headerName: "Review Date", width: 200 },
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
@@ -86,7 +86,7 @@ const PerformanceDatagrid = () => {
       <p className="is-size-4 has-text-centered pb-3 mt-6 pt-6 title">
         Performance of Delivered Products (Users' Feedback)
       </p>
-      <div style={{ height: 600, width: "90%" }}>
+      <div style={{ height: 600, width: "100%" }}>
         <StyledDataGrid
           rows={tableData}
           pageSize={pageSize}

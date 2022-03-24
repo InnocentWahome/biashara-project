@@ -7,12 +7,10 @@ import ResetPasswordForm from "./forms/authentication/ResetPasswordForm"
 
 import ContactForm from "./forms/ContactForm"
 import CreateEmployeeForm from './forms/CreateEmployeeForm'
-import DeliveriesForm from './forms/DeliveriesForm'
 import EmployeeWorkLogForm from './forms/EmployeeWorkLogForm'
 import MaintenanceScheduleForm from './forms/MaintenanceScheduleForm'
 import OrderForm from './forms/OrderForm'
 import ProductForm from './forms/ProductForm'
-import DeliveredProductsReports from "./forms/DeliveredProductsReport"
 
 import Footer from "./navigation/dashboard/Footer"
 import Navbar from "./navigation/dashboard/Navbar"
@@ -28,13 +26,10 @@ import AuthNavbar from "./navigation/authentication/AuthNavbar"
 
 export {
   Navbar,
-  // NavbarLinks,
   ContactForm,
   CreateEmployeeForm,
-  DeliveriesForm,
   EmployeeWorkLogForm,
   MaintenanceScheduleForm,
-  DeliveredProductsReports,
   OrderForm,
   ProductForm,
   LoginForm,
