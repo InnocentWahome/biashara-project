@@ -1,4 +1,4 @@
-# Project - (client & server)
+# Client
 
 > OFAMIS System Client
 
