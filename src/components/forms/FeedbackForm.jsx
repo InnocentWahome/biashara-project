@@ -9,8 +9,8 @@ const OrderForm = ({ entity, setEntity }) => {
   const [description, setDescription] = useState(entity.description)
   const [rate, setRate] = useState(entity.rate)
 
-  const userId = localStorage.getItem("userId")
-  const userEmail = localStorage.getItem("userEmail")
+  const userId = 1
+  const userEmail = "wahome@wahome.com"
 
   const getDate = () => {
     // date_create: moment().format("DD-MM-YYYY")
@@ -18,8 +18,8 @@ const OrderForm = ({ entity, setEntity }) => {
   }
 
   const sendFeedbackForm = async e => {
-    const userId = localStorage.getItem("userId")
-    const userEmail = localStorage.getItem("userEmail")
+    const userId = 1
+    const userEmail = "wahome@wahome.com"
 
     try {
       e.preventDefault()

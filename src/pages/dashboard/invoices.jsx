@@ -171,7 +171,7 @@ const DashboardUserOrders = () => {
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
-  const userId = localStorage.getItem("userId")
+  //const userId = 1
 
   const fetchMyOrders = async e => {
     try {

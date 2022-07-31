@@ -5,7 +5,7 @@ import { navigate } from "gatsby"
 
 const Authorization = () => {
   try {
-    const userRole = localStorage.getItem("userRole")
+    const userRole = "Admin"
     if (userRole === "Employee") {
       navigate("/errors/forbidden")
     } else if (!userRole) {

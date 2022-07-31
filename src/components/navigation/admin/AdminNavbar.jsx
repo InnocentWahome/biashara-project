@@ -3,7 +3,7 @@ import Logo from "../../../assets/images/logo.png"
 
 const Navbar = () => {
   const handleLogout = () => {
-    localStorage.clear()
+    // localStorage.clear()
   }
   const [isActive, setisActive] = React.useState(false)
 
