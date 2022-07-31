@@ -61,7 +61,7 @@ const DashboardProducts = () => {
   ]
   const [tableData, setTableData] = useState([])
   const [pageSize, setPageSize] = React.useState(25)
-  const userFirstName = localStorage.getItem("userFirstName")
+  const userFirstName = "Innocent"
 
   const fetchUsers = async e => {
     try {

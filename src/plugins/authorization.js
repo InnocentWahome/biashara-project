@@ -3,7 +3,7 @@ import { navigate } from "gatsby"
 
 const Authorization = async e => {
   try {
-    const userRole = localStorage.getItem("userRole")
+    const userRole = "Admin"
     const properRedirect = () => {
       try {
         if (userRole === "Employee") {

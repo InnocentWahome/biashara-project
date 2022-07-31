@@ -8,8 +8,8 @@ const OrderForm = ({ entity, setEntity }) => {
   const [productQuantity, setProductQuantity] = useState(entity.quantity)
 
   const price = 20
-  const userId = localStorage.getItem("userId")
-  const userEmail = localStorage.getItem("userEmail")
+  const userId = 1
+  const userEmail = "wahome@wahome.com"
   const createOrder = async e => {
     try {
       e.preventDefault()
@@ -48,7 +48,7 @@ const OrderForm = ({ entity, setEntity }) => {
                   required
                   defaultValue={entity.id}
                   onChange={e => setProductId(e.target.value)}
-                  
+
                 />
               </div>
             </div>

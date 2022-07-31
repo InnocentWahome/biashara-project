@@ -10,11 +10,11 @@ const EmployeeWorkLogForm = ({ entity, setEntity }) => {
   const [hoursWorked, setHoursWorked] = useState("")
   const [workDescription, setWorkDescription] = useState("")
 
-  // const userId = localStorage.getItem("userId")
-  const userEmail = localStorage.getItem("userEmail")
+  // const userId = 1
+   const userEmail = "wahome@wahome.com"
 
   const createEmployeeWorklog = async e => {
-    const userId = localStorage.getItem("userId")
+    const userId = 1
     try {
       e.preventDefault()
       if (entity.id) {
@@ -83,7 +83,7 @@ const EmployeeWorkLogForm = ({ entity, setEntity }) => {
                     InputLabelProps={{
                       shrink: true,
                     }}
-                  /> 
+                  />
                 </Stack>  */}
               </div>
             </div>
@@ -165,7 +165,7 @@ const EmployeeWorkLogForm = ({ entity, setEntity }) => {
                     InputLabelProps={{
                       shrink: true,
                     }}
-                  /> 
+                  />
                 </Stack>  */}
                   </div>
                 </div>
@@ -179,14 +179,14 @@ const EmployeeWorkLogForm = ({ entity, setEntity }) => {
               <div className="field-body">
                 <div className="field">
                   <div className="control is-expanded">
-                     <p className="label">Start Time</p> 
+                     <p className="label">Start Time</p>
                      <input
                       className="input"
                       type="number"
                       placeholder="eg: 0800"
                       required
                       onChange={e => setStartTime(e.target.value)}
-                    /> 
+                    />
                     <Stack component="form" noValidate spacing={3}>
                       <TextField
                         id="time"
@@ -219,7 +219,7 @@ const EmployeeWorkLogForm = ({ entity, setEntity }) => {
                       placeholder="eg: 1700"
                       required
                       onChange={e => setStopTime(e.target.value)}
-                    /> 
+                    />
                     <Stack component="form" noValidate spacing={3}>
                       <TextField
                         id="time"
