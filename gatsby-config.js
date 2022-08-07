@@ -1,21 +1,23 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `Ofamis`,
+    description: `Ofamis is a platform for the people to find and share their family history.`,
+    siteUrl: "https://www.ofamis.co.ke",
+    author: "Innocent Maina",
   },
   plugins: [
-    `gatsby-plugin-image`,
+    "gatsby-plugin-image",
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-plugin-google-analytics",
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        trackingId: "d",
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-sitemap",
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -23,12 +25,46 @@ module.exports = {
         short_name: `starter`,
         start_url: `/`,
         background_color: `#663399`,
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/assets/images/logo.png`, // This path is relative to the root of the site.
+      },
+    },
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    // {
+    //   resolve: 'gatsby-source-strapi',
+    //   options: {
+    //     apiURL: `http://localhost:1337/graphql`,
+    //     contentTypes: [
+    //       'car',
+    //       'engine-details',
+    //     ],
+    //     queryLimit: 1000,
+    //   },
+    // },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/assets/images`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-antd',
+      options: {
+        style: true
+      }
+    },
+    {
+      resolve: `gatsby-plugin-less`,
+      options: {
+        loaderOptions: {
+          appendData: `@env: ${process.env.NODE_ENV};`,
+        },
+        lessOptions: {
+          javascriptEnabled: true,
+        },
       },
     },
   ],
-}
+};

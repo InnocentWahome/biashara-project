@@ -1,0 +1,19 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Karla&family=Playfair+Display&display=swap');
+
+$family-sans-serif: 'Karla', sans-serif;
+
+h1, h2, h3, h4, h5, h6 .title .subtitle {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+}
+
+// update global colors
+$primary: #2D4F6C;
+
+// panel settings
+$panel-shadow: 0;
+$panel-list-item-hover-color: $primary;
+
+@import "bulma/bulma.sass";
+// @import "bulmaCarousel.sass"
