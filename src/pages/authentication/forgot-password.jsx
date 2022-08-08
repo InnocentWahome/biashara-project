@@ -1,11 +1,11 @@
 import * as React from "react"
-import AuthenticationLayout from "../../layouts/AuthenticationLayout"
+import Layout from "../../layouts/Layout"
 import ForgotPasswordForm from "../../components/forms/authentication/ForgotPasswordForm"
 import forgotPasswordImage from "../../assets/icons/authentication/forgot-password.svg"
 
 const ForgotPassword = () => {
   return (
-    <AuthenticationLayout>
+    <Layout>
       <div className="container pt-6 pl-6">
         <div className="columns">
           <div className="column is-half">
@@ -27,7 +27,7 @@ const ForgotPassword = () => {
           </div>
         </div>
       </div>
-    </AuthenticationLayout>
+    </Layout>
   )
 }
 export default ForgotPassword

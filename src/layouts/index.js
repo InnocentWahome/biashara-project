@@ -1,13 +1,7 @@
 import PageLayout from "./PageLayout"
-import AdminLayout from "./AdminLayout"
-import AuthenticationLayout from "./AuthenticationLayout"
-import EmployeeLayout from "./EmployeeLayout"
-import ErrorsLayout from "./ErrorsLayout"
+import Layout from "./Layout"
 
 export {
   PageLayout,
-  AdminLayout,
-  AuthenticationLayout,
-  EmployeeLayout,
-  ErrorsLayout,
+  Layout,
 }

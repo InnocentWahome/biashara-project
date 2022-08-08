@@ -1,30 +1,28 @@
-import React from "react"
-import { Navbar, Footer } from "../components"
-import { navigate } from "gatsby"
+import React from 'react';
+import { Layout } from 'antd';
+import { AppFooter, Navbar } from '../components';
 
+const { Header, Content, Footer } = Layout;
 
-const Authorization = () => {
-  try {
-    const userRole = "Admin"
-    if (userRole === "Employee") {
-      navigate("/errors/forbidden")
-    } else if (!userRole) {
-      navigate("/errors/unauthorized")
-    }
-  } catch (error) {
-    console.error(error)
-  }
-}
-const pageLayout = ({ children }) => {
-  Authorization()
-
+const PageLayout = ({ children }) => {
   return (
-    <div>
-      <Navbar />
-      {children}
-      <Footer />
-    </div>
-  )
-}
+    <Layout className="layout">
+      <Header>
+        <div className="logo"/>
+        <Navbar />
+      </Header>
 
-export default pageLayout
+      <Content style={{padding: '5px 50px'}}>
+        <main className="site-layout-content">
+          {children}
+        </main>
+      </Content>
+
+      <Footer>
+        <AppFooter />
+      </Footer>
+    </Layout>
+  )
+};
+
+export default PageLayout;

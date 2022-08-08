@@ -114,7 +114,7 @@ const data = [
   },
 ]
 
-const IndexPage = () => {
+const ServiceRequestPage = () => {
   const [visible, setVisible] = useState(false)
 
   const showDrawer = () => {
@@ -191,4 +191,4 @@ const IndexPage = () => {
   )
 }
 
-export default IndexPage
+export default ServiceRequestPage

@@ -1,12 +1,12 @@
 import * as React from "react"
 
-import AuthenticationLayout from "../../layouts/AuthenticationLayout"
+import Layout from "../../layouts/Layout"
 import RegisterForm from "../../components/forms/authentication/RegisterForm"
 import registerImage from "../../assets/icons/authentication/register.svg"
 
 const Register = () => {
   return (
-    <AuthenticationLayout>
+    <Layout>
       <div className="container pt-6 pl-6">
         <div className="columns">
           <div className="column is-half">
@@ -27,7 +27,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-    </AuthenticationLayout>
+    </Layout>
   )
 }
 export default Register

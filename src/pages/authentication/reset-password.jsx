@@ -1,11 +1,11 @@
 import * as React from "react"
-import AuthenticationLayout from "../../layouts/AuthenticationLayout"
+import Layout from "../../layouts/Layout"
 import ResetPasswordForm from "../../components/forms/authentication/ResetPasswordForm"
 import resetPasswordImage from "../../assets/icons/authentication/reset-password.svg"
 
 const ResetPassword = () => {
   return (
-    <AuthenticationLayout>
+    <Layout>
       <div className="container pt-6 pl-6">
         <div className="columns">
           <div className="column is-half">
@@ -25,7 +25,7 @@ const ResetPassword = () => {
           </div>
         </div>
       </div>
-    </AuthenticationLayout>
+    </Layout>
   )
 }
 export default ResetPassword

@@ -1,11 +1,11 @@
 import * as React from "react"
-import AuthenticationLayout from "../../layouts/AuthenticationLayout"
+import Layout from "../../layouts/Layout"
 import LoginForm from "../../components/forms/authentication/LoginForm"
 import loginImage from "../../assets/icons/authentication/login.svg"
 
 const Login = () => {
   return (
-    <AuthenticationLayout>
+    <Layout>
       <div className="container pt-6 pl-6">
         <div className="columns">
           <div className="column is-half">
@@ -26,7 +26,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </AuthenticationLayout>
+    </Layout>
   )
 }
 export default Login
