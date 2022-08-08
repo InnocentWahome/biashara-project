@@ -4,9 +4,9 @@ import ForgotPasswordForm from "./forms/authentication/ForgotPasswordForm"
 import ResetPasswordForm from "./forms/authentication/ResetPasswordForm"
 
 import ContactForm from "./forms/ContactForm"
-import CreateEmployeeForm from './forms/CreateEmployeeForm'
-import EmployeeWorkLogForm from './forms/EmployeeWorkLogForm'
-import MaintenanceScheduleForm from './forms/MaintenanceScheduleForm'
+import UsersForm from './forms/UsersForm'
+import WorkLogForm from './forms/WorkLogForm'
+import ServiceRequestForm from './forms/ServiceRequestForm'
 import OrderForm from './forms/OrderForm'
 import ProductForm from './forms/ProductForm'
 
@@ -16,9 +16,9 @@ import AppFooter from "./AppFooter"
 export {
   Navbar,
   ContactForm,
-  CreateEmployeeForm,
-  EmployeeWorkLogForm,
-  MaintenanceScheduleForm,
+  UsersForm,
+  WorkLogForm,
+  ServiceRequestForm,
   OrderForm,
   ProductForm,
   LoginForm,

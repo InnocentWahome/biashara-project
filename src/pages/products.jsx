@@ -2,7 +2,7 @@ import React, { useState } from "react"
 // import { Row, Col, Typography, Tabs } from "antd"
 import "../assets/less/ant.less"
 import { PageLayout } from "../layouts"
-import ProductForm from "../components/forms/ContactForm"
+import ProductForm from "../components/forms/ProductForm"
 import { PlusOutlined } from "@ant-design/icons"
 import {
   Button,

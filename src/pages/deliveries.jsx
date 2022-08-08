@@ -2,7 +2,7 @@ import React, { useState } from "react"
 // import { Row, Col, Typography, Tabs } from "antd"
 import "../assets/less/ant.less"
 import { PageLayout } from "../layouts"
-import ProductForm from "../components/forms/ContactForm"
+// import DeliveriesForm from "../components/forms/ContactForm"
 import { PlusOutlined } from "@ant-design/icons"
 import {
   Button,
@@ -160,9 +160,9 @@ const DeliveriesPage = () => {
             </Descriptions.Item>
           </Descriptions>
         </PageHeader>
-        <Button type="primary" onClick={showDrawer} icon={<PlusOutlined />} className="mb-3">
+        {/* <Button type="primary" onClick={showDrawer} icon={<PlusOutlined />} className="mb-3">
           New product
-        </Button>
+        </Button> */}
         <Drawer
           title="Create a new product"
           width={720}
@@ -180,7 +180,7 @@ const DeliveriesPage = () => {
             </Space>
           }
         >
-          <ProductForm />
+          {/* <DeliveriesForm /> */}
         </Drawer>
 
         <Input placeholder="Search"  className="pb-5"/>

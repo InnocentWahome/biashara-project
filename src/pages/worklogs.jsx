@@ -1,8 +1,7 @@
 import React, { useState } from "react"
-// import { Row, Col, Typography, Tabs } from "antd"
 import "../assets/less/ant.less"
 import { PageLayout } from "../layouts"
-import ProductForm from "../components/forms/ContactForm"
+import WorkLogForm from "../components/forms/WorkLogForm"
 import { PlusOutlined } from "@ant-design/icons"
 import {
   Button,
@@ -160,11 +159,16 @@ const WorkLogsPage = () => {
             </Descriptions.Item>
           </Descriptions>
         </PageHeader>
-        <Button type="primary" onClick={showDrawer} icon={<PlusOutlined />} className="mb-3">
-          New product
+        <Button
+          type="primary"
+          onClick={showDrawer}
+          icon={<PlusOutlined />}
+          className="mb-3"
+        >
+          New work log
         </Button>
         <Drawer
-          title="Create a new product"
+          title=""
           width={720}
           onClose={onClose}
           visible={visible}
@@ -180,10 +184,10 @@ const WorkLogsPage = () => {
             </Space>
           }
         >
-          <ProductForm />
+          <WorkLogForm />
         </Drawer>
 
-        <Input placeholder="Search"  className="pb-5"/>
+        <Input placeholder="Search" className="pb-5" />
 
         <Table columns={columns} dataSource={data} onChange={onChange} />
       </section>
