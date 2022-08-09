@@ -10,9 +10,9 @@ import ServiceRequestForm from './forms/ServiceRequestForm'
 import OrderForm from './forms/OrderForm'
 import ProductForm from './forms/ProductForm'
 
-import Navbar from "./Navbar"
-import AppFooter from "./AppFooter"
-
+import Navbar from "./shared/Navbar"
+import AppFooter from "./shared/AppFooter"
+import Datagrid from './shared/Datagrid'
 export {
   Navbar,
   ContactForm,
