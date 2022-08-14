@@ -1,4 +1,8 @@
-import React from "react"
+import React, { useState } from "react"
+// import { navigate } from "gatsby"
+import { Link } from "gatsby"
+import $http from "../../../plugins/axios"
+
 import {
   Form,
   Select,
@@ -12,42 +16,86 @@ import {
 const { Option } = Select
 
 const RegisterForm = () => {
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [phoneNumber, setPhoneNumber] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const register = async () => {
+    try {
+      console.log("called")
+      const response = await $http.Authentication({
+        method: "POST",
+        url: "/register",
+        data: {
+          firstName: firstName,
+          lastName: lastName,
+          phoneNumber: phoneNumber,
+          email: email,
+          password: password,
+          role: "User",
+        },
+      })
+      console.log(response)
+      if (response.status === 200) {
+        // navigate("/authentication/login")
+        console.log("Successful")
+      } else {
+        alert("Error", response.status)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
     <div>
-      <Form layout="vertical" hideRequiredMark>
+      <Form
+      method="POST"
+        layout="vertical"
+        initialValues={{
+          remember: true,
+        }}
+        hideRequiredMark
+        onFinish={register}
+      >
         <Row gutter={16}>
           <Col span={12}>
             <Form.Item
-              name="name"
-              label="Name"
+              name="firstName"
+              label="First Name"
               rules={[
                 {
                   required: true,
-                  message: "Please enter user name",
-                },
-              ]}
-            >
-              <Input placeholder="Please enter user name" />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item
-              name="url"
-              label="Url"
-              rules={[
-                {
-                  required: true,
-                  message: "Please enter url",
+                  message: "Please enter first name",
                 },
               ]}
             >
               <Input
-                style={{
-                  width: "100%",
-                }}
-                addonBefore="http://"
-                addonAfter=".com"
-                placeholder="Please enter url"
+                name="firstName"
+                type="name"
+                placeholder="Please enter first name"
+                onChange={e => setFirstName(e.target.value)}
+              />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item
+              name="lastName"
+              label="Last Name"
+              rules={[
+                {
+                  required: true,
+                  message: "Please enter last name",
+                },
+              ]}
+            >
+              <Input
+                name="lastName"
+                type="name"
+                placeholder="Please enter last name"
+                onChange={e => setLastName(e.target.value)}
               />
             </Form.Item>
           </Col>
@@ -55,108 +103,101 @@ const RegisterForm = () => {
         <Row gutter={16}>
           <Col span={12}>
             <Form.Item
-              name="owner"
-              label="Owner"
+              name="email"
+              label="Email"
               rules={[
                 {
                   required: true,
-                  message: "Please select an owner",
+                  message: "Please input email",
                 },
               ]}
             >
-              <Select placeholder="Please select an owner">
-                <Option value="xiao">Xiaoxiao Fu</Option>
-                <Option value="mao">Maomao Zhou</Option>
-              </Select>
+              <Input
+                name="email"
+                type="email"
+                placeholder="Please enter email"
+                onChange={e => setEmail(e.target.value)}
+              />
             </Form.Item>
           </Col>
           <Col span={12}>
             <Form.Item
-              name="type"
-              label="Type"
+              name="phoneNumber"
+              label="Phone Number"
               rules={[
                 {
                   required: true,
-                  message: "Please choose the type",
+                  message: "Please enter phone number",
                 },
               ]}
             >
-              <Select placeholder="Please choose the type">
-                <Option value="private">Private</Option>
-                <Option value="public">Public</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row gutter={16}>
-          <Col span={12}>
-            <Form.Item
-              name="approver"
-              label="Approver"
-              rules={[
-                {
-                  required: true,
-                  message: "Please choose the approver",
-                },
-              ]}
-            >
-              <Select placeholder="Please choose the approver">
-                <Option value="jack">Jack Ma</Option>
-                <Option value="tom">Tom Liu</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item
-              name="dateTime"
-              label="DateTime"
-              rules={[
-                {
-                  required: true,
-                  message: "Please choose the dateTime",
-                },
-              ]}
-            >
-              <DatePicker.RangePicker
-                style={{
-                  width: "100%",
-                }}
-                getPopupContainer={trigger => trigger.parentElement}
+              <Input
+                name="phoneNumber"
+                type="number"
+                placeholder="Please enter phone number"
+                onChange={e => setPhoneNumber(e.target.value)}
               />
             </Form.Item>
           </Col>
         </Row>
         <Row gutter={16}>
-          <Col span={24}>
+          <Col span={12}>
             <Form.Item
-              name="description"
-              label="Description"
+              name="password"
+              label="Password"
               rules={[
                 {
                   required: true,
-                  message: "please enter url description",
+                  message: "Please enter password",
                 },
               ]}
             >
-              <Input.TextArea
-                rows={4}
-                placeholder="please enter url description"
+              <Input
+                name="password"
+                type="password"
+                placeholder="Please enter password"
+                onChange={e => setPassword(e.target.value)}
+              />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item
+              name="confirm-password"
+              label="Confirm Password"
+              rules={[
+                {
+                  required: true,
+                  message: "Please enter password",
+                },
+              ]}
+            >
+              <Input
+                name="confirm-password"
+                type="password"
+                placeholder="Repeat password"
               />
             </Form.Item>
           </Col>
         </Row>
         <Row>
-          <Checkbox>
-            By signing up, you agree to our <a> Terms, Data Policy</a> and{" "}
-            <a>Cookies Policy</a>
+          <Checkbox className="pb-4">
+            By signing up, you agree to our{" "}
+            <a className="has-text-info"> Terms, Data Policy</a> and{" "}
+            <a className="has-text-info">Cookies Policy</a>
           </Checkbox>
         </Row>
 
-        <Button type="primary" size="large" block className="pt-2 pb-2">
+        <Button
+          type="primary"
+          size="large"
+          htmlType="submit"
+          block
+          className="pt-2 pb-2"
+        >
           Get Started
         </Button>
         <p className="has-text-centered pt-3">
-          Already have an account? <a>Sign in</a>
+          Already have an account? <a className="has-text-info">Sign in</a>
         </p>
       </Form>
     </div>

@@ -13,7 +13,7 @@ const ErrorsLayout = ({ children }) => {
         aria-label="main navigation"
       >
         <div className="navbar-brand">
-          <a className="subtitle logo-font" href="/">
+          <a className="title logo-font" href="/">
             Ofamis
           </a>
           <div
