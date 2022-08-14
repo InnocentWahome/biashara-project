@@ -1,0 +1,16 @@
+.hero-bg {
+  background: url(https://placeimg.com/1000/1000/any);
+  background-size: no-repeat;
+  min-height: 100vh;
+}
+// .hero.is-fullheight > .columns {
+//   flex: 1;
+//   &:last-child {
+//     margin-bottom: 0;
+//   }
+// }
+
+.hero.is-fullheight > .columns > .column {
+  display: flex;
+}
+

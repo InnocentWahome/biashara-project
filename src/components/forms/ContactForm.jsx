@@ -1,5 +1,14 @@
 import React from "react"
-import { Form, Select, Row, Col, Input, DatePicker } from "antd"
+import {
+  Form,
+  Select,
+  Row,
+  Col,
+  Input,
+  DatePicker,
+  Button,
+  Checkbox,
+} from "antd"
 const { Option } = Select
 
 const ContactForm = () => {
@@ -136,6 +145,19 @@ const ContactForm = () => {
             </Form.Item>
           </Col>
         </Row>
+        <Row>
+          <Checkbox>
+            By signing up, you agree to our <a> Terms, Data Policy</a> and{" "}
+            <a>Cookies Policy</a>
+          </Checkbox>
+        </Row>
+
+        <Button type="primary" size="large" block className="pt-2 pb-2">
+          Get Started
+        </Button>
+        <p className="has-text-centered pt-3">
+          Already have an account? <a>Sign in</a>
+        </p>
       </Form>
     </div>
   )

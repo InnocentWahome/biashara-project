@@ -2,8 +2,11 @@ import React from "react"
 import { Menu } from "antd"
 import { Link } from "gatsby"
 
+import "../../assets/css/index.css"
+
 const Navbar = () => (
-  <Menu
+  <div class="navbar">
+    <Menu
     theme="dark"
     mode="horizontal"
     defaultSelectedKeys={[`${window.location.pathname}`]}
@@ -44,6 +47,7 @@ const Navbar = () => (
       <Link to={"/contact"}>Contact</Link>
     </Menu.Item>
   </Menu>
+  </div>
 )
 
 export default Navbar

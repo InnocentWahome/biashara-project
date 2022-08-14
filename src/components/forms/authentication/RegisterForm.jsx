@@ -1,123 +1,166 @@
-import React, { useState } from "react"
-import $http from "../../../plugins/axios"
-import { navigate } from "gatsby"
-import Authorization from "../../../plugins/authorization"
+import React from "react"
+import {
+  Form,
+  Select,
+  Row,
+  Col,
+  Input,
+  DatePicker,
+  Button,
+  Checkbox,
+} from "antd"
+const { Option } = Select
 
 const RegisterForm = () => {
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [phoneNumber, setPhoneNumber] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-
-  const register = async (e) => {
-    try {
-      e.preventDefault();
-      const response = await $http.Authentication({
-        method: "POST",
-        url: "/register",
-        data: {
-          firstName: firstName,
-          lastName: lastName,
-          phoneNumber: phoneNumber,
-          email: email,
-          password: password,
-          role: "User"
-        },
-      })
-      Authorization()
-      navigate("/authentication/login")
-      console.log(response.data)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
   return (
-    <form action="" method="POST" className="container" onSubmit={register}>
-      <div className="container">
-        <div className="field is-horizontal">
-          <div className="field-body">
-            <div className="field">
-              <div className="control is-expanded">
-                <input
-                  className="input"
-                  type="text"
-                  placeholder="First Name"
-                  required
-                  onChange={e => setFirstName(e.target.value)}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="field is-horizontal">
-          <div className="field-body">
-            <div className="field">
-              <div className="control is-expanded">
-                <input
-                  className="input"
-                  type="text"
-                  placeholder="Last Name"
-                  required
-                  onChange={e => setLastName(e.target.value)}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="field is-horizontal">
-          <div className="field-body">
-            <div className="field">
-              <div className="control is-expanded">
-                <input
-                  className="input"
-                  type="email"
-                  placeholder="Email"
-                  required
-                  onChange={e => setEmail(e.target.value)}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="field is-horizontal">
-          <div className="field-body">
-            <div className="field">
-              <div className="control is-expanded">
-                <input
-                  className="input"
-                  type="number"
-                  placeholder="Phone Number"
-                  required
-                  onChange={e => setPhoneNumber(e.target.value)}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="field is-horizontal">
-          <div className="field-body">
-            <div className="field">
-              <div className="control is-expanded">
-                <input
-                  className="input"
-                  type="password"
-                  placeholder="password"
-                  required
-                  onChange={e => setPassword(e.target.value)}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="field">
-          <button className="button is-black is-rounded" type="submit">
-            Register
-          </button>
-        </div>
-      </div>
-    </form>
+    <div>
+      <Form layout="vertical" hideRequiredMark>
+        <Row gutter={16}>
+          <Col span={12}>
+            <Form.Item
+              name="name"
+              label="Name"
+              rules={[
+                {
+                  required: true,
+                  message: "Please enter user name",
+                },
+              ]}
+            >
+              <Input placeholder="Please enter user name" />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item
+              name="url"
+              label="Url"
+              rules={[
+                {
+                  required: true,
+                  message: "Please enter url",
+                },
+              ]}
+            >
+              <Input
+                style={{
+                  width: "100%",
+                }}
+                addonBefore="http://"
+                addonAfter=".com"
+                placeholder="Please enter url"
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={16}>
+          <Col span={12}>
+            <Form.Item
+              name="owner"
+              label="Owner"
+              rules={[
+                {
+                  required: true,
+                  message: "Please select an owner",
+                },
+              ]}
+            >
+              <Select placeholder="Please select an owner">
+                <Option value="xiao">Xiaoxiao Fu</Option>
+                <Option value="mao">Maomao Zhou</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item
+              name="type"
+              label="Type"
+              rules={[
+                {
+                  required: true,
+                  message: "Please choose the type",
+                },
+              ]}
+            >
+              <Select placeholder="Please choose the type">
+                <Option value="private">Private</Option>
+                <Option value="public">Public</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={16}>
+          <Col span={12}>
+            <Form.Item
+              name="approver"
+              label="Approver"
+              rules={[
+                {
+                  required: true,
+                  message: "Please choose the approver",
+                },
+              ]}
+            >
+              <Select placeholder="Please choose the approver">
+                <Option value="jack">Jack Ma</Option>
+                <Option value="tom">Tom Liu</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item
+              name="dateTime"
+              label="DateTime"
+              rules={[
+                {
+                  required: true,
+                  message: "Please choose the dateTime",
+                },
+              ]}
+            >
+              <DatePicker.RangePicker
+                style={{
+                  width: "100%",
+                }}
+                getPopupContainer={trigger => trigger.parentElement}
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={16}>
+          <Col span={24}>
+            <Form.Item
+              name="description"
+              label="Description"
+              rules={[
+                {
+                  required: true,
+                  message: "please enter url description",
+                },
+              ]}
+            >
+              <Input.TextArea
+                rows={4}
+                placeholder="please enter url description"
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row>
+          <Checkbox>
+            By signing up, you agree to our <a> Terms, Data Policy</a> and{" "}
+            <a>Cookies Policy</a>
+          </Checkbox>
+        </Row>
+
+        <Button type="primary" size="large" block className="pt-2 pb-2">
+          Get Started
+        </Button>
+        <p className="has-text-centered pt-3">
+          Already have an account? <a>Sign in</a>
+        </p>
+      </Form>
+    </div>
   )
 }
+
 export default RegisterForm
