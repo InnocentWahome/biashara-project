@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import $http from "../../plugins/axios"
-import moment from "moment"
+// import moment from "moment"
 
 const OrderForm = ({ entity, setEntity }) => {
   entity = entity || {}
@@ -9,12 +9,12 @@ const OrderForm = ({ entity, setEntity }) => {
   const [description, setDescription] = useState(entity.description)
   const [rate, setRate] = useState(entity.rate)
 
-  const userId = 1
-  const userEmail = "wahome@wahome.com"
+  // const userId = 1
+  // const userEmail = "wahome@wahome.com"
 
   const getDate = () => {
     // date_create: moment().format("DD-MM-YYYY")
-    date_create: moment().format("YYY-MM-DD")
+    // date_create: moment().format("YYY-MM-DD")
   }
 
   const sendFeedbackForm = async e => {

@@ -2,18 +2,7 @@ import React, { useState } from "react"
 // import { navigate } from "gatsby"
 import $http from "../../../plugins/axios"
 
-import {
-  Form,
-  Select,
-  Row,
-  Col,
-  Input,
-  DatePicker,
-  Button,
-  Checkbox,
-} from "antd"
-import { navigate } from "gatsby"
-const { Option } = Select
+import { Form, Col, Input, Button } from "antd"
 
 const LoginForm = () => {
   const [email, setEmail] = useState("")
@@ -100,7 +89,7 @@ const LoginForm = () => {
           Login
         </Button>
         <p className="has-text-centered pt-3">
-          <a>Forgot Password</a>
+          <a href="/">Forgot Password</a>
         </p>
       </Form>
     </div>

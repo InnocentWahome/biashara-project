@@ -1,10 +1,10 @@
 import * as React from "react"
 
-import "../../assets/css/authentication.css"
+// import "../../assets/css/authentication.css"
 
 import Layout from "../../layouts/Layout"
 import RegisterForm from "../../components/forms/authentication/RegisterForm"
-import RegisterImage from "../../assets/images/login3.svg"
+// import RegisterImage from "../../assets/images/login3.svg"
 
 const Register = () => {
   return (

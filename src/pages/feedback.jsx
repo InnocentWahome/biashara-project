@@ -5,23 +5,7 @@ import FeedbackForm from "../components/forms/FeedbackForm"
 import { PlusOutlined } from "@ant-design/icons"
 import Datagrid from "../components/shared/Datagrid"
 
-import {
-  Button,
-  Col,
-  DatePicker,
-  Drawer,
-  Form,
-  Input,
-  Row,
-  Select,
-  Space,
-  Table,
-  PageHeader,
-  Descriptions,
-  Statistic,
-} from "antd"
-const { Option } = Select
-
+import { Button, Drawer, Input, Space } from "antd"
 
 const FeedbackPage = () => {
   const [visible, setVisible] = useState(false)
@@ -36,8 +20,12 @@ const FeedbackPage = () => {
   return (
     <PageLayout>
       <section>
-
-        <Button type="primary" onClick={showDrawer} icon={<PlusOutlined />} className="mb-3">
+        <Button
+          type="primary"
+          onClick={showDrawer}
+          icon={<PlusOutlined />}
+          className="mb-3"
+        >
           New Feedback
         </Button>
         <Drawer
@@ -60,9 +48,8 @@ const FeedbackPage = () => {
           <FeedbackForm />
         </Drawer>
 
-        <Input placeholder="Search"  className="pb-5"/>
+        <Input placeholder="Search" className="pb-5" />
         <Datagrid />
-
       </section>
     </PageLayout>
   )

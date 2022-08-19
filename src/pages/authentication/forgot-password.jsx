@@ -1,5 +1,5 @@
 import * as React from "react"
-import Layout from "../../layouts/Layout"
+// import Layout from "../../layouts/Layout"
 import ForgotPasswordForm from "../../components/forms/authentication/ForgotPasswordForm"
 // import forgotPasswordImage from "../../assets/icons/authentication/forgot-password.svg"
 

@@ -1,10 +1,10 @@
 import * as React from "react"
 
-import "../../assets/css/authentication.css"
+// import "../../assets/css/authentication.css"
 
 import Layout from "../../layouts/Layout"
 import LoginForm from "../../components/forms/authentication/LoginForm"
-import LoginImage from "../../assets/images/login3.svg"
+// import LoginImage from "../../assets/images/login3.svg"
 
 const Login = () => {
   return (
@@ -28,13 +28,13 @@ const Login = () => {
                   </div>
                   <LoginForm />
                   <div className="d-flex justify-content-center text-center mt-4 pt-1">
-                    <a href="#!" className="">
+                    <a href="/" className="">
                       <i className="fas fa-facebook-f fa-lg"></i>
                     </a>
-                    <a href="#!" className="">
+                    <a href="/" className="">
                       <i className="fas fa-twitter fa-lg mx-4 px-2"></i>
                     </a>
-                    <a href="#!" className="">
+                    <a href="/" className="">
                       <i className="fas fa-google fa-lg"></i>
                     </a>
                   </div>

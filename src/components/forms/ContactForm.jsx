@@ -7,9 +7,10 @@ import {
   Input,
   DatePicker,
   Button,
-  Checkbox,
+  Typography,
 } from "antd"
 const { Option } = Select
+const { Paragraph } = Typography
 
 const ContactForm = () => {
   return (
@@ -19,7 +20,7 @@ const ContactForm = () => {
           <Col span={12}>
             <Form.Item
               name="name"
-              label="Name"
+              label="Full Names"
               rules={[
                 {
                   required: true,
@@ -27,82 +28,59 @@ const ContactForm = () => {
                 },
               ]}
             >
-              <Input placeholder="Please enter user name" />
+              <Input placeholder="Please enter your name" />
             </Form.Item>
           </Col>
           <Col span={12}>
             <Form.Item
-              name="url"
-              label="Url"
+              name="email"
+              label="Email"
               rules={[
                 {
                   required: true,
-                  message: "Please enter url",
+                  message: "Please enter your email address",
                 },
               ]}
             >
-              <Input
-                style={{
-                  width: "100%",
-                }}
-                addonBefore="http://"
-                addonAfter=".com"
-                placeholder="Please enter url"
+              <Input placeholder="Please enter your email" />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={16}>
+          <Col span={24}>
+            <Form.Item
+              name="description"
+              label="Description"
+              rules={[
+                {
+                  required: true,
+                  message: "please enter url description",
+                },
+              ]}
+            >
+              <Input.TextArea
+                rows={4}
+                placeholder="please enter url description"
               />
             </Form.Item>
           </Col>
         </Row>
+        <Paragraph>Would you like to schedule a call back?</Paragraph>
         <Row gutter={16}>
           <Col span={12}>
             <Form.Item
-              name="owner"
-              label="Owner"
+              name="yesOrNo"
+              label="Yes / No"
               rules={[
                 {
                   required: true,
-                  message: "Please select an owner",
+                  message: "Please choose an option",
                 },
               ]}
             >
-              <Select placeholder="Please select an owner">
-                <Option value="xiao">Xiaoxiao Fu</Option>
-                <Option value="mao">Maomao Zhou</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item
-              name="type"
-              label="Type"
-              rules={[
-                {
-                  required: true,
-                  message: "Please choose the type",
-                },
-              ]}
-            >
-              <Select placeholder="Please choose the type">
-                <Option value="private">Private</Option>
-                <Option value="public">Public</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row gutter={16}>
-          <Col span={12}>
-            <Form.Item
-              name="approver"
-              label="Approver"
-              rules={[
-                {
-                  required: true,
-                  message: "Please choose the approver",
-                },
-              ]}
-            >
-              <Select placeholder="Please choose the approver">
-                <Option value="jack">Jack Ma</Option>
-                <Option value="tom">Tom Liu</Option>
+              <Select placeholder="Please choose an option">
+                <Option value="yes">Yes</Option>
+                <Option value="no">No</Option>
               </Select>
             </Form.Item>
           </Col>
@@ -126,38 +104,10 @@ const ContactForm = () => {
             </Form.Item>
           </Col>
         </Row>
-        <Row gutter={16}>
-          <Col span={24}>
-            <Form.Item
-              name="description"
-              label="Description"
-              rules={[
-                {
-                  required: true,
-                  message: "please enter url description",
-                },
-              ]}
-            >
-              <Input.TextArea
-                rows={4}
-                placeholder="please enter url description"
-              />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row>
-          <Checkbox>
-            By signing up, you agree to our <a> Terms, Data Policy</a> and{" "}
-            <a>Cookies Policy</a>
-          </Checkbox>
-        </Row>
 
         <Button type="primary" size="large" block className="pt-2 pb-2">
-          Get Started
+          Send
         </Button>
-        <p className="has-text-centered pt-3">
-          Already have an account? <a>Sign in</a>
-        </p>
       </Form>
     </div>
   )

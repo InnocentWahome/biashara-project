@@ -1,6 +1,5 @@
-import React, { useState } from "react"
-import { Form, Table, Select, Row, Col, Input, DatePicker } from "antd"
-const { Option } = Select
+import React from "react"
+import { Table } from "antd"
 
 const columns = [
   {
@@ -96,16 +95,6 @@ const data = [
 ]
 
 const Datagrid = () => {
-  const [visible, setVisible] = useState(false)
-
-  const showDrawer = () => {
-    setVisible(true)
-  }
-
-  const onClose = () => {
-    setVisible(false)
-  }
-
   const onChange = (pagination, filters, sorter, extra) => {
     console.log("params", pagination, filters, sorter, extra)
   }

@@ -4,15 +4,15 @@ import ForgotPasswordForm from "./forms/authentication/ForgotPasswordForm"
 import ResetPasswordForm from "./forms/authentication/ResetPasswordForm"
 
 import ContactForm from "./forms/ContactForm"
-import UsersForm from './forms/UsersForm'
-import WorkLogForm from './forms/WorkLogForm'
-import ServiceRequestForm from './forms/ServiceRequestForm'
-import OrderForm from './forms/OrderForm'
-import ProductForm from './forms/ProductForm'
+import UsersForm from "./forms/UsersForm"
+import WorkLogForm from "./forms/WorkLogForm"
+import ServiceRequestForm from "./forms/ServiceRequestForm"
+import OrderForm from "./forms/OrderForm"
+import ProductForm from "./forms/ProductForm"
 
 import Navbar from "./shared/Navbar"
 import AppFooter from "./shared/AppFooter"
-import Datagrid from './shared/Datagrid'
+import Datagrid from "./shared/Datagrid"
 export {
   Navbar,
   ContactForm,
@@ -26,4 +26,5 @@ export {
   ResetPasswordForm,
   ForgotPasswordForm,
   AppFooter,
+  Datagrid,
 }

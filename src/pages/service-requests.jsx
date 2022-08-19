@@ -5,22 +5,7 @@ import ServiceRequestForm from "../components/forms/ServiceRequestForm"
 import { PlusOutlined } from "@ant-design/icons"
 import Datagrid from "../components/shared/Datagrid"
 
-import {
-  Button,
-  Col,
-  DatePicker,
-  Drawer,
-  Form,
-  Input,
-  Row,
-  Select,
-  Space,
-  Table,
-  PageHeader,
-  Descriptions,
-  Statistic,
-} from "antd"
-const { Option } = Select
+import { Button, Drawer, Input, Space } from "antd"
 
 const ServiceRequestPage = () => {
   const [visible, setVisible] = useState(false)
@@ -32,14 +17,9 @@ const ServiceRequestPage = () => {
   const onClose = () => {
     setVisible(false)
   }
-
-  const onChange = (pagination, filters, sorter, extra) => {
-    console.log("params", pagination, filters, sorter, extra)
-  }
   return (
     <PageLayout>
       <section>
-
         <Button
           type="primary"
           onClick={showDrawer}
@@ -68,9 +48,9 @@ const ServiceRequestPage = () => {
           <ServiceRequestForm />
         </Drawer>
 
-        <Input placeholder="Search" className="pb-3" /><br />
+        <Input placeholder="Search" className="pb-3" />
+        <br />
         <Datagrid />
-
       </section>
     </PageLayout>
   )

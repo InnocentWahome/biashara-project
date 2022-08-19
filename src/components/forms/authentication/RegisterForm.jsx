@@ -1,19 +1,8 @@
 import React, { useState } from "react"
 // import { navigate } from "gatsby"
-import { Link } from "gatsby"
 import $http from "../../../plugins/axios"
 
-import {
-  Form,
-  Select,
-  Row,
-  Col,
-  Input,
-  DatePicker,
-  Button,
-  Checkbox,
-} from "antd"
-const { Option } = Select
+import { Form, Row, Col, Input, Button, Checkbox } from "antd"
 
 const RegisterForm = () => {
   const [firstName, setFirstName] = useState("")
@@ -52,7 +41,7 @@ const RegisterForm = () => {
   return (
     <div>
       <Form
-      method="POST"
+        method="POST"
         layout="vertical"
         initialValues={{
           remember: true,
@@ -182,8 +171,8 @@ const RegisterForm = () => {
         <Row>
           <Checkbox className="pb-4">
             By signing up, you agree to our{" "}
-            <a className="has-text-info"> Terms, Data Policy</a> and{" "}
-            <a className="has-text-info">Cookies Policy</a>
+            <a href="/" className="has-text-info"> Terms, Data Policy</a> and{" "}
+            <a href="/" className="has-text-info">Cookies Policy</a>
           </Checkbox>
         </Row>
 
@@ -197,7 +186,7 @@ const RegisterForm = () => {
           Get Started
         </Button>
         <p className="has-text-centered pt-3">
-          Already have an account? <a className="has-text-info">Sign in</a>
+          Already have an account? <a href="/" className="has-text-info">Sign in</a>
         </p>
       </Form>
     </div>

@@ -8,7 +8,7 @@ const ResetPasswordForm = () => {
   const resetPassword = async e => {
     e.preventDefault()
     try {
-      const response = await $http.Authentication({
+      await $http.Authentication({
         method: "POST",
         url: "/reset-password",
         data: {

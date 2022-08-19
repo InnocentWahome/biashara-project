@@ -1,25 +1,9 @@
-import React, { useState } from "react"
+import React from "react"
 import ContactForm from "../components/forms/ContactForm"
 import ContactFormImage from "../assets/icons/contact.svg"
 import "../assets/less/ant.less"
 import { PageLayout } from "../layouts"
-import { PlusOutlined } from "@ant-design/icons"
-import {
-  Button,
-  Col,
-  DatePicker,
-  Drawer,
-  Form,
-  Input,
-  Row,
-  Select,
-  Space,
-  Table,
-  PageHeader,
-  Descriptions,
-  Statistic,
-  Image,
-} from "antd"
+import { Image, Row, Col } from "antd"
 
 const ContactPage = () => {
   return (

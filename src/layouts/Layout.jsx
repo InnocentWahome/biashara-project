@@ -1,9 +1,9 @@
 import React from "react"
 
-const ErrorsLayout = ({ children }) => {
+const ErrorsLayout = ({ items }) => {
   const [isActive, setIsActive] = React.useState(false)
 
-  const year = new Date().getFullYear()
+  // const year = new Date().getFullYear()
   return (
     <div>
       {/* navbar */}
@@ -13,7 +13,7 @@ const ErrorsLayout = ({ children }) => {
         aria-label="main navigation"
       >
         <div className="navbar-brand">
-          <a className="title logo-font" href="/">
+          <a href="/" className="title logo-font" href="/">
             Ofamis
           </a>
           <div
@@ -44,7 +44,7 @@ const ErrorsLayout = ({ children }) => {
         </div>
       </nav>
       {/* main content */}
-      {children}
+      {items}
       {/* Footer */}
       {/* <p className="has-background-warning has-text-centered">
         Copyright @ofamis {year} | <a href="/">Privacy Policy</a>

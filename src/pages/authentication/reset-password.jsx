@@ -1,9 +1,9 @@
 import * as React from "react"
-import Layout from "../../layouts/Layout"
+// import Layout from "../../layouts/Layout"
 import ResetPasswordForm from "../../components/forms/authentication/ResetPasswordForm"
 // import ResetPasswordImage from "../../assets/icons/authentication/reset-password.svg"
 
-import "../../assets/css/authentication.css"
+// import "../../assets/css/authentication.css"
 const ResetPassword = () => {
   return (
     <section className="vh-100 background-setting">

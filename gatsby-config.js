@@ -11,15 +11,14 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-image",
-    {
-      resolve: "gatsby-plugin-google-analytics",
-      options: {
-        trackingId: "d",
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-google-analytics",
+    //   options: {
+    //     trackingId: "d",
+    //   },
+    // },
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
-    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-fontawesome-css`,
@@ -36,17 +35,6 @@ module.exports = {
     },
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
-    // {
-    //   resolve: 'gatsby-source-strapi',
-    //   options: {
-    //     apiURL: `http://localhost:1337/graphql`,
-    //     contentTypes: [
-    //       'car',
-    //       'engine-details',
-    //     ],
-    //     queryLimit: 1000,
-    //   },
-    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

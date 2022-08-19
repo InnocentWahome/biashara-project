@@ -5,23 +5,7 @@ import ProductForm from "../components/forms/ProductForm"
 import { PlusOutlined } from "@ant-design/icons"
 import Datagrid from "../components/shared/Datagrid"
 
-import {
-  Button,
-  Col,
-  DatePicker,
-  Drawer,
-  Form,
-  Input,
-  Row,
-  Select,
-  Space,
-  Table,
-  PageHeader,
-  Descriptions,
-  Statistic,
-} from "antd"
-const { Option } = Select
-
+import { Button, Drawer, Input, Space } from "antd"
 
 const ProductsPage = () => {
   const [visible, setVisible] = useState(false)
@@ -33,15 +17,15 @@ const ProductsPage = () => {
   const onClose = () => {
     setVisible(false)
   }
-
-  const onChange = (pagination, filters, sorter, extra) => {
-    console.log("params", pagination, filters, sorter, extra)
-  }
   return (
     <PageLayout>
       <section>
-
-        <Button type="primary" onClick={showDrawer} icon={<PlusOutlined />} className="mb-3">
+        <Button
+          type="primary"
+          onClick={showDrawer}
+          icon={<PlusOutlined />}
+          className="mb-3"
+        >
           New product
         </Button>
         <Drawer
@@ -64,7 +48,7 @@ const ProductsPage = () => {
           <ProductForm />
         </Drawer>
 
-        <Input placeholder="Search"  className="pb-5"/>
+        <Input placeholder="Search" className="pb-5" />
 
         <Datagrid />
       </section>

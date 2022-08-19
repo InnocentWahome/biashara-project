@@ -1,11 +1,15 @@
 import React from "react"
-import { AppFooter, Navbar } from "../components"
-import { Breadcrumb, Layout, Menu } from "antd"
-import "../assets/css/test.css"
+import {
+  //  AppFooter,
+  Navbar,
+} from "../components"
+import {
+  Breadcrumb,
+  Layout,
+  // Menu
+} from "antd"
 
 const { Header, Content, Footer } = Layout
-
-
 
 const App = ({ children }) => (
   <Layout className="layout">
