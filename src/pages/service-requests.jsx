@@ -48,7 +48,8 @@ const ServiceRequestPage = () => {
           <ServiceRequestForm />
         </Drawer>
 
-        <Input placeholder="Search" className="pb-3" />
+        <Input placeholder="Search"/>
+        <p></p>
         <br />
         <Datagrid />
       </section>

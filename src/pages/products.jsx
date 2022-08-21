@@ -48,7 +48,8 @@ const ProductsPage = () => {
           <ProductForm />
         </Drawer>
 
-        <Input placeholder="Search" className="pb-5" />
+        <Input placeholder="Search"/>
+        <p></p>
 
         <Datagrid />
       </section>

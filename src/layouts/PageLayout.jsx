@@ -3,23 +3,30 @@ import {
   //  AppFooter,
   Navbar,
 } from "../components"
-import {
-  Breadcrumb,
-  Layout,
-  // Menu
-} from "antd"
+import { Breadcrumb, Layout } from "antd"
 
 const { Header, Content, Footer } = Layout
 
 const App = ({ children }) => (
-  <Layout className="layout">
-    <Header>
+  <Layout
+    className="layout"
+    style={{
+      height: "100vh",
+    }}
+  >
+    <Header
+      style={{
+        backgroundColor: "#4f4b40",
+      }}
+    >
       <div className="logo" />
       <Navbar />
     </Header>
     <Content
       style={{
         padding: "0 50px",
+        width: "100%",
+        backgroundColor: "#9a8e9e",
       }}
     >
       <Breadcrumb
@@ -27,9 +34,10 @@ const App = ({ children }) => (
           margin: "16px 0",
         }}
       >
-        <Breadcrumb.Item>Home</Breadcrumb.Item>
-        <Breadcrumb.Item>List</Breadcrumb.Item>
-        <Breadcrumb.Item>App</Breadcrumb.Item>
+        <Breadcrumb.Item>
+          <a href="/">Home</a>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item>ThisPage</Breadcrumb.Item>
       </Breadcrumb>
       <div className="site-layout-content">{children}</div>
     </Content>

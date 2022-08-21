@@ -8,8 +8,8 @@ const DeliveriesPage = () => {
   return (
     <PageLayout>
       <section>
-        <Input placeholder="Search" className="pb-3" />
-        <br />
+        <Input placeholder="Search"/>
+        <p></p>
         <Datagrid />
       </section>
     </PageLayout>

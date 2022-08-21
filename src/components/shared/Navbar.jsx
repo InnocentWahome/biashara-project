@@ -1,49 +1,69 @@
 import React from "react"
 import { Menu } from "antd"
+import {
+  AppstoreOutlined,
+  MailOutlined,
+  SettingOutlined,
+} from "@ant-design/icons"
+
 import { Link } from "gatsby"
 
-const Navbar = () => (
+const Navbar = () => {
+  const menuItems = [
+    {
+      key: "home",
+      icon: <AppstoreOutlined />,
+      label: <Link to="/">Home</Link>,
+    },
+    {
+      key: "products",
+      icon: <MailOutlined />,
+      label: <Link to="/products">Products</Link>,
+    },
+    {
+      key: "orders",
+      icon: <SettingOutlined />,
+      label: <Link to="/orders">Orders</Link>,
+    },
+    {
+      key: "deliveries",
+      icon: <AppstoreOutlined />,
+      label: <Link to="/deliveries">Deliveries</Link>,
+    },
+    {
+      key: "users",
+      icon: <MailOutlined />,
+      label: <Link to="/users">Users</Link>,
+    },
+    {
+      key: "worklogs",
+      icon: <SettingOutlined />,
+      label: <Link to="/worklogs">Worklogs</Link>,
+    },
+    {
+      key: "service-requests",
+      icon: <AppstoreOutlined />,
+      label: <Link to="/service-requests">Service Requests</Link>,
+    },
+    {
+      key: "feedback",
+      icon: <MailOutlined />,
+      label: <Link to="/feedback">Feedback</Link>,
+    },
+    {
+      key: "contact",
+      icon: <SettingOutlined />,
+      label: <Link to="/contact">Contact</Link>,
+    },
+  ]
+  return (
     <Menu
       theme="dark"
       mode="horizontal"
       defaultSelectedKeys={[`${window.location.pathname}`]}
-    >
-      <Menu.Item key={"/"}>
-        <Link to={"/"}>Home</Link>
-      </Menu.Item>
-
-      <Menu.Item key={"/cars"}>
-        <Link to={"/products"}>Products</Link>
-      </Menu.Item>
-
-      <Menu.Item key={"/sell-or-trade"}>
-        <Link to={"/orders"}>Orders</Link>
-      </Menu.Item>
-
-      <Menu.Item key={"/service-and-repairs"}>
-        <Link to={"/deliveries"}>Deliveries</Link>
-      </Menu.Item>
-
-      <Menu.Item key={"/users"}>
-        <Link to={"/users"}>Users</Link>
-      </Menu.Item>
-
-      <Menu.Item key={"/worklogs"}>
-        <Link to={"/worklogs"}>WorkLogs</Link>
-      </Menu.Item>
-
-      <Menu.Item key={"/service-requests"}>
-        <Link to={"/service-requests"}>Service Requests</Link>
-      </Menu.Item>
-
-      <Menu.Item key={"/feedback"}>
-        <Link to={"/feedback"}>Feedback</Link>
-      </Menu.Item>
-
-      <Menu.Item key={"/contact"}>
-        <Link to={"/contact"}>Contact</Link>
-      </Menu.Item>
-    </Menu>
-)
-
+      items={menuItems}
+      style={{ backgroundColor: "#4f4b40", width: "100%"}}
+    ></Menu>
+  )
+}
 export default Navbar
