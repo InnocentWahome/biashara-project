@@ -1,143 +1,351 @@
+// // import React, { useState } from "react"
+// // import $http from "../../plugins/axios"
+// // // import moment from "moment"
+
+// // const OrderForm = ({ entity, setEntity }) => {
+// //   entity = entity || {}
+// //   const [productId, setProductId] = useState(entity.product_id)
+// //   const [productName, setProductName] = useState(entity.product_name)
+// //   const [description, setDescription] = useState(entity.description)
+// //   const [rate, setRate] = useState(entity.rate)
+
+// //   // const userId = 1
+// //   // const userEmail = "wahome@wahome.com"
+
+// //   const getDate = () => {
+// //     // date_create: moment().format("DD-MM-YYYY")
+// //     // date_create: moment().format("YYY-MM-DD")
+// //   }
+
+// //   const sendFeedbackForm = async e => {
+// //     const userId = 1
+// //     const userEmail = "wahome@wahome.com"
+
+// //     try {
+// //       e.preventDefault()
+// //       if (entity.id) {
+// //         await $http.Api({
+// //           method: "POST",
+// //           url: "/feedback",
+// //           data: {
+// //             product_id: productId,
+// //             product_name: productName,
+// //             description: description,
+// //             user_id: userId,
+// //             user_email: userEmail,
+// //             rate: rate,
+// //             created_at: getDate,
+// //           },
+// //         })
+// //       }
+// //     } catch (error) {
+// //       console.error(error)
+// //     }
+// //   }
+// //   return (
+// //     <form
+// //       action=""
+// //       method="POST"
+// //       className="container"
+// //       onSubmit={sendFeedbackForm}
+// //     >
+// //       <div className="container">
+// //         <p className="pt-6 is-size-4 pb-3">Share your opinion</p>
+// //         <div className="field is-horizontal">
+// //           <div className="field-body">
+// //             <div className="field">
+// //               <div className="control is-expanded">
+// //                 <p className="label">Product ID</p>
+// //                 <input
+// //                   className="input"
+// //                   type="number"
+// //                   placeholder=""
+// //                   required
+// //                   defaultValue={entity.product_id}
+// //                   onChange={e => setProductId(e.target.value)}
+// //                 />
+// //               </div>
+// //             </div>
+// //           </div>
+// //         </div>
+// //         <div className="field is-horizontal">
+// //           <div className="field-body">
+// //             <div className="field">
+// //               <div className="control is-expanded">
+// //                 <p className="label">Product Name</p>
+// //                 <input
+// //                   className="input"
+// //                   type="text"
+// //                   placeholder=""
+// //                   required
+// //                   defaultValue={entity.product_name}
+// //                   onChange={e => setProductName(e.target.value)}
+// //                 />
+// //               </div>
+// //             </div>
+// //           </div>
+// //         </div>
+// //         <div className="field is-horizontal">
+// //           <div className="field-body">
+// //             <div className="field">
+// //               <div className="control is-expanded">
+// //                 <p className="label">Description</p>
+// //                 <textarea
+// //                   placeholder=""
+// //                   className="textarea"
+// //                   required
+// //                   defaultValue={entity.description}
+// //                   onChange={e => setDescription(e.target.value)}
+// //                 ></textarea>
+// //               </div>
+// //             </div>
+// //           </div>
+// //         </div>
+// //         <div className="field is-horizontal">
+// //           <div className="field-body">
+// //             <div className="field">
+// //               <div className="control is-expanded">
+// //                 <p className="label">Rate</p>
+// //                 <div className="select" onChange={e => setRate(e.target.value)}>
+// //                   <select onChange={e => setRate(e.target.value)}>
+// //                     <option onChange={e => setRate(e.target.value)} value="1">
+// //                       1
+// //                     </option>
+// //                     <option onChange={e => setRate(e.target.value)} value="2">
+// //                       2
+// //                     </option>
+// //                     <option onChange={e => setRate(e.target.value)} value="3">
+// //                       3
+// //                     </option>
+// //                     <option onChange={e => setRate(e.target.value)} value="4">
+// //                       4
+// //                     </option>
+// //                     <option onChange={e => setRate(e.target.value)} value="5">
+// //                       5
+// //                     </option>
+// //                   </select>
+// //                 </div>
+// //               </div>
+// //             </div>
+// //           </div>
+// //         </div>
+
+// //         <div className="field">
+// //           <button className="button is-black is-rounded" type="submit">
+// //             Send Feedback
+// //           </button>
+// //         </div>
+// //       </div>
+// //     </form>
+// //   )
+// // }
+
+// // export default OrderForm
+// import React, { useState } from "react"
+// import $http from "../../plugins/axios"
+// import {
+//   Form,
+//   Select,
+//   Row,
+//   Col,
+//   Input,
+//   DatePicker,
+//   Button,
+//   Typography,
+//   Checkbox,
+// } from "antd"
+// const { Option } = Select
+// const { Paragraph } = Typography
+
+// const FeedbackForm = () => {
+//   const [productId, setProductId] = useState("")
+//   const [productName, setProductName] = useState("")
+//   const [description, setDescription] = useState("")
+//   const [rate, setRate] = useState("")
+//   const [userId, setUserId] = useState("")
+//   const [userEmail, setUserEmail] = useState("")
+
+//   const sendFeedback = async e => {
+//     try {
+//       e.preventDefault()
+//       await $http.Api({
+//         method: "POST",
+//         url: "/feedback",
+//         data: {
+//           product_id: productId,
+//           product_name: productName,
+//           description: description,
+//           user_id: userId,
+//           user_email: userEmail,
+//           rate: rate,
+//           // created_at: getDate,
+//         },
+//       })
+//     } catch (error) {
+//       console.error(error)
+//     }
+//   }
+//   return (
+//     <div>
+//       <Form layout="vertical" hideRequiredMark>
+//         <Row gutter={16}>
+//           <Col span={12}>
+//             <Form.Item
+//               name="yesOrNo"
+//               label="Select product you want to rate"
+//               rules={[
+//                 {
+//                   required: true,
+//                   message: "Please choose an option",
+//                 },
+//               ]}
+//             >
+//               <Select placeholder="Please choose an option">
+//                 <Option value="one">One </Option>
+//                 <Option value="two">Two</Option>
+//               </Select>
+//             </Form.Item>
+//           </Col>
+//           <Col span={12}>
+//             <Form.Item
+//               name="yesOrNo"
+//               label="Select rating"
+//               rules={[
+//                 {
+//                   required: true,
+//                   message: "Please choose an option",
+//                 },
+//               ]}
+//             >
+//               <Select placeholder="Please choose an option">
+//                 <Option value="one">One </Option>
+//                 <Option value="two">Two</Option>
+//                 <Option value="three">Three</Option>
+//                 <Option value="four">Four</Option>
+//                 <Option value="five">Five</Option>
+//               </Select>
+//             </Form.Item>
+//           </Col>
+//         </Row>
+//         <space></space>
+//         <Row gutter={16}>
+//           <Col span={12}>
+//             <Form.Item
+//               name="name"
+//               label="Full Names"
+//               rules={[
+//                 {
+//                   required: true,
+//                   message: "Please enter user name",
+//                 },
+//               ]}
+//             >
+//               <Input placeholder="Please enter your name" />
+//             </Form.Item>
+//           </Col>
+//           <Col span={12}>
+//             <Form.Item
+//               name="email"
+//               label="Email"
+//               rules={[
+//                 {
+//                   required: true,
+//                   message: "Please enter your email address",
+//                 },
+//               ]}
+//             >
+//               <Input placeholder="Please enter your email" />
+//             </Form.Item>
+//           </Col>
+//         </Row>
+//         <Row gutter={16}>
+//           <Col span={24}>
+//             <Form.Item
+//               name="description"
+//               label="Description"
+//               rules={[
+//                 {
+//                   required: true,
+//                   message: "please enter your description",
+//                 },
+//               ]}
+//             >
+//               <Input.TextArea
+//                 rows={4}
+//                 placeholder="please enter your description"
+//               />
+//             </Form.Item>
+//           </Col>
+//         </Row>
+//         <Checkbox>Would you like to keep your response anonymous?</Checkbox>
+
+//         <Button type="primary" size="large" block className="pt-2 pb-2">
+//           Send Feedback
+//         </Button>
+//       </Form>
+//     </div>
+//   )
+// }
+
+// export default FeedbackForm
 import React, { useState } from "react"
 import $http from "../../plugins/axios"
-// import moment from "moment"
+import moment from "moment"
 
-const OrderForm = ({ entity, setEntity }) => {
-  entity = entity || {}
-  const [productId, setProductId] = useState(entity.product_id)
-  const [productName, setProductName] = useState(entity.product_name)
-  const [description, setDescription] = useState(entity.description)
-  const [rate, setRate] = useState(entity.rate)
+import {
+  Form,
+  Select,
+  Row,
+  Col,
+  Input,
+  Button,
+  Typography,
+  Checkbox,
+} from "antd"
+const { Option } = Select
+const { Paragraph } = Typography
 
-  // const userId = 1
-  // const userEmail = "wahome@wahome.com"
-
-  const getDate = () => {
-    // date_create: moment().format("DD-MM-YYYY")
-    // date_create: moment().format("YYY-MM-DD")
-  }
-
-  const sendFeedbackForm = async e => {
-    const userId = 1
-    const userEmail = "wahome@wahome.com"
-
-    try {
-      e.preventDefault()
-      if (entity.id) {
-        await $http.Api({
-          method: "POST",
-          url: "/feedback",
-          data: {
-            product_id: productId,
-            product_name: productName,
-            description: description,
-            user_id: userId,
-            user_email: userEmail,
-            rate: rate,
-            created_at: getDate,
-          },
-        })
-      }
-    } catch (error) {
-      console.error(error)
-    }
-  }
+const ResetPasswordForm = () => {
   return (
-    <form
-      action=""
-      method="POST"
-      className="container"
-      onSubmit={sendFeedbackForm}
-    >
-      <div className="container">
-        <p className="pt-6 is-size-4 pb-3">Share your opinion</p>
-        <div className="field is-horizontal">
-          <div className="field-body">
-            <div className="field">
-              <div className="control is-expanded">
-                <p className="label">Product ID</p>
-                <input
-                  className="input"
-                  type="number"
-                  placeholder=""
-                  required
-                  defaultValue={entity.product_id}
-                  onChange={e => setProductId(e.target.value)}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="field is-horizontal">
-          <div className="field-body">
-            <div className="field">
-              <div className="control is-expanded">
-                <p className="label">Product Name</p>
-                <input
-                  className="input"
-                  type="text"
-                  placeholder=""
-                  required
-                  defaultValue={entity.product_name}
-                  onChange={e => setProductName(e.target.value)}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="field is-horizontal">
-          <div className="field-body">
-            <div className="field">
-              <div className="control is-expanded">
-                <p className="label">Description</p>
-                <textarea
-                  placeholder=""
-                  className="textarea"
-                  required
-                  defaultValue={entity.description}
-                  onChange={e => setDescription(e.target.value)}
-                ></textarea>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="field is-horizontal">
-          <div className="field-body">
-            <div className="field">
-              <div className="control is-expanded">
-                <p className="label">Rate</p>
-                <div className="select" onChange={e => setRate(e.target.value)}>
-                  <select onChange={e => setRate(e.target.value)}>
-                    <option onChange={e => setRate(e.target.value)} value="1">
-                      1
-                    </option>
-                    <option onChange={e => setRate(e.target.value)} value="2">
-                      2
-                    </option>
-                    <option onChange={e => setRate(e.target.value)} value="3">
-                      3
-                    </option>
-                    <option onChange={e => setRate(e.target.value)} value="4">
-                      4
-                    </option>
-                    <option onChange={e => setRate(e.target.value)} value="5">
-                      5
-                    </option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div>
+      <Form layout="vertical" hideRequiredMark>
+        <Row gutter={16}>
+          <Col span={24}>
+            <Form.Item
+              name="password"
+              label="Password"
+              rules={[
+                {
+                  required: true,
+                  message: "Please enter your password",
+                },
+              ]}
+            >
+              <Input placeholder="Please enter your password" />
+            </Form.Item>
+          </Col>
+          <Col span={24}>
+            <Form.Item
+              name="confirmPassword"
+              label="Confirm Password"
+              rules={[
+                {
+                  required: true,
+                  message: "Please re-enter your password",
+                },
+              ]}
+            >
+              <Input placeholder="Please re-enter your password" />
+            </Form.Item>
+          </Col>
+        </Row>
 
-        <div className="field">
-          <button className="button is-black is-rounded" type="submit">
-            Send Feedback
-          </button>
-        </div>
-      </div>
-    </form>
+        <Button type="primary" size="large" block className="pt-2 pb-2">
+          Reset Password
+        </Button>
+      </Form>
+    </div>
   )
 }
 
-export default OrderForm
+export default ResetPasswordForm
